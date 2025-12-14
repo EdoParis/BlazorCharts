@@ -17,29 +17,36 @@
             Max = default;
         }
 
-        public void Update(double value)
+        public Axis Update(double value)
         {
             if (IsDefault)
             {
-                Min = value;
-                Max = value;
-                IsDefault = false;
+                return new Axis()
+                {
+                    Min = value,
+                    Max = value,
+                    Range = Max - Min,
+                    IsDefault = false
+                };
             }
             else
             {
-                Min = Math.Min(Min, value);
-                Max = Math.Max(Max, value);
+                return new Axis()
+                {
+                    Min = Math.Min(Min, value),
+                    Max = Math.Max(Max, value),
+                    Range = Math.Max(Max, value) - Math.Min(Min, value),
+                    IsDefault = false
+                };
             }
 
-            Range = Max - Min;
-
-            Step = (int)((Max - Min) / 5);
+            /*Step = (int)((Max - Min) / 5);
 
             if (Step > 5)
                 Step = Step - Step % 5;
 
             if (Step <= 0)
-                Step = 1;
+                Step = 1;*/
         }
     }
 }

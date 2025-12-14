@@ -32,10 +32,10 @@ namespace BlazorCharts.Models
         public void Add(Bin bin)
         {
             bins.Add(bin);
-            AxisX.Update(bin.Min);
-            AxisX.Update(bin.Max);
-            AxisY.Update(default);
-            AxisY.Update(bin.Value);
+            AxisX = AxisX.Update(bin.Min);
+            AxisX = AxisX.Update(bin.Max);
+            AxisY = AxisY.Update(default);
+            AxisY = AxisY.Update(bin.Value);
         }
 
         public IEnumerator<Bin> GetEnumerator()

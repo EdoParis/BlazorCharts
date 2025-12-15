@@ -5,8 +5,11 @@ path{
 text{
     text-anchor: middle;
     dominant-baseline: middle;
-    font: 1.5rem Arial;
 }
+
+    text.tick {
+        font-size: 0.5rem !important;
+    }
 
 svg{
     max-height: 100%;

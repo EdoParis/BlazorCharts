@@ -1,0 +1,18 @@
+path{
+    cursor: pointer;
+}
+
+text{
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+    text.tick {
+        font-size: 0.5rem !important;
+    }
+
+svg{
+    max-height: 100%;
+    width: auto;
+    margin: auto;
+    display: block;
+}

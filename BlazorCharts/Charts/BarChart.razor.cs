@@ -8,8 +8,8 @@ namespace BlazorCharts.Charts
 {
     public partial class BarChart
     {
-        private const int VIEW = 500;
-        private const int PADDING = 50;
+        private const int VIEW = 1000;
+        private const int PADDING = 100;
 
         [Parameter] public KnownColor Color { get; set; }
         [Parameter] public Bargram Model { get; set; }

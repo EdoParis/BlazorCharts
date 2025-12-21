@@ -1,5 +1,6 @@
 ﻿using BlazorCharts.Models;
 using BlazorCharts.Structures;
+using System.Drawing;
 
 namespace DemoApp.Pages
 {
@@ -7,6 +8,7 @@ namespace DemoApp.Pages
     {
         private Histogram histogram;
         private Bargram bargram;
+        private Linegram linegram;
         private List<String> events;
 
         protected override void OnInitialized()
@@ -14,6 +16,7 @@ namespace DemoApp.Pages
             events = new List<string>();
             histogram = new Histogram("asseX", "asseY");
             bargram = new Bargram("asse-1", "asse-2");
+            linegram = new Linegram("X1", "Y1");
 
             for (int i=0; i<22; i++)
             {
@@ -30,6 +33,17 @@ namespace DemoApp.Pages
                     Value = 10 + i
                 });
             }
+
+            List<PointF> points1 = new();
+            List<PointF> points2 = new();
+            for (int i=0; i<1000; i++)
+            {
+                points1.Add(new PointF(i * (float)Math.Cos(i / 100f * Math.PI), i * (float)Math.Sin(i / 100f * Math.PI)));
+                points2.Add(new PointF(i * (float)Math.Cos(i / 500f * Math.PI), i * (float)Math.Sin(i / 500f * Math.PI)));
+            }
+
+            linegram.Add(new Line("F1", KnownColor.Orange, points1));
+            linegram.Add(new Line("F2", KnownColor.LimeGreen, points2));
         }
 
         private void BinClickHandler(Bin bin)

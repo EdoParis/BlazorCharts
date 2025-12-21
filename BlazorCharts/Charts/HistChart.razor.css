@@ -3,12 +3,13 @@ path{
 }
 
 text{
+    font-size: 2.0rem;
     text-anchor: middle;
     dominant-baseline: middle;
 }
 
     text.tick {
-        font-size: 0.5rem !important;
+        font-size: 1.0rem !important;
     }
 
 svg{

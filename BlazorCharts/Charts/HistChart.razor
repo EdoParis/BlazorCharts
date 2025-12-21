@@ -11,7 +11,8 @@
                      stroke-width="1px"
                      vector-effect="non-scaling-stroke"
                      d="@BinPath(bin)"
-                     @key="@bin">
+                     @key="@bin"
+                     @onclick="async() => await OnClick.InvokeAsync(bin)">
                     <title>@($"value: {bin.Value}")</title>
                 </path>
             }

@@ -7,12 +7,13 @@
             Bin bin = kvp.Value;
 
             <path fill="@Color"
-                    stroke="@Color"
-                    fill-opacity="0.6"
-                    stroke-width="1px"
-                    vector-effect="non-scaling-stroke"
-                    d="@BinPath(bin)"
-                    @key="@kvp">
+                  stroke="@Color"
+                  fill-opacity="0.6"
+                  stroke-width="1px"
+                  vector-effect="non-scaling-stroke"
+                  d="@BinPath(bin)"
+                  @key="@kvp"
+                  @onclick="async() => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                 <title>@($"value: {bin.Value}")</title>
             </path> 
             <text>

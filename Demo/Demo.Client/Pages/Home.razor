@@ -5,9 +5,16 @@
 <h1>Hello, Histogram!</h1>
 
 <p>
-    <HistChart Model="@histogram" Color="@KnownColor.CadetBlue"></HistChart>
+    <HistChart Model="@histogram" Color="@KnownColor.CadetBlue" OnClick="BinClickHandler"></HistChart>
 </p>
 <p>
-    <BarChart Model="@bargram" Color="KnownColor.OrangeRed"></BarChart>
+    <BarChart Model="@bargram" Color="KnownColor.RoyalBlue" OnClick="BarClickHandler"></BarChart>
 </p>
+
+<ol>
+    @foreach (string message in events)
+    {
+        <li>@message</li>
+    }
+</ol>
 

@@ -13,6 +13,7 @@ namespace BlazorCharts.Charts
 
         [Parameter] public KnownColor Color { get; set; }
         [Parameter] public Histogram Model { get; set; }
+        [Parameter] public EventCallback<Bin> OnClick { get; set; }
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;

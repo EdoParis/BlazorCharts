@@ -7,35 +7,33 @@ namespace BlazorCharts.Models
     public class Histogram : IEnumerable<Bin>
     {
         private List<Bin> bins;
-        public Axis AxisX { get; private set; }
-        public Axis AxisY { get; private set; }
-        public string TitleX { get; private set; }
-        public string TitleY { get; private set; }
+        public ChartAxis AxisX { get; private set; }
+        public ChartAxis AxisY { get; private set; }
+        public string TitleX { get => AxisX?.Title; }
+        public string TitleY { get => AxisY?.Title; }
         public int BinsCount { get => bins?.Count ?? default; }
 
         public Histogram(string title_x, string title_y)
         {
             bins = new List<Bin>();
-            TitleX = title_x;
-            TitleY = title_y;
-            AxisX = new Axis();
-            AxisY = new Axis();
+            AxisX = new ChartAxis(title_x);
+            AxisY = new ChartAxis(title_y);
         }
 
         public void Clear()
         {
             bins.Clear();
-            AxisX = new Axis();
-            AxisY = new Axis();
+            AxisX = new ChartAxis();
+            AxisY = new ChartAxis();
         }
 
         public void Add(Bin bin)
         {
             bins.Add(bin);
-            AxisX = AxisX.Update(bin.Min);
-            AxisX = AxisX.Update(bin.Max);
-            AxisY = AxisY.Update(default);
-            AxisY = AxisY.Update(bin.Value);
+            AxisX.Update(bin.Min);
+            AxisX.Update(bin.Max);
+            AxisY.Update(default);
+            AxisY.Update(bin.Value);
         }
 
         public IEnumerator<Bin> GetEnumerator()

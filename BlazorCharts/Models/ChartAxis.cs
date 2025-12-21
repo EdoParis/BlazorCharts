@@ -1,43 +1,38 @@
-﻿namespace BlazorCharts.Structures
+﻿namespace BlazorCharts.Models
 {
-    public struct Axis
+    public class ChartAxis
     {
         public int Step;
         public double Min;
         public double Max;
         public double Range;
+        public string Title;
         private bool IsDefault;
 
-        public Axis()
+        public ChartAxis(string title = null)
         {
             IsDefault = true;
+            Title = title;
             Range = default;
             Step = default;
             Min = default;
             Max = default;
         }
 
-        public Axis Update(double value)
+        public void Update(double value)
         {
             if (IsDefault)
             {
-                return new Axis()
-                {
-                    Min = value,
-                    Max = value,
-                    Range = Max - Min,
-                    IsDefault = false
-                };
+                Min = value;
+                Max = value;
+                Range = Max - Min;
+                IsDefault = false;
             }
             else
             {
-                return new Axis()
-                {
-                    Min = Math.Min(Min, value),
-                    Max = Math.Max(Max, value),
-                    Range = Math.Max(Max, value) - Math.Min(Min, value),
-                    IsDefault = false
-                };
+                Min = Math.Min(Min, value);
+                Max = Math.Max(Max, value);
+                Range = Math.Max(Max, value) - Math.Min(Min, value);
             }
         }
 

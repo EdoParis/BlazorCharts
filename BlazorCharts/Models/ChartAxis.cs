@@ -1,39 +1,48 @@
-﻿namespace BlazorCharts.Models
+﻿using BlazorCharts.Structures;
+
+namespace BlazorCharts.Models
 {
     public class ChartAxis
     {
-        public int Step;
-        public double Min;
-        public double Max;
-        public double Range;
+        private Interval range;
+        private bool is_default;
+
         public string Title;
-        private bool IsDefault;
+        public double Min { get => range.Min; }
+        public double Max { get => range.Max; }
+        public double Size { get => range.Size; }
 
         public ChartAxis(string title = null)
         {
-            IsDefault = true;
             Title = title;
-            Range = default;
-            Step = default;
-            Min = default;
-            Max = default;
+            range = default;
+            is_default = true;
         }
 
         public void Update(double value)
         {
-            if (IsDefault)
+            if (is_default)
             {
-                Min = value;
-                Max = value;
-                Range = Max - Min;
-                IsDefault = false;
+                range = new Interval(value, value);
             }
             else
             {
-                Min = Math.Min(Min, value);
-                Max = Math.Max(Max, value);
-                Range = Math.Max(Max, value) - Math.Min(Min, value);
+                range = new Interval(Math.Min(range.Min, value), 
+                                     Math.Max(range.Max, value));
             }
+            is_default = false;
+        }
+
+        public void Update(Interval range)
+        {
+            if (is_default)
+                this.range = range;
+            else
+            {
+                range = new Interval(Math.Min(range.Min, range.Min), 
+                                     Math.Max(range.Max, range.Max));
+            }
+            is_default = false;
         }
 
         public IEnumerable<double> Ticks()
@@ -42,7 +51,7 @@
 
             if (Max != Min)
             {
-                int step = (int)((Max - Min) / 5);
+                int step = (int)(Size / 5);
 
                 if (step > 5)
                     step = step - step % 5;

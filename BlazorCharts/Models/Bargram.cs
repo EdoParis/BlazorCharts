@@ -40,7 +40,7 @@ namespace BlazorCharts.Models
             bars.Add(KeyValuePair.Create(bar.Label, bin));
             AxisX.Update(bin.Min);
             AxisX.Update(bin.Max);
-            AxisY.Update(default);
+            AxisY.Update(0);
             AxisY.Update(bin.Value);
         }
 

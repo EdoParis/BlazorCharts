@@ -32,7 +32,7 @@ namespace BlazorCharts.Models
             bins.Add(bin);
             AxisX.Update(bin.Min);
             AxisX.Update(bin.Max);
-            AxisY.Update(default);
+            AxisY.Update(0);
             AxisY.Update(bin.Value);
         }
 

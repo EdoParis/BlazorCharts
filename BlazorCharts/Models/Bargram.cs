@@ -9,24 +9,22 @@ namespace BlazorCharts.Models
         private List<KeyValuePair<String, Bin>> bars;
         public ChartAxis AxisX { get; private set; }
         public ChartAxis AxisY { get; private set; }
-        public string TitleX { get; private set; }
-        public string TitleY { get; private set; }
+        public string TitleX { get => AxisX?.Title; }
+        public string TitleY { get => AxisY?.Title; }
         public int BarsCount { get => bars?.Count ?? default; }
 
         public Bargram(string title_x, string title_y)
         {
             bars = new List<KeyValuePair<String, Bin>>();
-            TitleX = title_x;
-            TitleY = title_y;
-            AxisX = new ChartAxis();
-            AxisY = new ChartAxis();
+            AxisX = new ChartAxis(title_x);
+            AxisY = new ChartAxis(title_y);
         }
 
         public void Clear()
         {
             bars.Clear();
-            AxisX = new ChartAxis();
-            AxisY = new ChartAxis();
+            AxisX = new ChartAxis(TitleX);
+            AxisY = new ChartAxis(TitleY);
         }
 
         public void Add(Bar bar)

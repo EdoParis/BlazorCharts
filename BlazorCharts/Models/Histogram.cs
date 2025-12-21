@@ -23,8 +23,8 @@ namespace BlazorCharts.Models
         public void Clear()
         {
             bins.Clear();
-            AxisX = new ChartAxis();
-            AxisY = new ChartAxis();
+            AxisX = new ChartAxis(TitleX);
+            AxisY = new ChartAxis(TitleY);
         }
 
         public void Add(Bin bin)

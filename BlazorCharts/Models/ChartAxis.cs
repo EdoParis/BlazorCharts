@@ -59,14 +59,14 @@ namespace BlazorCharts.Models
                 if (step <= 0)
                     step = 1;
 
-                for (double t = Min; t < Max; t += step)
+                for (double t = Min - Min % 5; t < Max; t += step)
                 {
                     for (int i = 1; i < 6; i++)
                     {
-                        double tick = t + i * step / 5d;
+                        double tick = (int)(t + i * step / 5);
 
                         if (tick <= Max)
-                            ticks.Add(t + i * step / 5d);
+                            ticks.Add(tick);
                         else
                             break;
                     }

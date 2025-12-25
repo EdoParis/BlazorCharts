@@ -36,10 +36,10 @@ namespace DemoApp.Pages
 
             List<PointF> points1 = new();
             List<PointF> points2 = new();
-            for (int i=0; i<1000; i++)
+            for (int i=0; i<100; i++)
             {
-                points1.Add(new PointF(i * (float)Math.Cos(i / 100f * Math.PI), i * (float)Math.Sin(i / 100f * Math.PI)));
-                points2.Add(new PointF(i * (float)Math.Cos(i / 500f * Math.PI), i * (float)Math.Sin(i / 500f * Math.PI)));
+                points1.Add(new PointF(i * (float)Math.Cos(i / 10f * Math.PI), i * (float)Math.Sin(i / 10f * Math.PI)));
+                points2.Add(new PointF(i * (float)Math.Cos(i / 50f * Math.PI), i * (float)Math.Sin(i / 50f * Math.PI)));
             }
 
             linegram.Add(new Line("F1", KnownColor.Orange, points1));

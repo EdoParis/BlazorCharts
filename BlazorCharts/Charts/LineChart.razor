@@ -12,6 +12,17 @@
                   @key="@line">
                 <title>@($"{line.Label}")</title>
             </path>
+
+            if (ShowPoints)
+            {
+                foreach(PointF point in line.Points)
+                {
+                    <circle fill="@line.Color"
+                            cx="@ViewX(point.X)"
+                            cy="@ViewY(point.Y)"
+                            r="4px"/>
+                }
+            }
         }
 
         int tx = 0;

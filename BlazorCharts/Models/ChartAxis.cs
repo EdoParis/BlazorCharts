@@ -33,14 +33,14 @@ namespace BlazorCharts.Models
             is_default = false;
         }
 
-        public void Update(Interval range)
+        public void Update(Interval r)
         {
             if (is_default)
-                this.range = range;
+                range = r;
             else
             {
-                range = new Interval(Math.Min(range.Min, range.Min), 
-                                     Math.Max(range.Max, range.Max));
+                range = new Interval(Math.Min(range.Min, r.Min), 
+                                     Math.Max(range.Max, r.Max));
             }
             is_default = false;
         }

@@ -13,6 +13,7 @@ namespace BlazorCharts.Charts
         private const int PADDING = 100;
 
         [Parameter] public Linegram Model { get; set; }
+        [Parameter] public Boolean ShowPoints { get; set; }
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;
@@ -26,15 +27,25 @@ namespace BlazorCharts.Charts
             {
                 if (starting_point)
                 {
-                    builder.Append($"M {(int)(padding + (width - 2 * padding) * (point.X - Model.AxisX.Min) / Model.AxisX.Size)} {(int)(height - padding - (height - 2 * padding) * (point.Y - Model.AxisY.Min) / Model.AxisY.Size)} ");
+                    builder.Append($"M {ViewX(point.X)} {ViewY(point.Y)} ");
                     starting_point = false;
                 }
                 else
                 {
-                    builder.Append($"L {(int)(padding + (width - 2 * padding) * (point.X - Model.AxisX.Min) / Model.AxisX.Size)} {(int)(height - padding - (height - 2 * padding) * (point.Y - Model.AxisY.Min) / Model.AxisY.Size)} ");
+                    builder.Append($"L {ViewX(point.X)} {ViewY(point.Y)} ");
                 }
             }
             return builder.ToString();
+        }
+
+        private int ViewX(double valueX)
+        {
+            return (int)(padding + (width - 2 * padding) * (valueX - Model.AxisX.Min) / Model.AxisX.Size);
+        }
+
+        private int ViewY(double valueY)
+        {
+            return (int)(height - padding - (height - 2 * padding) * (valueY - Model.AxisY.Min) / Model.AxisY.Size);
         }
     }
 }

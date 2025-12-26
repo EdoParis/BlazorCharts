@@ -9,6 +9,7 @@ namespace DemoApp.Pages
         private Histogram histogram;
         private Bargram bargram;
         private Linegram linegram;
+        private Piegram piegram;
         private List<String> events;
 
         protected override void OnInitialized()
@@ -17,6 +18,7 @@ namespace DemoApp.Pages
             histogram = new Histogram("asseX", "asseY");
             bargram = new Bargram("asse-1", "asse-2");
             linegram = new Linegram("X1", "Y1");
+            piegram = new Piegram();
 
             for (int i=0; i<22; i++)
             {
@@ -44,6 +46,11 @@ namespace DemoApp.Pages
 
             linegram.Add(new Line("F1", KnownColor.Orange, points1));
             linegram.Add(new Line("F2", KnownColor.LimeGreen, points2));
+
+            piegram.Add(new Slice("S1", 40, KnownColor.CadetBlue));
+            piegram.Add(new Slice("S2", 20, KnownColor.OrangeRed));
+            piegram.Add(new Slice("S3", 20, KnownColor.Gold));
+            piegram.Add(new Slice("S4", 5, KnownColor.DodgerBlue));
         }
 
         private void BinClickHandler(Bin bin)

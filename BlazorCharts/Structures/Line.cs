@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using BlazorCharts.Internal;
+using System.Drawing;
 
 namespace BlazorCharts.Structures
 {
@@ -6,8 +7,8 @@ namespace BlazorCharts.Structures
     {
         public string Label;
         public KnownColor Color;
-        public Interval RangeX { get; private set; }
-        public Interval RangeY { get; private set; }
+        internal Span RangeX { get; private set; }
+        internal Span RangeY { get; private set; }
         public IEnumerable<PointF> Points { get; private set; }
 
         public Line()
@@ -22,8 +23,8 @@ namespace BlazorCharts.Structures
             Label = label;
             Color = color;
             Points = points ?? Array.Empty<PointF>();
-            RangeX = new Interval(points?.Select(p => p.X));
-            RangeY = new Interval(points?.Select(p => p.Y));
+            RangeX = new Span(points?.Select(p => p.X));
+            RangeY = new Span(points?.Select(p => p.Y));
         }
     }
 }

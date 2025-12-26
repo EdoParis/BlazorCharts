@@ -1,12 +1,12 @@
-﻿namespace BlazorCharts.Structures
+﻿namespace BlazorCharts.Internal
 {
-    public struct Interval
+    internal struct Span
     {
         public double Min { get; private set; }
         public double Max { get; private set; }
         public double Size { get; private set; }
 
-        public Interval(double min, double max)
+        public Span(double min, double max)
         {
             if (min > max)
                 throw new ArgumentException();
@@ -16,7 +16,7 @@
             Size = Max - Min;
         }
 
-        public Interval(IEnumerable<double> values)
+        public Span(IEnumerable<double> values)
         {
             Min = values.FirstOrDefault();
             Max = values.FirstOrDefault();
@@ -32,7 +32,7 @@
             Size = Max - Min;
         }
 
-        public Interval(IEnumerable<float> values)
+        public Span(IEnumerable<float> values)
         {
             Min = values.FirstOrDefault();
             Max = values.FirstOrDefault();

@@ -1,10 +1,8 @@
-﻿using BlazorCharts.Structures;
-
-namespace BlazorCharts.Models
+﻿namespace BlazorCharts.Internal
 {
-    public class ChartAxis
+    internal class Axis
     {
-        private Interval range;
+        private Span range;
         private bool is_default;
 
         public string Title;
@@ -12,7 +10,7 @@ namespace BlazorCharts.Models
         public double Max { get => range.Max; }
         public double Size { get => range.Size; }
 
-        public ChartAxis(string title = null)
+        public Axis(string title = null)
         {
             Title = title;
             range = default;
@@ -23,23 +21,23 @@ namespace BlazorCharts.Models
         {
             if (is_default)
             {
-                range = new Interval(value, value);
+                range = new Span(value, value);
             }
             else
             {
-                range = new Interval(Math.Min(range.Min, value), 
+                range = new Span(Math.Min(range.Min, value), 
                                      Math.Max(range.Max, value));
             }
             is_default = false;
         }
 
-        public void Update(Interval r)
+        public void Update(Span r)
         {
             if (is_default)
                 range = r;
             else
             {
-                range = new Interval(Math.Min(range.Min, r.Min), 
+                range = new Span(Math.Min(range.Min, r.Min), 
                                      Math.Max(range.Max, r.Max));
             }
             is_default = false;

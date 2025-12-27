@@ -1,8 +1,8 @@
-﻿using BlazorCharts.Structures;
+﻿using BlazorGraphs.Structures;
 using System.Collections;
 using System;
 
-namespace BlazorCharts.Models
+namespace BlazorGraphs.Models
 {
     public class Piegram : IEnumerable<Slice>
     {

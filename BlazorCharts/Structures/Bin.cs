@@ -1,4 +1,4 @@
-﻿namespace BlazorCharts.Structures
+﻿namespace BlazorGraphs.Structures
 {
     public struct Bin
     {

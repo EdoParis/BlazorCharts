@@ -1,4 +1,4 @@
-## BlazorCharts
+## BlazorGraphs
 Blazor library to draw .svg charts.
 
 
@@ -10,9 +10,9 @@ Blazor library to draw .svg charts.
 
 
 **Namespaces**
-	- BlazorCharts.Charts
-	- BlazorCharts.Models
-	- BlazorCharts.Structures
+	- BlazorGraphs.Charts
+	- BlazorGraphs.Models
+	- BlazorGraphs.Structures
 	
 
 **How to use**
@@ -24,5 +24,5 @@ Each data model has 2 methods:
 	- Clear: to remove all the existing data from the model
 
 
-Use the data structures you find in *BlazorCharts.Structures* to fill the data model.
+Use the data structures you find in *BlazorGraphs.Structures* to fill the data model.
 

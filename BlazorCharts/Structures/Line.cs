@@ -1,7 +1,7 @@
-﻿using BlazorCharts.Internal;
+﻿using BlazorGraphs.Internal;
 using System.Drawing;
 
-namespace BlazorCharts.Structures
+namespace BlazorGraphs.Structures
 {
     public struct Line
     {

@@ -1,9 +1,9 @@
-﻿using BlazorCharts.Structures;
-using BlazorCharts.Internal;
+﻿using BlazorGraphs.Structures;
+using BlazorGraphs.Internal;
 using System.Collections;
 using System;
 
-namespace BlazorCharts.Models
+namespace BlazorGraphs.Models
 {
     public class Histogram : IEnumerable<Bin>
     {

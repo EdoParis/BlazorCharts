@@ -1,4 +1,4 @@
-﻿namespace BlazorCharts.Internal
+﻿namespace BlazorGraphs.Internal
 {
     internal struct Span
     {

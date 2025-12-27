@@ -1,10 +1,10 @@
-﻿using BlazorCharts.Models;
-using BlazorCharts.Structures;
+﻿using BlazorGraphs.Models;
+using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 using System.Drawing;
 using System;
 
-namespace BlazorCharts.Charts
+namespace BlazorGraphs.Charts
 {
     public partial class HistChart
     {

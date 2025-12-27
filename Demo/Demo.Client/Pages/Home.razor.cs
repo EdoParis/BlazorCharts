@@ -1,5 +1,5 @@
-﻿using BlazorCharts.Models;
-using BlazorCharts.Structures;
+﻿using BlazorGraphs.Models;
+using BlazorGraphs.Structures;
 using System.Drawing;
 
 namespace DemoApp.Pages

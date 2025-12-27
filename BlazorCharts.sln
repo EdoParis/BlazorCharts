@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCharts", "BlazorCharts\BlazorCharts.csproj", "{F0A8F7BB-7131-460E-8186-21701EE655C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorGraphs", "BlazorCharts\BlazorGraphs.csproj", "{F0A8F7BB-7131-460E-8186-21701EE655C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo\Demo.csproj", "{5EA45C76-2FFE-417D-853C-72B12B1B68C8}"
 EndProject

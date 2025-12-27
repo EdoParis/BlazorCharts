@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace BlazorCharts.Structures
+namespace BlazorGraphs.Structures
 {
     public struct Slice
     {

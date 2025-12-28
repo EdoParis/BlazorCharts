@@ -11,6 +11,7 @@
     <PackageTags>Blazor; Charts; Svg;</PackageTags>
     <PackageIcon>Icon.png</PackageIcon>
     <Authors>Edoardo Paris;</Authors>
+    <Description>Blazor library to draw .svg charts.</Description>
   </PropertyGroup>
 
 

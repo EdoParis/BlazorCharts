@@ -10,6 +10,7 @@ namespace BlazorGraphs.Models
         private List<Bin> bins;
         internal Axis AxisX { get; private set; }
         internal Axis AxisY { get; private set; }
+        internal bool IsEmpty { get; private set; }
         public string TitleX { get => AxisX?.Title; }
         public string TitleY { get => AxisY?.Title; }
         public int BinsCount { get => bins?.Count ?? default; }
@@ -19,6 +20,7 @@ namespace BlazorGraphs.Models
             bins = new List<Bin>();
             AxisX = new Axis(title_x);
             AxisY = new Axis(title_y);
+            IsEmpty = true;
         }
 
         public void Clear()
@@ -26,10 +28,12 @@ namespace BlazorGraphs.Models
             bins.Clear();
             AxisX = new Axis(TitleX);
             AxisY = new Axis(TitleY);
+            IsEmpty = true;
         }
 
         public void Add(Bin bin)
         {
+            IsEmpty = false;
             bins.Add(bin);
             AxisX.Update(bin.Min);
             AxisX.Update(bin.Max);

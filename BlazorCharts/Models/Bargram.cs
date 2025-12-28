@@ -10,6 +10,7 @@ namespace BlazorGraphs.Models
         private List<KeyValuePair<String, Bin>> bars;
         internal Axis AxisX { get; private set; }
         internal Axis AxisY { get; private set; }
+        internal bool IsEmpty { get; private set; }
         public string TitleX { get => AxisX?.Title; }
         public string TitleY { get => AxisY?.Title; }
         public int BarsCount { get => bars?.Count ?? default; }
@@ -19,6 +20,7 @@ namespace BlazorGraphs.Models
             bars = new List<KeyValuePair<String, Bin>>();
             AxisX = new Axis(title_x);
             AxisY = new Axis(title_y);
+            IsEmpty = true;
         }
 
         public void Clear()
@@ -26,10 +28,13 @@ namespace BlazorGraphs.Models
             bars.Clear();
             AxisX = new Axis(TitleX);
             AxisY = new Axis(TitleY);
+            IsEmpty = true;
         }
 
         public void Add(Bar bar)
         {
+            IsEmpty = false;
+
             Bin bin = new Bin()
             {
                 Min = 2 * bars.Count,

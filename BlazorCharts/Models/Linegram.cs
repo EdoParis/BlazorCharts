@@ -10,6 +10,7 @@ namespace BlazorGraphs.Models
         private List<Line> lines;
         internal Axis AxisX { get; private set; }
         internal Axis AxisY { get; private set; }
+        internal bool IsEmpty { get; private set; }
         public string TitleX { get => AxisX?.Title; }
         public string TitleY { get => AxisY?.Title; }
         public int LinesCount { get => lines?.Count ?? default; }
@@ -19,6 +20,7 @@ namespace BlazorGraphs.Models
             lines = new List<Line>();
             AxisX = new Axis(title_x);
             AxisY = new Axis(title_y);
+            IsEmpty = true;
         }
 
         public void Clear()
@@ -26,10 +28,12 @@ namespace BlazorGraphs.Models
             lines.Clear();
             AxisX = new Axis(TitleX);
             AxisY = new Axis(TitleY);
+            IsEmpty = true;
         }
 
         public void Add(Line line)
         {
+            IsEmpty = IsEmpty && !(line.Points?.Any() ?? false);
             lines.Add(line);
             AxisX.Update(line.RangeX);
             AxisY.Update(line.RangeY);

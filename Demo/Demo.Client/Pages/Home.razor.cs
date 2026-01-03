@@ -10,6 +10,7 @@ namespace DemoApp.Pages
         private Bargram bargram;
         private Linegram linegram;
         private Piegram piegram;
+        private Polargram polargram;
         private List<String> events;
 
         protected override void OnInitialized()
@@ -19,6 +20,7 @@ namespace DemoApp.Pages
             bargram = new Bargram("asse-1", "asse-2");
             linegram = new Linegram("X1", "Y1");
             piegram = new Piegram();
+            polargram = new Polargram("R1");
 
             for (int i=0; i<22; i++)
             {
@@ -47,10 +49,16 @@ namespace DemoApp.Pages
             linegram.Add(new Line("F1", KnownColor.Orange, points1));
             linegram.Add(new Line("F2", KnownColor.LimeGreen, points2));
 
-            piegram.Add(new Slice("S1", 40, KnownColor.CadetBlue));
+            piegram.Add(new Slice("S1", 33, KnownColor.CadetBlue));
             piegram.Add(new Slice("S2", 20, KnownColor.OrangeRed));
             piegram.Add(new Slice("S3", 20, KnownColor.Gold));
             piegram.Add(new Slice("S4", 5, KnownColor.DodgerBlue));
+
+            polargram.Add(new Slice(34, KnownColor.CadetBlue));
+            polargram.Add(new Slice(20, KnownColor.OrangeRed));
+            polargram.Add(new Slice(20, KnownColor.Gold));
+            polargram.Add(new Slice(25, KnownColor.Red));
+            polargram.Add(new Slice(10, KnownColor.LimeGreen));
         }
 
         private void BinClickHandler(Bin bin)
@@ -61,6 +69,11 @@ namespace DemoApp.Pages
         private void BarClickHandler(Bar bar)
         {
             events.Add($"clicked bar: Label {bar.Label} - Value {bar.Value}");
+        }
+
+        private void SliceClickHandler(Slice slice)
+        {
+            events.Add($"clicked slice: Label {slice.Label} - Value {slice.Value}");
         }
     }
 }

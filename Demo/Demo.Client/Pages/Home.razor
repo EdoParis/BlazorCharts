@@ -4,20 +4,20 @@
 
 <h1>Hello, Histogram!</h1>
 
-<p>
-    <HistChart Model="@histogram" Color="@KnownColor.CadetBlue" OnClick="BinClickHandler"></HistChart>
-</p>
-<p>
-    <BarChart Model="@bargram" Color="KnownColor.RoyalBlue" OnClick="BarClickHandler"></BarChart>
-</p>
-
-<p>
-    <LineChart Model="@linegram" ShowPoints="true"></LineChart>
-</p>
-
-<p>
-    <PieChart Model="@piegram"></PieChart>
-</p>
+<table style="width: 100%;">
+    <tr>
+        <td><HistChart Model="@histogram" Color="@KnownColor.CadetBlue" OnClick="BinClickHandler"></HistChart></td>
+        <td><BarChart Model="@bargram" Color="KnownColor.RoyalBlue" OnClick="BarClickHandler"></BarChart></td>
+    </tr>
+    <tr>
+        <td><LineChart Model="@linegram" ShowPoints="true"></LineChart></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><PieChart Model="@piegram" OnClick="SliceClickHandler"></PieChart></td>
+        <td><PolarChart Model="@polargram" OnClick="SliceClickHandler"></PolarChart></td>
+    </tr>
+</table>
 
 <ol>
     @foreach (string message in events)

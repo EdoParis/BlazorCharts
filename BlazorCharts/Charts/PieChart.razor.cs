@@ -22,8 +22,8 @@ namespace BlazorGraphs.Charts
             double theta = 2 * Math.PI * slice.Value / Model.Total;
             bool is_wide = theta > Math.PI;
 
-            return $"M {width / 2} {height / 2}" + 
-                   $"L {(int)(padding + radius * (1 + Math.Sin(rotation)))} {(int)(padding + radius * (1 + Math.Cos(rotation)))}" +
+            return $"M {width / 2} {height / 2} " + 
+                   $"L {(int)(padding + radius * (1 + Math.Sin(rotation)))} {(int)(padding + radius * (1 + Math.Cos(rotation)))} " +
                    $"A {radius} {radius} 0 {(is_wide ? 1 : 0)} 0 {(int)(padding + radius * (1 + Math.Sin(theta + rotation)))} {(int)(padding + radius * (1 + Math.Cos(theta + rotation)))} " +
                    "Z";
         }

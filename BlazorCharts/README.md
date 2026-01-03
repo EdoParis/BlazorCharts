@@ -5,6 +5,7 @@
 - Line chart
 - Bar chart
 - Pie chart
+- Polar chart
 
 
 **Namespaces**

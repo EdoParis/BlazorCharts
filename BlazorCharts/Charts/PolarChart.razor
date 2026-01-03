@@ -1,0 +1,65 @@
+<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+    @if (Model is null || Model.IsEmpty)
+    {
+        <text>
+            <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
+        </text>
+    }
+    else
+    {
+        int tr = 0;
+        foreach (double tick in Model.AxisR.Ticks())
+        {
+            tr++;
+
+            if (tr % 5 == 0)
+            {
+                <circle fill="@KnownColor.White"
+                        fill-opacity="0"
+                        stroke="@KnownColor.LightGray"
+                        stroke-width="1px"
+                        vector-effect="non-scaling-stroke"
+                        cx="@((width / 2))"
+                        cy="@((height / 2))"
+                        r="@((int)(tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" />
+            }
+        }
+
+        double progress = 0;
+
+        foreach(Slice slice in Model)
+        {
+            <path fill="@slice.Color"
+                  fill-opacity="0.6"
+                  d="@SlicePath(slice, 2 * Math.PI * progress)"
+                  @key="@slice"
+                  @onclick="async() => await OnClick.InvokeAsync(slice)">
+                <title>@($"{(string.IsNullOrEmpty(slice.Label) ? "value" : slice.Label)}: {slice.Value}")</title>
+            </path>
+
+            progress += 1d / Model.SlicesCount;
+        }
+
+        tr = 0;
+        foreach (double tick in Model.AxisR.Ticks())
+        {
+            tr++;
+
+            if (tr % 5 == 0)
+            {
+                <text>
+                    <text class="tick" y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" x="@(width / 2)">@tick</text>
+                </text>
+            }
+        }
+    }
+    <circle fill="@KnownColor.White"
+            fill-opacity="0"
+            stroke="@KnownColor.Black"
+            stroke-width="1px"
+            vector-effect="non-scaling-stroke"
+            cx="@((width / 2))"
+            cy="@((height / 2))"
+            r="@((Math.Min(width, height) - 2 * padding) / 2)" 
+            style="pointer-events: none;" />
+</svg>

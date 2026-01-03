@@ -1,17 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>Blazor; Charts; Svg;</PackageTags>
+    <PackageTags>blazor; charts; svg; blazor-charts</PackageTags>
     <PackageIcon>Icon.png</PackageIcon>
     <Authors>Edoardo Paris;</Authors>
     <Description>Blazor library to draw .svg charts.</Description>
+    <PackageReleaseNotes>Added polar chart</PackageReleaseNotes>
   </PropertyGroup>
 
 

@@ -8,6 +8,14 @@ namespace BlazorGraphs.Structures
         public double Value { get; private set; }
         public KnownColor Color { get; private set; }
 
+        public Slice(double value, KnownColor color)
+        {
+            ArgumentOutOfRangeException.ThrowIfLessThan(value, 0);
+
+            Value = value;
+            Color = color;
+        }
+
         public Slice(string label, double value, KnownColor color)
         {
             ArgumentOutOfRangeException.ThrowIfLessThan(value, 0);

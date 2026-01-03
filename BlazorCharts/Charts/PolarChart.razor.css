@@ -1,0 +1,9 @@
+text {
+    font-size: 2.0rem;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+    text.tick {
+        font-size: 1.0rem !important;
+        dominant-baseline: ideographic;
+    }

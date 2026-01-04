@@ -16,6 +16,22 @@
             Size = Max - Min;
         }
 
+        public Span(IEnumerable<int> values)
+        {
+            Min = values.FirstOrDefault();
+            Max = values.FirstOrDefault();
+
+            foreach (double val in values)
+            {
+                if (val < Min)
+                    Min = val;
+
+                if (val > Max)
+                    Max = val;
+            }
+            Size = Max - Min;
+        }
+
         public Span(IEnumerable<double> values)
         {
             Min = values.FirstOrDefault();

@@ -26,7 +26,7 @@
             else
             {
                 range = new Span(Math.Min(range.Min, value), 
-                                     Math.Max(range.Max, value));
+                                 Math.Max(range.Max, value));
             }
             is_default = false;
         }
@@ -38,7 +38,7 @@
             else
             {
                 range = new Span(Math.Min(range.Min, r.Min), 
-                                     Math.Max(range.Max, r.Max));
+                                 Math.Max(range.Max, r.Max));
             }
             is_default = false;
         }

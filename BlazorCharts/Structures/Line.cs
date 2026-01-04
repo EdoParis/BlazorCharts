@@ -26,5 +26,14 @@ namespace BlazorGraphs.Structures
             RangeX = new Span(points?.Select(p => p.X));
             RangeY = new Span(points?.Select(p => p.Y));
         }
+
+        public Line(string label, KnownColor color, IEnumerable<Point> points)
+        {
+            Label = label;
+            Color = color;
+            Points = points?.Select(p => new PointF(p.X, p.Y)) ?? Array.Empty<PointF>();
+            RangeX = new Span(points?.Select(p => p.X));
+            RangeY = new Span(points?.Select(p => p.Y));
+        }
     }
 }

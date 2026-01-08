@@ -22,7 +22,7 @@ namespace DemoApp.Pages
             piegram = new Piegram();
             polargram = new Polargram("R1");
 
-            for (int i=0; i<10; i++)
+            for (int i=0; i<13; i++)
             {
                 histogram.Add(new Bin()
                 {
@@ -40,7 +40,7 @@ namespace DemoApp.Pages
 
             List<PointF> points1 = new();
             List<PointF> points2 = new();
-            for (int i=0; i<50; i++)
+            for (int i=0; i<63; i++)
             {
                 points1.Add(new PointF(i * (float)Math.Cos(i / 10f * Math.PI), i * (float)Math.Sin(i / 10f * Math.PI)));
                 points2.Add(new PointF(i * (float)Math.Cos(i / 50f * Math.PI), i * (float)Math.Sin(i / 50f * Math.PI)));

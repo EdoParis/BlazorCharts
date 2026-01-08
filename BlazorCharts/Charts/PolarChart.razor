@@ -10,9 +10,7 @@
         int tr = 0;
         foreach (double tick in Model.AxisR.Ticks())
         {
-            tr++;
-
-            if (tr % 5 == 0)
+            if (tr > 0 && tr % 5 == 0)
             {
                 <circle fill="@KnownColor.White"
                         fill-opacity="0"
@@ -22,7 +20,12 @@
                         cx="@((width / 2))"
                         cy="@((height / 2))"
                         r="@((int)(tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" />
+
+                <text>
+                    <text class="tick" y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" x="@(width / 2)">@tick</text>
+                </text>
             }
+            tr++;
         }
 
         double progress = 0;
@@ -38,19 +41,6 @@
             </path>
 
             progress += 1d / Model.SlicesCount;
-        }
-
-        tr = 0;
-        foreach (double tick in Model.AxisR.Ticks())
-        {
-            tr++;
-
-            if (tr % 5 == 0)
-            {
-                <text>
-                    <text class="tick" y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" x="@(width / 2)">@tick</text>
-                </text>
-            }
         }
     }
     <circle fill="@KnownColor.White"

@@ -59,11 +59,11 @@
 
                 for (double t = Min - Min % 5; t < Max; t += step)
                 {
-                    for (int i = 1; i < 6; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         double tick = (int)(t + i * step / 5);
 
-                        if (tick <= Max)
+                        if (tick >= Min && tick <= Max)
                             ticks.Add(tick);
                         else
                             break;

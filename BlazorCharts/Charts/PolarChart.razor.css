@@ -4,6 +4,6 @@ text {
     dominant-baseline: middle;
 }
     text.tick {
-        font-size: 1.0rem !important;
+        font-size: 1.5rem;
         dominant-baseline: ideographic;
     }

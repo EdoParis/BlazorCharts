@@ -7,8 +7,15 @@ text{
     text-anchor: middle;
     dominant-baseline: middle;
 }
-    text.tick {
-        font-size: 1.0rem !important;
+
+    text.rotated45 {
+        transform: rotate(-45deg);
+        transform-box: fill-box;
+    }
+
+    text.rotated90 {
+        transform: rotate(-90deg);
+        transform-box: fill-box;
     }
 
 svg{

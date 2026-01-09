@@ -1,18 +1,27 @@
-path{
+path {
     cursor: pointer;
 }
 
-text{
+text {
     font-size: 2.0rem;
     text-anchor: middle;
     dominant-baseline: middle;
 }
+
+    text.anchor-start {
+        text-anchor: start;
+    }
+
+    text.anchor-end {
+        text-anchor: end;
+    }
+
     text.rotated90 {
         transform: rotate(-90deg);
         transform-box: fill-box;
     }
 
-svg{
+svg {
     max-height: 100%;
     width: auto;
     margin: auto;

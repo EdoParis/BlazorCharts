@@ -15,6 +15,7 @@
 	
 
 **How to use**
+
 Each chart have a dedicated data model as [parameter], the data model contains all the data needed to draw the chart.
 
 

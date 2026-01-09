@@ -17,12 +17,12 @@ namespace DemoApp.Pages
         {
             events = new List<string>();
             histogram = new Histogram("asseX", "asseY");
-            bargram = new Bargram("asse-1", "asse-2");
+            bargram = new Bargram("asse-2");
             linegram = new Linegram("X1", "Y1");
             piegram = new Piegram();
             polargram = new Polargram("R1");
 
-            for (int i=0; i<13; i++)
+            for (int i=0; i<8; i++)
             {
                 histogram.Add(new Bin()
                 {
@@ -33,8 +33,8 @@ namespace DemoApp.Pages
 
                 bargram.Add(new Bar()
                 {
-                    Label = $"Bar - {i + 1}",
-                    Value = 10 + i
+                    Label = DateOnly.FromDateTime(DateTime.Now).AddDays(i).ToString("dd/MM"),
+                    Value = 93 + i
                 });
             }
 

@@ -38,7 +38,7 @@
             if (tx % 5 == 0)
             {
                 <text>
-                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))" y="@(height - 3 * padding / 4)">@tick</text>
+                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))" y="@(height - 3 * padding / 5)">@tick</text>
                 </text>
             }
             tx++;
@@ -58,7 +58,7 @@
             if (ty % 5 == 0)
             {
                 <text>
-                    <text y="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))" x="@(3 * padding / 4)">@tick</text>
+                    <text class="anchor-end" y="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))" x="@(3 * padding / 4)">@tick</text>
                 </text>
             }
             ty++;
@@ -82,5 +82,5 @@
           y2="@(height - padding)" />
 
     <text x="@(width / 2)" y="@(height - padding / 4)">@(Model?.TitleX)</text>
-    <text x="@(padding / 2)" y="@(height / 2)" class="rotated90">@(Model?.TitleY)</text>
+    <text x="@(padding / 2)" y="@(padding / 2)" class="anchor-start">@(Model?.TitleY)</text>
 </svg>

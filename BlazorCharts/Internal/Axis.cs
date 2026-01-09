@@ -57,7 +57,7 @@
                 if (step <= 0)
                     step = 1;
 
-                for (double t = Min - Min % 5; t < Max; t += step)
+                for (double t = Min - Min % 5; t <= Max; t += step)
                 {
                     for (int i = 0; i < 5; i++)
                     {

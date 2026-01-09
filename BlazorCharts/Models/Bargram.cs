@@ -11,22 +11,21 @@ namespace BlazorGraphs.Models
         internal Axis AxisX { get; private set; }
         internal Axis AxisY { get; private set; }
         internal bool IsEmpty { get; private set; }
-        public string TitleX { get => AxisX?.Title; }
         public string TitleY { get => AxisY?.Title; }
         public int BarsCount { get => bars?.Count ?? default; }
 
-        public Bargram(string title_x, string title_y)
+        public Bargram(string title_y)
         {
             bars = new List<KeyValuePair<String, Bin>>();
-            AxisX = new Axis(title_x);
             AxisY = new Axis(title_y);
+            AxisX = new Axis();
             IsEmpty = true;
         }
 
         public void Clear()
         {
             bars.Clear();
-            AxisX = new Axis(TitleX);
+            AxisX = new Axis();
             AxisY = new Axis(TitleY);
             IsEmpty = true;
         }

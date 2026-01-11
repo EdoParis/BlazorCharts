@@ -11,6 +11,7 @@ namespace DemoApp.Pages
         private Linegram linegram;
         private Piegram piegram;
         private Polargram polargram;
+        private Radargram radargram;
         private List<String> events;
 
         protected override void OnInitialized()
@@ -21,6 +22,7 @@ namespace DemoApp.Pages
             linegram = new Linegram("X1", "Y1");
             piegram = new Piegram();
             polargram = new Polargram("R1");
+            radargram = new Radargram("R2");
 
             for (int i=0; i<8; i++)
             {
@@ -59,6 +61,15 @@ namespace DemoApp.Pages
             polargram.Add(new Slice(20, KnownColor.Gold));
             polargram.Add(new Slice(25, KnownColor.Red));
             polargram.Add(new Slice(10, KnownColor.LimeGreen));
+
+            radargram.Add(new Rating("C1",10));
+            radargram.Add(new Rating("C2",20));
+            radargram.Add(new Rating("C3",9));
+            radargram.Add(new Rating("C4",10));
+            radargram.Add(new Rating("C5",9));
+            radargram.Add(new Rating("C6",3));
+            radargram.Add(new Rating("C7",6));
+            radargram.Add(new Rating("C8",5));
         }
 
         private void BinClickHandler(Bin bin)

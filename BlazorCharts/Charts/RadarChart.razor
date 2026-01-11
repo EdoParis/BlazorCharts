@@ -1,0 +1,98 @@
+<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+    @if (Model is null || Model.IsEmpty)
+    {
+        <text>
+            <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
+        </text>
+        <circle fill="@KnownColor.White"
+                fill-opacity="0"
+                stroke="@KnownColor.Black"
+                stroke-width="1px"
+                vector-effect="non-scaling-stroke"
+                cx="@((width / 2))"
+                cy="@((height / 2))"
+                r="@((Math.Min(width, height) - 2 * padding) / 2)"
+                style="pointer-events: none;" />
+    }
+    else
+    {
+        int c = 0;
+        foreach (Rating rating in Model)
+        {
+            double r = Model.AxisR.Max / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
+            int cx = width / 2;
+            int cy = height / 2;
+            int dx = (int)(r * Math.Sin(2 * Math.PI / Model.Categories * c));
+            int dy = (int)(-r * Math.Cos(2 * Math.PI / Model.Categories * c));
+            int px = (int)(padding / 2 * Math.Sin(2 * Math.PI / Model.Categories * c));
+            int py = (int)(-padding / 2 * Math.Cos(2 * Math.PI / Model.Categories * c));
+            c++;
+
+            <path fill="@KnownColor.White"
+                  stroke="@KnownColor.LightGray"
+                  fill-opacity="0"
+                  stroke-width="1px"
+                  vector-effect="non-scaling-stroke"
+                  d="M @cx @cy l @dx @dy">
+            </path>
+            <text>
+                <text x="@(cx + dx + px)" y="@(cy + dy + py)">@rating.Label</text>
+            </text>
+        }
+
+        int tr = 0;
+        foreach (double tick in Model.AxisR.Ticks())
+        {
+            if (tr > 0 && tr % 5 == 0)
+            {
+                <path fill="@KnownColor.White"
+                      stroke="@KnownColor.LightGray"
+                      fill-opacity="0"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      d="@Path(tick)">
+                </path>
+
+                <text>
+                    <text class="tick" y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" x="@(width / 2)">@tick</text>
+                </text>
+            }
+            tr++;
+        }
+
+        <path fill="@Color"
+              stroke="@Color"
+              fill-opacity="0.3"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              d="@Path()"
+              @key="@Model">
+        </path>
+
+        int i = 0;
+        foreach (Rating rating in Model)
+        {
+            double r = rating.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
+            double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
+            double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
+            i++;
+
+            <circle fill="@Color"
+                    cx="@((int)x)"
+                    cy="@((int)y)"
+                    r="4px">
+                    <title>@rating.Value</title>
+            </circle>
+
+        }
+
+        <path fill="@KnownColor.White"
+              stroke="@KnownColor.Black"
+              fill-opacity="0"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              d="@Path(Model.AxisR.Max)"
+              style="pointer-events: none;">
+        </path>
+    }
+</svg>

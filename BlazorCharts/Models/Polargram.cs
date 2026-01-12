@@ -29,7 +29,7 @@ namespace BlazorGraphs.Models
         {
             slices.Add(slice);
             AxisR.Update(0);
-            AxisR.Update(slice.Value);
+            AxisR.Update((int)(slice.Value / 5 + 1) * 5);
             IsEmpty = false;
         }
 

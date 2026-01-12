@@ -71,8 +71,7 @@
         {
             <path fill="none"
                   stroke="@line.Color"
-                  stroke-width="2px"
-                  stroke-linejoin="round"
+                  stroke-width="1px"
                   vector-effect="non-scaling-stroke"
                   d="@LinePath(line)"
                   @key="@line">
@@ -84,9 +83,12 @@
                 foreach (PointF point in line.Points)
                 {
                     <circle fill="@line.Color"
+                            stroke="@KnownColor.White"
+                            stroke-width="1px"
+                            vector-effect="non-scaling-stroke"
                             cx="@ViewX(point.X)"
                             cy="@ViewY(point.Y)"
-                            r="4px" />
+                            r="6px" />
                 }
             }
         }

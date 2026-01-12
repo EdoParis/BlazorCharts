@@ -78,21 +78,15 @@
             i++;
 
             <circle fill="@Color"
+                    stroke="@KnownColor.White"
+                    stroke-width="1px"
+                    vector-effect="non-scaling-stroke"
                     cx="@((int)x)"
                     cy="@((int)y)"
-                    r="4px">
+                    r="6px">
                     <title>@rating.Value</title>
             </circle>
 
         }
-
-        <path fill="@KnownColor.White"
-              stroke="@KnownColor.Black"
-              fill-opacity="0"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke"
-              d="@Path(Model.AxisR.Max)"
-              style="pointer-events: none;">
-        </path>
     }
 </svg>

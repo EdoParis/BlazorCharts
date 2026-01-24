@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Models;
+﻿using BlazorGraphs.Enums;
+using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using System.Drawing;
 
@@ -42,14 +43,21 @@ namespace DemoApp.Pages
 
             List<PointF> points1 = new();
             List<PointF> points2 = new();
-            for (int i=0; i<63; i++)
+            List<PointF> points3 = new();
+            List<PointF> points4 = new();
+
+            for (int i = 0; i < 20; i++)
             {
-                points1.Add(new PointF(i * (float)Math.Cos(i / 10f * Math.PI), i * (float)Math.Sin(i / 10f * Math.PI)));
-                points2.Add(new PointF(i * (float)Math.Cos(i / 50f * Math.PI), i * (float)Math.Sin(i / 50f * Math.PI)));
+                points1.Add(new PointF(i, i));
+                points2.Add(new PointF(i, i + 2));
+                points3.Add(new PointF(i, i + 3));
+                points4.Add(new PointF(i, i + 4));
             }
 
-            linegram.Add(new Line("F1", KnownColor.Orange, points1));
-            linegram.Add(new Line("F2", KnownColor.LimeGreen, points2));
+            linegram.Add(new Line("F1", KnownColor.LimeGreen, points1));
+            linegram.Add(new Line("F2", KnownColor.OrangeRed, points2, DrawMode.Drawline));
+            linegram.Add(new Line("F3", KnownColor.CadetBlue, points3, DrawMode.Drawpoints));
+            linegram.Add(new Line("F4", KnownColor.DodgerBlue, points4, DrawMode.Drawpoints | DrawMode.Drawline));
 
             piegram.Add(new Slice("S1", 33, KnownColor.CadetBlue));
             piegram.Add(new Slice("S2", 20, KnownColor.OrangeRed));

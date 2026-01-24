@@ -7,6 +7,7 @@
 - Radar chart
 
 ## Namespaces
+- BlazorGraphs.Enums
 - BlazorGraphs.Charts
 - BlazorGraphs.Models
 - BlazorGraphs.Structures	
@@ -23,7 +24,7 @@ Each data model has two methods:
 
 Use the data structures you find in `BlazorGraphs.Structures` to fill the data model.
 
-#### histogram example
+### histogram example
 ```
 <HistChart Model="@histogram" Color="@KnownColor.CadetBlue"></HistChart>
 ```
@@ -41,7 +42,7 @@ for (int i = 0; i < 10; i++)
 }
 ```
 
-#### barchart example
+### barchart example
 ```
 <BarChart Model="@bargram" Color="KnownColor.RoyalBlue"></BarChart>
 ```
@@ -56,4 +57,30 @@ for (int i = 0; i < 10; i++)
         Value = 10 + i //bar height
     });
 }
+```
+
+### linechart example
+```
+<LineChart Model="@linegram"></LineChart>
+```
+```
+linegram = new Linegram("X1", "Y1");
+
+List<PointF> points1 = new();
+List<PointF> points2 = new();
+List<PointF> points3 = new();
+List<PointF> points4 = new();
+
+for (int i=0; i<10; i++)
+{
+    points1.Add(new PointF(i, i));
+    points2.Add(new PointF(i, i + 2));
+    points3.Add(new PointF(i, i + 3));
+    points4.Add(new PointF(i, i + 4));
+}
+
+linegram.Add(new Line("F1", KnownColor.LimeGreen, points1));
+linegram.Add(new Line("F2", KnownColor.OrangeRed, points2, DrawMode.Drawline));
+linegram.Add(new Line("F3", KnownColor.CadetBlue, points3, DrawMode.Drawpoints));
+linegram.Add(new Line("F4", KnownColor.DodgerBlue, points4, DrawMode.Drawpoints | DrawMode.Drawline));
 ```

@@ -73,8 +73,7 @@
             {
                 <path fill="none"
                       stroke="@line.Color"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
+                      stroke-width="0.25em"
                       d="@LinePath(line)"
                       @key="@line">
                     <title>@($"{line.Label}")</title>
@@ -91,7 +90,7 @@
                             vector-effect="non-scaling-stroke"
                             cx="@ViewX(point.X)"
                             cy="@ViewY(point.Y)"
-                            r="6px" />
+                            r="0.5em" />
                 }
             }
         }

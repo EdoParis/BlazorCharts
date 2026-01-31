@@ -7,3 +7,11 @@ text {
         font-size: 1.5rem;
         dominant-baseline: ideographic;
     }
+
+g > circle {
+    cursor: pointer;
+    transition-duration: 0.25s;
+}
+    g > circle:hover {
+        r: 1em;
+    }

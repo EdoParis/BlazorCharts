@@ -1,6 +1,18 @@
 path {
     cursor: pointer;
+    transition-duration: 0.25s;
 }
+    path:hover {
+        stroke-width: 0.5em;
+    }
+
+circle {
+    cursor: pointer;
+    transition-duration: 0.25s;
+}
+    circle:hover {
+        r: 1em;
+    }
 
 text {
     font-size: 2.0rem;

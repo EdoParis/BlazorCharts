@@ -3,3 +3,10 @@ text {
     text-anchor: middle;
     dominant-baseline: middle;
 }
+
+path {
+    transition-duration: 0.25s;
+}
+    path:hover {
+        fill-opacity: 1.0;
+    }

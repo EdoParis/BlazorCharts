@@ -1,3 +1,11 @@
+path {
+    cursor: pointer;
+    transition-duration: 0.25s;
+}
+    path:hover {
+        fill-opacity: 1.0;
+    }
+
 text {
     font-size: 2.0rem;
     text-anchor: middle;

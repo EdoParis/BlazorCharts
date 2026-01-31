@@ -4,6 +4,7 @@
         <text>
             <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
         </text>
+
         <circle fill="@KnownColor.White"
                 fill-opacity="0"
                 stroke="@KnownColor.Black"
@@ -60,33 +61,36 @@
             tr++;
         }
 
-        <path fill="@Color"
-              stroke="@Color"
-              fill-opacity="0.3"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke"
-              d="@Path()"
-              @key="@Model">
-        </path>
+        <g>
+            <path fill="@Color"
+                  stroke="@Color"
+                  fill-opacity="0.3"
+                  stroke-width="1px"
+                  vector-effect="non-scaling-stroke"
+                  d="@Path()"
+                  @key="@Model">
+            </path>
 
-        int i = 0;
-        foreach (Rating rating in Model)
-        {
-            double r = rating.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
-            double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
-            double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
-            i++;
+            @{
+                int i = 0;
+                foreach (Rating rating in Model)
+                {
+                double r = rating.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
+                double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
+                double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
+                i++;
 
-            <circle fill="@Color"
-                    stroke="@KnownColor.White"
-                    stroke-width="1px"
-                    vector-effect="non-scaling-stroke"
-                    cx="@((int)x)"
-                    cy="@((int)y)"
-                    r="6px">
+                <circle fill="@Color"
+                        stroke="@KnownColor.White"
+                        stroke-width="1px"
+                        vector-effect="non-scaling-stroke"
+                        cx="@((int)x)"
+                        cy="@((int)y)"
+                        r="0.5em">
                     <title>@rating.Value</title>
-            </circle>
-
-        }
+                </circle>
+                }
+            }
+        </g>
     }
 </svg>

@@ -59,25 +59,24 @@ namespace DemoApp.Pages
             linegram.Add(new Line("F3", KnownColor.CadetBlue, points3, DrawMode.Drawpoints));
             linegram.Add(new Line("F4", KnownColor.DodgerBlue, points4, DrawMode.Drawpoints | DrawMode.Drawline));
 
-            piegram.Add(new Slice("S1", 33, KnownColor.CadetBlue));
-            piegram.Add(new Slice("S2", 20, KnownColor.OrangeRed));
-            piegram.Add(new Slice("S3", 20, KnownColor.Gold));
-            piegram.Add(new Slice("S4", 5, KnownColor.DodgerBlue));
+            piegram.Add(new Slice("S1", 5, KnownColor.Purple));
+            piegram.Add(new Slice("S2", 30, KnownColor.OrangeRed));
+            piegram.Add(new Slice("S3", 5, KnownColor.Gold));
+            piegram.Add(new Slice("S4", 40, KnownColor.Aqua));
+            piegram.Add(new Slice("S5", 15, KnownColor.DodgerBlue));
 
-            polargram.Add(new Slice(34, KnownColor.CadetBlue));
-            polargram.Add(new Slice(20, KnownColor.OrangeRed));
-            polargram.Add(new Slice(20, KnownColor.Gold));
+            polargram.Add(new Slice(20, KnownColor.Purple));
+            polargram.Add(new Slice(50, KnownColor.OrangeRed));
+            polargram.Add(new Slice(90, KnownColor.Gold));
             polargram.Add(new Slice(25, KnownColor.Red));
-            polargram.Add(new Slice(10, KnownColor.LimeGreen));
+            polargram.Add(new Slice(100, KnownColor.LimeGreen));
 
-            radargram.Add(new Rating("C1",10));
-            radargram.Add(new Rating("C2",20));
-            radargram.Add(new Rating("C3",9));
-            radargram.Add(new Rating("C4",10));
-            radargram.Add(new Rating("C5",9));
-            radargram.Add(new Rating("C6",3));
-            radargram.Add(new Rating("C7",6));
-            radargram.Add(new Rating("C8",5));
+            radargram.Add(new Rating("C1",150));
+            radargram.Add(new Rating("C2",130));
+            radargram.Add(new Rating("C3",90));
+            radargram.Add(new Rating("C4",80));
+            radargram.Add(new Rating("C5",120));
+            radargram.Add(new Rating("C6",50));
         }
 
         private void BinClickHandler(Bin bin)

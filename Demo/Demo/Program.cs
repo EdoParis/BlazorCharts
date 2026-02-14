@@ -20,9 +20,8 @@ namespace Demo
             app.UseStaticFiles();
             app.UseAntiforgery();
             app.MapRazorComponents<App>()
-                .AddInteractiveWebAssemblyRenderMode()
-                .AddAdditionalAssemblies(typeof(DemoApp._Imports).Assembly);
-
+               .AddInteractiveWebAssemblyRenderMode()
+               .AddAdditionalAssemblies(typeof(DemoApp._Imports).Assembly);
             app.Run();
         }
     }

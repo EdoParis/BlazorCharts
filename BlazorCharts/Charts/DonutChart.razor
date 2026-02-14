@@ -1,0 +1,65 @@
+<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+    @if (Model is null || Model.IsEmpty)
+    {
+        <text>
+            <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
+        </text>
+
+        <circle fill="@KnownColor.White"
+                fill-opacity="0"
+                stroke="@KnownColor.Black"
+                stroke-width="1px"
+                vector-effect="non-scaling-stroke"
+                cx="@((width / 2))"
+                cy="@((height / 2))"
+                r="@((Math.Min(width, height) - 2 * padding) / 3)" />
+
+        <circle fill="@KnownColor.White"
+                fill-opacity="0"
+                stroke="@KnownColor.Black"
+                stroke-width="1px"
+                vector-effect="non-scaling-stroke"
+                cx="@((width / 2))"
+                cy="@((height / 2))"
+                r="@((Math.Min(width, height) - 2 * padding) / 2)" />
+    }
+    else
+    {
+        double progress = 0;
+
+        <text>
+            <text>
+                <tspan x="@(width / 2)" y="@(height / 2)">TOTAL</tspan>
+                <tspan x="@(width / 2)" y="@(height / 2)" dy="1.5em">@Model.Total</tspan>
+            </text>
+        </text>
+
+        foreach (Slice slice in Model)
+        {
+            if (slice.Value != 0)
+            {
+                <path fill="@slice.Color"
+                      stroke="@KnownColor.White"
+                      fill-opacity="0.6"
+                      stroke-width="2px"
+                      vector-effect="non-scaling-stroke"
+                      d="@SlicePath(slice, 2 * Math.PI * progress)"
+                      @key="@slice"
+                      @onclick="async () => await OnClick.InvokeAsync(slice)">
+                    <title>@($"{(string.IsNullOrEmpty(slice.Label) ? "value" : slice.Label)}: {slice.Value}")</title>
+                </path>
+
+                if (!string.IsNullOrEmpty(slice.Label))
+                {
+                    Point text_position = 10 * slice.Value > Model.Total ? SliceMidPoint(slice, 2 * Math.PI * progress) : SliceExternalPoint(slice, 2 * Math.PI * progress);
+
+                    <text>
+                        <text class="tick" x="@text_position.X" y="@text_position.Y">@slice.Label</text>
+                    </text>
+                }
+
+                progress += slice.Value / Model.Total;
+            }
+        }
+    }
+</svg>

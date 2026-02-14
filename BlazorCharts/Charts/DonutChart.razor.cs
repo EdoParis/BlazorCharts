@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace BlazorGraphs.Charts
 {
-    public partial class PieChart
+    public partial class DonutChart
     {
         private const int VIEW = 1000;
         private const int PADDING = 100;
@@ -18,19 +18,22 @@ namespace BlazorGraphs.Charts
 
         private string SlicePath(Slice slice, double rotation = 0)
         {
-            double radius = (Math.Min(width, height) - 2 * padding) / 2;
+            double radius_out = Math.Min(width, height) / 2 - padding;
+            double radius_in = 2 * radius_out / 3;
             double theta = 2 * Math.PI * slice.Value / Model.Total;
             bool is_wide = theta > Math.PI;
 
-            return $"M {width / 2} {height / 2} " + 
-                   $"L {(int)(width / 2 + radius * Math.Sin(rotation))} {(int)(height / 2 + radius * Math.Cos(rotation))} " +
-                   $"A {(int)radius} {(int)radius} 0 {(is_wide ? 1 : 0)} 0 {(int)(width / 2 + radius * Math.Sin(theta + rotation))} {(int)(height / 2 + radius * Math.Cos(theta + rotation))} " +
+            return $"M {(int)(width / 2 + radius_in * Math.Sin(rotation))} {(int)(height / 2 + radius_in * Math.Cos(rotation))}  " +
+                   $"L {(int)(width / 2 + radius_out * Math.Sin(rotation))} {(int)(height / 2 + radius_out * Math.Cos(rotation))} " +
+                   $"A {(int)radius_out} {(int)radius_out} 0 {(is_wide ? 1 : 0)} 0 {(int)(width / 2 + radius_out * Math.Sin(theta + rotation))} {(int)(height / 2 + radius_out * Math.Cos(theta + rotation))} " +
+                   $"L {(int)(width / 2 + radius_in * Math.Sin(theta + rotation))} {(int)(height / 2 + radius_in * Math.Cos(theta + rotation))} " +
+                   $"A {(int)radius_in} {(int)radius_in} 0 {(is_wide ? 1 : 0)} 1 {(int)(width / 2 + radius_in * Math.Sin(rotation))} {(int)(height / 2 + radius_in * Math.Cos(rotation))} " +
                    "Z";
         }
 
         private Point SliceMidPoint(Slice slice, double rotation = 0)
         {
-            double radius = (Math.Min(width, height) - 2 * padding) / 4;
+            double radius = (Math.Min(width, height) / 2 - padding) * 5 / 6;
             double theta = Math.PI * slice.Value / Model.Total;
 
             return new Point()

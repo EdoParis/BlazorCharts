@@ -1,0 +1,14 @@
+text {
+    font-size: 2.0rem;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+path {
+    transition-duration: 0.25s;
+    transform-origin: center;
+}
+
+    path:hover {
+        scale: 105%;
+    }

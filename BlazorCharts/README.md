@@ -3,6 +3,7 @@
 - Line chart
 - Bar chart
 - Pie chart
+- Donut chart
 - Polar chart
 - Radar chart
 

@@ -9,6 +9,7 @@ path {
 text {
     font-size: 2.0rem;
     text-anchor: middle;
+    pointer-events: none;
     dominant-baseline: middle;
 }
     text.anchor-start {

@@ -27,7 +27,9 @@ Use the data structures you find in `BlazorGraphs.Structures` to fill the data m
 
 ### histogram example
 ```
-<HistChart Model="@histogram" Color="@KnownColor.CadetBlue"></HistChart>
+<HistChart Model="@histogram" 
+           Color="@KnownColor.CadetBlue">
+</HistChart>
 ```
 ```
 histogram = new Histogram("asseX", "asseY");
@@ -45,7 +47,10 @@ for (int i = 0; i < 10; i++)
 
 ### barchart example
 ```
-<BarChart Model="@bargram" Color="KnownColor.RoyalBlue"></BarChart>
+<BarChart Model="@bargram" 
+          Color="@KnownColor.RoyalBlue" 
+          Direction="@Positioning.Vertical">
+</BarChart>
 ```
 ```
 bargram = new Bargram("asseY");

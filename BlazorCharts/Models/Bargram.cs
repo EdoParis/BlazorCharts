@@ -8,25 +8,25 @@ namespace BlazorGraphs.Models
     public class Bargram : IEnumerable<KeyValuePair<String, Bin>>
     {
         private List<KeyValuePair<String, Bin>> bars;
-        internal Axis AxisX { get; private set; }
-        internal Axis AxisY { get; private set; }
+        internal Axis BinAxis { get; private set; }
+        internal Axis ValAxis { get; private set; }
         internal bool IsEmpty { get; private set; }
-        public string TitleY { get => AxisY?.Title; }
+        public string Title { get => ValAxis?.Title; }
         public int BarsCount { get => bars?.Count ?? default; }
 
         public Bargram(string title_y)
         {
             bars = new List<KeyValuePair<String, Bin>>();
-            AxisY = new Axis(title_y);
-            AxisX = new Axis();
+            ValAxis = new Axis(title_y);
+            BinAxis = new Axis();
             IsEmpty = true;
         }
 
         public void Clear()
         {
             bars.Clear();
-            AxisX = new Axis();
-            AxisY = new Axis(TitleY);
+            BinAxis = new Axis();
+            ValAxis = new Axis(Title);
             IsEmpty = true;
         }
 
@@ -36,15 +36,15 @@ namespace BlazorGraphs.Models
 
             Bin bin = new Bin()
             {
-                Min = 2 * bars.Count,
-                Max = 2 * bars.Count + 1,
+                Min = 2 * bars.Count + 1,
+                Max = 2 * (bars.Count + 1),
                 Value = bar.Value
             };
             bars.Add(KeyValuePair.Create(bar.Label, bin));
-            AxisX.Update(bin.Min);
-            AxisX.Update(bin.Max);
-            AxisY.Update(0);
-            AxisY.Update(bin.Value);
+            BinAxis.Update(0);
+            BinAxis.Update(bin.Max + 1);
+            ValAxis.Update(0);
+            ValAxis.Update(bin.Value);
         }
 
         public IEnumerator<KeyValuePair<String, Bin>> GetEnumerator()

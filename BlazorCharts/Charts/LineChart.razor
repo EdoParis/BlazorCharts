@@ -22,7 +22,10 @@
     @if (Model is null || Model.IsEmpty)
     {
         <text>
-            <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
+            <text x="@(width / 2)"
+                  y="@((height / 2))">
+                  NO DATA
+            </text>
         </text>
     }
     else
@@ -41,7 +44,10 @@
             if (tx % 5 == 0)
             {
                 <text>
-                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))" y="@(height - 3 * padding / 5)">@tick</text>
+                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))" 
+                          y="@(height - 3 * padding / 5)">
+                          @tick
+                    </text>
                 </text>
             }
             tx++;
@@ -61,7 +67,11 @@
             if (ty % 5 == 0)
             {
                 <text>
-                    <text class="anchor-end" y="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))" x="@(3 * padding / 4)">@tick</text>
+                    <text class="anchor-end"
+                          x="@(3 * padding / 4)"
+                          y="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))">
+                          @tick
+                    </text>
                 </text>
             }
             ty++;

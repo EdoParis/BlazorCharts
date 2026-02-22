@@ -2,7 +2,10 @@
     @if (Model is null || Model.IsEmpty)
     {
         <text>
-            <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
+            <text x="@(width / 2)"
+                  y="@((height / 2))">
+                  NO DATA
+            </text>
         </text>
 
         <circle fill="@KnownColor.White"
@@ -55,7 +58,11 @@
                 </path>
 
                 <text>
-                    <text class="tick" y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" x="@(width / 2)">@tick</text>
+                    <text class="tick"
+                          x="@(width / 2)"
+                          y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))">
+                          @tick
+                    </text>
                 </text>
             }
             tr++;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BlazorGraphs.Enums
+﻿namespace BlazorGraphs.Enums
 {
     [Flags]
     public enum DrawMode

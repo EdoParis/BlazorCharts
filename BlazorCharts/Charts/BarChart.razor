@@ -12,37 +12,91 @@
             string label = kvp.Key;
             Bin bin = kvp.Value;
 
-            <path fill="@Color"
-                  stroke="@Color"
-                  fill-opacity="0.6"
-                  stroke-width="1px"
-                  vector-effect="non-scaling-stroke"
-                  d="@BinPath(bin)"
-                  @key="@kvp"
-                  @onclick="async() => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
-                <title>@($"value: {bin.Value}")</title>
-            </path> 
-            <text>
-                <text class="rotated45" x="@((int)(padding + (width - 2 * padding) * ((bin.Max + bin.Min) / 2 - Model.AxisX.Min) / Model.AxisX.Size))" y="@(height - padding / 6)">@(label?.Length > 5 ? $"{label.Substring(0, 4)}..." : label)</text>
-            </text>
+            if (Direction == Positioning.Vertical)
+            {
+                <path fill="@Color"
+                      stroke="@Color"
+                      fill-opacity="0.6"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      d="@VerticalBinPath(bin)"
+                      @key="@kvp"
+                      @onclick="async() => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
+                    <title>@($"value: {bin.Value}")</title>
+                </path> 
+                <text>
+                    <text class="rotated45" 
+                          x="@((int)(padding + (width - 2 * padding) * ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) / Model.BinAxis.Size))" 
+                          y="@(height - padding / 6)">
+                          @(label?.Length > 5 ? $"{label.Substring(0, 4)}..." : label)
+                    </text>
+                </text>
+            }
+            else if (Direction == Positioning.Horizontal)
+            {
+                <path fill="@Color"
+                      stroke="@Color"
+                      fill-opacity="0.6"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      d="@HorizontalBinPath(bin)"
+                      @key="@kvp"
+                      @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
+                    <title>@($"value: {bin.Value}")</title>
+                </path>
+                <text>
+                    <text class="anchor-end" 
+                          x="@((int)(padding * 5 / 6))"
+                          y="@((int)(padding + (height - 2 * padding) * ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) / Model.BinAxis.Size))">
+                          @(label?.Length > 5 ? $"{label.Substring(0, 4)}..." : label)
+                    </text>
+                </text>
+            }
         }
 
         int ty = 0;
-        foreach (double tick in Model.AxisY.Ticks())
+        foreach (double tick in Model.ValAxis.Ticks())
         {
-            <line stroke="@KnownColor.Black"
-                  stroke-width="1px"
-                  vector-effect="non-scaling-stroke"
-                  x1="@(padding)"
-                  x2="@(padding + padding / (ty % 5 == 0 ? 5 : 10))"
-                  y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))"
-                  y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))" />
-
-            if (ty % 5 == 0)
+            if (Direction == Positioning.Vertical)
             {
-                <text>
-                    <text class="anchor-end" y="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))" x="@(3 * padding / 4)">@tick</text>
-                </text>
+                <line stroke="@KnownColor.Black"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      x1="@(padding)"
+                      x2="@(padding + padding / (ty % 5 == 0 ? 5 : 10))"
+                      y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
+                      y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
+
+                if (ty % 5 == 0)
+                {
+                    <text>
+                        <text class="anchor-end" 
+                              y="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" 
+                              x="@(3 * padding / 4)">
+                              @tick
+                        </text>
+                    </text>
+                }
+            }
+            else if (Direction == Positioning.Horizontal)
+            {
+                <line stroke="@KnownColor.Black"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      y1="@(height - padding)"
+                      y2="@(height - padding - padding / (ty % 5 == 0 ? 5 : 10))"
+                      x1="@((int)(width - padding - (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
+                      x2="@((int)(width - padding - (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
+
+                if (ty % 5 == 0)
+                {
+                    <text>
+                        <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" 
+                              y="@(height - 3 * padding / 5)">
+                              @tick
+                        </text>
+                    </text>
+                }
             }
             ty++;
         }
@@ -64,5 +118,24 @@
           y1="@(height - padding)"
           y2="@(height - padding)" />
 
-    <text x="@(padding / 2)" y="@(padding / 2)" class="anchor-start">@(Model?.TitleY)</text>
+    @if (Direction == Positioning.Vertical)
+    {
+        <text>
+            <text class="anchor-start" 
+                  x="@(padding / 2)" 
+                  y="@(padding / 2)">
+                  @(Model?.Title)
+            </text>
+        </text>
+    }
+    else if (Direction == Positioning.Horizontal)
+    {
+        <text>
+            <text x="@(width / 2)" 
+                  y="@(height - padding / 4)">
+                  @(Model?.Title)
+            </text>
+        </text>
+    }
+
 </svg>

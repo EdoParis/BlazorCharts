@@ -2,7 +2,10 @@
     @if (Model is null || Model.IsEmpty)
     {
         <text>
-            <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
+            <text x="@(width / 2)"
+                  y="@((height / 2))">
+                  NO DATA
+            </text>
         </text>
 
         <circle fill="@KnownColor.White"

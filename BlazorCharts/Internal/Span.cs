@@ -63,5 +63,10 @@
             }
             Size = Max - Min;
         }
+
+        public bool Contains(double value)
+        {
+            return value >= Min && value <= Max;
+        }
     }
 }

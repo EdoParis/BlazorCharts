@@ -21,7 +21,7 @@
     else
     {
         int tr = 0;
-        foreach (double tick in Model.AxisR.Ticks())
+        foreach (double tick in Model.AxisR.Ticks(5))
         {
             if (tr > 0 && tr % 5 == 0)
             {

@@ -55,17 +55,20 @@
         }
 
         int ty = 0;
-        foreach (double tick in Model.ValAxis.Ticks())
+        foreach (double tick in Model.ValAxis.Ticks(5))
         {
             if (Direction == Positioning.Vertical)
             {
-                <line stroke="@KnownColor.Black"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      x1="@(padding)"
+                if (tick != Model.ValAxis.Min)
+                {
+                    <line stroke="@KnownColor.Black"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          x1="@(padding)"
                       x2="@(padding + padding / (ty % 5 == 0 ? 5 : 10))"
-                      y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
-                      y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
+                          y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
+                          y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
+                }
 
                 if (ty % 5 == 0)
                 {
@@ -80,13 +83,16 @@
             }
             else if (Direction == Positioning.Horizontal)
             {
-                <line stroke="@KnownColor.Black"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      y1="@(height - padding)"
+                if (tick != Model.ValAxis.Min)
+                {
+                    <line stroke="@KnownColor.Black"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          y1="@(height - padding)"
                       y2="@(height - padding - padding / (ty % 5 == 0 ? 5 : 10))"
-                      x1="@((int)(padding + (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
-                      x2="@((int)(padding + (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
+                          x1="@((int)(padding + (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
+                          x2="@((int)(padding + (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
+                }
 
                 if (ty % 5 == 0)
                 {

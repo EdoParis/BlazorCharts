@@ -85,8 +85,8 @@
                       vector-effect="non-scaling-stroke"
                       y1="@(height - padding)"
                       y2="@(height - padding - padding / (ty % 5 == 0 ? 5 : 10))"
-                      x1="@((int)(width - padding - (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
-                      x2="@((int)(width - padding - (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
+                      x1="@((int)(padding + (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
+                      x2="@((int)(padding + (width - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
 
                 if (ty % 5 == 0)
                 {

@@ -25,7 +25,7 @@ namespace DemoApp.Pages
             polargram = new Polargram("R1");
             radargram = new Radargram("R2");
 
-            for (int i=0; i<8; i++)
+            for (int i=0; i<12; i++)
             {
                 histogram.Add(new Bin()
                 {
@@ -37,7 +37,7 @@ namespace DemoApp.Pages
                 bargram.Add(new Bar()
                 {
                     Label = DateOnly.FromDateTime(DateTime.Now).AddDays(i).ToString("dd/MM"),
-                    Value = 93 + i
+                    Value = 93 - i * i
                 });
             }
 
@@ -48,10 +48,10 @@ namespace DemoApp.Pages
 
             for (int i = 0; i < 20; i++)
             {
-                points1.Add(new PointF(i, i));
-                points2.Add(new PointF(i, i + 2));
-                points3.Add(new PointF(i, i + 3));
-                points4.Add(new PointF(i, i + 4));
+                points1.Add(new PointF(i, i * i));
+                points2.Add(new PointF(i, (i + 2) * (i + 2)));
+                points3.Add(new PointF(i, (i + 3) * (i + 3)));
+                points4.Add(new PointF(i, (i + 4) * (i + 4)));
             }
 
             linegram.Add(new Line("F1", KnownColor.LimeGreen, points1));
@@ -71,7 +71,7 @@ namespace DemoApp.Pages
             polargram.Add(new Slice(25, KnownColor.Red));
             polargram.Add(new Slice(100, KnownColor.LimeGreen));
 
-            radargram.Add(new Rating("C1",150));
+            radargram.Add(new Rating("C1",151));
             radargram.Add(new Rating("C2",130));
             radargram.Add(new Rating("C3",90));
             radargram.Add(new Rating("C4",80));

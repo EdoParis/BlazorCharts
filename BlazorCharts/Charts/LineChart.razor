@@ -65,7 +65,7 @@
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
                       x1="@(padding)"
-                  x2="@(padding + padding / (ty % 5 == 0 ? 5 : 10))"
+                      x2="@(padding + padding / (ty % 5 == 0 ? 5 : 10))"
                       y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))"
                       y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))" />
             }
@@ -106,7 +106,9 @@
                             vector-effect="non-scaling-stroke"
                             cx="@ViewX(point.X)"
                             cy="@ViewY(point.Y)"
-                            r="0.5em" />
+                            r="0.5em">
+                        <title>(@point.X, @point.Y)</title>
+                    </circle>
                 }
             }
         }

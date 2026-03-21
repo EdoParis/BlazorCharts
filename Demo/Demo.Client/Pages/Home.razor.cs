@@ -25,13 +25,13 @@ namespace DemoApp.Pages
             polargram = new Polargram("R1");
             radargram = new Radargram("R2");
 
-            for (int i=0; i<12; i++)
+            for (int i=0; i<10; i++)
             {
                 histogram.Add(new Bin()
                 {
-                    Min = i,
-                    Max = i + 1,
-                    Value = i * i
+                    Min = -20 + i,
+                    Max = -20 + i + 1,
+                    Value = -10 + 3 * i
                 });
 
                 bargram.Add(new Bar()

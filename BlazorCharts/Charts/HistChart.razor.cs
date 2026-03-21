@@ -20,10 +20,10 @@ namespace BlazorGraphs.Charts
 
         private string BinPath(Bin bin)
         {
-            return $"M {(int)(padding + (width - 2 * padding) * (bin.Min - Model.AxisX.Min) / Model.AxisX.Size)} {height - padding} " + 
-                   $"v {(int)((-height + 2 * padding) * (bin.Value - Model.AxisY.Min) / Model.AxisY.Size)} " +
+            return $"M {(int)(padding + (width - 2 * padding) * (bin.Min - Model.AxisX.Min) / Model.AxisX.Size)} {(int)(Model.AxisY.Min * (height - 2 * padding) / Model.AxisY.Size + height - padding)} " + 
+                   $"v {(int)((-height + 2 * padding) * bin.Value / Model.AxisY.Size)} " +
                    $"h {(int)((width - 2 * padding) * (bin.Max - bin.Min) / Model.AxisX.Size)} " +
-                   $"v {(int)((height - 2 * padding) * (bin.Value - Model.AxisY.Min) / Model.AxisY.Size)} " +
+                   $"v {(int)((height - 2 * padding) * bin.Value / Model.AxisY.Size)} " +
                    $"h {(int)((width - 2 * padding) * (bin.Min - bin.Max) / Model.AxisX.Size)} " +
                    $"Z";
         }

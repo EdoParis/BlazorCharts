@@ -6,28 +6,45 @@
                   y="@((height / 2))">
                   NO DATA
             </text>
+            <text x="@(width / 2)" y="@(height - padding / 4)">@(Model?.TitleX)</text>
+            <text x="@(padding / 2)" y="@(padding / 2)" class="anchor-start">@(Model?.TitleY)</text>
         </text>
+        <line stroke="@KnownColor.Black"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              x1="@padding"
+              x2="@padding"
+              y1="@padding"
+              y2="@(height - padding)" />
+
+        <line stroke="@KnownColor.Black"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              x1="@padding"
+              x2="@(width - padding)"
+              y1="@(height - padding)"
+              y2="@(height - padding)" />
     }
     else
     {
+        int y_assex = (int)(Model.AxisY.Min * (height - 2 * padding) / Model.AxisY.Size) + height - padding;
+
         foreach(Bin bin in Model)
         {
-            if (bin.Value != 0)
-            {
-               <path fill="@Color"
-                     stroke="@Color"
-                     fill-opacity="0.6"
-                     stroke-width="1px"
-                     vector-effect="non-scaling-stroke"
-                     d="@BinPath(bin)"
-                     @key="@bin"
-                     @onclick="async() => await OnClick.InvokeAsync(bin)">
-                    <title>@($"value: {bin.Value}")</title>
-                </path>
-            }
+            <path fill="@Color"
+                    stroke="@Color"
+                    fill-opacity="0.6"
+                    stroke-width="1px"
+                    vector-effect="non-scaling-stroke"
+                    d="@BinPath(bin)"
+                    @key="@bin"
+                    @onclick="async() => await OnClick.InvokeAsync(bin)">
+                <title>@($"value: {bin.Value}")</title>
+            </path>
         }
 
         int tx = 0;
+
         foreach (double tick in Model.AxisX.Ticks(5))
         {
             if (tick != Model.AxisX.Min)
@@ -37,18 +54,21 @@
                       vector-effect="non-scaling-stroke"
                       x1="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))"
                       x2="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))"
-                  y1="@(height - padding - padding / (tx % 5 == 0 ? 5 : 10))"
-                      y2="@(height - padding)" />
+                      y1="@(y_assex - padding / (tx % 5 == 0 ? 5 : 10))"
+                      y2="@(y_assex)" />
             }
 
             if (tx % 5 == 0)
             {
-                <text>
-                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))" 
-                          y="@(height - 3 * padding / 5)">
-                          @tick
+                if (tick != Model.AxisX.Min || y_assex == padding || y_assex == height - padding)
+                {
+                    <text>
+                        <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))" 
+                              y="@(y_assex + 2 * padding / 5 * (y_assex > height / 2 ? 1 : -1))">
+                              @tick
+                        </text>
                     </text>
-                </text>
+                }
             }
             tx++;
         }
@@ -56,16 +76,13 @@
         int ty = 0;
         foreach (double tick in Model.AxisY.Ticks(5))
         {
-            if (tick != Model.AxisY.Min)
-            {
-                <line stroke="@KnownColor.Black"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      x1="@(padding)"
-                  x2="@(padding + padding / (ty % 5 == 0 ? 5 : 10))"
-                      y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))"
-                      y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))" />
-            }
+            <line stroke="@KnownColor.Black"
+                    stroke-width="1px"
+                    vector-effect="non-scaling-stroke"
+                    x1="@(padding)"
+                    x2="@(padding + padding / (ty % 5 == 0 ? 5 : 10))"
+                    y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))"
+                    y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.AxisY.Min) / Model.AxisY.Size))" />
 
             if (ty % 5 == 0)
             {
@@ -79,24 +96,24 @@
             }
             ty++;
         }
+        <line stroke="@KnownColor.Black"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              x1="@padding"
+              x2="@padding"
+              y1="@padding"
+              y2="@(height - padding)" />
+
+        <line stroke="@KnownColor.Black"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              x1="@padding"
+              x2="@(width - padding)"
+              y1="@(y_assex)"
+              y2="@(y_assex)" />
+        <text>
+            <text x="@(width / 2)" y="@(y_assex > height / 2 ? height - padding / 4 : padding / 4)">@(Model?.TitleX)</text>
+            <text x="@(padding / 2)" y="@(y_assex > height / 2 ? padding / 2 : height - padding / 2)" class="anchor-start">@(Model?.TitleY)</text>
+        </text>
     }
-
-    <line stroke="@KnownColor.Black"
-          stroke-width="1px"
-          vector-effect="non-scaling-stroke"
-          x1="@padding"
-          x2="@padding"
-          y1="@padding"
-          y2="@(height - padding)" />
-
-    <line stroke="@KnownColor.Black"
-          stroke-width="1px"
-          vector-effect="non-scaling-stroke"
-          x1="@padding"
-          x2="@(width - padding)"
-          y1="@(height - padding)"
-          y2="@(height - padding)" />
-
-    <text x="@(width / 2)" y="@(height - padding / 4)">@(Model?.TitleX)</text>
-    <text x="@(padding / 2)" y="@(padding / 2)" class="anchor-start">@(Model?.TitleY)</text>
 </svg>

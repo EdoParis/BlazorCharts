@@ -19,24 +19,28 @@ namespace BlazorGraphs.Charts
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;
+        private int offsetH => padding;
+        private int offsetV => height - padding;
+        private double scaleH => (width - 2 * padding) / (Direction == Positioning.Vertical ? Model.BinAxis.Size : Model.ValAxis.Size);
+        private double scaleV => (height - 2 * padding) / (Direction == Positioning.Vertical ? Model.ValAxis.Size : Model.BinAxis.Size);
 
         private string VerticalBinPath(Bin bin)
         {
-            return $"M {(int)(padding + (width - 2 * padding) * (bin.Min - Model.BinAxis.Min) / Model.BinAxis.Size)} {height - padding} " +
-                   $"v {(int)((-height + 2 * padding) * (bin.Value - Model.ValAxis.Min) / Model.ValAxis.Size)} " +
-                   $"h {(int)((width - 2 * padding) * (bin.Max - bin.Min) / Model.BinAxis.Size)} " +
-                   $"v {(int)((height - 2 * padding) * (bin.Value - Model.ValAxis.Min) / Model.ValAxis.Size)} " +
-                   $"h {(int)((width - 2 * padding) * (bin.Min - bin.Max) / Model.BinAxis.Size)} " +
+            return $"M {offsetH + (int)((bin.Min - Model.BinAxis.Min) * scaleH)} {offsetV}" +
+                   $"v {-(int)((bin.Value - Model.ValAxis.Min) * scaleV)} " +
+                   $"h {(int)((bin.Max - bin.Min) * scaleH)} " +
+                   $"v {(int)((bin.Value - Model.ValAxis.Min) * scaleV)} " +
+                   $"h {(int)((bin.Min - bin.Max) * scaleH)} " +
                    $"Z";
         }
 
         private string HorizontalBinPath(Bin bin)
         {
-            return $"M {padding} {(int)(padding + (height - 2 * padding) * (bin.Min - Model.BinAxis.Min) / Model.BinAxis.Size)} " +
-                   $"h {(int)((width - 2 * padding) * (bin.Value - Model.ValAxis.Min) / Model.ValAxis.Size)} " +
-                   $"v {(int)((height - 2 * padding) * (bin.Max - bin.Min) / Model.BinAxis.Size)} " +
-                   $"h {(int)((-width + 2 * padding) * (bin.Value - Model.ValAxis.Min) / Model.ValAxis.Size)} " +
-                   $"v {(int)((height - 2 * padding) * (bin.Min - bin.Max) / Model.BinAxis.Size)} " +
+            return $"M {offsetH} {padding + (int)((bin.Min - Model.BinAxis.Min) * scaleV)}" +
+                   $"h {(int)((bin.Value - Model.ValAxis.Min) * scaleH)} " +
+                   $"v {(int)((bin.Max - bin.Min) * scaleV)} " +
+                   $"h {-(int)((bin.Value - Model.ValAxis.Min) * scaleH)} " +
+                   $"v {(int)((bin.Min - bin.Max) * scaleV)} " +
                    $"Z";
         }
     }

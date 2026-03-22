@@ -16,6 +16,10 @@ namespace BlazorGraphs.Charts
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;
+        private int offsetH => padding;
+        private int offsetV => height - padding;
+        private double scaleH => (width - 2 * padding) / Model.AxisX.Size;
+        private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
 
         private string LinePath(Line line)
         {
@@ -24,27 +28,10 @@ namespace BlazorGraphs.Charts
 
             foreach(PointF point in line.Points)
             {
-                if (starting_point)
-                {
-                    builder.Append($"M {ViewX(point.X)} {ViewY(point.Y)} ");
-                    starting_point = false;
-                }
-                else
-                {
-                    builder.Append($"L {ViewX(point.X)} {ViewY(point.Y)} ");
-                }
+                builder.Append($"{(starting_point ? "M" : "L")} {offsetH + (int)((point.X - Model.AxisX.Min) * scaleH)} {offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV)} ");
+                starting_point = false;
             }
             return builder.ToString();
-        }
-
-        private int ViewX(double valueX)
-        {
-            return (int)(padding + (width - 2 * padding) * (valueX - Model.AxisX.Min) / Model.AxisX.Size);
-        }
-
-        private int ViewY(double valueY)
-        {
-            return (int)(height - padding - (height - 2 * padding) * (valueY - Model.AxisY.Min) / Model.AxisY.Size);
         }
     }
 }

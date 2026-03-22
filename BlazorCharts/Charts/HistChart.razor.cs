@@ -17,14 +17,20 @@ namespace BlazorGraphs.Charts
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;
+        private int offsetH => padding;
+        private int offsetV => height - padding;
+        private int originH => offsetH - (int)(Model.AxisX.Min * scaleH);
+        private int originV => offsetV + (int)(Model.AxisY.Min * scaleV);
+        private double scaleH => (width - 2 * padding) / Model.AxisX.Size;
+        private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
 
         private string BinPath(Bin bin)
         {
-            return $"M {(int)(padding + (width - 2 * padding) * (bin.Min - Model.AxisX.Min) / Model.AxisX.Size)} {(int)(Model.AxisY.Min * (height - 2 * padding) / Model.AxisY.Size + height - padding)} " + 
-                   $"v {(int)((-height + 2 * padding) * bin.Value / Model.AxisY.Size)} " +
-                   $"h {(int)((width - 2 * padding) * (bin.Max - bin.Min) / Model.AxisX.Size)} " +
-                   $"v {(int)((height - 2 * padding) * bin.Value / Model.AxisY.Size)} " +
-                   $"h {(int)((width - 2 * padding) * (bin.Min - bin.Max) / Model.AxisX.Size)} " +
+            return $"M {offsetH + (int)((bin.Min - Model.AxisX.Min) * scaleH)} {originV} " + 
+                   $"v {-(int)(bin.Value * scaleV)} " +
+                   $"h {(int)((bin.Max - bin.Min) * scaleH)} " +
+                   $"v {(int)(bin.Value * scaleV)} " +
+                   $"h {(int)((bin.Min - bin.Max) * scaleH)} " +
                    $"Z";
         }
     }

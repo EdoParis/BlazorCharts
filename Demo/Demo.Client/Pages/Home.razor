@@ -2,22 +2,39 @@
 
 <PageTitle>Home</PageTitle>
 
-<table style="width: 100%;">
+<table style="width: 100%; table-layout: fixed;">
     <tr>
-        <td><LineChart Model="@linegram"></LineChart></td>
-        <td><HistChart Model="@histogram" Color="@KnownColor.SeaGreen" OnClick="BinClickHandler"></HistChart></td>
+        <td style="width: 40%"><LineChart Model="@linegram"></LineChart></td>
+        <td style="width: 10%"><LegendBar Model="@LegendModel.Build(linegram)"></LegendBar></td>
+        <td style="width: 40%"><HistChart Model="@histogram" Color="@KnownColor.SeaGreen" OnClick="BinClickHandler"></HistChart></td>
+        <td style="width: 10%"></td>
     </tr>
     <tr>
         <td><BarChart Model="@bargram" Color="@KnownColor.RoyalBlue" Direction="@Positioning.Vertical" OnClick="BarClickHandler"></BarChart></td>
+        <td></td>
         <td><BarChart Model="@bargram" Color="@KnownColor.PaleVioletRed" Direction="@Positioning.Horizontal" OnClick="BarClickHandler"></BarChart></td>
+        <td></td>
     </tr>
     <tr>
         <td><RadarChart Model="@radargram" Color="KnownColor.MediumVioletRed"></RadarChart></td>
-        <td><PolarChart Model="@polargram" OnClick="SliceClickHandler"></PolarChart></td>
+        <td></td>
+        <td>
+            <PolarChart Model="@polargram" OnClick="SliceClickHandler"></PolarChart>
+            <LegendBar Model="@LegendModel.Build(polargram)" Direction="Positioning.Horizontal"></LegendBar>
+        </td>
+        <td><LegendBar Model="@LegendModel.Build(polargram)"></LegendBar></td>
     </tr>
     <tr>
-        <td><PieChart Model="@piegram" OnClick="SliceClickHandler"></PieChart></td>
-        <td><DonutChart Model="@piegram" OnClick="SliceClickHandler"></DonutChart></td>
+        <td>
+            <PieChart Model="@piegram" OnClick="SliceClickHandler"></PieChart>
+            <LegendBar Model="@LegendModel.Build(piegram)" Direction="Positioning.Horizontal"></LegendBar>
+        </td>
+        <td><LegendBar Model="@LegendModel.Build(piegram)"></LegendBar></td>
+        <td>
+            <DonutChart Model="@piegram" OnClick="SliceClickHandler"></DonutChart>
+            <LegendBar Model="@LegendModel.Build(piegram)" Direction="Positioning.Horizontal"></LegendBar>
+        </td>
+        <td><LegendBar Model="@LegendModel.Build(piegram)"></LegendBar></td>
     </tr>
 </table>
 

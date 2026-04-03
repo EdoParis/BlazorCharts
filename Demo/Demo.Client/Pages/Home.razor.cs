@@ -65,11 +65,10 @@ namespace DemoApp.Pages
             piegram.Add(new Slice("S4", 40, KnownColor.Aqua));
             piegram.Add(new Slice("S5", 15, KnownColor.DodgerBlue));
 
-            polargram.Add(new Slice(20, KnownColor.Purple));
-            polargram.Add(new Slice(50, KnownColor.OrangeRed));
-            polargram.Add(new Slice(90, KnownColor.Gold));
-            polargram.Add(new Slice(25, KnownColor.Red));
-            polargram.Add(new Slice(100, KnownColor.LimeGreen));
+            polargram.Add(new Slice("primavera", 20, KnownColor.Purple));
+            polargram.Add(new Slice("estate", 50, KnownColor.OrangeRed));
+            polargram.Add(new Slice("autunno", 85, KnownColor.Gold));
+            polargram.Add(new Slice("inverno", 25, KnownColor.Red));
 
             radargram.Add(new Rating("C1",151));
             radargram.Add(new Rating("C2",130));

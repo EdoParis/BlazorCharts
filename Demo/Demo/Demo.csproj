@@ -11,4 +11,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.19" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\Icon.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -11,19 +11,31 @@
 - BlazorGraphs.Enums
 - BlazorGraphs.Charts
 - BlazorGraphs.Models
+- BlazorGraphs.Legends
 - BlazorGraphs.Structures	
 
+## Legend
+The legend component is separated from the charts, and has a dedicated namespace `BlazorGraphs.Legends`, which contains:
+- the component `LegendBar`
+- the model `LegendModel`
+- the struct `LegendItem`
+
+the datamodel class has:
+- a free `.ctor`
+- the method `Add` to add new data to the model
+- the method `Clear` to remove all the existing data from the model
+- two static methods to build the legend from models of charts, usefull for `Linechart`, `Piechart`, `Donutchart` and `Polarchart`
+
 ## How to use
-
 Each chart have a dedicated data model as parameter, the data model contains all the data needed to draw the chart.
-
 
 Each data model has two methods:
 - `Add`: to add new data to the model
 - `Clear`: to remove all the existing data from the model
 
-
 Use the data structures you find in `BlazorGraphs.Structures` to fill the data model.
+
+Apply the same approach also for the legend component, since this is separated from the chart, you can place everywhere you want and if horizontally or vertically oriented.
 
 ### histogram example
 ```
@@ -68,6 +80,9 @@ for (int i = 0; i < 10; i++)
 ### linechart example
 ```
 <LineChart Model="@linegram"></LineChart>
+<LegendBar Model="@LegendModel.Build(linegram)" 
+           Direction="Positioning.Horizontal">
+</LegendBar>
 ```
 ```
 linegram = new Linegram("X1", "Y1");

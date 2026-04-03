@@ -1,8 +1,6 @@
 ﻿using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Primitives;
-using System;
 using System.Drawing;
 using System.Text;
 

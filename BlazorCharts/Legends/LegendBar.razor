@@ -1,0 +1,31 @@
+﻿<div>
+    @if (Model != null)
+    {
+        if (Direction == Positioning.Vertical)
+        {
+            foreach (LegendItem item in Model)
+            {
+                <div class="text-truncate" style="margin-bottom: 0.5em">
+                    <svg width="0.8em" height="0.8em">
+                        <circle cx="0.4em" cy="0.4em" r="0.4em" fill="@item.Color" />
+                    </svg>
+                    @item.Text
+                </div>
+            }
+        }
+        else if (Direction == Positioning.Horizontal)
+        {
+            <div style="display: flex; align-items: center; justify-content: center;">
+                @foreach (LegendItem item in Model)
+                {
+                    <div class="text-truncate" style="margin-right: 1.0em">
+                        <svg width="0.8em" height="0.8em">
+                            <circle cx="0.4em" cy="0.4em" r="0.4em" fill="@item.Color" />
+                        </svg>
+                        @item.Text
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>

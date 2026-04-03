@@ -10,6 +10,7 @@ namespace BlazorGraphs.Models
         private List<Rating> Data;
         internal Axis AxisR { get; private set; }
         internal bool IsEmpty { get; private set; }
+        public string Title { get => AxisR?.Title; }
         public int Categories { get => Data?.Count ?? default; }
 
         public Radargram(string title_r)

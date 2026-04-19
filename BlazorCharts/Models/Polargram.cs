@@ -1,11 +1,13 @@
-﻿using BlazorGraphs.Internal;
+﻿using BlazorGraphs.Interfaces;
+using BlazorGraphs.Internal;
+using BlazorGraphs.Legends;
 using BlazorGraphs.Structures;
 using System;
 using System.Collections;
 
 namespace BlazorGraphs.Models
 {
-    public class Polargram : IEnumerable<Slice>
+    public class Polargram : IEnumerable<Slice>, ILegend
     {
         private List<Slice> slices;
         internal Axis AxisR { get; private set; }
@@ -31,6 +33,11 @@ namespace BlazorGraphs.Models
             AxisR.Update(0);
             AxisR.Update((int)(slice.Value / 5 + 1) * 5);
             IsEmpty = false;
+        }
+
+        public IEnumerable<LegendItem> ToLegend()
+        {
+            return slices.Select(s => new LegendItem(s));
         }
 
         public IEnumerator<Slice> GetEnumerator()

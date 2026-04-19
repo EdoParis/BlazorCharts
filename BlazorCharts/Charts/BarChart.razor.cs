@@ -1,9 +1,7 @@
-﻿using BlazorGraphs.Models;
+﻿using BlazorGraphs.Enums;
+using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
-using System.Drawing;
-using System;
-using BlazorGraphs.Enums;
 
 namespace BlazorGraphs.Charts
 {
@@ -12,7 +10,6 @@ namespace BlazorGraphs.Charts
         private const int VIEW = 1000;
         private const int PADDING = 100;
 
-        [Parameter] public KnownColor Color { get; set; }
         [Parameter] public Positioning Direction { get; set; }
         [Parameter] public Bargram Model { get; set; }
         [Parameter] public EventCallback<Bar> OnClick {get; set; }

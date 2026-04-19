@@ -1,11 +1,13 @@
-﻿using BlazorGraphs.Structures;
+﻿using BlazorGraphs.Interfaces;
 using BlazorGraphs.Internal;
-using System.Collections;
+using BlazorGraphs.Legends;
+using BlazorGraphs.Structures;
 using System;
+using System.Collections;
 
 namespace BlazorGraphs.Models
 {
-    public class Linegram : IEnumerable<Line>
+    public class Linegram : IEnumerable<Line>, ILegend
     {
         private List<Line> lines;
         internal Axis AxisX { get; private set; }
@@ -37,6 +39,11 @@ namespace BlazorGraphs.Models
             lines.Add(line);
             AxisX.Update(line.RangeX);
             AxisY.Update(line.RangeY);
+        }
+
+        public IEnumerable<LegendItem> ToLegend()
+        {
+            return lines.Select(l => new LegendItem(l));
         }
 
         public IEnumerator<Line> GetEnumerator()

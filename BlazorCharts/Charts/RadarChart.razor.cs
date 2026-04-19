@@ -1,7 +1,6 @@
 ﻿using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
-using System.Drawing;
 using System.Text;
 
 namespace BlazorGraphs.Charts
@@ -11,7 +10,6 @@ namespace BlazorGraphs.Charts
         private const int VIEW = 1000;
         private const int PADDING = 100;
 
-        [Parameter] public KnownColor Color { get; set; }
         [Parameter] public Radargram Model { get; set; }
         private int width = VIEW;
         private int height = VIEW;

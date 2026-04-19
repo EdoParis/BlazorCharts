@@ -18,12 +18,12 @@ namespace DemoApp.Pages
         protected override void OnInitialized()
         {
             events = new List<string>();
-            histogram = new Histogram("asseX", "asseY");
-            bargram = new Bargram("asse-2");
+            histogram = new Histogram("asseX", "asseY", KnownColor.LightSteelBlue);
+            bargram = new Bargram("asse-2", KnownColor.LightSlateGray);
             linegram = new Linegram("X1", "Y1");
             piegram = new Piegram();
             polargram = new Polargram("R1");
-            radargram = new Radargram("R2");
+            radargram = new Radargram("R2", KnownColor.MediumVioletRed);
 
             for (int i=0; i<10; i++)
             {
@@ -69,6 +69,7 @@ namespace DemoApp.Pages
             polargram.Add(new Slice("estate", 50, KnownColor.OrangeRed));
             polargram.Add(new Slice("autunno", 85, KnownColor.Gold));
             polargram.Add(new Slice("inverno", 25, KnownColor.Red));
+            polargram.Add(new Slice("undefined", 40, KnownColor.DodgerBlue));
 
             radargram.Add(new Rating("C1",151));
             radargram.Add(new Rating("C2",130));

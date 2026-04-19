@@ -8,10 +8,10 @@
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>blazor; charts; svg; blazor-charts</PackageTags>
+    <PackageTags>blazor; dotnet; charts; charting; blazor-charts; blazor-component; data-visualization; svg; svg-charts; svg-rendering; no-javascript; no-js</PackageTags>
     <PackageIcon>Icon.png</PackageIcon>
     <Authors>Edoardo Paris;</Authors>
-    <Description>Blazor library to draw .svg charts.</Description>
+    <Description>Lightweight library to draw .svg charts for Blazor (No Javascript)</Description>
     <PackageReleaseNotes>Added component for legend</PackageReleaseNotes>
   </PropertyGroup>
 

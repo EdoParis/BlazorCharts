@@ -1,3 +1,12 @@
+BlazorGraphs is a **lightweight SVG chart library for Blazor** with **no Javascript dependency**.
+Build fast, interactive charts using pure Blazor rendering.
+
+#### Why BlazorGraphs?
+- Pure Blazor rendering (no JS interop)
+- Lightweight SVG output
+- Zero external dependencies
+- Simple API, fast integration
+
 ## Charts
 - Histogram
 - Line chart
@@ -14,18 +23,6 @@
 - BlazorGraphs.Legends
 - BlazorGraphs.Structures	
 
-## Legend
-The legend component is separated from the charts, and has a dedicated namespace `BlazorGraphs.Legends`, which contains:
-- the component `LegendBar`
-- the model `LegendModel`
-- the struct `LegendItem`
-
-the datamodel class has:
-- a free `.ctor`
-- the method `Add` to add new data to the model
-- the method `Clear` to remove all the existing data from the model
-- two static methods to build the legend from models of charts, usefull for `Linechart`, `Piechart`, `Donutchart` and `Polarchart`
-
 ## How to use
 Each chart have a dedicated data model as parameter, the data model contains all the data needed to draw the chart.
 
@@ -35,16 +32,20 @@ Each data model has two methods:
 
 Use the data structures you find in `BlazorGraphs.Structures` to fill the data model.
 
-Apply the same approach also for the legend component, since this is separated from the chart, you can place everywhere you want and if horizontally or vertically oriented.
+#### Legends
+The legend component is separated from the charts, and has a dedicated namespace `BlazorGraphs.Legends`, which contains:
+- the component `LegendBar`
+- the struct `LegendItem`
 
-### histogram example
+The `LegendBar` component accepts the same data models of charts as parameter, since this is separated from the chart, you can place everywhere you want and if horizontally or vertically oriented.
+
+#### Histogram example
+This renders a fully interactive SVG histogram.
 ```
-<HistChart Model="@histogram" 
-           Color="@KnownColor.CadetBlue">
-</HistChart>
+<HistChart Model="@histogram"></HistChart>
 ```
 ```
-histogram = new Histogram("asseX", "asseY");
+histogram = new Histogram("asseX", "asseY", KnownColor.CadetBlue);
 
 for (int i = 0; i < 10; i++)
 {
@@ -56,16 +57,15 @@ for (int i = 0; i < 10; i++)
     });
 }
 ```
-
-### barchart example
+#### Barchart example
+This renders a fully interactive SVG bar chart.
 ```
-<BarChart Model="@bargram" 
-          Color="@KnownColor.RoyalBlue" 
+<BarChart Model="@bargram"  
           Direction="@Positioning.Vertical">
 </BarChart>
 ```
 ```
-bargram = new Bargram("asseY");
+bargram = new Bargram("asseY", Color="@KnownColor.RoyalBlue");
 
 for (int i = 0; i < 10; i++)
 {
@@ -77,10 +77,11 @@ for (int i = 0; i < 10; i++)
 }
 ```
 
-### linechart example
+#### Linechart example
+This renders a fully interactive SVG linechart, with the legend at the bottom of the chart.
 ```
 <LineChart Model="@linegram"></LineChart>
-<LegendBar Model="@LegendModel.Build(linegram)" 
+<LegendBar Model="@linegram" 
            Direction="Positioning.Horizontal">
 </LegendBar>
 ```

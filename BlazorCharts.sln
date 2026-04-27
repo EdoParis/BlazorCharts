@@ -9,6 +9,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo\Demo.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "Demo\Demo.Client\DemoApp.csproj", "{F5632526-CE59-42F9-829F-0FCA4F2E1233}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{9DF70304-0A22-CE1E-AA12-D5904EE55694}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		Images\Linechart.png = Images\Linechart.png
+		Images\Donutchart.png = Images\Donutchart.png
+		Images\Piechart.png = Images\Piechart.png
+		Images\Polarchart.png = Images\Polarchart.png
+		Images\Radarchart.png = Images\Radarchart.png
+		Images\Barchart.png = Images\Barchart.png
+		Images\Histogram.png = Images\Histogram.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

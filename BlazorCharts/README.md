@@ -65,7 +65,7 @@ This renders a fully interactive SVG bar chart.
 </BarChart>
 ```
 ```
-bargram = new Bargram("asseY", Color="@KnownColor.RoyalBlue");
+bargram = new Bargram("asseY", KnownColor.RoyalBlue);
 
 for (int i = 0; i < 10; i++)
 {

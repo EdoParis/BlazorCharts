@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>1.4.0</Version>
+    <Version>2.0.0</Version>
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -12,7 +12,7 @@
     <PackageIcon>Icon.png</PackageIcon>
     <Authors>Edoardo Paris;</Authors>
     <Description>Lightweight library to draw .svg charts for Blazor (No Javascript)</Description>
-    <PackageReleaseNotes>Added component for legend</PackageReleaseNotes>
+    <PackageReleaseNotes>Refactoring legend component and moved Color parameter from HistChart, BarChart charts to models</PackageReleaseNotes>
   </PropertyGroup>
 
 

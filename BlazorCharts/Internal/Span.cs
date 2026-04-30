@@ -8,8 +8,14 @@
 
         public Span(double min, double max)
         {
+            if (double.IsInfinity(min) || double.IsInfinity(max))
+                throw new ArgumentOutOfRangeException("Infinite range");
+
+            if (double.IsNaN(min) || double.IsNaN(max))
+                throw new ArgumentOutOfRangeException("Invalid range");
+
             if (min > max)
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException("min must be lower or equal than max");
 
             Min = min;
             Max = max;

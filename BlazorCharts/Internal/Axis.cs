@@ -17,8 +17,18 @@
             is_default = true;
         }
 
+        public Axis(Span interval, string title = null)
+        {
+            Title = title;
+            range = interval;
+            is_default = true;
+        }
+
         public void Update(double value)
         {
+            if (double.IsNaN(value) || double.IsInfinity(value))
+                throw new ArgumentOutOfRangeException(nameof(value));
+
             if (is_default)
             {
                 range = new Span(value, value);

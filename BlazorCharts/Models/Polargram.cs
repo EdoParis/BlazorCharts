@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Interfaces;
+﻿using BlazorGraphs.Exceptions;
+using BlazorGraphs.Interfaces;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
 using BlazorGraphs.Structures;
@@ -29,6 +30,8 @@ namespace BlazorGraphs.Models
 
         public void Add(Slice slice)
         {
+            InvalidArgumentException.ThrowIfInvalid(slice);
+
             slices.Add(slice);
             AxisR.Update(0);
             AxisR.Update((int)(slice.Value / 5 + 1) * 5);

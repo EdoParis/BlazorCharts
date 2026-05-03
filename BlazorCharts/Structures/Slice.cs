@@ -1,28 +1,30 @@
-﻿using System.Drawing;
+﻿using BlazorGraphs.Interfaces;
+using System.Drawing;
 
 namespace BlazorGraphs.Structures
 {
-    public struct Slice
+    public struct Slice : IValidable
     {
-        public string Label { get; private set; }
-        public double Value { get; private set; }
-        public KnownColor Color { get; private set; }
+        public string Label { get; set; }
+        public double Value { get; set; }
+        public KnownColor Color { get; set; }
 
         public Slice(double value, KnownColor color)
         {
-            ArgumentOutOfRangeException.ThrowIfLessThan(value, 0);
-
             Value = value;
             Color = color;
         }
 
         public Slice(string label, double value, KnownColor color)
         {
-            ArgumentOutOfRangeException.ThrowIfLessThan(value, 0);
-
             Label = label;
             Value = value;
             Color = color;
+        }
+
+        public bool IsValid()
+        {
+            return !(double.IsInfinity(Value) || double.IsNaN(Value) || string.IsNullOrWhiteSpace(Label));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Interfaces;
+﻿using BlazorGraphs.Exceptions;
+using BlazorGraphs.Interfaces;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
 using BlazorGraphs.Structures;
@@ -35,10 +36,11 @@ namespace BlazorGraphs.Models
 
         public void Add(Line line)
         {
+            InvalidArgumentException.ThrowIfInvalid(line);
             IsEmpty = IsEmpty && !(line.Points?.Any() ?? false);
             lines.Add(line);
-            AxisX.Update(line.RangeX);
-            AxisY.Update(line.RangeY);
+            AxisX.Update(new Span(line.Points?.Select(p => p.X)));
+            AxisY.Update(new Span(line.Points?.Select(p => p.Y)));
         }
 
         public IEnumerable<LegendItem> ToLegend()

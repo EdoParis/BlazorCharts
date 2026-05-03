@@ -1,14 +1,21 @@
-﻿namespace BlazorGraphs.Structures
+﻿using BlazorGraphs.Interfaces;
+
+namespace BlazorGraphs.Structures
 {
-    public struct Bar
+    public struct Bar : IValidable
     {
-        public string Label;
-        public double Value;
+        public string Label { get; set; }
+        public double Value { get; set; }
 
         public Bar(string label, double value)
         {
             Label = label;
             Value = value;
+        }
+
+        public bool IsValid()
+        {
+            return string.IsNullOrWhiteSpace(Label);
         }
     }
 }

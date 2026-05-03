@@ -1,16 +1,14 @@
 ﻿using BlazorGraphs.Enums;
-using BlazorGraphs.Internal;
+using BlazorGraphs.Interfaces;
 using System.Drawing;
 
 namespace BlazorGraphs.Structures
 {
-    public struct Line
+    public struct Line : IValidable
     {
-        public string Label;
-        public DrawMode DrawMode;
-        public KnownColor Color;
-        internal Span RangeX { get; private set; }
-        internal Span RangeY { get; private set; }
+        public string Label { get; set; }
+        public DrawMode DrawMode { get; set; }
+        public KnownColor Color { get; set; }
         public IEnumerable<PointF> Points { get; private set; }
 
         public Line()
@@ -26,8 +24,6 @@ namespace BlazorGraphs.Structures
             Color = color;
             DrawMode = draw_mode;
             Points = points ?? Array.Empty<PointF>();
-            RangeX = new Span(points?.Select(p => p.X));
-            RangeY = new Span(points?.Select(p => p.Y));
         }
 
         public Line(string label, KnownColor color, IEnumerable<Point> points, DrawMode draw_mode = DrawMode.Drawline)
@@ -36,8 +32,11 @@ namespace BlazorGraphs.Structures
             Color = color;
             DrawMode = draw_mode;
             Points = points?.Select(p => new PointF(p.X, p.Y)) ?? Array.Empty<PointF>();
-            RangeX = new Span(points?.Select(p => p.X));
-            RangeY = new Span(points?.Select(p => p.Y));
+        }
+
+        public bool IsValid()
+        {
+            return Points != null; 
         }
     }
 }

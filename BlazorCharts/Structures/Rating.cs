@@ -1,20 +1,23 @@
-﻿using System.Collections;
+﻿using BlazorGraphs.Interfaces;
+using System.Collections;
 using System.Drawing;
 
 namespace BlazorGraphs.Structures
 {
-    public struct Rating
+    public struct Rating : IValidable
     {
-        public string Label { get; private set; }
-        public double Value { get; private set; }
+        public string Label { get; set; }
+        public double Value { get; set; }
 
         public Rating(string label, double value)
         {
-            ArgumentException.ThrowIfNullOrWhiteSpace(label);
-            ArgumentOutOfRangeException.ThrowIfLessThan(value, 0);
-
             Label = label;
             Value = value;
+        }
+
+        public bool IsValid()
+        {
+            return Value >= 0 && string.IsNullOrWhiteSpace(Label);
         }
     }
 }

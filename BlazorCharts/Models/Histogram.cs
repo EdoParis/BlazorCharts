@@ -1,4 +1,5 @@
 ﻿using BlazorGraphs.Structures;
+using BlazorGraphs.Exceptions;
 using BlazorGraphs.Interfaces;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
@@ -38,6 +39,8 @@ namespace BlazorGraphs.Models
 
         public void Add(Bin bin)
         {
+            InvalidArgumentException.ThrowIfInvalid(bin);
+
             IsEmpty = false;
             bins.Add(bin);
             AxisX.Update(bin.Min);

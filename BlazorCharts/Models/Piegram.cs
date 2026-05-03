@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Interfaces;
+﻿using BlazorGraphs.Exceptions;
+using BlazorGraphs.Interfaces;
 using BlazorGraphs.Legends;
 using BlazorGraphs.Structures;
 using System;
@@ -29,6 +30,8 @@ namespace BlazorGraphs.Models
 
         public void Add(Slice slice)
         {
+            InvalidArgumentException.ThrowIfInvalid(slice);
+
             slices.Add(slice);
             Total += slice.Value;
             IsEmpty = (Total == 0);

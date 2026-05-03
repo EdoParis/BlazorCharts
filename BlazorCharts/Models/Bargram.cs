@@ -1,4 +1,5 @@
 ﻿using BlazorGraphs.Structures;
+using BlazorGraphs.Exceptions;
 using BlazorGraphs.Interfaces;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
@@ -37,6 +38,7 @@ namespace BlazorGraphs.Models
 
         public void Add(Bar bar)
         {
+            InvalidArgumentException.ThrowIfInvalid(bar);
             IsEmpty = false;
 
             Bin bin = new Bin()

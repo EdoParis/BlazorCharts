@@ -1,5 +1,6 @@
-﻿using BlazorGraphs.Structures;
+﻿using BlazorGraphs.Exceptions;
 using BlazorGraphs.Interfaces;
+using BlazorGraphs.Structures;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
 using System;
@@ -33,6 +34,8 @@ namespace BlazorGraphs.Models
 
         public void Add(Rating rating)
         {
+            InvalidArgumentException.ThrowIfInvalid(rating);
+
             Data.Add(rating);
             AxisR.Update(0);
             AxisR.Update((int)(rating.Value % 5 == 0 ? rating.Value : (rating.Value / 5 + 5) * 5));

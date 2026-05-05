@@ -21,5 +21,11 @@ namespace BlazorGraphs.Legends
             Color = line.Color;
             Text = line.Label;
         }
+
+        public LegendItem(Threshold threshold)
+        {
+            Color = threshold.Color;
+            Text = string.IsNullOrWhiteSpace(threshold.Label) ? $"{threshold.From.ToString("0.##")} - {threshold.To.ToString("0.##")}" : threshold.Label;
+        }
     }
 }

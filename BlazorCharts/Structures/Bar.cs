@@ -15,7 +15,7 @@ namespace BlazorGraphs.Structures
 
         public bool IsValid()
         {
-            return string.IsNullOrWhiteSpace(Label);
+            return !string.IsNullOrWhiteSpace(Label);
         }
     }
 }

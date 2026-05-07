@@ -1,0 +1,12 @@
+header {
+    height: 5rem;
+}
+
+aside {
+    width: 10rem !important;
+    color: white;
+}
+
+main {
+    height: calc(100vh - 5rem);
+}

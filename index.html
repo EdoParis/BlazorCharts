@@ -10,27 +10,36 @@
 
 <body class="container-fluid vh-100">
     <header class="row p-2 border-bottom align-items-center">
-        <img class="col-auto h-100" src="images/icon.png" />
+        <img class="col-auto h-100 p-2" src="images/icon.png" />
         <h2 class="col m-0">BlazorGraphs</h2>
     </header>
     <main class="row">
         <aside class="col-auto p-0 h-100 border-end overflow-auto">
             <ul class="list-group list-group-flush border-bottom">
                 <li class="list-group-item list-group-item-action active">Home page</li>
-                <li class="list-group-item list-group-item-action">Histogram</li>
-                <li class="list-group-item list-group-item-action">Barchart</li>
-                <li class="list-group-item list-group-item-action">LineChart</li>
-                <li class="list-group-item list-group-item-action">RadarChart</li>
-                <li class="list-group-item list-group-item-action">PolarChart</li>
-                <li class="list-group-item list-group-item-action">PieChart</li>
-                <li class="list-group-item list-group-item-action">DonutChart</li>
-                <li class="list-group-item list-group-item-action">GaugeChart</li>
+                <li class="list-group-item list-group-item-action p-0">
+                    <details open>
+                        <summary class="py-2 px-3">Charts</summary>
+                        <ul class="list-group list-group-flush border-top">
+                            <a class="list-group-item list-group-item-action" href="pages/histogram.html">Histogram</a>
+                            <a class="list-group-item list-group-item-action" href="pages/barchart.html">Barchart</a>
+                            <a class="list-group-item list-group-item-action" href="pages/linechart.html">Linechart</a>
+                            <a class="list-group-item list-group-item-action" href="pages/radarchart.html">Radarchart</a>
+                            <a class="list-group-item list-group-item-action" href="pages/polarchart.html">Polarchart</a>
+                            <a class="list-group-item list-group-item-action" href="pages/piechart.html">Piechart</a>
+                            <a class="list-group-item list-group-item-action" href="pages/donutchart.html">Donutchart</a>
+                            <a class="list-group-item list-group-item-action" href="pages/gaugechart.html">Gaugechart</a>
+                        </ul>
+                    </details>
+                </li>
             </ul>
         </aside>
         <div class="col bg-light p-3 h-100 overflow-auto">
             <p>
-                BlazorGraphs is a <b>lightweight SVG chart library for Blazor</b> without <b>Javascript dependency</b>.<br/>
-                Build fast, interactive charts using pure Blazor rendering.<br/>
+                <div class="mb-1">
+                    BlazorGraphs is a <b>lightweight SVG chart library for Blazor</b> without <b>Javascript dependency</b>.<br />
+                    Build fast, interactive charts using pure Blazor rendering.<br />
+                </div>
                 The main characteristics are:
                 <ul>
                     <li>Pure Blazor rendering (no JS interop)</li>

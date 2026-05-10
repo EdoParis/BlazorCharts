@@ -10,3 +10,8 @@ aside {
 main {
     height: calc(100vh - 4rem);
 }
+
+.chart{
+    height: 15rem;
+    width: 15rem;
+}

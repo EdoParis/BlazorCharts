@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../css/charts.css"?>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+	<line stroke="Black" x1="100" x2="100" y1="100" y2="900"></line>
+	<line stroke="Black" x1="100" x2="900" y1="900" y2="900"></line>
+	<text x="500" y="975">X1</text>
+	<text x="50" y="50" class="anchor-start">Y1</text>
+	<text x="100" y="940">0</text>
+	<line stroke="Black" x1="142" x2="142" y1="890" y2="900"></line>
+	<line stroke="Black" x1="184" x2="184" y1="890" y2="900"></line>
+	<line stroke="Black" x1="226" x2="226" y1="890" y2="900"></line>
+	<line stroke="Black" x1="268" x2="268" y1="890" y2="900"></line>
+	<line stroke="Black" x1="310" x2="310" y1="880" y2="900"></line>
+	<text x="310" y="940">5</text>
+	<line stroke="Black" x1="352" x2="352" y1="890" y2="900"></line>
+	<line stroke="Black" x1="394" x2="394" y1="890" y2="900"></line>
+	<line stroke="Black" x1="436" x2="436" y1="890" y2="900"></line>
+	<line stroke="Black" x1="478" x2="478" y1="890" y2="900"></line>
+	<line stroke="Black" x1="521" x2="521" y1="880" y2="900"></line>
+	<text x="521" y="940">10</text>
+	<line stroke="Black" x1="563" x2="563" y1="890" y2="900"></line>
+	<line stroke="Black" x1="605" x2="605" y1="890" y2="900"></line>
+	<line stroke="Black" x1="647" x2="647" y1="890" y2="900"></line>
+	<line stroke="Black" x1="689" x2="689" y1="890" y2="900"></line>
+	<line stroke="Black" x1="731" x2="731" y1="880" y2="900"></line>
+	<text x="731" y="940">15</text>
+	<line stroke="Black" x1="773" x2="773" y1="890" y2="900"></line>
+	<line stroke="Black" x1="815" x2="815" y1="890" y2="900"></line>
+	<line stroke="Black" x1="857" x2="857" y1="890" y2="900"></line>
+	<line stroke="Black" x1="900" x2="900" y1="890" y2="900"></line>
+	<text class="anchor-end" x="75" y="900">0</text>
+	<line stroke="Black" x1="100" x2="110" y1="868" y2="868"></line>
+	<line stroke="Black" x1="100" x2="110" y1="836" y2="836"></line>
+	<line stroke="Black" x1="100" x2="110" y1="804" y2="804"></line>
+	<line stroke="Black" x1="100" x2="110" y1="772" y2="772"></line>
+	<line stroke="Black" x1="100" x2="120" y1="741" y2="741"></line>
+	<text class="anchor-end" x="75" y="741">105</text>
+	<line stroke="Black" x1="100" x2="110" y1="709" y2="709"></line>
+	<line stroke="Black" x1="100" x2="110" y1="677" y2="677"></line>
+	<line stroke="Black" x1="100" x2="110" y1="645" y2="645"></line>
+	<line stroke="Black" x1="100" x2="110" y1="614" y2="614"></line>
+	<line stroke="Black" x1="100" x2="120" y1="582" y2="582"></line>
+	<text class="anchor-end" x="75" y="582">210</text>
+	<line stroke="Black" x1="100" x2="110" y1="550" y2="550"></line>
+	<line stroke="Black" x1="100" x2="110" y1="518" y2="518"></line>
+	<line stroke="Black" x1="100" x2="110" y1="487" y2="487"></line>
+	<line stroke="Black" x1="100" x2="110" y1="455" y2="455"></line>
+	<line stroke="Black" x1="100" x2="120" y1="423" y2="423"></line>
+	<text class="anchor-end" x="75" y="423">315</text>
+	<line stroke="Black" x1="100" x2="110" y1="391" y2="391"></line>
+	<line stroke="Black" x1="100" x2="110" y1="360" y2="360"></line>
+	<line stroke="Black" x1="100" x2="110" y1="328" y2="328"></line>
+	<line stroke="Black" x1="100" x2="110" y1="296" y2="296"></line>
+	<line stroke="Black" x1="100" x2="120" y1="264" y2="264"></line>
+	<text class="anchor-end" x="75" y="264">420</text>
+	<line stroke="Black" x1="100" x2="110" y1="233" y2="233"></line>
+	<line stroke="Black" x1="100" x2="110" y1="201" y2="201"></line>
+	<line stroke="Black" x1="100" x2="110" y1="169" y2="169"></line>
+	<line stroke="Black" x1="100" x2="110" y1="137" y2="137"></line>
+	<line stroke="Black" x1="100" x2="120" y1="106" y2="106"></line>
+	<text class="anchor-end" x="75" y="106">525</text>
+	<path fill="none" stroke="LimeGreen" stroke-width="0.5em" d="M 100 900 L 142 899 L 184 894 L 226 887 L 268 876 L 310 863 L 352 846 L 394 826 L 436 804 L 478 778 L 521 749 L 563 718 L 605 683 L 647 645 L 689 604 L 731 560 L 773 513 L 815 463 L 857 411 L 900 355 ">
+		<title>F1</title>
+	</path>
+	<path fill="none" stroke="OrangeRed" stroke-width="0.5em" d="M 100 894 L 142 887 L 184 876 L 226 863 L 268 846 L 310 826 L 352 804 L 394 778 L 436 749 L 478 718 L 521 683 L 563 645 L 605 604 L 647 560 L 689 513 L 731 463 L 773 411 L 815 355 L 857 296 L 900 234 ">
+		<title>F2</title>
+	</path>
+	<circle fill="CadetBlue" stroke="White" cx="100" cy="887" r="0.5em">
+		<title>(0, 9)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="142" cy="876" r="0.5em">
+		<title>(1, 16)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="184" cy="863" r="0.5em">
+		<title>(2, 25)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="226" cy="846" r="0.5em">
+		<title>(3, 36)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="268" cy="826" r="0.5em">
+		<title>(4, 49)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="310" cy="804" r="0.5em">
+		<title>(5, 64)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="352" cy="778" r="0.5em">
+		<title>(6, 81)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="394" cy="749" r="0.5em">
+		<title>(7, 100)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="436" cy="718" r="0.5em">
+		<title>(8, 121)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="478" cy="683" r="0.5em">
+		<title>(9, 144)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="521" cy="645" r="0.5em">
+		<title>(10, 169)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="563" cy="604" r="0.5em">
+		<title>(11, 196)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="605" cy="560" r="0.5em">
+		<title>(12, 225)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="647" cy="513" r="0.5em">
+		<title>(13, 256)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="689" cy="463" r="0.5em">
+		<title>(14, 289)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="731" cy="411" r="0.5em">
+		<title>(15, 324)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="773" cy="355" r="0.5em">
+		<title>(16, 361)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="815" cy="296" r="0.5em">
+		<title>(17, 400)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="857" cy="234" r="0.5em">
+		<title>(18, 441)</title>
+	</circle>
+	<circle fill="CadetBlue" stroke="White" cx="900" cy="169" r="0.5em">
+		<title>(19, 484)</title>
+	</circle>
+	<path fill="none" stroke="DodgerBlue" stroke-width="0.5em" d="M 100 876 L 142 863 L 184 846 L 226 826 L 268 804 L 310 778 L 352 749 L 394 718 L 436 683 L 478 645 L 521 604 L 563 560 L 605 513 L 647 463 L 689 411 L 731 355 L 773 296 L 815 234 L 857 169 L 900 100 ">
+		<title>F4</title>
+	</path>
+	<circle fill="DodgerBlue" stroke="White" cx="100" cy="876" r="0.5em">
+		<title>(0, 16)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="142" cy="863" r="0.5em">
+		<title>(1, 25)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="184" cy="846" r="0.5em">
+		<title>(2, 36)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="226" cy="826" r="0.5em">
+		<title>(3, 49)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="268" cy="804" r="0.5em">
+		<title>(4, 64)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="310" cy="778" r="0.5em">
+		<title>(5, 81)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="352" cy="749" r="0.5em">
+		<title>(6, 100)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="394" cy="718" r="0.5em">
+		<title>(7, 121)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="436" cy="683" r="0.5em">
+		<title>(8, 144)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="478" cy="645" r="0.5em">
+		<title>(9, 169)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="521" cy="604" r="0.5em">
+		<title>(10, 196)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="563" cy="560" r="0.5em">
+		<title>(11, 225)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="605" cy="513" r="0.5em">
+		<title>(12, 256)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="647" cy="463" r="0.5em">
+		<title>(13, 289)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="689" cy="411" r="0.5em">
+		<title>(14, 324)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="731" cy="355" r="0.5em">
+		<title>(15, 361)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="773" cy="296" r="0.5em">
+		<title>(16, 400)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="815" cy="234" r="0.5em">
+		<title>(17, 441)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="857" cy="169" r="0.5em">
+		<title>(18, 484)</title>
+	</circle>
+	<circle fill="DodgerBlue" stroke="White" cx="900" cy="100" r="0.5em">
+		<title>(19, 529)</title>
+	</circle>
+</svg>

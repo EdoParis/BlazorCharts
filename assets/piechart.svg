@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../css/charts.css"?>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+	<path fill="Purple" stroke="White" d="M 500 500 L 500 900 A 400 400 0 0 0 629 878 Z">
+		<title>S1: 5</title>
+	</path>
+	<text x="572" y="933">S1</text>
+	<path fill="OrangeRed" stroke="White" d="M 500 500 L 629 878 A 400 400 0 0 0 794 229 Z">
+		<title>S2: 30</title>
+	</path>
+	<text x="693" y="549">S2</text>
+	<path fill="Gold" stroke="White" d="M 500 500 L 794 229 A 400 400 0 0 0 690 148 Z">
+		<title>S3: 5</title>
+	</path>
+	<text x="770" y="152">S3</text>
+	<path fill="Aqua" stroke="White" d="M 500 500 L 690 148 A 400 400 0 0 0 165 718 Z">
+		<title>S4: 40</title>
+	</path>
+	<text x="352" y="364">S4</text>
+	<path fill="DodgerBlue" stroke="White" d="M 500 500 L 165 718 A 400 400 0 0 0 499 900 Z">
+		<title>S5: 15</title>
+	</path>
+	<text x="404" y="675">S5</text>
+</svg>

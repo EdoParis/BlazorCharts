@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../css/charts.css"?>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+	<path fill="none" stroke="LightGray" d="M 588 500 A 88 88 0 1 1 412 500 A 88 88 0 1 1 588 500"/>
+	<text y="411" x="500">20</text>
+	<path fill="none" stroke="LightGray" d="M 677 500 A 177 177 0 1 1 323 500 A 177 177 0 1 1 677 500"/>
+	<text y="322" x="500">40</text>
+	<path fill="none" stroke="LightGray" d="M 766 500 A 266 266 0 1 1 234 500 A 266 266 0 1 1 766 500"/>
+	<text y="233" x="500">60</text>
+	<path fill="none" stroke="LightGray" d="M 855 500 A 355 355 0 1 1 145 500 A 355 355 0 1 1 855 500"/>
+	<text y="144" x="500">80</text>
+	<path fill="Purple" stroke="White" d="M 500 500 L 500 588 A 88 88 0 0 0 584 527 Z">
+		<title>primavera: 20</title>
+	</path>
+	<path fill="OrangeRed" stroke="White" d="M 500 500 L 711 568 A 222 222 0 0 0 630 320 Z">
+		<title>estate: 50</title>
+	</path>
+	<path fill="Gold" stroke="White" d="M 500 500 L 722 194 A 377 377 0 0 0 277 194 Z">
+		<title>autunno: 85</title>
+	</path>
+	<path fill="Red" stroke="White" d="M 500 500 L 434 410 A 111 111 0 0 0 394 534 Z">
+		<title>inverno: 25</title>
+	</path>
+	<path fill="DodgerBlue" stroke="White" d="M 500 500 L 330 554 A 177 177 0 0 0 499 677 Z">
+		<title>undefined: 40</title>
+	</path>
+	<text x="500" y="50">R1</text>
+</svg>

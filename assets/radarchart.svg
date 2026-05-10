@@ -14,15 +14,15 @@
 	<line stroke="LightGray" x1="500" y1="500" x2="154" y2="300"></line>
 	<text x="111" y="277">C6</text>
 	<polygon fill="none" stroke="LightGray" points="500,420 568,460 568,539 500,579 431,539 431,460"></polygon>
-	<text class="tick" x="500" y="420">35</text>
+	<text x="500" y="420">35</text>
 	<polygon fill="none" stroke="LightGray" points="500,340 637,420 637,579 500,659 362,579 362,420"></polygon>
-	<text class="tick" x="500" y="340">70</text>
+	<text x="500" y="340">70</text>
 	<polygon fill="none" stroke="LightGray" points="500,261 706,380 706,619 500,738 293,619 293,380"></polygon>
-	<text class="tick" x="500" y="261">105</text>
+	<text x="500" y="261">105</text>
 	<polygon fill="none" stroke="LightGray" points="500,181 775,340 775,659 500,818 224,659 224,340"></polygon>
-	<text class="tick" x="500" y="181">140</text>
+	<text x="500" y="181">140</text>
 	<polygon fill="none" stroke="LightGray" points="500,102 844,301 844,698 500,897 155,698 155,301"></polygon>
-	<text class="tick" x="500" y="102">175</text>
+	<text x="500" y="102">175</text>
 	<g>
 		<path fill="MediumVioletRed" stroke="MediumVioletRed" style="fill-opacity:0.3" d="M 500 156 L 755 352 L 677 602 L 500 681 L 263 636 L 401 443 Z"></path>
 		<circle fill="MediumVioletRed" stroke="White" cx="500" cy="156" r="0.5em">

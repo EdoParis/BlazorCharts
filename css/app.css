@@ -15,3 +15,7 @@ main {
     height: 15rem;
     width: 15rem;
 }
+
+.fit-content{
+    width: fit-content;
+}

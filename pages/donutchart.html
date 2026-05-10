@@ -11,6 +11,7 @@
     <header class="row p-2 border-bottom align-items-center">
         <img class="col-auto h-100 p-2" src="../assets/icon.png" />
         <h2 class="col m-0">BlazorGraphs</h2>
+        <div class="col-auto badge rounded-pill bg-primary fs-6" title="latest version">2.0.0</div>
     </header>
     <main class="row">
         <aside class="col-auto p-0 h-100 border-end overflow-auto">
@@ -34,7 +35,22 @@
             </ul>
         </aside>
         <div class="col bg-light p-3 h-100 overflow-auto">
-            <h1>Donutchart</h1>
+            <h1 class="position-relative">
+                Donutchart
+                <span class="position-absolute top-0 badge rounded-pill bg-primary fs-6" title="chart available from 1.3.0">1.3.0</span>
+            </h1>
+            <p>
+                A donut chart is a visualization representing data in a circular form, with each point represented by a slice. 
+                It looks like a pie chart with one essential difference: the center of the chart has been cut out to look like a donut. 
+                This modification makes the chart more aesthetically pleasing and sweet.
+            </p>
+            <div class="card m-2 fit-content m-auto">
+                <div class="card-body">
+                    <div class="chart">
+                        <object data="../assets/donutchart.svg" type="image/svg+xml"></object>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </body>

@@ -11,6 +11,7 @@
     <header class="row p-2 border-bottom align-items-center">
         <img class="col-auto h-100 p-2" src="../assets/icon.png" />
         <h2 class="col m-0">BlazorGraphs</h2>
+        <div class="col-auto badge rounded-pill bg-primary fs-6" title="latest version">2.0.0</div>
     </header>
     <main class="row">
         <aside class="col-auto p-0 h-100 border-end overflow-auto">
@@ -34,7 +35,21 @@
             </ul>
         </aside>
         <div class="col bg-light p-3 h-100 overflow-auto">
-            <h1>Polarchart</h1>
+            <h1 class="position-relative">
+                Polarchart
+                <span class="position-absolute top-0 badge rounded-pill bg-primary fs-6" title="chart available from 1.1.0">1.1.0</span>
+            </h1>
+            <p>
+                Polar area charts are similar to pie charts, but each segment has the same angle and the radius differs depending on the value.
+                This type of chart is often useful when we want to show a comparison data similar to a pie chart, but also show a scale of values for context.
+            </p>
+            <div class="card m-2 fit-content m-auto">
+                <div class="card-body">
+                    <div class="chart">
+                        <object data="../assets/polarchart.svg" type="image/svg+xml"></object>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </body>

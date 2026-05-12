@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="docs\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

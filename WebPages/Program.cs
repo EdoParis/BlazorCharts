@@ -4,9 +4,11 @@ namespace WebPages
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
-            builder.WebHost.UseWebRoot("wwwroot")
-                           .UseStaticWebAssets();
+            var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
+            {
+                WebRootPath = "docs"
+            });
+            builder.WebHost.UseStaticWebAssets();
 
             var app = builder.Build();
             app.UseDefaultFiles();

@@ -74,5 +74,11 @@
         {
             return value >= Min && value <= Max;
         }
+
+        public bool Overlap(Span other)
+        {
+            return other.Min < this.Max && 
+                   other.Max > this.Min;
+        }
     }
 }

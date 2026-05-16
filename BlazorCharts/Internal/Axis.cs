@@ -24,6 +24,11 @@
             is_default = true;
         }
 
+        public bool Contains(double value)
+        {
+            return range.Contains(value);
+        }
+
         public void Update(double value)
         {
             if (double.IsNaN(value) || double.IsInfinity(value))

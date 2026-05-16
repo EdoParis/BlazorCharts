@@ -4,57 +4,73 @@ using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
 using BlazorGraphs.Structures;
 using System.Drawing;
+using System.Collections;
 
 namespace BlazorGraphs.Models
 {
-    public class Gaugegram : ILegend
+    public class Gaugegram : IEnumerable<Breakpoint>, ILegend
     {
-        private List<Threshold> Thresholds;
-        internal Axis ValAxis { get; private set; }
+        private List<Breakpoint> breakpoints;
+        internal Axis Axis { get; private set; }
         public KnownColor Color { get; private set; }
         public double Value { get; set; }
+        public bool HasBreakPoints { get => breakpoints?.Count > 0; }
 
         public Gaugegram(double min, double max, string title, KnownColor color = KnownColor.Black)
         {
-            Span interval = new Span(min, max);
-            Thresholds = new List<Threshold>();
-            ValAxis = new Axis(interval, title);
+            Span range = new Span(min, max);
+            breakpoints = new List<Breakpoint>();
+            Axis = new Axis(range, title);
             Color = color;
+            Value = min;
         }
 
-        public void Add(Threshold threshold)
+        public void AddBreakpoint(Breakpoint breakpoint)
         {
-            InvalidArgumentException.ThrowIfInvalid(threshold);
-            ArgumentOutOfRangeException.ThrowIfLessThan(threshold.From, ValAxis.Min);
-            ArgumentOutOfRangeException.ThrowIfGreaterThan(threshold.To, ValAxis.Max);                
+            InvalidArgumentException.ThrowIfInvalid(breakpoint);
+            ArgumentOutOfRangeException.ThrowIfLessThan(breakpoint.Value, Axis.Min);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(breakpoint.Value, Axis.Max);
 
-            foreach (Threshold th in Thresholds)
+            for (int i = 0; i < breakpoints.Count; i++)
             {
-                if (threshold.Overlap(th))
-                    throw new ArgumentException("Thresholds overlapping");
+                if (breakpoints[i].Value > breakpoint.Value)
+                {
+                    breakpoints.Insert(i, breakpoint);
+                    return;
+                }
             }
-            Thresholds.Add(threshold);
+            breakpoints.Add(breakpoint);
         }
 
         public void Clear()
         {
-            Thresholds.Clear();
+            breakpoints.Clear();
         }
 
         public IEnumerable<LegendItem> ToLegend()
         {
-            if (Thresholds.Any())
+            if (breakpoints.Any())
             {
-                return Thresholds.Select(t => new LegendItem(t));
+                return breakpoints.Select(t => new LegendItem(t));
             }
             else
             {
                 return [new LegendItem()
                 {
                     Color = Color,
-                    Text = ValAxis.Title
+                    Text = Axis.Title
                 }];
             }
+        }
+
+        public IEnumerator<Breakpoint> GetEnumerator()
+        {
+            return breakpoints.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

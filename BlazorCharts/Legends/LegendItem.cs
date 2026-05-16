@@ -22,10 +22,10 @@ namespace BlazorGraphs.Legends
             Text = line.Label;
         }
 
-        public LegendItem(Threshold threshold)
+        public LegendItem(Breakpoint threshold)
         {
             Color = threshold.Color;
-            Text = string.IsNullOrWhiteSpace(threshold.Label) ? $"{threshold.From.ToString("0.##")} - {threshold.To.ToString("0.##")}" : threshold.Label;
+            Text = string.IsNullOrWhiteSpace(threshold.Label) ? $"< {threshold.Value.ToString("0.##")}" : threshold.Label;
         }
     }
 }

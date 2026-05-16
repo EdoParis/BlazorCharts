@@ -2,7 +2,6 @@
 using BlazorGraphs.Interfaces;
 using BlazorGraphs.Legends;
 using BlazorGraphs.Structures;
-using System;
 using System.Collections;
 
 namespace BlazorGraphs.Models

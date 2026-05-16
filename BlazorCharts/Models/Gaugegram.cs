@@ -33,6 +33,9 @@ namespace BlazorGraphs.Models
 
             for (int i = 0; i < breakpoints.Count; i++)
             {
+                if (breakpoints[i].Value == breakpoint.Value)
+                    throw new ArgumentException($"breakpoint already present with value: {breakpoint.Value}");
+
                 if (breakpoints[i].Value > breakpoint.Value)
                 {
                     breakpoints.Insert(i, breakpoint);

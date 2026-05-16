@@ -13,6 +13,7 @@ namespace DemoApp.Pages
         private Piegram piegram;
         private Polargram polargram;
         private Radargram radargram;
+        private Gaugegram gaugegram;
         private List<String> events;
 
         protected override void OnInitialized()
@@ -24,6 +25,8 @@ namespace DemoApp.Pages
             piegram = new Piegram();
             polargram = new Polargram("R1");
             radargram = new Radargram("R2", KnownColor.MediumVioletRed);
+            gaugegram = new Gaugegram(0, 500, "G1", KnownColor.Navy);
+            gaugegram.Value = 90;
 
             for (int i=0; i<10; i++)
             {
@@ -77,6 +80,25 @@ namespace DemoApp.Pages
             radargram.Add(new Rating("C4",80));
             radargram.Add(new Rating("C5",120));
             radargram.Add(new Rating("C6",50));
+
+            gaugegram.AddBreakpoint(new Breakpoint()
+            {
+                Value = 100,
+                Color = KnownColor.Green,
+                Label = "LV-1"
+            });
+            gaugegram.AddBreakpoint(new Breakpoint()
+            {
+                Value = 200,
+                Color = KnownColor.Gold,
+                Label = "LV-2"
+            });
+            gaugegram.AddBreakpoint(new Breakpoint()
+            {
+                Value = 500,
+                Color = KnownColor.Red,
+                Label = "LV-3"
+            });
         }
 
         private void BinClickHandler(Bin bin)

@@ -1,0 +1,85 @@
+﻿<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+    @if (Model != null)
+    {
+        <rect x="@offsetH"
+              y="@padding"
+              rx="@(height / 4 - padding / 2)"
+              width="@((int)(Model.Axis.Size * scaleH))"
+              height="@(height - 2 * padding)"
+              fill="@KnownColor.WhiteSmoke"
+              stroke="@KnownColor.White"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke" />
+
+        @if (Model.Axis.Contains(Model.Value))
+        {
+            <rect x="@offsetH"
+                  y="@padding"
+                  rx="@(height / 4 - padding / 2)"
+                  width="@((int)((Model.Value - Model.Axis.Min) * scaleH))"
+                  height="@(height - 2 * padding)"
+                  fill="@ProgressBarColor()"
+                  stroke="@KnownColor.White"
+                  fill-opacity="0.6"
+                  stroke-width="1px"
+                  vector-effect="non-scaling-stroke">
+                <title>@($"value: {Model.Value.ToString("0.##")}")</title>
+            </rect>
+        }
+
+        double start_value = Model.Axis.Min;
+        foreach (Breakpoint breakpoint in Model)
+        {
+            <line x1="@((int)(offsetH + (start_value - Model.Axis.Min) * scaleH) + 5)"
+                  y1="@(4 * padding / 5)"
+                  x2="@((int)(offsetH + (breakpoint.Value - Model.Axis.Min) * scaleH) - 5)"
+                  y2="@(4 * padding / 5)"
+                  stroke="@breakpoint.Color"
+                  stroke-width="0.5em"
+                  stroke-dasharray="2em"
+                  stroke-linecap="round">
+                <title>@breakpoint.Label</title>
+              </line>
+            <text>
+                <text x="@((int)(offsetH + (breakpoint.Value - Model.Axis.Min) * scaleH))"
+                      y="@(padding / 2)"
+                      fill="@breakpoint.Color">
+                    @breakpoint.Value
+                </text>
+            </text>
+            start_value = breakpoint.Value;
+        }
+
+        int tx = 0;
+        foreach (double tick in Model.Axis.Ticks(5))
+        {
+            if (tx % 5 == 0)
+            {
+                <line stroke="@KnownColor.Black"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      x1="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                      x2="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                      y1="@(offsetV + padding / 5)"
+                      y2="@(offsetV + padding / 50)" />
+                <text>
+                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.Axis.Min) / Model.Axis.Size))"
+                          y="@(offsetV + padding / 2)">
+                        @tick
+                    </text>
+                </text>
+            }
+            else
+            {
+                <line stroke="@KnownColor.Gray"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      x1="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                      x2="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                      y1="@(offsetV + padding / 10)"
+                      y2="@(offsetV + padding / 50)" />
+            }
+            tx++;
+        }
+    }
+</svg>

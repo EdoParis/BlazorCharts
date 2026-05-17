@@ -22,7 +22,7 @@ namespace BlazorGraphs.Gauges
         {
             foreach (Breakpoint breakpoint in Model)
             {
-                if (breakpoint.Value > Model.Value)
+                if (breakpoint.Value >= Model.Value)
                     return breakpoint.Color;
             }
             return Model.Color;

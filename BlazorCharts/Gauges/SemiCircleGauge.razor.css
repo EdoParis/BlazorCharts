@@ -1,0 +1,14 @@
+text {
+    font-size: 2.0rem;
+    text-anchor: middle;
+    pointer-events: none;
+    dominant-baseline: middle;
+}
+
+path {
+    transition-duration: 0.25s;
+}
+
+    path:hover {
+        stroke-opacity: 1.0;
+    }

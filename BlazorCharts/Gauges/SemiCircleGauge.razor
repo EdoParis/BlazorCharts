@@ -1,0 +1,93 @@
+<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+    @if (Model is null)
+    {
+        <path d="@ArcPath(radius, 0, Math.PI)"
+              fill="none"
+              stroke="@KnownColor.WhiteSmoke"
+              stroke-width="@padding" />
+        <text>
+            <text x="@(width / 2)" y="@(height / 4)">NO DATA</text>
+        </text>
+    }
+    else
+    {
+        <path d="@ArcPath(radius, 0, Math.PI)"
+              fill="none"
+              stroke="@KnownColor.WhiteSmoke"
+              stroke-width="@padding" />
+
+        @if (Model.Axis.Contains(Model.Value))
+        {
+            double degree = Math.PI * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
+
+            <path d="@ArcPath(radius, 0, degree)"
+                  fill="none"
+                  stroke="@ProgressBarColor()"
+                  stroke-width="@padding"
+                  stroke-opacity="0.6">
+                <title>@($"value: {Model.Value.ToString("0.##")}")</title>
+            </path>
+        }
+
+        if (Model.HasBreakPoints)
+        {
+            double start_degree = 0;
+            foreach (Breakpoint breakpoint in Model)
+            {
+                double degree = Math.PI * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
+                <path d="@ArcPath(radius + 3 * padding / 4, start_degree, degree)"
+                      fill="none"
+                      stroke="@breakpoint.Color"
+                      stroke-width="2px"
+                      stroke-dasharray="10px">
+                    <title>@breakpoint.Label</title>
+                </path>
+                <text>
+                    <text x="@((int)(width / 2 - (radius + padding) * Math.Cos(degree)))"
+                          y="@((int)(height - padding - (radius + padding) * Math.Sin(degree)))"
+                          fill ="@breakpoint.Color">
+                        @breakpoint.Value
+                    </text>
+                </text>
+                start_degree = degree;
+            }            
+        }
+        else
+        {
+            int tx = 0;
+            foreach (double tick in Model.Axis.Ticks(5))
+            {
+                double rot = Math.PI * (tick - Model.Axis.Min) / Model.Axis.Size;
+                int radius = this.radius + padding / 2 + padding / 50;
+
+                if (tx % 5 == 0)
+                {
+                    <line stroke="@KnownColor.Black"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          x1="@((int)(width / 2 - radius * Math.Cos(rot)))"
+                          x2="@((int)(width / 2 - (radius + padding / 5) * Math.Cos(rot)))"
+                          y1="@((int)(height - padding - radius * Math.Sin(rot)))"
+                          y2="@((int)(height - padding - (radius + padding / 5) * Math.Sin(rot)))" />
+                    <text>
+                        <text x="@((int)(width / 2 - (radius + padding / 2) * Math.Cos(rot)))"
+                              y="@((int)(height - padding - (radius + padding / 2) * Math.Sin(rot)))">
+                            @tick
+                        </text>
+                    </text>
+                }
+                else
+                {
+                    <line stroke="@KnownColor.Gray"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          x1="@((int)(width / 2 - radius * Math.Cos(rot)))"
+                          x2="@((int)(width / 2 - (radius + padding / 10) * Math.Cos(rot)))"
+                          y1="@((int)(height - padding - radius * Math.Sin(rot)))"
+                          y2="@((int)(height - padding - (radius + padding / 10) * Math.Sin(rot)))" />
+                }
+                tx++;
+            }
+        }
+    }
+</svg>

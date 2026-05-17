@@ -3,7 +3,7 @@
     {
         <rect x="@offsetH"
               y="@padding"
-              rx="@(height / 4 - padding / 2)"
+              rx="@(padding / 10)"
               width="@(width - 2 * padding)"
               height="@(height - 2 * padding)"
               fill="@KnownColor.WhiteSmoke"
@@ -18,7 +18,7 @@
     {
         <rect x="@offsetH"
               y="@padding"
-              rx="@(height / 4 - padding / 2)"
+              rx="@(padding / 10)"
               width="@(width - 2 * padding)"
               height="@(height - 2 * padding)"
               fill="@KnownColor.WhiteSmoke"
@@ -30,7 +30,7 @@
         {
             <rect x="@offsetH"
                   y="@padding"
-                  rx="@(height / 4 - padding / 2)"
+                  rx="@(padding / 10)"
                   width="@((int)((Model.Value - Model.Axis.Min) * scaleH))"
                   height="@(height - 2 * padding)"
                   fill="@ProgressBarColor()"
@@ -42,59 +42,64 @@
             </rect>
         }
 
-        double start_value = Model.Axis.Min;
-        foreach (Breakpoint breakpoint in Model)
+        if (Model.HasBreakPoints)
         {
-            <line x1="@((int)(offsetH + (start_value - Model.Axis.Min) * scaleH) + 5)"
-                  y1="@(4 * padding / 5)"
-                  x2="@((int)(offsetH + (breakpoint.Value - Model.Axis.Min) * scaleH) - 5)"
-                  y2="@(4 * padding / 5)"
-                  stroke="@breakpoint.Color"
-                  stroke-width="0.5em"
-                  stroke-dasharray="2em"
-                  stroke-linecap="round">
-                <title>@breakpoint.Label</title>
-              </line>
-            <text>
-                <text x="@((int)(offsetH + (breakpoint.Value - Model.Axis.Min) * scaleH))"
-                      y="@(padding / 2)"
-                      fill="@breakpoint.Color">
-                    @breakpoint.Value
-                </text>
-            </text>
-            start_value = breakpoint.Value;
-        }
-
-        int tx = 0;
-        foreach (double tick in Model.Axis.Ticks(5))
-        {
-            if (tx % 5 == 0)
+            double start_value = Model.Axis.Min;
+            foreach (Breakpoint breakpoint in Model)
             {
-                <line stroke="@KnownColor.Black"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      x1="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
-                      x2="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                <line x1="@((int)(offsetH + (start_value - Model.Axis.Min) * scaleH) + 5)"
                       y1="@(offsetV + padding / 5)"
-                      y2="@(offsetV + padding / 50)" />
+                      x2="@((int)(offsetH + (breakpoint.Value - Model.Axis.Min) * scaleH) - 5)"
+                      y2="@(offsetV + padding / 5)"
+                      stroke="@breakpoint.Color"
+                      stroke-width="0.5em"
+                      stroke-dasharray="2em"
+                      stroke-linecap="round">
+                    <title>@breakpoint.Label</title>
+                  </line>
                 <text>
-                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.Axis.Min) / Model.Axis.Size))"
-                          y="@(offsetV + padding / 2)">
-                        @tick
+                    <text x="@((int)(offsetH + (breakpoint.Value - Model.Axis.Min) * scaleH))"
+                          y="@(offsetV + padding / 2)"
+                          fill="@breakpoint.Color">
+                        @breakpoint.Value
                     </text>
                 </text>
+                start_value = breakpoint.Value;
             }
-            else
+        }
+        else
+        {
+            int tx = 0;
+            foreach (double tick in Model.Axis.Ticks(5))
             {
-                <line stroke="@KnownColor.Gray"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      x1="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
-                      x2="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
-                      y1="@(offsetV + padding / 10)"
-                      y2="@(offsetV + padding / 50)" />
+                if (tx % 5 == 0)
+                {
+                    <line stroke="@KnownColor.Black"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          x1="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                          x2="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                          y1="@(offsetV + padding / 5)"
+                          y2="@(offsetV + padding / 50)" />
+                    <text>
+                        <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.Axis.Min) / Model.Axis.Size))"
+                              y="@(offsetV + padding / 2)">
+                            @tick
+                        </text>
+                    </text>
+                }
+                else
+                {
+                    <line stroke="@KnownColor.Gray"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          x1="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                          x2="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                          y1="@(offsetV + padding / 10)"
+                          y2="@(offsetV + padding / 50)" />
+                }
+                tx++;
             }
-            tx++;
         }
     }
 </svg>

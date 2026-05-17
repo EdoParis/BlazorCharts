@@ -15,6 +15,17 @@ path {
         fill-opacity: 1.0;
     }
 
+rect {
+    cursor: pointer;
+    stroke-width: 1px;
+    vector-effect: non-scaling-stroke;
+    transition-duration: 0.25s;
+}
+
+    rect:hover {
+        fill-opacity: 1.0;
+    }
+
 circle {
     cursor: pointer;
     stroke-width: 1px; 

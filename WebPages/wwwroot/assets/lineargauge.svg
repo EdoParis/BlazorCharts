@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../css/charts.css"?>
+<svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+	<rect x="100" 
+		  y="100" 
+		  rx="25" 
+		  width="800" 
+		  height="100" 
+		  fill="WhiteSmoke" 
+		  stroke="White">		
+	</rect>
+	<rect x="100" 
+		  y="100" 
+		  rx="25" 
+		  width="200"
+		  height="100" 
+		  fill="Navy" 
+		  stroke="White" 
+		  fill-opacity="0.6">
+		<title>value: 125</title>
+	</rect>
+	<line stroke="Black" x1="100" x2="100" y1="220" y2="202"></line>
+	<text x="100" y="250">0</text>
+	<line stroke="Gray" x1="132" x2="132" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="164" x2="164" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="196" x2="196" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="228" x2="228" y1="210" y2="202"></line>
+	<line stroke="Black" x1="260" x2="260" y1="220" y2="202"></line>
+	<text x="260" y="250">100</text>
+	<line stroke="Gray" x1="292" x2="292" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="324" x2="324" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="356" x2="356" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="388" x2="388" y1="210" y2="202"></line>
+	<line stroke="Black" x1="420" x2="420" y1="220" y2="202"></line>
+	<text x="420" y="250">200</text>
+	<line stroke="Gray" x1="452" x2="452" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="484" x2="484" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="516" x2="516" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="548" x2="548" y1="210" y2="202"></line>
+	<line stroke="Black" x1="580" x2="580" y1="220" y2="202"></line>
+	<text x="580" y="250">300</text>
+	<line stroke="Gray" x1="612" x2="612" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="644" x2="644" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="676" x2="676" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="708" x2="708" y1="210" y2="202"></line>
+	<line stroke="Black" x1="740" x2="740" y1="220" y2="202"></line>
+	<text x="740" y="250">400</text>
+	<line stroke="Gray" x1="772" x2="772" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="804" x2="804" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="836" x2="836" y1="210" y2="202"></line>
+	<line stroke="Gray" x1="868" x2="868" y1="210" y2="202"></line>
+	<line stroke="Black" x1="900" x2="900" y1="220" y2="202"></line>
+	<text x="900" y="250">500</text>
+</svg>

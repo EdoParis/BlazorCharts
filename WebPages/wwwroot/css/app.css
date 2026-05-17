@@ -14,6 +14,13 @@ main {
 .chart{
     height: 15rem;
     width: 15rem;
+    max-width: 100%;
+}
+
+.gauge {
+    height: 10rem;
+    width: 30rem;
+    max-width: 100%;
 }
 
 .fit-content{

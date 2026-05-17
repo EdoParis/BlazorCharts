@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../css/charts.css"?>
-<svg viewBox="-50 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="-25 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
 	<path fill="MediumPurple" stroke="MediumPurple" d="M 138 900v -800 h 38 v 800 h -38 Z">
 		<title>value: 93</title>
 	</path>

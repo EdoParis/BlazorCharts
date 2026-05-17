@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../css/charts.css"?>
-<svg viewBox="-50 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="-25 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
 	<line stroke="Black" x1="100" x2="100" y1="100" y2="900"></line>
 	<line stroke="Black" x1="100" x2="900" y1="900" y2="900"></line>
 	<text x="500" y="975">X1</text>

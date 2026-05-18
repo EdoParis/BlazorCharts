@@ -1,6 +1,14 @@
 ﻿<svg viewBox="@(-padding / 4) 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
     @if (Model is null || Model.IsEmpty)
     {
+        <rect x="@offsetH"
+              y="@padding"
+              width="@(width - 2 * padding)"
+              height="@(height - 2 * padding)"
+              fill="@KnownColor.WhiteSmoke"
+              stroke="@KnownColor.White"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke" />
         <text>
             <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
         </text>

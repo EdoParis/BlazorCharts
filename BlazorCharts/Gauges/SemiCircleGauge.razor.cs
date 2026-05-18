@@ -36,5 +36,36 @@ namespace BlazorGraphs.Gauges
             return $"M {startpoint_x} {startpoint_y} " +
                    $"A {radius} {radius} 0 0 1 {endpoint_x} {endpoint_y}";
         }
+
+        private string BarPath(double degree)
+        {
+            double r_out = radius + 3 * padding / 5;
+            double r_in = radius - 3 * padding / 5;
+
+            Point P1 = new Point()
+            {
+                X = (int)(width / 2 - r_out * Math.Cos(degree) - padding / 10 * Math.Sin(degree)),
+                Y = (int)(height - padding - r_out * Math.Sin(degree) + padding / 10 * Math.Cos(degree))
+            };
+            Point P2 = new Point()
+            {
+                X = (int)(width / 2 - r_in * Math.Cos(degree) - padding / 10 * Math.Sin(degree)),
+                Y = (int)(height - padding - r_in * Math.Sin(degree) + padding / 10 * Math.Cos(degree))
+            };
+            Point P3 = new Point()
+            {
+                X = (int)(width / 2 - r_in * Math.Cos(degree) + padding / 10 * Math.Sin(degree)),
+                Y = (int)(height - padding - r_in * Math.Sin(degree) - padding / 10 * Math.Cos(degree))
+            };
+            Point P4 = new Point()
+            {
+                X = (int)(width / 2 - r_out * Math.Cos(degree) + padding / 10 * Math.Sin(degree)),
+                Y = (int)(height - padding - r_out * Math.Sin(degree) - padding / 10 * Math.Cos(degree))
+            };
+            return $"M {P1.X} {P1.Y}" +
+                   $"L {P2.X} {P2.Y}" +
+                   $"L {P3.X} {P3.Y}" +
+                   $"L {P4.X} {P4.Y} Z";
+        }
     }
 }

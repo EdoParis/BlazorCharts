@@ -14,6 +14,7 @@ namespace DemoApp.Pages
         private Polargram polargram;
         private Radargram radargram;
         private Gaugegram gaugegram;
+        private Gaugegram gaugegram2;
         private List<String> events;
 
         protected override void OnInitialized()
@@ -26,7 +27,9 @@ namespace DemoApp.Pages
             polargram = new Polargram("R1");
             radargram = new Radargram("R2", KnownColor.MediumVioletRed);
             gaugegram = new Gaugegram(0, 500, "G1", KnownColor.Navy);
-            gaugegram.Value = 90;
+            gaugegram2 = new Gaugegram(700, 1000, "G2", KnownColor.RoyalBlue);
+            gaugegram.Value = 175;
+            gaugegram2.Value = 800;
 
             for (int i=0; i<10; i++)
             {
@@ -83,13 +86,13 @@ namespace DemoApp.Pages
 
             gaugegram.AddBreakpoint(new Breakpoint()
             {
-                Value = 100,
+                Value = 150,
                 Color = KnownColor.Green,
                 Label = "LV-1"
             });
             gaugegram.AddBreakpoint(new Breakpoint()
             {
-                Value = 200,
+                Value = 250,
                 Color = KnownColor.Gold,
                 Label = "LV-2"
             });

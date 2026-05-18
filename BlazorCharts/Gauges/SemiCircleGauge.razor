@@ -5,18 +5,33 @@
               fill="none"
               stroke="@KnownColor.WhiteSmoke"
               stroke-width="@padding" />
+        <path d="@ArcPath(radius + padding / 2, 0, Math.PI)"
+              fill="none"
+              stroke="@KnownColor.Black"
+              stroke-width="1px" />
         <text>
-            <text x="@(width / 2)" y="@(height / 4)">NO DATA</text>
+            <text x="@(width / 2)" y="@(height / 3)">NO DATA</text>
         </text>
     }
     else
     {
-        <path d="@ArcPath(radius, 0, Math.PI)"
-              fill="none"
-              stroke="@KnownColor.WhiteSmoke"
-              stroke-width="@padding" />
-
-        @if (Model.Axis.Contains(Model.Value))
+        if (Model.HasBreakPoints)
+        {
+            double start_degree = 0;
+            foreach (Breakpoint breakpoint in Model)
+            {
+                double degree = Math.PI * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
+                <path d="@ArcPath(radius, start_degree, degree)"
+                      fill="none"
+                      stroke="@breakpoint.Color"
+                      stroke-width="@padding"
+                      stroke-opacity="0.6">
+                    <title>@breakpoint.Label</title>
+                </path>
+                start_degree = degree;
+            }            
+        }
+        else if (Model.Axis.Contains(Model.Value))
         {
             double degree = Math.PI * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
 
@@ -28,66 +43,56 @@
                 <title>@($"value: {Model.Value.ToString("0.##")}")</title>
             </path>
         }
-
-        if (Model.HasBreakPoints)
+        int tx = 0;
+        foreach (double tick in Model.Axis.Ticks(5))
         {
-            double start_degree = 0;
-            foreach (Breakpoint breakpoint in Model)
+            double rot = Math.PI * (tick - Model.Axis.Min) / Model.Axis.Size;
+            int radius = this.radius + padding / 2;
+
+            if (tx % 5 == 0)
             {
-                double degree = Math.PI * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
-                <path d="@ArcPath(radius + 3 * padding / 4, start_degree, degree)"
-                      fill="none"
-                      stroke="@breakpoint.Color"
-                      stroke-width="2px"
-                      stroke-dasharray="10px">
-                    <title>@breakpoint.Label</title>
-                </path>
+                <line stroke="@KnownColor.Black"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      x1="@((int)(width / 2 - radius * Math.Cos(rot)))"
+                      x2="@((int)(width / 2 - (radius + padding / 5) * Math.Cos(rot)))"
+                      y1="@((int)(height - padding - radius * Math.Sin(rot)))"
+                      y2="@((int)(height - padding - (radius + padding / 5) * Math.Sin(rot)))" />
                 <text>
-                    <text x="@((int)(width / 2 - (radius + padding) * Math.Cos(degree)))"
-                          y="@((int)(height - padding - (radius + padding) * Math.Sin(degree)))"
-                          fill ="@breakpoint.Color">
-                        @breakpoint.Value
+                    <text x="@((int)(width / 2 - (radius + padding / 2) * Math.Cos(rot)))"
+                          y="@((int)(height - padding - (radius + padding / 2) * Math.Sin(rot)))">
+                          @tick
                     </text>
                 </text>
-                start_degree = degree;
-            }            
-        }
-        else
-        {
-            int tx = 0;
-            foreach (double tick in Model.Axis.Ticks(5))
-            {
-                double rot = Math.PI * (tick - Model.Axis.Min) / Model.Axis.Size;
-                int radius = this.radius + padding / 2 + padding / 50;
-
-                if (tx % 5 == 0)
-                {
-                    <line stroke="@KnownColor.Black"
-                          stroke-width="1px"
-                          vector-effect="non-scaling-stroke"
-                          x1="@((int)(width / 2 - radius * Math.Cos(rot)))"
-                          x2="@((int)(width / 2 - (radius + padding / 5) * Math.Cos(rot)))"
-                          y1="@((int)(height - padding - radius * Math.Sin(rot)))"
-                          y2="@((int)(height - padding - (radius + padding / 5) * Math.Sin(rot)))" />
-                    <text>
-                        <text x="@((int)(width / 2 - (radius + padding / 2) * Math.Cos(rot)))"
-                              y="@((int)(height - padding - (radius + padding / 2) * Math.Sin(rot)))">
-                            @tick
-                        </text>
-                    </text>
-                }
-                else
-                {
-                    <line stroke="@KnownColor.Gray"
-                          stroke-width="1px"
-                          vector-effect="non-scaling-stroke"
-                          x1="@((int)(width / 2 - radius * Math.Cos(rot)))"
-                          x2="@((int)(width / 2 - (radius + padding / 10) * Math.Cos(rot)))"
-                          y1="@((int)(height - padding - radius * Math.Sin(rot)))"
-                          y2="@((int)(height - padding - (radius + padding / 10) * Math.Sin(rot)))" />
-                }
-                tx++;
             }
+            else
+            {
+                <line stroke="@KnownColor.Black"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      x1="@((int)(width / 2 - radius * Math.Cos(rot)))"
+                      x2="@((int)(width / 2 - (radius + padding / 10) * Math.Cos(rot)))"
+                      y1="@((int)(height - padding - radius * Math.Sin(rot)))"
+                      y2="@((int)(height - padding - (radius + padding / 10) * Math.Sin(rot)))" />
+            }
+            tx++;
+        }
+        <path d="@ArcPath(radius + padding / 2, 0, Math.PI)"
+              fill="none"
+              stroke="@KnownColor.Black"
+              stroke-width="2px" />
+
+        if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
+        {
+            double rot = Math.PI * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
+            <path d="@BarPath(rot)"
+                  fill="@KnownColor.GhostWhite"
+                  stroke="@KnownColor.Black"
+                  stroke-width="1px"
+                  fill-opacity="1.0"
+                  vector-effect="non-scaling-stroke">
+                <title>@($"value: {Model.Value.ToString("0.##")}")</title>
+            </path>
         }
     }
 </svg>

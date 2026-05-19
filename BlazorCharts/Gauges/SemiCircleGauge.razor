@@ -8,7 +8,8 @@
         <path d="@ArcPath(radius + padding / 2, 0, Math.PI)"
               fill="none"
               stroke="@KnownColor.Black"
-              stroke-width="1px" />
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"/>
         <text>
             <text x="@(width / 2)" y="@(height / 3)">NO DATA</text>
         </text>
@@ -80,7 +81,8 @@
         <path d="@ArcPath(radius + padding / 2, 0, Math.PI)"
               fill="none"
               stroke="@KnownColor.Black"
-              stroke-width="2px" />
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke" />
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {

@@ -1,0 +1,68 @@
+﻿line, polygon {
+    stroke-width: 1px;
+    vector-effect: non-scaling-stroke;
+}
+
+path {
+    cursor: pointer;
+    transition-duration: 0.25s;
+}
+
+    path:hover {
+        fill-opacity: 1.0;
+        stroke-opacity: 1.0;
+    }
+
+rect {
+    cursor: pointer;
+    stroke-width: 1px;
+    vector-effect: non-scaling-stroke;
+    transition-duration: 0.25s;
+}
+
+    rect:hover {
+        fill-opacity: 1.0;
+    }
+
+circle {
+    cursor: pointer;
+    stroke-width: 1px;
+    vector-effect: non-scaling-stroke;
+    transition-duration: 0.25s;
+}
+
+    circle:hover {
+        r: 1em;
+    }
+
+text {
+    font-size: 2.0rem;
+    text-anchor: middle;
+    pointer-events: none;
+    dominant-baseline: middle;
+}
+
+    text.anchor-start {
+        text-anchor: start;
+    }
+
+    text.anchor-end {
+        text-anchor: end;
+    }
+
+    text.rotated90 {
+        transform: rotate(-90deg);
+        transform-box: fill-box;
+    }
+
+    text.rotated45 {
+        transform: rotate(-45deg);
+        transform-box: fill-box;
+    }
+
+svg {
+    width: auto;
+    margin: auto;
+    display: block;
+    font-family: monospace;
+}

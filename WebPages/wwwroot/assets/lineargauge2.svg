@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../css/gauges.css"?>
 <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
-	<rect x="100" y="100" width="280" height="100" fill="RoyalBlue" stroke="White" fill-opacity="0.6">
-		<title>value: 175</title>
+	<rect x="100" y="100" width="240" height="100" fill="Green" fill-opacity="0.6">
+		<title>LV-1</title>
+	</rect>
+	<rect x="340" y="100" width="160" height="100" fill="Gold" fill-opacity="0.6">
+		<title>LV-2</title>
+	</rect><rect x="500" y="100" width="400" height="100" fill="Red" fill-opacity="0.6">
+		<title>LV-3</title>
 	</rect>
 	<line stroke="Black" x1="100" x2="100" y1="220" y2="200"></line>
 	<text x="100" y="250">0</text>
@@ -37,4 +42,7 @@
 	<line stroke="Black" x1="900" x2="900" y1="220" y2="200"></line>
 	<text x="900" y="250">500</text>
 	<line stroke="Black" x1="100" x2="900" y1="200" y2="200"></line>
+	<rect x="370" y="90" width="20" height="120" fill="GhostWhite" stroke="Black" stroke-width="1px" fill-opacity="1.0">
+		<title>value: 175</title>
+	</rect>
 </svg>

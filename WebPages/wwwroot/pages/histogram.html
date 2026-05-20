@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>BlazorGraphs</title>
+    <link rel="icon" type="image/png" href="../assets/icon.png">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/charts.css">
+    <link rel="stylesheet" href="../css/prism.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body class="container-fluid vh-100">
@@ -68,6 +70,37 @@
                     </div>
                 </div>
             </div>
+            <p>
+                <div class="card">
+                    <div class="card-header">Code example</div>
+                    <div class="card-body p-0">
+                        <pre class="language-csharp m-0">
+                            <code>
+&lt<span class="token tag bold">HistChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@hist_model<span class="token string">"</span> <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
+
+@{
+    <span class="token keyword">private</span> <span class="token property">Histogram</span> hist_model = <span class="token keyword">new</span> <span class="token class-name">Histogram</span>(<span class="token string">"Asse-X"</span>, <span class="token string">"Asse-Y"</span>, <span class="token class-name">KnownColor</span>.LightSteelBlue);
+
+    <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+    {
+        hist_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bin</span>()
+        {
+            Min = i,
+            Max = i + 1,
+            Value = 10 + 3 * i
+        });
+    }
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnClickHandler</span>(<span class="token class-name">Bin</span> bin)
+    {
+        <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked bin with value:</span> {bin.Value}<span class="token string">"</span>);
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </p>
         </div>
     </main>
 </body>

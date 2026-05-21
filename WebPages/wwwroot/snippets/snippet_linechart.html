@@ -1,0 +1,21 @@
+﻿<pre class="language-csharp m-0">
+<code>
+&lt<span class="token tag bold">LineChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@linechart_model<span class="token string">"</span>/&gt
+
+@{
+    <span class="token keyword">private</span> <span class="token property">Linegram</span> linechart_model = <span class="token keyword">new</span> <span class="token class-name">Linegram</span>(<span class="token string">"Asse-X"</span>, <span class="token string">"Asse-Y"</span>);
+
+    <span class="token class-name">List</span>&lt<span class="token class-name">PointF</span>&gt points1 = <span class="token keyword">new</span>();
+    <span class="token class-name">List</span>&lt<span class="token class-name">PointF</span>&gt points2 = <span class="token keyword">new</span>();
+
+    <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+    {
+        points1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">PointF</span>(i, i));
+        points2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">PointF</span>(i, 2 * i));
+    }
+
+    linechart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Line</span>(<span class="token string">"Line1"</span>, <span class="token class-name">KnownColor</span>.Red, points1));
+    linechart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Line</span>(<span class="token string">"Line2"</span>, <span class="token class-name">KnownColor</span>.Blue, points2, <span class="token class-name">DrawMode</span>.Drawpoints | <span class="token class-name">DrawMode</span>.Drawline));
+}
+</code>
+</pre>

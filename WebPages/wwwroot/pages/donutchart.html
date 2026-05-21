@@ -5,6 +5,7 @@
     <title>BlazorGraphs</title>
     <link rel="icon" type="image/png" href="../assets/icon.png">
     <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/prism.css">
     <link rel="stylesheet" href="../css/charts.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
@@ -61,8 +62,8 @@
                 <span class="position-absolute top-0 badge rounded-pill bg-primary fs-6" title="chart available from 1.3.0">1.3.0</span>
             </h1>
             <p>
-                A donut chart is a visualization representing data in a circular form, with each point represented by a slice. 
-                It looks like a pie chart with one essential difference: the center of the chart has been cut out to look like a donut. 
+                A donut chart is a visualization representing data in a circular form, with each point represented by a slice.
+                It looks like a pie chart with one essential difference: the center of the chart has been cut out to look like a donut.
                 This modification makes the chart more aesthetically pleasing and sweet.
             </p>
             <div class="card m-2 fit-content m-auto mw-100">
@@ -72,7 +73,20 @@
                     </div>
                 </div>
             </div>
+            <p>
+                <div class="card">
+                    <div class="card-header">Code example</div>
+                    <div class="card-body p-1">
+                        <div id="snippet" class="w-100 small"></div>
+                    </div>
+                </div>
+            </p>
         </div>
     </main>
+    <script>
+        fetch("../snippets/snippet_donutchart.html")
+            .then(r => r.text())
+            .then(html => { document.getElementById("snippet").innerHTML = html; });
+    </script>
 </body>
 </html>

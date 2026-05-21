@@ -1,7 +1,7 @@
 ﻿<pre class="language-csharp m-0">
 <code>
 &lt<span class="token tag bold">BarChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@barchart_model<span class="token string">"</span> 
-        <span class="token property bold">Direction</span><span class="token string">="</span><span class="token keyword">Positioning</span>.Vertical<span class="token string">"</span> 
+        <span class="token property bold">Direction</span><span class="token string">="</span><span class="token class-name">Positioning</span>.Vertical<span class="token string">"</span> 
         <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
 
 @{
@@ -11,14 +11,14 @@
     {
         barchart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bar</span>()
         {
-            Label = <span class="token string">$"Bar-</span>{i}<span class="token string">"</span>
+            Label = <span class="token string">$"Bar-</span>{i}<span class="token string">"</span>,
             Value = 93 - i * i
         });
     }
 
     <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnClickHandler</span>(<span class="token class-name">Bar</span> bar)
     {
-        <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked bar with value:</span> {bin.Value}<span class="token string">"</span>);
+        <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked bar with value:</span> {bar.Value}<span class="token string">"</span>);
     }
 }
 </code>

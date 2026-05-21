@@ -5,6 +5,7 @@
     <title>BlazorGraphs</title>
     <link rel="icon" type="image/png" href="../assets/icon.png">
     <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/prism.css">
     <link rel="stylesheet" href="../css/charts.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
@@ -58,7 +59,7 @@
         <div class="col bg-light p-3 h-100 overflow-auto">
             <h1>Piechart</h1>
             <p>
-                A pie chart is a circular statistical graphic which is divided into slices to illustrate numerical proportion. 
+                A pie chart is a circular statistical graphic which is divided into slices to illustrate numerical proportion.
                 In a pie chart, the arc length of each slice (and consequently its central angle and area) is proportional to the quantity it represents.
             </p>
             <div class="card m-2 fit-content m-auto mw-100">
@@ -68,7 +69,20 @@
                     </div>
                 </div>
             </div>
+            <p>
+                <div class="card">
+                    <div class="card-header">Code example</div>
+                    <div class="card-body p-1">
+                        <div id="snippet" class="w-100 small"></div>
+                    </div>
+                </div>
+            </p>
         </div>
     </main>
+    <script>
+        fetch("../snippets/snippet_piechart.html")
+            .then(r => r.text())
+            .then(html => { document.getElementById("snippet").innerHTML = html; });
+    </script>
 </body>
 </html>

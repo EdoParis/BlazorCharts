@@ -1,0 +1,19 @@
+﻿<pre class="language-csharp m-0">
+<code>
+&lt<span class="token tag bold">PieChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@piechart_model<span class="token string">"</span> 
+        <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
+
+@{
+    <span class="token keyword">private</span> <span class="token property">Piegram</span> piechart_model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();
+
+    piechart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">$"Slice-</span>{i}<span class="token string">"</span>, 10, <span class="token class-name">KnownColor</span>.Red);
+    piechart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">$"Slice-</span>{i}<span class="token string">"</span>, 20, <span class="token class-name">KnownColor</span>.Orange);
+    piechart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">$"Slice-</span>{i}<span class="token string">"</span>, 30, <span class="token class-name">KnownColor</span>.Green);
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnClickHandler</span>(<span class="token class-name">Slice</span> slice)
+    {
+        <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked slice with value:</span> {slice.Value}<span class="token string">"</span>);
+    }
+}
+</code>
+</pre>

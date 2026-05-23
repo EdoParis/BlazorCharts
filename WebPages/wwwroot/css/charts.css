@@ -26,14 +26,14 @@ rect {
         fill-opacity: 1.0;
     }
 
-circle {
+circle.point {
     cursor: pointer;
     stroke-width: 1px; 
     vector-effect: non-scaling-stroke;
     transition-duration: 0.25s;
 }
 
-    circle:hover {
+    circle.point:hover {
         r: 1em;
     }
 
@@ -64,7 +64,5 @@ text {
 
 svg {
     width: auto;
-    margin: auto;
-    display: block;
     font-family: monospace;
 }

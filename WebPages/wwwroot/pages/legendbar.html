@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BlazorGraphs</title>
+    <link rel="icon" type="image/png" href="../assets/icon.png">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/charts.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body class="container-fluid vh-100">
+    <header class="row p-2 border-bottom align-items-center">
+        <img class="col-auto h-100 p-2" src="../assets/icon.png" />
+        <h2 class="col m-0">BlazorGraphs</h2>
+        <div class="col-auto card shadow-sm mx-2" title="latest version">
+            <div class="card-body p-0">2.1.0</div>
+        </div>
+    </header>
+    <main class="row">
+        <aside class="col-auto p-0 h-100 border-end overflow-auto">
+            <ul class="list-group list-group-flush border-bottom">
+                <a class="list-group-item list-group-item-action" href="../index.html">Home page</a>
+                <li class="list-group-item list-group-item-action active">Legend</li>
+                <li class="list-group-item list-group-item-action p-0">
+                    <details>
+                        <summary class="py-2 px-3">Charts</summary>
+                        <ul class="list-group list-group-flush border-top">
+                            <a class="list-group-item list-group-item-action" href="histogram.html">Histogram</a>
+                            <a class="list-group-item list-group-item-action" href="barchart.html">Barchart</a>
+                            <a class="list-group-item list-group-item-action" href="linechart.html">Linechart</a>
+                            <a class="list-group-item list-group-item-action" href="radarchart.html">Radarchart</a>
+                            <a class="list-group-item list-group-item-action" href="polarchart.html">Polarchart</a>
+                            <a class="list-group-item list-group-item-action" href="piechart.html">Piechart</a>
+                            <a class="list-group-item list-group-item-action" href="donutchart.html">Donutchart</a>
+                        </ul>
+                    </details>
+                </li>
+                <li class="list-group-item list-group-item-action p-0">
+                    <details>
+                        <summary class="py-2 px-3">Gauges</summary>
+                        <ul class="list-group list-group-flush border-top">
+                            <a class="list-group-item list-group-item-action" href="lineargauge.html">
+                                <div class="d-flex justify-content-between">
+                                    Linear
+                                    <span class="badge rounded-pill bg-warning p-2 my-auto me-0"><span></span></span>
+                                </div>
+                            </a>
+                            <a class="list-group-item list-group-item-action" href="semicirclegauge.html">
+                                <div class="d-flex justify-content-between">
+                                    Semicircle
+                                    <span class="badge rounded-pill bg-warning p-2 my-auto me-0"><span></span></span>
+                                </div>
+                            </a>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </aside>
+        <div class="col bg-light p-3 h-100 overflow-auto">
+            <h1>LegendBar</h1>
+            <p>
+                The legend displays descriptive information about the data that are appearing on the chart.
+                Add the component to the page and assign to it the data model of the chart of you interest.
+            </p>
+            <div class="m-2">
+                <div class="card fit-content mw-100 m-auto">
+                    <div class="card-body">
+                        <h6>Legend horizontal</h6>
+                        <div class="d-flex flex-wrap align-items-center justify-content-center">
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="Purple"></circle></svg>
+                                <div class="text-truncate">Slice-1</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="OrangeRed"></circle></svg>
+                                <div class="text-truncate">Slice-2</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="Gold"></circle></svg>
+                                <div class="text-truncate">Slice-3</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="Aqua"></circle></svg>
+                                <div class="text-truncate">Slice-4</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="DodgerBlue"></circle></svg>
+                                <div class="text-truncate">Slice-5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="card m-2 fit-content mw-100">
+                    <div class="card-body">
+                        <h6>Example chart</h6>
+                        <div class="chart">
+                            <object data="../assets/piechart.svg" type="image/svg+xml"></object>
+                        </div>
+                    </div>
+                </div>
+                <div class="card m-2 fit-content mw-100">
+                    <div class="card-body">
+                        <h6>Legend vertical</h6>
+                        <div class="m-auto">
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="Purple"></circle></svg>
+                                <div class="text-truncate">Slice-1</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="OrangeRed"></circle></svg>
+                                <div class="text-truncate">Slice-2</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="Gold"></circle></svg>
+                                <div class="text-truncate">Slice-3</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="Aqua"></circle></svg>
+                                <div class="text-truncate">Slice-4</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3 me-3">
+                                <svg width="1.5em" height="1em"><circle cx="0.5em" cy="0.5em" r="0.5em" fill="DodgerBlue"></circle></svg>
+                                <div class="text-truncate">Slice-5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

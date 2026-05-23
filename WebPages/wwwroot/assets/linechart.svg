@@ -65,127 +65,127 @@
 	<path fill="none" stroke="OrangeRed" stroke-width="0.5em" d="M 100 894 L 142 887 L 184 876 L 226 863 L 268 846 L 310 826 L 352 804 L 394 778 L 436 749 L 478 718 L 521 683 L 563 645 L 605 604 L 647 560 L 689 513 L 731 463 L 773 411 L 815 355 L 857 296 L 900 234 ">
 		<title>F2</title>
 	</path>
-	<circle fill="CadetBlue" stroke="White" cx="100" cy="887" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="100" cy="887" r="0.5em">
 		<title>(0, 9)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="142" cy="876" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="142" cy="876" r="0.5em">
 		<title>(1, 16)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="184" cy="863" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="184" cy="863" r="0.5em">
 		<title>(2, 25)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="226" cy="846" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="226" cy="846" r="0.5em">
 		<title>(3, 36)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="268" cy="826" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="268" cy="826" r="0.5em">
 		<title>(4, 49)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="310" cy="804" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="310" cy="804" r="0.5em">
 		<title>(5, 64)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="352" cy="778" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="352" cy="778" r="0.5em">
 		<title>(6, 81)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="394" cy="749" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="394" cy="749" r="0.5em">
 		<title>(7, 100)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="436" cy="718" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="436" cy="718" r="0.5em">
 		<title>(8, 121)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="478" cy="683" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="478" cy="683" r="0.5em">
 		<title>(9, 144)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="521" cy="645" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="521" cy="645" r="0.5em">
 		<title>(10, 169)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="563" cy="604" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="563" cy="604" r="0.5em">
 		<title>(11, 196)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="605" cy="560" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="605" cy="560" r="0.5em">
 		<title>(12, 225)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="647" cy="513" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="647" cy="513" r="0.5em">
 		<title>(13, 256)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="689" cy="463" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="689" cy="463" r="0.5em">
 		<title>(14, 289)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="731" cy="411" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="731" cy="411" r="0.5em">
 		<title>(15, 324)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="773" cy="355" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="773" cy="355" r="0.5em">
 		<title>(16, 361)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="815" cy="296" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="815" cy="296" r="0.5em">
 		<title>(17, 400)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="857" cy="234" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="857" cy="234" r="0.5em">
 		<title>(18, 441)</title>
 	</circle>
-	<circle fill="CadetBlue" stroke="White" cx="900" cy="169" r="0.5em">
+	<circle class="point" fill="CadetBlue" stroke="White" cx="900" cy="169" r="0.5em">
 		<title>(19, 484)</title>
 	</circle>
 	<path fill="none" stroke="DodgerBlue" stroke-width="0.5em" d="M 100 876 L 142 863 L 184 846 L 226 826 L 268 804 L 310 778 L 352 749 L 394 718 L 436 683 L 478 645 L 521 604 L 563 560 L 605 513 L 647 463 L 689 411 L 731 355 L 773 296 L 815 234 L 857 169 L 900 100 ">
 		<title>F4</title>
 	</path>
-	<circle fill="DodgerBlue" stroke="White" cx="100" cy="876" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="100" cy="876" r="0.5em">
 		<title>(0, 16)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="142" cy="863" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="142" cy="863" r="0.5em">
 		<title>(1, 25)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="184" cy="846" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="184" cy="846" r="0.5em">
 		<title>(2, 36)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="226" cy="826" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="226" cy="826" r="0.5em">
 		<title>(3, 49)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="268" cy="804" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="268" cy="804" r="0.5em">
 		<title>(4, 64)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="310" cy="778" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="310" cy="778" r="0.5em">
 		<title>(5, 81)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="352" cy="749" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="352" cy="749" r="0.5em">
 		<title>(6, 100)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="394" cy="718" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="394" cy="718" r="0.5em">
 		<title>(7, 121)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="436" cy="683" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="436" cy="683" r="0.5em">
 		<title>(8, 144)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="478" cy="645" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="478" cy="645" r="0.5em">
 		<title>(9, 169)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="521" cy="604" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="521" cy="604" r="0.5em">
 		<title>(10, 196)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="563" cy="560" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="563" cy="560" r="0.5em">
 		<title>(11, 225)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="605" cy="513" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="605" cy="513" r="0.5em">
 		<title>(12, 256)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="647" cy="463" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="647" cy="463" r="0.5em">
 		<title>(13, 289)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="689" cy="411" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="689" cy="411" r="0.5em">
 		<title>(14, 324)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="731" cy="355" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="731" cy="355" r="0.5em">
 		<title>(15, 361)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="773" cy="296" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="773" cy="296" r="0.5em">
 		<title>(16, 400)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="815" cy="234" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="815" cy="234" r="0.5em">
 		<title>(17, 441)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="857" cy="169" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="857" cy="169" r="0.5em">
 		<title>(18, 484)</title>
 	</circle>
-	<circle fill="DodgerBlue" stroke="White" cx="900" cy="100" r="0.5em">
+	<circle class="point" fill="DodgerBlue" stroke="White" cx="900" cy="100" r="0.5em">
 		<title>(19, 529)</title>
 	</circle>
 </svg>

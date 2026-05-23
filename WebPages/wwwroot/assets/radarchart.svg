@@ -25,22 +25,22 @@
 	<text x="500" y="102">175</text>
 	<g>
 		<path fill="MediumVioletRed" stroke="MediumVioletRed" style="fill-opacity:0.3" d="M 500 156 L 755 352 L 677 602 L 500 681 L 263 636 L 401 443 Z"></path>
-		<circle fill="MediumVioletRed" stroke="White" cx="500" cy="156" r="0.5em">
+		<circle class="point" fill="MediumVioletRed" stroke="White" cx="500" cy="156" r="0.5em">
 			<title>151</title>
 		</circle>
-		<circle fill="MediumVioletRed" stroke="White" cx="755" cy="352" r="0.5em">
+		<circle class="point" fill="MediumVioletRed" stroke="White" cx="755" cy="352" r="0.5em">
 			<title>130</title>
 		</circle>
-		<circle fill="MediumVioletRed" stroke="White" cx="677" cy="602" r="0.5em">
+		<circle class="point" fill="MediumVioletRed" stroke="White" cx="677" cy="602" r="0.5em">
 			<title>90</title>
 		</circle>
-		<circle fill="MediumVioletRed" stroke="White" cx="500" cy="681" r="0.5em">
+		<circle class="point" fill="MediumVioletRed" stroke="White" cx="500" cy="681" r="0.5em">
 			<title>80</title>
 		</circle>
-		<circle fill="MediumVioletRed" stroke="White" cx="263" cy="636" r="0.5em">
+		<circle class="point" fill="MediumVioletRed" stroke="White" cx="263" cy="636" r="0.5em">
 			<title>120</title>
 		</circle>
-		<circle fill="MediumVioletRed" stroke="White" cx="401" cy="443" r="0.5em">
+		<circle class="point" fill="MediumVioletRed" stroke="White" cx="401" cy="443" r="0.5em">
 			<title>50</title>
 		</circle>
 	</g>

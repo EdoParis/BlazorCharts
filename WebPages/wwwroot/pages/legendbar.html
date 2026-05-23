@@ -61,7 +61,7 @@
             <h1>LegendBar</h1>
             <p>
                 The legend displays descriptive information about the data that are appearing on the chart.
-                Add the component to the page and assign to it the data model of the chart of you interest.
+                Add the component to the page and assign it the data model of the chart you want.
             </p>
             <div class="m-2">
                 <div class="card fit-content mw-100 m-auto">
@@ -129,7 +129,20 @@
                     </div>
                 </div>
             </div>
+            <p>
+                <div class="card">
+                    <div class="card-header">Code example</div>
+                    <div class="card-body p-1">
+                        <div id="snippet" class="w-100 small"></div>
+                    </div>
+                </div>
+            </p>
         </div>
+        <script>
+            fetch("../snippets/snippet_legendbar.html")
+                .then(r => r.text())
+                .then(html => { document.getElementById("snippet").innerHTML = html; });
+        </script>
     </main>
 </body>
 </html>

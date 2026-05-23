@@ -1,0 +1,14 @@
+﻿<pre class="language-csharp m-0">
+<code>
+&lt<span class="token tag bold">PieChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@piechart_model<span class="token string">"</span>/&gt
+&lt<span class="token tag bold">LegendBar</span> <span class="token property bold">Model</span><span class="token string">="</span>@piechart_model<span class="token string">"</span> <span class="token property bold">Direction</span><span class="token string">="</span><span class="token class-name">Positioning</span>.Horizontal<span class="token string">"</span>/&gt
+
+@{
+    <span class="token keyword">private</span> <span class="token property">Piegram</span> piechart_model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();
+
+    piechart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice1"</span>, 10, <span class="token class-name">KnownColor</span>.Red);
+    piechart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice2"</span>, 20, <span class="token class-name">KnownColor</span>.Orange);
+    piechart_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice3"</span>, 30, <span class="token class-name">KnownColor</span>.Green);
+}
+</code>
+</pre>

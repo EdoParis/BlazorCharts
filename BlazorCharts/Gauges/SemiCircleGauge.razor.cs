@@ -1,5 +1,4 @@
 ﻿using BlazorGraphs.Models;
-using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 using System.Drawing;
 
@@ -15,16 +14,6 @@ namespace BlazorGraphs.Gauges
         private int height = VIEW / 2 + PADDING;
         private int radius = VIEW / 2 - 2 * PADDING;
         private int padding = PADDING;
-
-        private KnownColor ProgressBarColor()
-        {
-            foreach (Breakpoint breakpoint in Model)
-            {
-                if (breakpoint.Value > Model.Value)
-                    return breakpoint.Color;
-            }
-            return Model.Color;
-        }
 
         private string ArcPath(double radius, double start, double end)
         {

@@ -1,7 +1,5 @@
 ﻿using BlazorGraphs.Models;
-using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
-using System.Drawing;
 
 namespace BlazorGraphs.Gauges
 {
@@ -17,15 +15,5 @@ namespace BlazorGraphs.Gauges
         private int offsetH => padding;
         private int offsetV => height - padding;
         private double scaleH => (width - 2 * padding) / Model.Axis.Size;
-
-        private KnownColor ProgressBarColor()
-        {
-            foreach (Breakpoint breakpoint in Model)
-            {
-                if (breakpoint.Value >= Model.Value)
-                    return breakpoint.Color;
-            }
-            return Model.Color;
-        }
     }
 }

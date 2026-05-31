@@ -22,8 +22,8 @@
 
             if (Direction == Positioning.Vertical)
             {
-                <path fill="@Model.Color"
-                      stroke="@Model.Color"
+                <path fill="@Model.Color.ToHex()"
+                      stroke="@Model.Color.ToHex()"
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
@@ -42,8 +42,8 @@
             }
             else if (Direction == Positioning.Horizontal)
             {
-                <path fill="@Model.Color"
-                      stroke="@Model.Color"
+                <path fill="@Model.Color.ToHex()"
+                      stroke="@Model.Color.ToHex()"
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"

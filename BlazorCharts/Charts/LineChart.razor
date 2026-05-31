@@ -112,7 +112,7 @@
             if (line.DrawMode.HasFlag(DrawMode.Drawline))
             {
                 <path fill="none"
-                      stroke="@line.Color"
+                      stroke="@line.Color.ToHex()"
                       stroke-width="0.5em"
                       d="@LinePath(line)"
                       @key="@line">
@@ -124,7 +124,7 @@
             {
                 foreach (PointF point in line.Points)
                 {
-                    <circle fill="@line.Color"
+                    <circle fill="@line.Color.ToHex()"
                             stroke="@KnownColor.White"
                             stroke-width="1px"
                             vector-effect="non-scaling-stroke"

@@ -31,7 +31,7 @@
                       y="@padding"
                       width="@((int)((breakpoint.Value - start_value) * scaleH))"
                       height="@(height - 2 * padding)"
-                      fill="@breakpoint.Color"
+                      fill="@breakpoint.Color.ToHex()"
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke">
@@ -46,7 +46,7 @@
                   y="@padding"
                   width="@((int)((Model.Value - Model.Axis.Min) * scaleH))"
                   height="@(height - 2 * padding)"
-                  fill="@ProgressBarColor()"
+                  fill="@Model.Color.ToHex()"
                   stroke="@KnownColor.White"
                   fill-opacity="0.6"
                   stroke-width="1px"

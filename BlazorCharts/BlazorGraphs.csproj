@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -15,7 +15,10 @@
 	  <RepositoryUrl>https://github.com/EdoParis/BlazorCharts</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
     <Description>Lightweight library to draw .svg charts and gauges for Blazor (No Javascript)</Description>
-    <PackageReleaseNotes>Added gauges components</PackageReleaseNotes>
+    <PackageReleaseNotes>
+		- fix linear gauge
+	    - fix color string 
+	</PackageReleaseNotes>
   </PropertyGroup>
 
 

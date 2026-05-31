@@ -24,7 +24,7 @@
                 double degree = Math.PI * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
                 <path d="@ArcPath(radius, start_degree, degree)"
                       fill="none"
-                      stroke="@breakpoint.Color"
+                      stroke="@breakpoint.Color.ToHex()"
                       stroke-width="@padding"
                       stroke-opacity="0.6">
                     <title>@breakpoint.Label</title>
@@ -38,7 +38,7 @@
 
             <path d="@ArcPath(radius, 0, degree)"
                   fill="none"
-                  stroke="@ProgressBarColor()"
+                  stroke="@Model.Color.ToHex()"
                   stroke-width="@padding"
                   stroke-opacity="0.6">
                 <title>@($"value: {Model.Value.ToString("0.##")}")</title>

@@ -27,7 +27,7 @@
             double start_value = Model.Axis.Min;
             foreach (Breakpoint breakpoint in Model)
             {
-                <rect x="@(offsetH + (start_value - Model.Axis.Min) * scaleH)"
+                <rect x="@((int)(offsetH + (start_value - Model.Axis.Min) * scaleH))"
                       y="@padding"
                       width="@((int)((breakpoint.Value - start_value) * scaleH))"
                       height="@(height - 2 * padding)"
@@ -95,7 +95,7 @@
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {
-            <rect x="@(offsetH + (Model.Value - Model.Axis.Min) * scaleH - padding / 10)"
+            <rect x="@((int)(offsetH + (Model.Value - Model.Axis.Min) * scaleH - padding / 10))"
                   y="@(9 * padding / 10)"
                   width="@(padding / 5)"
                   height="@(height - 9 * padding / 5)"

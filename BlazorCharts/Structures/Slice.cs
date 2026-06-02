@@ -24,7 +24,10 @@ namespace BlazorGraphs.Structures
 
         public bool IsValid()
         {
-            return !(double.IsInfinity(Value) || double.IsNaN(Value) || string.IsNullOrWhiteSpace(Label));
+            return !string.IsNullOrWhiteSpace(Label) && 
+                   !double.IsInfinity(Value) &&
+                   !double.IsNaN(Value) &&
+                   Value > 0;
         }
     }
 }

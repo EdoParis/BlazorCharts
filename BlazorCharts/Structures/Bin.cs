@@ -17,7 +17,11 @@ namespace BlazorGraphs.Structures
 
         public bool IsValid()
         {
-            return Max > Min;
+            return !double.IsInfinity(Max) &&
+                   !double.IsInfinity(Min) &&
+                   !double.IsNaN(Max) &&
+                   !double.IsNaN(Min) &&
+                   Max > Min;
         }
     }
 }

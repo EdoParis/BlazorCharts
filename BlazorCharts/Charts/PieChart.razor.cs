@@ -23,8 +23,8 @@ namespace BlazorGraphs.Charts
             bool is_wide = theta > Math.PI;
 
             return $"M {width / 2} {height / 2} " + 
-                   $"L {(int)(width / 2 + radius * Math.Sin(rotation))} {(int)(height / 2 + radius * Math.Cos(rotation))} " +
-                   $"A {(int)radius} {(int)radius} 0 {(is_wide ? 1 : 0)} 0 {(int)(width / 2 + radius * Math.Sin(theta + rotation))} {(int)(height / 2 + radius * Math.Cos(theta + rotation))} " +
+                   $"L {(int)(width / 2 + radius * Math.Sin(rotation))} {(int)(height / 2 - radius * Math.Cos(rotation))} " +
+                   $"A {(int)radius} {(int)radius} 0 {(is_wide ? 1 : 0)} 1 {(int)(width / 2 + radius * Math.Sin(theta + rotation))} {(int)(height / 2 - radius * Math.Cos(theta + rotation))} " +
                    "Z";
         }
 
@@ -36,7 +36,7 @@ namespace BlazorGraphs.Charts
             return new Point()
             {
                 X = (int)(width / 2 + radius * Math.Sin(theta + rotation)),
-                Y = (int)(height / 2 + radius * Math.Cos(theta + rotation))
+                Y = (int)(height / 2 - radius * Math.Cos(theta + rotation))
             };
         }
 
@@ -48,7 +48,7 @@ namespace BlazorGraphs.Charts
             return new Point()
             {
                 X = (int)(width / 2 + radius * Math.Sin(theta + rotation)),
-                Y = (int)(height / 2 + radius * Math.Cos(theta + rotation))
+                Y = (int)(height / 2 - radius * Math.Cos(theta + rotation))
             };
         }
     }

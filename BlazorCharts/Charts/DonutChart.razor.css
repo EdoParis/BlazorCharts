@@ -12,4 +12,5 @@ path {
 
     path:hover {
         scale: 105%;
+        fill-opacity: 1.0;
     }

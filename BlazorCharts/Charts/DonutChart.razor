@@ -27,8 +27,6 @@
     }
     else
     {
-        double progress = 0;
-
         <text>
             <text>
                 <tspan x="@(width / 2)" y="@(height / 2)">TOTAL</tspan>
@@ -36,6 +34,7 @@
             </text>
         </text>
 
+        double progress = 0;
         foreach (Slice slice in Model)
         {
             if (slice.Value != 0)
@@ -48,21 +47,19 @@
                       d="@SlicePath(slice, 2 * Math.PI * progress)"
                       @key="@slice"
                       @onclick="async () => await OnClick.InvokeAsync(slice)">
-                    <title>@($"{(string.IsNullOrEmpty(slice.Label) ? "value" : slice.Label)}: {slice.Value}")</title>
+                    <title>@slice.Label</title>
                 </path>
 
-                if (!string.IsNullOrEmpty(slice.Label))
-                {
-                    Point text_position = 10 * slice.Value > Model.Total ? SliceMidPoint(slice, 2 * Math.PI * progress) : SliceExternalPoint(slice, 2 * Math.PI * progress);
-
-                    <text>
-                        <text class="tick" 
-                              x="@text_position.X" 
-                              y="@text_position.Y">
-                              @slice.Label
-                        </text>
+                Point text_position = 10 * slice.Value > Model.Total ? 
+                                      SliceMidPoint(slice, 2 * Math.PI * progress) : 
+                                      SliceExternalPoint(slice, 2 * Math.PI * progress);
+                <text>
+                    <text class="tick" 
+                          x="@text_position.X" 
+                          y="@text_position.Y">
+                        @slice.Value
                     </text>
-                }
+                </text>
 
                 progress += slice.Value / Model.Total;
             }

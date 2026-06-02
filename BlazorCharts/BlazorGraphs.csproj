@@ -9,7 +9,7 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>blazor; dotnet; gauges; charts; charting; blazor-charts; data-visualization; svg; svg-charts; svg-rendering; no-js</PackageTags>
-    <PackageIcon>Icon.png</PackageIcon>
+    <PackageIcon>ICON.png</PackageIcon>
     <Authors>Edoardo Paris;</Authors>
 	  <PackageProjectUrl>https://edoparis.github.io/BlazorCharts/</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/EdoParis/BlazorCharts</RepositoryUrl>
@@ -31,15 +31,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Icon.png">
+    <None Include="..\ICON.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Update="LICENSE.txt">
+    <None Include="..\LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Update="README.md">
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

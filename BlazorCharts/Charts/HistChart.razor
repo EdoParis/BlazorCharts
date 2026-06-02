@@ -37,14 +37,14 @@
     {
         foreach(Bin bin in Model)
         {
-            <path fill="@Model.Color.ToHex()"
-                    stroke="@Model.Color.ToHex()"
-                    fill-opacity="0.6"
-                    stroke-width="1px"
-                    vector-effect="non-scaling-stroke"
-                    d="@BinPath(bin)"
-                    @key="@bin"
-                    @onclick="async() => await OnClick.InvokeAsync(bin)">
+            <path fill="@((bin.Value >= 0 ? Model.PrimaryColor : Model.SecondaryColor).ToHex())"
+                  stroke="@((bin.Value >= 0 ? Model.PrimaryColor : Model.SecondaryColor).ToHex())"
+                  fill-opacity="0.6"
+                  stroke-width="1px"
+                  vector-effect="non-scaling-stroke"
+                  d="@BinPath(bin)"
+                  @key="@bin"
+                  @onclick="async() => await OnClick.InvokeAsync(bin)">
                 <title>@($"value: {bin.Value}")</title>
             </path>
         }

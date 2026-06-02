@@ -3,7 +3,6 @@ using BlazorGraphs.Exceptions;
 using BlazorGraphs.Interfaces;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
-using System;
 using System.Collections;
 using System.Drawing;
 
@@ -15,7 +14,8 @@ namespace BlazorGraphs.Models
         internal Axis AxisX { get; private set; }
         internal Axis AxisY { get; private set; }
         internal bool IsEmpty { get; private set; }
-        public KnownColor Color { get; private set; }
+        public KnownColor PrimaryColor { get; private set; }
+        public KnownColor SecondaryColor { get; private set; }
         public string TitleX { get => AxisX?.Title; }
         public string TitleY { get => AxisY?.Title; }
         public int BinsCount { get => bins?.Count ?? default; }
@@ -25,7 +25,18 @@ namespace BlazorGraphs.Models
             bins = new List<Bin>();
             AxisX = new Axis(title_x);
             AxisY = new Axis(title_y);
-            Color = color;
+            PrimaryColor = color;
+            SecondaryColor = color;
+            IsEmpty = true;
+        }
+
+        public Histogram(string title_x, string title_y, KnownColor primary_color, KnownColor secondary_color)
+        {
+            bins = new List<Bin>();
+            AxisX = new Axis(title_x);
+            AxisY = new Axis(title_y);
+            PrimaryColor = primary_color;
+            SecondaryColor = secondary_color;
             IsEmpty = true;
         }
 
@@ -61,10 +72,27 @@ namespace BlazorGraphs.Models
 
         public IEnumerable<LegendItem> ToLegend()
         {
-            return [new LegendItem() {
-                Text = TitleY,
-                Color = Color
-            }];
+            if (PrimaryColor == SecondaryColor)
+            {
+                return [new LegendItem() 
+                {
+                    Text = TitleY,
+                    Color = PrimaryColor
+                }];
+            }
+            else
+            {
+                return [new LegendItem() 
+                {
+                    Text = $"↑ {TitleY}",
+                    Color = PrimaryColor
+                }, 
+                new LegendItem()
+                {
+                    Text = $"↓ {TitleY}",
+                    Color = SecondaryColor
+                }];
+            }
         }
     }
 }

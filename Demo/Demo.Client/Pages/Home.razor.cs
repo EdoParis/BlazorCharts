@@ -20,7 +20,7 @@ namespace DemoApp.Pages
         protected override void OnInitialized()
         {
             events = new List<string>();
-            histogram = new Histogram("asseX", "asseY", KnownColor.LightSteelBlue);
+            histogram = new Histogram("Spazio (m²)", "Prezzo (€)", KnownColor.ForestGreen, KnownColor.Orange);
             bargram = new Bargram("asse-2", KnownColor.LightSlateGray);
             linegram = new Linegram("X1", "Y1");
             piegram = new Piegram();
@@ -35,8 +35,8 @@ namespace DemoApp.Pages
             {
                 histogram.Add(new Bin()
                 {
-                    Min = -20 + i,
-                    Max = -20 + i + 1,
+                    Min = 2 * i,
+                    Max = 2 * i + 2,
                     Value = -10 + 3 * i
                 });
 

@@ -1,3 +1,9 @@
+﻿html, body {
+    overscroll-behavior: none;
+    overflow: hidden;
+    height: 100%;
+}
+
 header {
     height: 4rem;
 }
@@ -8,7 +14,7 @@ aside {
 }
 
 main {
-    height: calc(100vh - 4rem);
+    max-height: calc(100vh - 4rem);
 }
 
 .chart{
@@ -25,4 +31,33 @@ main {
 
 .fit-content{
     width: fit-content;
+}
+
+#menu {
+    background: white;
+    width: 100%;
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    overflow: auto;
+    z-index: 1000;
+    top: 4rem;
+    left: 0;
+    max-height: calc(100vh - 4rem);
+}
+
+#menu-label::before {
+    content: "☰";
+}
+
+#menu-toggle {
+    display: none;
+}
+
+#menu-toggle:checked ~ #menu {
+    display: block;
+}
+
+#menu-toggle:checked ~ #menu-label::before {
+    content: "✕";
 }

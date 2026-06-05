@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>BlazorGraphs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../assets/icon.png">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/prism.css">
@@ -12,20 +13,15 @@
 <body class="container-fluid vh-100">
     <header class="row p-2 border-bottom align-items-center">
         <img class="col-auto h-100 p-2" src="../assets/icon.png" />
-        <h2 class="col m-0">BlazorGraphs</h2>
-        <div class="col-auto card shadow-sm mx-2" title="latest version">
-            <div class="card-body p-0">2.1.0</div>
-        </div>
-    </header>
-    <main class="row">
-        <aside class="col-auto p-0 h-100 border-end overflow-auto">
-            <ul class="list-group list-group-flush border-bottom">
-                <a class="list-group-item list-group-item-action" href="../index.html">Home page</a>
-                <a class="list-group-item list-group-item-action" href="legendbar.html">Legend</a>
-                <li class="list-group-item list-group-item-action p-0">
-                    <details>
-                        <summary class="py-2 px-3">Charts</summary>
-                        <ul class="list-group list-group-flush border-top">
+        <h2 class="col m-0 text-truncate">BlazorGraphs</h2>
+        <div class="col-auto">
+            <input id="menu-toggle" type="checkbox">
+            <label id="menu-label" for="menu-toggle" class="btn fs-3 p-0"></label>
+            <nav id="menu" class="shadow-sm border-bottom w-100 p-4">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                    <div class="col">
+                        <h5 class="text-truncate">Charts</h5>
+                        <ul class="list-group list-group-flush border-top border-bottom">
                             <a class="list-group-item list-group-item-action" href="histogram.html">Histogram</a>
                             <a class="list-group-item list-group-item-action" href="barchart.html">Barchart</a>
                             <a class="list-group-item list-group-item-action" href="linechart.html">Linechart</a>
@@ -34,25 +30,38 @@
                             <a class="list-group-item list-group-item-action" href="piechart.html">Piechart</a>
                             <a class="list-group-item list-group-item-action" href="donutchart.html">Donutchart</a>
                         </ul>
-                    </details>
-                </li>
-                <li class="list-group-item list-group-item-action active p-0">
-                    <details open>
-                        <summary class="py-2 px-3">Gauges</summary>
-                        <ul class="list-group list-group-flush border-top">
-                            <a class="list-group-item list-group-item-action" href="lineargauge.html">
-                                <div class="d-flex justify-content-between">
-                                    Linear
-                                    <span class="badge rounded-pill bg-warning p-2 my-auto me-0"><span></span></span>
-                                </div>
-                            </a>
-                            <li class="list-group-item list-group-item-action list-group-item-light active">Semicircle</li>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                                <h5 class="text-truncate">Gauges</h5>
+                                <ul class="list-group list-group-flush border-top border-bottom mb-3">
+                                    <a class="list-group-item list-group-item-action" href="lineargauge.html">Linear</a>
+                                    <li class="list-group-item disabled">Semicircle</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="text-truncate">Other components</h5>
+                                <ul class="list-group list-group-flush border-top border-bottom">
+                                    <a class="list-group-item list-group-item-action" href="legendbar.html">LegendBar</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h5 class="text-truncate">About</h5>
+                        <ul class="list-group list-group-flush border-top border-bottom">
+                            <a class="list-group-item list-group-item-action" href="#">Roadmap</a>
+                            <a class="list-group-item list-group-item-action" href="#">Changelog</a>
                         </ul>
-                    </details>
-                </li>
-            </ul>
-        </aside>
-        <div class="col bg-light p-3 h-100 overflow-auto">
+                    </div>
+                </div>
+                <h5 class="d-flex justify-content-end mt-3"><a href="../index.html">Home 🏠︎</a></h5>
+            </nav>
+        </div>
+    </header>
+    <main class="row bg-light p-3 h-100 overflow-auto">
+        <div class="col">
             <h1 class="position-relative">
                 Semicircle gauge
                 <span class="position-absolute top-0 badge rounded-pill bg-warning fs-6">NEW</span>

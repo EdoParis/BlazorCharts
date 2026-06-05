@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>BlazorGraphs</title>
@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../assets/icon.png">
     <link rel="stylesheet" href="../css/app.css">
-    <link rel="stylesheet" href="../css/prism.css">
     <link rel="stylesheet" href="../css/charts.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
@@ -36,7 +35,7 @@
                             <div>
                                 <h5 class="text-truncate">Gauges</h5>
                                 <ul class="list-group list-group-flush border-top border-bottom mb-3">
-                                    <li class="list-group-item disabled">Linear</li>
+                                    <a class="list-group-item list-group-item-action" href="lineargauge.html">Linear</a>
                                     <a class="list-group-item list-group-item-action" href="semicirclegauge.html">Semicircle</a>
                                 </ul>
                             </div>
@@ -52,7 +51,7 @@
                         <h5 class="text-truncate">About</h5>
                         <ul class="list-group list-group-flush border-top border-bottom">
                             <a class="list-group-item list-group-item-action" href="#">Roadmap</a>
-                            <a class="list-group-item list-group-item-action" href="changelog.html">Changelog</a>
+                            <li class="list-group-item disabled">Changelog</li>
                         </ul>
                     </div>
                 </div>
@@ -60,37 +59,59 @@
             </nav>
         </div>
     </header>
-    <main class="row  bg-light p-3 h-100 overflow-auto">
+    <main class="row bg-light p-3 h-100 overflow-auto">
         <div class="col">
-            <h1 class="position-relative">
-                Linear gauge
-                <span class="position-absolute top-0 badge rounded-pill bg-warning fs-6">NEW</span>
-            </h1>
-            <p>
-                A Linear gauge uses a linear dial to show a single metric against a defined scale.
-                Like a speedometer, it features a needle or a fill bar that marks the current value within the range.
-                The gauge can also be provided with breakpoints to give context to the represented value.
-            </p>
-            <div class="d-flex flex-wrap justify-content-center">
-                <div class="card m-2 fit-content mw-100">
-                    <div class="card-body">
-                        <div class="gauge">
-                            <object data="../assets/lineargauge.svg" type="image/svg+xml"></object>
-                            <object data="../assets/lineargauge2.svg" type="image/svg+xml"></object>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p>
-                <h5>Code example</h5>
-                <div id="snippet" class="w-100 small border"></div>
-            </p>
+            <h1>Changelog</h1>
+            <hr />
+            <h5 class="text-center">Version 2.1</h5>
+            <ul>
+                <li>✨ Added Linear gauge</li>
+                <li>✨ Added Semicircle gauge</li>
+                <li>🎨 Use hex-string to define color of svg elements</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">♻️ Version 2.0</h5>
+            <ul>
+                <li>♻️ Refactoring Legend bar</li>
+                <li>🗑️ Removed Legend data model</li>
+                <li>💥 Moved color parameter from chart components to data models</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">Version 1.4</h5>
+            <ul>
+                <li>✨ Added Legend bar</li>
+                <li>🎨 Adapted horizontal axis positioning of histogram to show negative/positive bars</li>
+                <li>✨ Added Parameter to barchart to draw horizontally or vertically</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">Version 1.3</h5>
+            <ul>
+                <li>✨ Added Donut chart</li>
+                <li>🎨 Added hover animations to charts</li>
+                <li>🔧 Added DrawMode flags for linechart</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">Version 1.2</h5>
+            <ul>
+                <li>✨ Added Radar chart</li>
+                <li>🐛 Fix label ticks</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">Version 1.1</h5>
+            <ul>
+                <li>✨ Added Polar chart</li>
+                <li>🐛 Fix charts visualization for empty data models</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">🚀 Version 1.0</h5>
+            First release, charts available:
+            <ul>
+                <li>Histogram</li>
+                <li>Bar chart</li>
+                <li>Line chart</li>
+                <li>Pie chart</li>
+            </ul>
         </div>
-        <script>
-            fetch("../snippets/snippet_lineargauge.html")
-                .then(r => r.text())
-                .then(html => { document.getElementById("snippet").innerHTML = html; });
-        </script>
     </main>
 </body>
 </html>

@@ -1,37 +1,30 @@
 ﻿html, body {
     overscroll-behavior: none;
     overflow: hidden;
-    height: 100%;
+    height: 100dvh;
 }
 
 header {
     height: 4rem;
 }
 
-aside {
-    width: 10rem !important;
-    color: white;
-}
-
 main {
-    max-height: calc(100vh - 4rem);
+    max-height: calc(100dvh - 4rem);
 }
 
-.chart{
-    height: 15rem;
-    width: 15rem;
-    max-width: 100%;
+a {
+    text-decoration: none !important;
+    color: black;
 }
 
-.gauge {
-    height: 15rem;
-    width: 25rem;
-    max-width: 100%;
-}
+    a:link {
+        color: black;
+    }
 
-.fit-content{
-    width: fit-content;
-}
+    a:visited {
+        color: black;
+    }
+
 
 #menu {
     background: white;
@@ -43,7 +36,7 @@ main {
     z-index: 1000;
     top: 4rem;
     left: 0;
-    max-height: calc(100vh - 4rem);
+    max-height: calc(100dvh - 4rem);
 }
 
 #menu-label::before {
@@ -60,4 +53,20 @@ main {
 
 #menu-toggle:checked ~ #menu-label::before {
     content: "✕";
+}
+
+.chart {
+    height: 15rem;
+    width: 15rem;
+    max-width: 100%;
+}
+
+.gauge {
+    height: 15rem;
+    width: 25rem;
+    max-width: 100%;
+}
+
+.fit-content {
+    width: fit-content;
 }

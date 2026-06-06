@@ -70,3 +70,7 @@ a {
 .fit-content {
     width: fit-content;
 }
+
+.h-stretch {
+    height: stretch;
+}

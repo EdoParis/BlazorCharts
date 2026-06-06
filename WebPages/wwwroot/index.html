@@ -7,9 +7,10 @@
     <title>BlazorGraphs</title>
     <link rel="icon" type="image/png" href="assets/icon.png">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/prism.css">
     <link rel="stylesheet" href="css/charts.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="../css/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
 </head>
 
 <body class="container-fluid vh-100">
@@ -22,7 +23,7 @@
             <nav id="menu" class="shadow-sm border-bottom w-100 p-4">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
                     <div class="col">
-                        <h5 class="text-truncate"><span class="bi-graph-up"></span> Charts</h5>
+                        <h5 class="bi-graph-up text-truncate"> Charts</h5>
                         <ul class="list-group list-group-flush border-top border-bottom">
                             <a class="list-group-item list-group-item-action" href="pages/histogram.html">Histogram</a>
                             <a class="list-group-item list-group-item-action" href="pages/barchart.html">Barchart</a>
@@ -36,14 +37,14 @@
                     <div class="col">
                         <div class="d-flex flex-column justify-content-between h-100">
                             <div>
-                                <h5 class="text-truncate"><span class="bi-speedometer2"></span> Gauges</h5>
+                                <h5 class="bi-speedometer2 text-truncate"> Gauges</h5>
                                 <ul class="list-group list-group-flush border-top border-bottom mb-3">
                                     <a class="list-group-item list-group-item-action" href="pages/lineargauge.html">Linear</a>
                                     <a class="list-group-item list-group-item-action" href="pages/semicirclegauge.html">Semicircle</a>
                                 </ul>
                             </div>
                             <div>
-                                <h5 class="text-truncate">Other components</h5>
+                                <h5 class="text-truncate bi-list"> Other components</h5>
                                 <ul class="list-group list-group-flush border-top border-bottom">
                                     <a class="list-group-item list-group-item-action" href="pages/legendbar.html">LegendBar</a>
                                 </ul>
@@ -51,7 +52,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <h5 class="text-truncate">About</h5>
+                        <h5 class="text-truncate bi-journals"> About</h5>
                         <ul class="list-group list-group-flush border-top border-bottom">
                             <a class="list-group-item list-group-item-action" href="#">Roadmap</a>
                             <a class="list-group-item list-group-item-action" href="pages/changelog.html">Changelog</a>
@@ -64,82 +65,150 @@
     </header>
     <main class="row overflow-auto bg-light h-100 p-3">
         <div class="col">
+            <h3>Overview</h3>
             <p>
-                BlazorGraphs is a <b>lightweight SVG chart library for Blazor</b> without <b>Javascript dependency</b>.<br />
-                Build fast, interactive charts using pure Blazor rendering.<br />
-                The main characteristics are:
-                <ul>
-                    <li>Pure Blazor rendering (no JS interop)</li>
-                    <li>Lightweight SVG output</li>
-                    <li>Zero external dependencies</li>
-                    <li>Simple API, fast integration</li>
-                </ul>
+                BlazorGraphs is a <b>lightweight SVG chart library for Blazor</b> without <b>Javascript dependency</b>.
+                Build fast, interactive charts using pure Blazor rendering.
             </p>
-            <section>
-                <div class="d-flex flex-wrap">
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h6>Histogram</h6>
-                            <div class="chart">
-                                <object data="assets/histogram.svg" type="image/svg+xml"></object>
-                            </div>
+            <section class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3 mb-3">
+                <div class="col">
+                    <div class="card h-stretch">
+                        <div class="card-body overflow-hidden">
+                            <table class="w-100 h-100">
+                                <tr>
+                                    <td rowspan="2" class="pe-3"><span class="bi-bookmark-star fs-2 m-auto"></span></td>
+                                    <td class="w-100 text-nowrap"><h6>Main features</h6></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><span class="bi-fire text-danger"></span> Pure blazor rendering</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-nowrap"><span class="bi-ban"></span> No JS interop</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-nowrap"><span class="bi-ban"></span> Zero external dependencies</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h6>Barchart</h6>
-                            <div class="chart">
-                                <object data="assets/barchart.svg" type="image/svg+xml"></object>
-                            </div>
+                </div>
+                <div class="col">
+                    <div class="card h-stretch">
+                        <div class="card-body overflow-hidden">
+                            <table class="w-100 h-100">
+                                <tr>
+                                    <td rowspan="2" class="pe-3"><span class="bi-graph-up fs-2 m-auto"></span></td>
+                                    <td class="w-100 text-nowrap"><h6>Charts</h6></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><span class="bi-3-circle-fill text-success"></span> Cartesian</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-nowrap"><span class="bi-4-circle-fill text-success"></span> Radial</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-nowrap"><span class="bi-2-circle-fill text-success"></span> Gauge</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h6>Linechart</h6>
-                            <div class="chart">
-                                <object data="assets/linechart.svg" type="image/svg+xml"></object>
-                            </div>
+                </div>
+                <div class="col">
+                    <div class="card h-stretch">
+                        <div class="card-body overflow-hidden">
+                            <table class="w-100 h-100">
+                                <tr>
+                                    <td rowspan="2" class="pe-3"><span class="bi-github fs-2 m-auto"></span></td>
+                                    <td class="w-100"><h6>Repository</h6></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><span class="bi-star-fill text-warning"></span> 10 stars</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><a class="bi-arrow-return-right fs-4 m-auto" href="https://github.com/EdoParis/BlazorCharts"></a></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h6>Radarchart</h6>
-                            <div class="chart">
-                                <object data="assets/radarchart.svg" type="image/svg+xml"></object>
-                            </div>
+                </div>
+                <div class="col">
+                    <div class="card h-stretch">
+                        <div class="card-body overflow-hidden">
+                            <table class="w-100 h-100">
+                                <tr>
+                                    <td rowspan="2" class="pe-3"><span class="bi-archive fs-2 m-auto"></span></td>
+                                    <td class="w-100"><h6>Nuget</h6></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap">2.0K downloads</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><a class="bi-arrow-return-right fs-4 m-auto" href="https://www.nuget.org/packages/BlazorGraphs"></a></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h6>Polarchart</h6>
-                            <div class="chart">
-                                <object data="assets/polarchart.svg" type="image/svg+xml"></object>
-                            </div>
+                </div>
+                <div class="col">
+                    <div class="card h-stretch">
+                        <div class="card-body overflow-hidden">
+                            <table class="w-100 h-100">
+                                <tr>
+                                    <td rowspan="2" class="pe-3"><h3>.NET</h3></td>
+                                    <td class="w-100"><h6>Frameworks</h6></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><span class="badge bg-primary">net8.0</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-nowrap"><span class="badge bg-secondary me-2">net9.0</span><span class="badge bg-secondary">net10.0</span></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h6>Piechart</h6>
-                            <div class="chart">
-                                <object data="assets/piechart.svg" type="image/svg+xml"></object>
-                            </div>
+                </div>
+                <div class="col">
+                    <div class="card h-stretch">
+                        <div class="card-body overflow-hidden">
+                            <table class="w-100 h-100">
+                                <tr>
+                                    <td rowspan="2" class="pe-3"><h3>2.1</h3></td>
+                                    <td class="w-100"><h6>Last release</h6></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><span class="bi-calendar3"></span> 31/05/2026</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><a class="bi-arrow-return-right fs-4 m-auto" href="pages/changelog.html"></a></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h6>Donutchart</h6>
-                            <div class="chart">
-                                <object data="assets/donutchart.svg" type="image/svg+xml"></object>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card m-2">
-                        <div class="card-body">
-                            <h6>Gauges</h6>
-                            <div class="chart">
-                                <object data="assets/semicirclegauge2.svg" type="image/svg+xml"></object>
-                                <object data="assets/lineargauge2.svg" type="image/svg+xml"></object>
-                            </div>
+                </div>
+                <div class="col">
+                    <div class="card h-stretch">
+                        <div class="card-body overflow-hidden p-0">
+                            <h6 class="m-3">One step installation</h6>
+                            <pre class="language- m-0 border-top">
+<code>&gt dotnet add package BlazorGraphs --version 2.1.1</code>
+                            </pre>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>BlazorGraphs</title>
@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../assets/icon.png">
     <link rel="stylesheet" href="../css/app.css">
-    <link rel="stylesheet" href="../css/prism.css">
     <link rel="stylesheet" href="../css/charts.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
@@ -37,7 +36,7 @@
                             <div>
                                 <h5 class="text-truncate bi-speedometer2"> Gauges</h5>
                                 <ul class="list-group list-group-flush border-top border-bottom mb-3">
-                                    <li class="list-group-item disabled">Linear</li>
+                                    <a class="list-group-item list-group-item-action" href="lineargauge.html">Linear</a>
                                     <a class="list-group-item list-group-item-action" href="semicirclegauge.html">Semicircle</a>
                                 </ul>
                             </div>
@@ -52,7 +51,7 @@
                     <div class="col">
                         <h5 class="text-truncate bi-journals"> About</h5>
                         <ul class="list-group list-group-flush border-top border-bottom">
-                            <a class="list-group-item list-group-item-action" href="roadmap.html">Roadmap</a>
+                            <li class="list-group-item disabled">Roadmap</li>
                             <a class="list-group-item list-group-item-action" href="changelog.html">Changelog</a>
                         </ul>
                     </div>
@@ -61,34 +60,39 @@
             </nav>
         </div>
     </header>
-    <main class="row  bg-light p-3 h-100 overflow-auto">
+    <main class="row bg-light p-3 h-100 overflow-auto">
         <div class="col">
-            <h3>Linear gauge</h3>
-            <p>
-                A Linear gauge uses a linear dial to show a single metric against a defined scale.
-                Like a speedometer, it features a needle or a fill bar that marks the current value within the range.
-                The gauge can also be provided with breakpoints to give context to the represented value.
-            </p>
-            <div class="d-flex flex-wrap justify-content-center">
-                <div class="card m-2 fit-content mw-100">
-                    <div class="card-body">
-                        <div class="gauge">
-                            <object data="../assets/lineargauge.svg" type="image/svg+xml"></object>
-                            <object data="../assets/lineargauge2.svg" type="image/svg+xml"></object>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p>
-                <h5>Code example</h5>
-                <div id="snippet" class="w-100 small border"></div>
-            </p>
+            <h3>Roadmap</h3>
+            This is just a list of developments I'm sure I want to pursue, so if new ideas come up in the meantime, the roadmap will be updated.
+            <hr />
+            <h5 class="text-center">Next release 2.2</h5>
+            <ul>
+                <li><span class="bi-plus-lg text-success"></span> Add secondary color to histogram for negative bars</li>
+                <li><span class="bi-plus-lg text-success"></span> Add secondary color to barchart for negative bars</li>
+                <li><span class="bi-exclamation-triangle text-warning"></span> Mark Obsolete the direction parameter in barchart component</li>
+                <li><span class="bi-recycle text-success"></span> Split barchart in two separated components, one to draw vertical and the other to draw horizontally</li>
+                <li><span class="bi-x-lg text-danger"></span> Fix pie and donut charts orientation</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">Short term</h5>
+            <ul>
+                <li><span class="bi-plus-lg text-success"></span> Add tornado chart</li>
+                <li><span class="bi-exclamation-triangle text-warning"></span> Mark Obsolete the direction parameter in legend component</li>
+                <li><span class="bi-recycle text-success"></span> Split legend in two separated components, one to draw vertical and the other to draw horizontally</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">Mid term</h5>
+            <ul>
+                <li><small class="bi-asterisk text-primary"></small> Add gantt chart</li>
+                <li><span class="bi-plus-lg text-success"></span> Add waterfall chart</li>
+                <li><span class="bi-plus-lg text-success"></span> Add column chart (like barchart but each bar has it's own color)</li>
+            </ul>
+            <hr />
+            <h5 class="text-center">Long term</h5>
+            <ul>
+                <li><small class="bi-asterisk text-primary"></small> Add combo charts</li>
+            </ul>
         </div>
-        <script>
-            fetch("../snippets/snippet_lineargauge.html")
-                .then(r => r.text())
-                .then(html => { document.getElementById("snippet").innerHTML = html; });
-        </script>
     </main>
 </body>
 </html>

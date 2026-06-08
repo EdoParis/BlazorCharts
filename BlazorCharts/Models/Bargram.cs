@@ -15,7 +15,8 @@ namespace BlazorGraphs.Models
         internal Axis BinAxis { get; private set; }
         internal Axis ValAxis { get; private set; }
         internal bool IsEmpty { get; private set; }
-        public KnownColor Color { get; private set; }
+        public KnownColor PrimaryColor { get; private set; }
+        public KnownColor SecondaryColor { get; private set; }
         public string Title { get => ValAxis?.Title; }
         public int BarsCount { get => bars?.Count ?? default; }
 
@@ -24,7 +25,18 @@ namespace BlazorGraphs.Models
             bars = new List<KeyValuePair<String, Bin>>();
             ValAxis = new Axis(title_y);
             BinAxis = new Axis();
-            Color = color;
+            PrimaryColor = color;
+            SecondaryColor = color;
+            IsEmpty = true;
+        }
+
+        public Bargram(string title_y, KnownColor primary_color, KnownColor secondary_color)
+        {
+            bars = new List<KeyValuePair<String, Bin>>();
+            ValAxis = new Axis(title_y);
+            BinAxis = new Axis();
+            PrimaryColor = primary_color;
+            SecondaryColor = secondary_color;
             IsEmpty = true;
         }
 
@@ -66,10 +78,27 @@ namespace BlazorGraphs.Models
 
         public IEnumerable<LegendItem> ToLegend()
         {
-            return [new LegendItem() {
-                Text = Title,
-                Color = Color
-            }];
+            if (PrimaryColor == SecondaryColor)
+            {
+                return [new LegendItem()
+                {
+                    Text = Title,
+                    Color = PrimaryColor
+                }];
+            }
+            else
+            {
+                return [new LegendItem()
+                {
+                    Text = $"↑ {Title}",
+                    Color = PrimaryColor
+                },
+                new LegendItem()
+                {
+                    Text = $"↓ {Title}",
+                    Color = SecondaryColor
+                }];
+            }
         }
     }
 }

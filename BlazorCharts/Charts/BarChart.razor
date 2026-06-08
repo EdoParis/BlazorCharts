@@ -20,8 +20,8 @@
             string label = kvp.Key;
             Bin bin = kvp.Value;
 
-            <path fill="@Model.Color.ToHex()"
-                  stroke="@Model.Color.ToHex()"
+            <path fill="@((bin.Value >= 0 ? Model.PrimaryColor : Model.SecondaryColor).ToHex())"
+                  stroke="@((bin.Value >= 0 ? Model.PrimaryColor : Model.SecondaryColor).ToHex())"
                   fill-opacity="0.6"
                   stroke-width="1px"
                   vector-effect="non-scaling-stroke"

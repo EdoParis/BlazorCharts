@@ -16,15 +16,17 @@ namespace BlazorGraphs.Charts
         private int padding = PADDING;
         private int offsetH => padding;
         private int offsetV => height - padding;
+        private int originH => Model is null ? offsetH : offsetH - (int)(Model.ValAxis.Min * scaleH);
+        private int originV => Model is null ? offsetV : offsetV + (int)(Model.BinAxis.Min * scaleV);
         private double scaleH => (width - 2 * padding) / Model.ValAxis.Size;
         private double scaleV => (height - 2 * padding) / Model.BinAxis.Size;
 
         private string BinPath(Bin bin)
         {
-            return $"M {offsetH} {padding + (int)((bin.Min - Model.BinAxis.Min) * scaleV)}" +
-                   $"h {(int)((bin.Value - Model.ValAxis.Min) * scaleH)} " +
+            return $"M {originH} {padding + (int)((bin.Min - Model.BinAxis.Min) * scaleV)}" +
+                   $"h {(int)(bin.Value * scaleH)} " +
                    $"v {(int)((bin.Max - bin.Min) * scaleV)} " +
-                   $"h {-(int)((bin.Value - Model.ValAxis.Min) * scaleH)} " +
+                   $"h {-(int)(bin.Value * scaleH)} " +
                    $"v {(int)((bin.Min - bin.Max) * scaleV)} " +
                    $"Z";
         }

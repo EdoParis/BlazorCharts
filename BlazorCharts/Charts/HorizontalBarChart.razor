@@ -1,4 +1,4 @@
-﻿<svg viewBox="@(-padding / 4) 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+﻿<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
     @if (Model is null || Model.IsEmpty)
     {
         <rect x="@offsetH"
@@ -31,10 +31,9 @@
                 <title>@($"value: {bin.Value}")</title>
             </path>
             <text>
-                <text class="anchor-end" 
-                        x="@((int)(padding * 5 / 6))"
-                        y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))">
-                        @(label?.Length > 5 ? $"{label.Substring(0, 4)}..." : label)
+                <text x="@((int)(originH + padding / 2 * (bin.Value < 0 ? 1 : -1)))"
+                      y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))">
+                      @(label?.Length > 5 ? $"{label.Substring(0, 4)}.." : label)
                 </text>
             </text>
         }
@@ -42,16 +41,13 @@
         int tx = 0;
         foreach (double tick in Model.ValAxis.Ticks(5))
         {
-            if (tick != Model.ValAxis.Min)
-            {
-                <line stroke="@KnownColor.Black"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      y1="@(offsetV)"
-                      y2="@(offsetV - padding / (tx % 5 == 0 ? 5 : 10))"
-                      x1="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))"
-                      x2="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))" />
-            }
+            <line stroke="@KnownColor.Black"
+                  stroke-width="1px"
+                  vector-effect="non-scaling-stroke"
+                  y1="@(offsetV)"
+                  y2="@(offsetV - padding / (tx % 5 == 0 ? 5 : 10))"
+                  x1="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))"
+                  x2="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))" />
 
             if (tx % 5 == 0)
             {
@@ -69,8 +65,8 @@
     <line stroke="@KnownColor.Black"
           stroke-width="1px"
           vector-effect="non-scaling-stroke"
-          x1="@offsetH"
-          x2="@offsetH"
+          x1="@originH"
+          x2="@originH"
           y1="@padding"
           y2="@offsetV" />
 

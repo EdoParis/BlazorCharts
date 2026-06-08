@@ -23,6 +23,7 @@ text {
     text.rotated90 {
         transform: rotate(-90deg);
         transform-box: fill-box;
+        transform-origin: center;
     }
 
 svg {

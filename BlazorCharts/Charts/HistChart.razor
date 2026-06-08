@@ -14,24 +14,7 @@
                   y="@((height / 2))">
                   NO DATA
             </text>
-            <text x="@(width / 2)" y="@(height - padding / 4)">@(Model?.TitleX)</text>
-            <text x="@(padding / 2)" y="@(padding / 2)" class="anchor-start">@(Model?.TitleY)</text>
         </text>
-        <line stroke="@KnownColor.Black"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke"
-              x1="@offsetH"
-              x2="@offsetH"
-              y1="@padding"
-              y2="@offsetV" />
-
-        <line stroke="@KnownColor.Black"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke"
-              x1="@offsetH"
-              x2="@(width - padding)"
-              y1="@offsetV"
-              y2="@offsetV" />
     }
     else
     {
@@ -101,24 +84,23 @@
             }
             ty++;
         }
-        <line stroke="@KnownColor.Black"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke"
-              x1="@offsetH"
-              x2="@offsetH"
-              y1="@padding"
-              y2="@offsetV" />
-
-        <line stroke="@KnownColor.Black"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke"
-              x1="@offsetH"
-              x2="@(width - padding)"
-              y1="@originV"
-              y2="@originV" />
-        <text>
-            <text x="@(width / 2)" y="@(originV > height / 2 ? height - padding / 4 : padding / 4)">@(Model?.TitleX)</text>
-            <text x="@(padding / 2)" y="@(originV > height / 2 ? padding / 2 : height - padding / 2)" class="anchor-start">@(Model?.TitleY)</text>
-        </text>
     }
+    <line stroke="@KnownColor.Black"
+          stroke-width="1px"
+          vector-effect="non-scaling-stroke"
+          x1="@offsetH"
+          x2="@offsetH"
+          y1="@padding"
+          y2="@offsetV" />
+
+    <line stroke="@KnownColor.Black"
+          stroke-width="1px"
+          vector-effect="non-scaling-stroke"
+          x1="@offsetH"
+          x2="@(width - padding)"
+          y1="@originV"
+          y2="@originV" />
+
+    <text x="@(width / 2)" y="@(originV > height / 2 ? height - padding / 4 : padding / 4)">@(Model?.TitleX)</text>
+    <text x="@(padding / 2)" y="@(originV > height / 2 ? padding / 2 : height - padding / 2)" class="anchor-start">@(Model?.TitleY)</text>
 </svg>

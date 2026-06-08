@@ -31,10 +31,10 @@
                 <title>@($"value: {bin.Value}")</title>
             </path> 
             <text>
-                <text class="rotated45" 
-                        x="@((int)(offsetH + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))" 
-                        y="@(height - padding / 6)">
-                        @(label?.Length > 5 ? $"{label.Substring(0, 4)}..." : label)
+                <text class="rotated90" 
+                      x="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
+                      y="@(originV + padding / 2 * (bin.Value >= 0 ? 1 : -1))">
+                      @(label?.Length > 5 ? $"{label.Substring(0, 4)}.." : label)
                 </text>
             </text>            
         }
@@ -42,16 +42,13 @@
         int ty = 0;
         foreach (double tick in Model.ValAxis.Ticks(5))
         {
-            if (tick != Model.ValAxis.Min)
-            {
-                <line stroke="@KnownColor.Black"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      x1="@(offsetH)"
-                      x2="@(offsetH + padding / (ty % 5 == 0 ? 5 : 10))"
-                      y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
-                      y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
-            }
+            <line stroke="@KnownColor.Black"
+                  stroke-width="1px"
+                  vector-effect="non-scaling-stroke"
+                  x1="@(offsetH)"
+                  x2="@(offsetH + padding / (ty % 5 == 0 ? 5 : 10))"
+                  y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
+                  y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
 
             if (ty % 5 == 0)
             {
@@ -80,12 +77,12 @@
           vector-effect="non-scaling-stroke"
           x1="@offsetH"
           x2="@(width - padding)"
-          y1="@offsetV"
-          y2="@offsetV" />
+          y1="@originV"
+          y2="@originV" />
 
     <text class="anchor-start" 
           x="@(padding / 2)" 
-          y="@(padding / 2)">
+          y="@(originV > height / 2 ? padding / 2 : height - padding / 2)">
           @(Model?.Title)
     </text>
 </svg>

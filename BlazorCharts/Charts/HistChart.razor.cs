@@ -1,8 +1,6 @@
 ﻿using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
-using System.Drawing;
-using System;
 
 namespace BlazorGraphs.Charts
 {
@@ -18,8 +16,8 @@ namespace BlazorGraphs.Charts
         private int padding = PADDING;
         private int offsetH => padding;
         private int offsetV => height - padding;
-        private int originH => offsetH - (int)(Model.AxisX.Min * scaleH);
-        private int originV => offsetV + (int)(Model.AxisY.Min * scaleV);
+        private int originH => Model is null ? offsetH : offsetH - (int)(Model.AxisX.Min * scaleH);
+        private int originV => Model is null ? offsetV : offsetV + (int)(Model.AxisY.Min * scaleV);
         private double scaleH => (width - 2 * padding) / Model.AxisX.Size;
         private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
 

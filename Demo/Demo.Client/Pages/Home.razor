@@ -4,20 +4,20 @@
 
 <table style="width: 100%; table-layout: fixed;">
     <tr>
-        <td style="width: 80%"><LineChart Model="@linegram"></LineChart></td>
-        <td style="width: 20%"><LegendBar Model="@linegram"></LegendBar></td>
+        <td style="width: 50%"><LineChart Model="@linegram"></LineChart></td>
+        <td style="width: 50%"><LegendBar Model="@linegram"></LegendBar></td>
     </tr>
     <tr>
         <td><HistChart Model="@histogram" OnClick="BinClickHandler"></HistChart></td>
-        <td><LegendBar Model="@histogram" Direction="Positioning.Vertical"></LegendBar></td>
+        <td><HistChart Model="@histogram2" OnClick="BinClickHandler"></HistChart></td>
     </tr>
     <tr>
-        <td><BarChart Model="@bargram" Direction="@Positioning.Vertical" OnClick="BarClickHandler"></BarChart></td>
-        <td><LegendBar Model="@bargram" Direction="Positioning.Vertical"></LegendBar></td>
+        <td><HorizontalBarChart Model="@bargram2" OnClick="BarClickHandler"></HorizontalBarChart></td>
+        <td><BarChart Model="@bargram2" OnClick="BarClickHandler"></BarChart></td>
     </tr>
     <tr>
+        <td><BarChart Model="@bargram" OnClick="BarClickHandler"></BarChart></td>
         <td><HorizontalBarChart Model="@bargram" OnClick="BarClickHandler"></HorizontalBarChart></td>
-        <td><LegendBar Model="@bargram" Direction="Positioning.Vertical"></LegendBar></td>
     </tr>
     <tr>
         <td><RadarChart Model="@radargram"></RadarChart></td>

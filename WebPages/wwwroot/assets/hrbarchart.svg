@@ -1,45 +1,47 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../css/charts.css"?>
-<svg viewBox="-25 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 138h 800 v 38 h -800 v -38 Z">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 138h 800 v 38 h -800 v -38 Z">
 		<title>value: 93</title>
 	</path>
-	<text class="anchor-end" x="83" y="157">17/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 214h 791 v 38 h -791 v -38 Z">
+	<text x="50" y="157">09/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 214h 791 v 38 h -791 v -38 Z">
 		<title>value: 92</title>
 	</path>
-	<text class="anchor-end" x="83" y="233">18/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 290h 765 v 38 h -765 v -38 Z">
+	<text x="50" y="233">10/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 290h 765 v 38 h -765 v -38 Z">
 		<title>value: 89</title>
 	</path>
-	<text class="anchor-end" x="83" y="309">19/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 366h 722 v 38 h -722 v -38 Z">
+	<text x="50" y="309">11/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 366h 722 v 38 h -722 v -38 Z">
 		<title>value: 84</title>
 	</path>
-	<text class="anchor-end" x="83" y="385">20/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 442h 662 v 38 h -662 v -38 Z">
+	<text x="50" y="385">12/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 442h 662 v 38 h -662 v -38 Z">
 		<title>value: 77</title>
 	</path>
-	<text class="anchor-end" x="83" y="461">21/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 519h 584 v 38 h -584 v -38 Z">
+	<text x="50" y="461">13/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 519h 584 v 38 h -584 v -38 Z">
 		<title>value: 68</title>
 	</path>
-	<text class="anchor-end" x="83" y="538">22/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 595h 490 v 38 h -490 v -38 Z">
+	<text x="50" y="538">14/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 595h 490 v 38 h -490 v -38 Z">
 		<title>value: 57</title>
 	</path>
-	<text class="anchor-end" x="83" y="614">23/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 671h 378 v 38 h -378 v -38 Z">
+	<text x="50" y="614">15/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 671h 378 v 38 h -378 v -38 Z">
 		<title>value: 44</title>
 	</path>
-	<text class="anchor-end" x="83" y="690">24/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 747h 249 v 38 h -249 v -38 Z">
-		<title>value: 29</title></path>
-	<text class="anchor-end" x="83" y="766">25/05</text>
-	<path fill="SteelBlue" stroke="SteelBlue" fill-opacity="0.6" d="M 100 823h 103 v 38 h -103 v -38 Z">
+	<text x="50" y="690">16/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 747h 249 v 38 h -249 v -38 Z">
+		<title>value: 29</title>
+	</path>
+	<text x="50" y="766">17/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 100 823h 103 v 38 h -103 v -38 Z">
 		<title>value: 12</title>
 	</path>
-	<text class="anchor-end" x="83" y="842">26/05</text>
+	<text x="50" y="842">18/06</text>
+	<line stroke="Black" y1="900" y2="880" x1="100" x2="100"></line>
 	<text x="100" y="940">0</text>
 	<line stroke="Black" y1="900" y2="890" x1="134" x2="134"></line>
 	<line stroke="Black" y1="900" y2="890" x1="168" x2="168"></line>
@@ -69,6 +71,6 @@
 	<line stroke="Black" y1="900" y2="890" x1="856" x2="856"></line>
 	<line stroke="Black" y1="900" y2="890" x1="891" x2="891"></line>
 	<line stroke="Black" x1="100" x2="100" y1="100" y2="900"></line>
-    <line stroke="Black" x1="100" x2="900" y1="900" y2="900"></line>
-	<text x="500" y="975">asse-2</text>
+	<line stroke="Black" x1="100" x2="900" y1="900" y2="900"></line>
+	<text x="500" y="975">Axis-2</text>
 </svg>

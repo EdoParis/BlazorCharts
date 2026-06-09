@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../css/charts.css"?>
 <svg viewBox="-25 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 138 900v -800 h 38 v 800 h -38 Z">
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 138 900v -800 h 38 v 800 h -38 Z">
 		<title>value: 93</title>
 	</path>
-	<text class="rotated45" x="157" y="984">07/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 214 900v -791 h 38 v 791 h -38 Z">
+	<text class="rotated90" x="157" y="950">09/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 214 900v -791 h 38 v 791 h -38 Z">
 		<title>value: 92</title>
 	</path>
-	<text class="rotated45" x="233" y="984">08/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 290 900v -765 h 38 v 765 h -38 Z">
+	<text class="rotated90" x="233" y="950">10/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 290 900v -765 h 38 v 765 h -38 Z">
 		<title>value: 89</title>
 	</path>
-	<text class="rotated45" x="309" y="984">09/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 366 900v -722 h 38 v 722 h -38 Z">
+	<text class="rotated90" x="309" y="950">11/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 366 900v -722 h 38 v 722 h -38 Z">
 		<title>value: 84</title>
 	</path>
-	<text class="rotated45" x="385" y="984">10/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 442 900v -662 h 38 v 662 h -38 Z">
+	<text class="rotated90" x="385" y="950">12/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 442 900v -662 h 38 v 662 h -38 Z">
 		<title>value: 77</title>
 	</path>
-	<text class="rotated45" x="461" y="984">11/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 519 900v -584 h 38 v 584 h -38 Z">
+	<text class="rotated90" x="461" y="950">13/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 519 900v -584 h 38 v 584 h -38 Z">
 		<title>value: 68</title>
 	</path>
-	<text class="rotated45" x="538" y="984">12/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 595 900v -490 h 38 v 490 h -38 Z">
+	<text class="rotated90" x="538" y="950">14/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 595 900v -490 h 38 v 490 h -38 Z">
 		<title>value: 57</title>
 	</path>
-	<text class="rotated45" x="614" y="984">13/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 671 900v -378 h 38 v 378 h -38 Z">
+	<text class="rotated90" x="614" y="950">15/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 671 900v -378 h 38 v 378 h -38 Z">
 		<title>value: 44</title>
 	</path>
-	<text class="rotated45" x="690" y="984">14/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 747 900v -249 h 38 v 249 h -38 Z">
+	<text class="rotated90" x="690" y="950">16/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 747 900v -249 h 38 v 249 h -38 Z">
 		<title>value: 29</title>
 	</path>
-	<text class="rotated45" x="766" y="984">15/05</text>
-	<path fill="MediumPurple" stroke="MediumPurple" d="M 823 900v -103 h 38 v 103 h -38 Z">
+	<text class="rotated90" x="766" y="950">17/06</text>
+	<path fill="#9370DB" stroke="#9370DB" fill-opacity="0.6" d="M 823 900v -103 h 38 v 103 h -38 Z">
 		<title>value: 12</title>
 	</path>
-	<text class="rotated45" x="842" y="984">16/05</text>
+	<text class="rotated90" x="842" y="950">18/06</text>
+	<line stroke="Black" x1="100" x2="120" y1="900" y2="900"></line>
 	<text class="anchor-end" y="900" x="75">0</text>
 	<line stroke="Black" x1="100" x2="110" y1="865" y2="865"></line>
 	<line stroke="Black" x1="100" x2="110" y1="831" y2="831"></line>
@@ -71,5 +72,5 @@
 	<line stroke="Black" x1="100" x2="110" y1="108" y2="108"></line>
 	<line stroke="Black" x1="100" x2="100" y1="100" y2="900"></line>
 	<line stroke="Black" x1="100" x2="900" y1="900" y2="900"></line>
-	<text class="anchor-start" x="50" y="50">asse-2</text>
+	<text class="anchor-start" x="50" y="50">Axis-2</text>
 </svg>

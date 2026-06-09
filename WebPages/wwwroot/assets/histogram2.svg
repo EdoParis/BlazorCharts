@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../css/charts.css"?>
+<svg viewBox="-25 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+	<path fill="#FFA500" stroke="#FFA500" fill-opacity="0.6" d="M 100 420 v 192 h 80 v -192 h -80 Z">
+		<title>value: -6</title>
+	</path>
+	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 180 420 v -32 h 80 v 32 h -80 Z">
+		<title>value: 1</title>
+	</path>
+	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 260 420 v -192 h 80 v 192 h -80 Z">
+		<title>value: 6</title>
+	</path>
+	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 340 420 v -288 h 80 v 288 h -80 Z">
+		<title>value: 9</title>
+	</path>
+	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 420 420 v -320 h 80 v 320 h -80 Z">
+		<title>value: 10</title>
+	</path>
+	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 500 420 v -288 h 80 v 288 h -80 Z">
+		<title>value: 9</title>
+	</path>
+	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 580 420 v -192 h 80 v 192 h -80 Z">
+		<title>value: 6</title>
+	</path>
+	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 660 420 v -32 h 80 v 32 h -80 Z">
+		<title>value: 1</title>
+	</path>
+	<path fill="#FFA500" stroke="#FFA500" fill-opacity="0.6" d="M 740 420 v 192 h 80 v -192 h -80 Z">
+		<title>value: -6</title>
+	</path>
+	<path fill="#FFA500" stroke="#FFA500" fill-opacity="0.6" d="M 820 420 v 480 h 80 v -480 h -80 Z">
+		<title>value: -15</title>
+	</path>
+	<line stroke="Black" x1="140" x2="140" y1="410" y2="420"></line>
+	<line stroke="Black" x1="180" x2="180" y1="410" y2="420"></line>
+	<line stroke="Black" x1="220" x2="220" y1="410" y2="420"></line>
+	<line stroke="Black" x1="260" x2="260" y1="410" y2="420"></line>
+	<line stroke="Black" x1="300" x2="300" y1="400" y2="420"></line>
+	<text x="300" y="380">5</text>
+	<line stroke="Black" x1="340" x2="340" y1="410" y2="420"></line>
+	<line stroke="Black" x1="380" x2="380" y1="410" y2="420"></line>
+	<line stroke="Black" x1="420" x2="420" y1="410" y2="420"></line>
+	<line stroke="Black" x1="460" x2="460" y1="410" y2="420"></line>
+	<line stroke="Black" x1="500" x2="500" y1="400" y2="420"></line>
+	<text x="500" y="380">10</text>
+	<line stroke="Black" x1="540" x2="540" y1="410" y2="420"></line>
+	<line stroke="Black" x1="580" x2="580" y1="410" y2="420"></line>
+	<line stroke="Black" x1="620" x2="620" y1="410" y2="420"></line>
+	<line stroke="Black" x1="660" x2="660" y1="410" y2="420"></line>
+	<line stroke="Black" x1="700" x2="700" y1="400" y2="420"></line>
+	<text x="700" y="380">15</text>
+	<line stroke="Black" x1="740" x2="740" y1="410" y2="420"></line>
+	<line stroke="Black" x1="780" x2="780" y1="410" y2="420"></line>
+	<line stroke="Black" x1="820" x2="820" y1="410" y2="420"></line>
+	<line stroke="Black" x1="860" x2="860" y1="410" y2="420"></line>
+	<line stroke="Black" x1="900" x2="900" y1="400" y2="420"></line>
+	<text x="900" y="380">20</text>
+	<line stroke="Black" x1="100" x2="120" y1="900" y2="900"></line>
+	<text class="anchor-end" x="75" y="900">-15</text>
+	<line stroke="Black" x1="100" x2="110" y1="868" y2="868"></line>
+	<line stroke="Black" x1="100" x2="110" y1="836" y2="836"></line>
+	<line stroke="Black" x1="100" x2="110" y1="804" y2="804"></line>
+	<line stroke="Black" x1="100" x2="110" y1="772" y2="772"></line>
+	<line stroke="Black" x1="100" x2="120" y1="740" y2="740"></line>
+	<text class="anchor-end" x="75" y="740">-10</text>
+	<line stroke="Black" x1="100" x2="110" y1="708" y2="708"></line>
+	<line stroke="Black" x1="100" x2="110" y1="676" y2="676"></line>
+	<line stroke="Black" x1="100" x2="110" y1="644" y2="644"></line>
+	<line stroke="Black" x1="100" x2="110" y1="612" y2="612"></line>
+	<line stroke="Black" x1="100" x2="120" y1="580" y2="580"></line>
+	<text class="anchor-end" x="75" y="580">-5</text>
+	<line stroke="Black" x1="100" x2="110" y1="548" y2="548"></line>
+	<line stroke="Black" x1="100" x2="110" y1="516" y2="516"></line>
+	<line stroke="Black" x1="100" x2="110" y1="484" y2="484"></line>
+	<line stroke="Black" x1="100" x2="110" y1="452" y2="452"></line>
+	<line stroke="Black" x1="100" x2="120" y1="420" y2="420"></line>
+	<text class="anchor-end" x="75" y="420">0</text>
+	<line stroke="Black" x1="100" x2="110" y1="388" y2="388"></line>
+	<line stroke="Black" x1="100" x2="110" y1="356" y2="356"></line>
+	<line stroke="Black" x1="100" x2="110" y1="324" y2="324"></line>
+	<line stroke="Black" x1="100" x2="110" y1="292" y2="292"></line>
+	<line stroke="Black" x1="100" x2="120" y1="260" y2="260"></line>
+	<text class="anchor-end" x="75" y="260">5</text>
+	<line stroke="Black" x1="100" x2="110" y1="228" y2="228"></line>
+	<line stroke="Black" x1="100" x2="110" y1="196" y2="196"></line>
+	<line stroke="Black" x1="100" x2="110" y1="164" y2="164"></line>
+	<line stroke="Black" x1="100" x2="110" y1="132" y2="132"></line>
+	<line stroke="Black" x1="100" x2="120" y1="100" y2="100"></line>
+	<text class="anchor-end" x="75" y="100">10</text>
+	<line stroke="Black" x1="100" x2="100" y1="100" y2="900"></line>
+	<line stroke="Black" x1="100" x2="900" y1="420" y2="420"></line>
+	<text x="500" y="25">Axis-X</text>
+	<text x="50" y="950" class="anchor-start">Axis-Y</text>
+</svg>

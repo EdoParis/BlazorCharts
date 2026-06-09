@@ -52,14 +52,16 @@ text {
         text-anchor: end;
     }
 
-    text.rotated90 {
-        transform: rotate(-90deg);
-        transform-box: fill-box;
-    }
-
     text.rotated45 {
         transform: rotate(-45deg);
         transform-box: fill-box;
+        transform-origin: center;
+    }
+
+    text.rotated90 {
+        transform: rotate(-90deg);
+        transform-box: fill-box;
+        transform-origin: center;
     }
 
 svg {

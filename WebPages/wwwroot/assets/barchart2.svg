@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../css/charts.css"?>
+<svg viewBox="-25 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 138 545v -444 h 38 v 444 h -38 Z">
+		<title>value: 45</title>
+	</path>
+	<text class="rotated90" x="157" y="595">09/06</text>
+	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 214 545v -434 h 38 v 434 h -38 Z">
+		<title>value: 44</title>
+	</path>
+	<text class="rotated90" x="233" y="595">10/06</text>
+	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 290 545v -404 h 38 v 404 h -38 Z">
+		<title>value: 41</title>
+	</path>
+	<text class="rotated90" x="309" y="595">11/06</text>
+	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 366 545v -355 h 38 v 355 h -38 Z">
+		<title>value: 36</title>
+	</path>
+	<text class="rotated90" x="385" y="595">12/06</text>
+	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 442 545v -286 h 38 v 286 h -38 Z">
+		<title>value: 29</title>
+	</path>
+	<text class="rotated90" x="461" y="595">13/06</text>
+	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 519 545v -197 h 38 v 197 h -38 Z">
+		<title>value: 20</title>
+	</path>
+	<text class="rotated90" x="538" y="595">14/06</text>
+	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 595 545v -88 h 38 v 88 h -38 Z">
+		<title>value: 9</title>
+	</path>
+	<text class="rotated90" x="614" y="595">15/06</text>
+	<path fill="#7B68EE" stroke="#7B68EE" fill-opacity="0.6" d="M 671 545v 39 h 38 v -39 h -38 Z">
+		<title>value: -4</title>
+	</path>
+	<text class="rotated90" x="690" y="495">16/06</text>
+	<path fill="#7B68EE" stroke="#7B68EE" fill-opacity="0.6" d="M 747 545v 187 h 38 v -187 h -38 Z">
+		<title>value: -19</title>
+	</path>
+	<text class="rotated90" x="766" y="495">17/06</text>
+	<path fill="#7B68EE" stroke="#7B68EE" fill-opacity="0.6" d="M 823 545v 355 h 38 v -355 h -38 Z">
+		<title>value: -36</title>
+	</path>
+	<text class="rotated90" x="842" y="495">18/06</text>
+	<line stroke="Black" x1="100" x2="120" y1="890" y2="890"></line>
+	<text class="anchor-end" y="890" x="75">-35</text>
+	<line stroke="Black" x1="100" x2="110" y1="860" y2="860"></line>
+	<line stroke="Black" x1="100" x2="110" y1="830" y2="830"></line>
+	<line stroke="Black" x1="100" x2="110" y1="801" y2="801"></line>
+	<line stroke="Black" x1="100" x2="110" y1="771" y2="771"></line>
+	<line stroke="Black" x1="100" x2="120" y1="741" y2="741"></line>
+	<text class="anchor-end" y="741" x="75">-20</text>
+	<line stroke="Black" x1="100" x2="110" y1="712" y2="712"></line>
+	<line stroke="Black" x1="100" x2="110" y1="682" y2="682"></line>
+	<line stroke="Black" x1="100" x2="110" y1="653" y2="653"></line>
+	<line stroke="Black" x1="100" x2="110" y1="623" y2="623"></line>
+	<line stroke="Black" x1="100" x2="120" y1="593" y2="593"></line>
+	<text class="anchor-end" y="593" x="75">-5</text>
+	<line stroke="Black" x1="100" x2="110" y1="564" y2="564"></line>
+	<line stroke="Black" x1="100" x2="110" y1="534" y2="534"></line>
+	<line stroke="Black" x1="100" x2="110" y1="504" y2="504"></line>
+	<line stroke="Black" x1="100" x2="110" y1="475" y2="475"></line>
+	<line stroke="Black" x1="100" x2="120" y1="445" y2="445"></line>
+	<text class="anchor-end" y="445" x="75">10</text>
+	<line stroke="Black" x1="100" x2="110" y1="416" y2="416"></line>
+	<line stroke="Black" x1="100" x2="110" y1="386" y2="386"></line>
+	<line stroke="Black" x1="100" x2="110" y1="356" y2="356"></line>
+	<line stroke="Black" x1="100" x2="110" y1="327" y2="327"></line>
+	<line stroke="Black" x1="100" x2="120" y1="297" y2="297"></line>
+	<text class="anchor-end" y="297" x="75">25</text>
+	<line stroke="Black" x1="100" x2="110" y1="267" y2="267"></line>
+	<line stroke="Black" x1="100" x2="110" y1="238" y2="238"></line>
+	<line stroke="Black" x1="100" x2="110" y1="208" y2="208"></line>
+	<line stroke="Black" x1="100" x2="110" y1="179" y2="179"></line>
+	<line stroke="Black" x1="100" x2="120" y1="149" y2="149"></line>
+	<text class="anchor-end" y="149" x="75">40</text>
+	<line stroke="Black" x1="100" x2="110" y1="119" y2="119"></line>
+	<line stroke="Black" x1="100" x2="100" y1="100" y2="900"></line>
+	<line stroke="Black" x1="100" x2="900" y1="545" y2="545"></line>
+	<text class="anchor-start" x="50" y="50">Axis-2</text>
+</svg>

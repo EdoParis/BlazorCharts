@@ -66,14 +66,25 @@
         <div class="col">
             <h3>Histogram</h3>
             <p>
-                A histogram is a chart that plots the distribution of a numeric variable’s values as a series of bars. 
-                Each bar typically covers a range of numeric values called bin; a bar’s height indicates the frequency 
+                A histogram is a chart that plots the distribution of a numeric variable’s values as a series of bars.
+                Each bar typically covers a range of numeric values called bin; a bar’s height indicates the frequency
                 of data points with a value within the corresponding bin.
             </p>
-            <div class="card m-2 fit-content m-auto mw-100">
-                <div class="card-body">
-                    <div class="chart">
-                        <object data="../assets/histogram.svg" type="image/svg+xml"></object>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="card m-2 fit-content m-2">
+                    <div class="card-body">
+                        <h6>Histogram</h6>
+                        <div class="chart">
+                            <object data="../assets/histogram.svg" type="image/svg+xml"></object>
+                        </div>
+                    </div>
+                </div>
+                <div class="card m-2 fit-content m-2">
+                    <div class="card-body">
+                        <h6>Bicolored histogram</h6>
+                        <div class="chart">
+                            <object data="../assets/histogram2.svg" type="image/svg+xml"></object>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,7 +93,7 @@
                 <div id="snippet" class="w-100 small border"></div>
             </p>
         </div>
-    </main>
+</main>
     <script>
         fetch("../snippets/snippet_histogram.html")
             .then(r => r.text())

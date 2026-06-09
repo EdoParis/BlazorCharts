@@ -8,7 +8,9 @@ namespace DemoApp.Pages
     public partial class Home
     {
         private Histogram histogram;
+        private Histogram histogram2;
         private Bargram bargram;
+        private Bargram bargram2;
         private Linegram linegram;
         private Piegram piegram;
         private Polargram polargram;
@@ -20,8 +22,10 @@ namespace DemoApp.Pages
         protected override void OnInitialized()
         {
             events = new List<string>();
-            histogram = new Histogram("Spazio (m²)", "Prezzo (€)", KnownColor.ForestGreen, KnownColor.Orange);
-            bargram = new Bargram("asse-2", KnownColor.LightSlateGray);
+            histogram = new Histogram("Axis-X", "Axis-Y", KnownColor.LimeGreen, KnownColor.Orange);
+            histogram2 = new Histogram("Axis-X", "Axis-Y", KnownColor.RoyalBlue);
+            bargram = new Bargram("Axis-2", KnownColor.MediumPurple);
+            bargram2 = new Bargram("Axis-2", KnownColor.MediumOrchid, KnownColor.MediumSlateBlue);
             linegram = new Linegram("X1", "Y1");
             piegram = new Piegram();
             polargram = new Polargram("R1");
@@ -33,17 +37,36 @@ namespace DemoApp.Pages
 
             for (int i=0; i<10; i++)
             {
+                histogram2.Add(new Bin()
+                {
+                    Min = 2 * i,
+                    Max = 2 * i + 1,
+                    Value = 10 + 2 * i - 1
+                });
+                histogram2.Add(new Bin()
+                {
+                    Min = 2 * i + 1,
+                    Max = 2 * i + 2,
+                    Value = 10 + 2 * i
+                });
+
                 histogram.Add(new Bin()
                 {
                     Min = 2 * i,
                     Max = 2 * i + 2,
-                    Value = -10 + 3 * i
+                    Value = 10 - Math.Pow(i - 4, 2)
                 });
 
                 bargram.Add(new Bar()
                 {
                     Label = DateOnly.FromDateTime(DateTime.Now).AddDays(i).ToString("dd/MM"),
                     Value = 93 - i * i
+                });
+
+                bargram2.Add(new Bar()
+                {
+                    Label = DateOnly.FromDateTime(DateTime.Now).AddDays(i).ToString("dd/MM"),
+                    Value = 45 - i * i
                 });
             }
 

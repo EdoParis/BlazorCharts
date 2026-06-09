@@ -20,6 +20,7 @@ Build fast, interactive charts and gauges using pure Blazor rendering:
 - Donut chart
 - Polar chart
 - Radar chart
+- Horizontal Bar chart
 
 ## Gauges
 - Linear gauge
@@ -69,21 +70,20 @@ This renders a fully interactive SVG histogram.
 }
 ```
 #### Barchart example
-This renders a fully interactive SVG bar chart.
+This renders a fully interactive SVG bar chart, with negative bars colored differently from positive ones.
 ```
-<BarChart Model="@bargram"  
-          Direction="@Positioning.Vertical">
+<BarChart Model="@bargram">
 </BarChart>
 
 @{
-    bargram = new Bargram("asseY", KnownColor.RoyalBlue);
+    bargram = new Bargram("asseY", KnownColor.RoyalBlue, KnownColor.OrangeRed);
 
     for (int i = 0; i < 10; i++)
     {
         bargram.Add(new Bar()
         {
             Label = $"Bar-{i}", //bar label
-            Value = 10 + i //bar height
+            Value = 5 - i //bar height
         });
     }
 }

@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>2.1.1</Version>
+    <Version>2.2.0</Version>
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,8 +16,9 @@
 	  <RepositoryType>git</RepositoryType>
     <Description>Lightweight library to draw .svg charts and gauges for Blazor (No Javascript)</Description>
     <PackageReleaseNotes>
-		- fix linear gauge
-	    - fix color string 
+		- Added HorizontalBarChart component
+	    - Added secondary color to Histogram and Bar charts 
+		- The direction parameter in BarChart is obsolete
 	</PackageReleaseNotes>
   </PropertyGroup>
 

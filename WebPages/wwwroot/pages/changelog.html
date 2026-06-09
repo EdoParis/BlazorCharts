@@ -24,6 +24,7 @@
                         <ul class="list-group list-group-flush border-top border-bottom">
                             <a class="list-group-item list-group-item-action" href="histogram.html">Histogram</a>
                             <a class="list-group-item list-group-item-action" href="barchart.html">Barchart</a>
+                            <a class="list-group-item list-group-item-action" href="horizontalbarchart.html">Horizontal barchart</a>
                             <a class="list-group-item list-group-item-action" href="linechart.html">Linechart</a>
                             <a class="list-group-item list-group-item-action" href="radarchart.html">Radarchart</a>
                             <a class="list-group-item list-group-item-action" href="polarchart.html">Polarchart</a>
@@ -63,6 +64,23 @@
     <main class="row bg-light p-3 h-100 overflow-auto">
         <div class="col">
             <h3>Changelog</h3>
+            History of main changes made to the library.  
+            <div class="d-flex flex-wrap align-items-center justify-content-center">
+                <div class="m-2"><span class="bi-x-lg text-danger"></span> Bug</div>
+                <div class="m-2"><span class="bi-exclamation-triangle text-warning"></span> Change</div>
+                <div class="m-2"><span class="bi-check2 text-primary"></span> Improvement</div>
+                <div class="m-2"><span class="bi-recycle text-success"></span> Refactoring</div>
+                <div class="m-2"><span class="bi-plus-lg text-success"></span> Feature</div>
+            </div>
+            <hr />
+            <h5 class="text-center">Version 2.2</h5>
+            <ul>
+                <li><span class="bi-plus-lg text-success"></span> Add secondary color to histogram for negative bars</li>
+                <li><span class="bi-plus-lg text-success"></span> Add secondary color to barchart for negative bars</li>
+                <li><span class="bi-exclamation-triangle text-warning"></span> Mark Obsolete the direction parameter in barchart component</li>
+                <li><span class="bi-recycle text-success"></span> Split barchart in two separated components, one to draw vertical and the other to draw horizontally</li>
+                <li><span class="bi-x-lg text-danger"></span> Fix pie and donut charts orientation</li>
+            </ul>
             <hr />
             <h5 class="text-center">Version 2.1</h5>
             <ul>
@@ -74,7 +92,7 @@
             <h5 class="text-center">Version 2.0</h5>
             <ul>
                 <li><span class="bi-recycle text-success"></span> Refactoring Legend bar</li>
-                <li><span class="bi-ban"></span> Removed Legend data model</li>
+                <li><span class="bi-exclamation-triangle text-warning"></span> Removed Legend data model</li>
                 <li><span class="bi-exclamation-triangle text-warning"></span> Moved color parameter from chart components to data models</li>
             </ul>
             <hr />
@@ -107,10 +125,10 @@
             <h5 class="text-center">Version 1.0</h5>
             First release, charts available:
             <ul>
-                <li>Histogram</li>
-                <li>Bar chart</li>
-                <li>Line chart</li>
-                <li>Pie chart</li>
+                <li><span class="bi-plus-lg text-success"></span> Histogram</li>
+                <li><span class="bi-plus-lg text-success"></span> Bar chart</li>
+                <li><span class="bi-plus-lg text-success"></span> Line chart</li>
+                <li><span class="bi-plus-lg text-success"></span> Pie chart</li>
             </ul>
         </div>
     </main>

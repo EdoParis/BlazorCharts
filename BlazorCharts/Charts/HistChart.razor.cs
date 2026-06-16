@@ -9,6 +9,7 @@ namespace BlazorGraphs.Charts
         private const int VIEW = 1000;
         private const int PADDING = 100;
 
+        [Parameter] public Theme Theme { get; set; }
         [Parameter] public Histogram Model { get; set; }
         [Parameter] public EventCallback<Bin> OnClick { get; set; }
         private int width = VIEW;

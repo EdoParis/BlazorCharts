@@ -1,5 +1,6 @@
 ﻿using BlazorGraphs.Enums;
 using BlazorGraphs.Interfaces;
+using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorGraphs.Legends
@@ -8,5 +9,6 @@ namespace BlazorGraphs.Legends
     {
         [Parameter] public Positioning Direction { get; set; }
         [Parameter] public ILegend Model { get; set; }
+        [Parameter] public Theme Theme { get; set; }
     }
 }

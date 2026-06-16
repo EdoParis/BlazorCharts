@@ -11,6 +11,7 @@ namespace BlazorGraphs.Charts
         private const int PADDING = 100;
 
         [Parameter] [Obsolete("use HorizontalBarChart component instead")] public Positioning Direction { get; set; }
+        [Parameter] public Theme Theme { get; set; }
         [Parameter] public Bargram Model { get; set; }
         [Parameter] public EventCallback<Bar> OnClick {get; set; }
         private int width = VIEW;

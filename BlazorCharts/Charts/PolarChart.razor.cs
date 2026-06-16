@@ -9,6 +9,7 @@ namespace BlazorGraphs.Charts
         private const int VIEW = 1000;
         private const int PADDING = 100;
 
+        [Parameter] public Theme Theme { get; set; }
         [Parameter] public Polargram Model { get; set; }
         [Parameter] public EventCallback<Slice> OnClick { get; set; }
         private int width = VIEW;

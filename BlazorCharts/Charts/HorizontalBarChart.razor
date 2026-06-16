@@ -1,16 +1,17 @@
-﻿<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+﻿<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
     @if (Model is null || Model.IsEmpty)
     {
         <rect x="@offsetH"
               y="@padding"
               width="@(width - 2 * padding)"
               height="@(height - 2 * padding)"
-              fill="@KnownColor.WhiteSmoke"
-              stroke="@KnownColor.White"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke" />
+              fill="@Theme.BackgroundString()"/>
         <text>
-            <text y="@((height / 2))" x="@(width / 2)">NO DATA</text>
+            <text y="@((height / 2))" 
+                  x="@(width / 2)"
+                  fill="@Theme.TextColorString()">
+                  NO DATA
+            </text>
         </text>
     }
     else
@@ -32,7 +33,8 @@
             </path>
             <text>
                 <text x="@((int)(originH + padding / 2 * (bin.Value < 0 ? 1 : -1)))"
-                      y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))">
+                      y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))"
+                      fill="@Theme.TextColorString()">
                       @(label?.Length > 5 ? $"{label.Substring(0, 4)}.." : label)
                 </text>
             </text>
@@ -41,7 +43,7 @@
         int tx = 0;
         foreach (double tick in Model.ValAxis.Ticks(5))
         {
-            <line stroke="@KnownColor.Black"
+            <line stroke="@Theme.AxisColorString()"
                   stroke-width="1px"
                   vector-effect="non-scaling-stroke"
                   y1="@(offsetV)"
@@ -53,7 +55,8 @@
             {
                 <text>
                     <text x="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))" 
-                          y="@(offsetV + 2 * padding / 5)">
+                          y="@(offsetV + 2 * padding / 5)"
+                          fill="@Theme.TextColorString()">
                           @tick
                     </text>
                 </text>
@@ -62,7 +65,7 @@
         }
     }
 
-    <line stroke="@KnownColor.Black"
+    <line stroke="@Theme.AxisColorString()"
           stroke-width="1px"
           vector-effect="non-scaling-stroke"
           x1="@originH"
@@ -70,7 +73,7 @@
           y1="@padding"
           y2="@offsetV" />
 
-    <line stroke="@KnownColor.Black"
+    <line stroke="@Theme.AxisColorString()"
           stroke-width="1px"
           vector-effect="non-scaling-stroke"
           x1="@offsetH"
@@ -79,7 +82,8 @@
           y2="@offsetV" />
 
     <text x="@(width / 2)"
-          y="@(height - padding / 4)">
+          y="@(height - padding / 4)"
+          fill="@Theme.TextColorString()">
         @(Model?.Title)
     </text>
 </svg>

@@ -1,9 +1,9 @@
-<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
     @if (Model is null || Model.IsEmpty)
     {
-        <circle fill="@KnownColor.WhiteSmoke"
+        <circle fill="@Theme.BackgroundString()"
                 fill-opacity="1.0"
-                stroke="@KnownColor.Black"
+                stroke="@Theme.AxisColorString()"
                 stroke-width="1px"
                 vector-effect="non-scaling-stroke"
                 cx="@((width / 2))"
@@ -12,7 +12,8 @@
                 style="pointer-events: none;" />
         <text>
             <text x="@(width / 2)"
-                  y="@((height / 2))">
+                  y="@((height / 2))"
+                  fill="@Theme.TextColorString()">
                   NO DATA
             </text>
         </text>
@@ -24,17 +25,22 @@
         {
             if (tr > 0 && tr % 5 == 0)
             {
-                <circle fill="@KnownColor.White"
-                        fill-opacity="0"
-                        stroke="@KnownColor.LightGray"
+                <circle fill="transparent"
+                        stroke="@Theme.AxisColorString()"
                         stroke-width="1px"
+                        stroke-opacity="0.3"
                         vector-effect="non-scaling-stroke"
                         cx="@((width / 2))"
                         cy="@((height / 2))"
                         r="@((int)(tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" />
 
                 <text>
-                    <text class="tick" y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" x="@(width / 2)">@tick</text>
+                    <text class="tick" 
+                          y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" 
+                          x="@(width / 2)"
+                          fill="@Theme.TextColorString()">
+                          @tick
+                    </text>
                 </text>
             }
             tr++;
@@ -45,8 +51,8 @@
         foreach(Slice slice in Model)
         {
             <path fill="@slice.Color.ToHex()"
-                  stroke="@KnownColor.White"
-                  stroke-width="2px"
+                  stroke="@Theme.BackgroundString()"
+                  stroke-width="1px"
                   fill-opacity="0.6"
                   d="@SlicePath(slice, 2 * Math.PI * progress)"
                   @key="@slice"
@@ -57,7 +63,11 @@
             progress += 1d / Model.SlicesCount;
         }
         <text>
-            <text x="@(width / 2)" y="@(padding / 2)">@Model.AxisR.Title</text>
+            <text x="@(width / 2)" 
+                  y="@(padding / 2)"
+                  fill="@Theme.TextColorString()">
+                  @Model.AxisR.Title
+            </text>
         </text>
     }
 </svg>

@@ -1,4 +1,4 @@
-﻿<div>
+﻿<div style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString(); color: @Theme.TextColorString();">
     @if (Model != null)
     {
         if (Direction == Positioning.Vertical)
@@ -7,7 +7,14 @@
             {
                 <div class="legend-item">
                     <svg width="1.5em" height="1em" style="min-width:1.5em;">
-                        <circle cx="0.5em" cy="0.5em" r="0.5em" fill="@item.Color.ToHex()" />
+                        <circle cx="0.5em" 
+                                cy="0.5em" 
+                                r="0.4em" 
+                                fill="@item.Color.ToHex()"
+                                stroke="@Theme.AxisColorString()"
+                                fill-opacity="0.6"
+                                stroke-width="1px"
+                                vector-effect="non-scaling-stroke" />
                     </svg>
                     <div class="text-truncate">@item.Text</div>
                 </div>
@@ -20,7 +27,14 @@
                 {
                     <div class="legend-item">
                         <svg width="1.5em" height="1em" style="min-width:1.5em;">
-                            <circle cx="0.5em" cy="0.5em" r="0.5em" fill="@item.Color.ToHex()" />
+                            <circle cx="0.5em" 
+                                    cy="0.5em" 
+                                    r="0.4em" 
+                                    fill="@item.Color.ToHex()"
+                                    stroke="@Theme.AxisColorString()"
+                                    fill-opacity="0.6"
+                                    stroke-width="1px"
+                                    vector-effect="non-scaling-stroke" />
                         </svg>
                         <div class="text-truncate">@item.Text</div>
                     </div>

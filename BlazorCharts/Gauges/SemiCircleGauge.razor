@@ -1,17 +1,22 @@
-<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model">
+<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
     @if (Model is null)
     {
         <path d="@ArcPath(radius, 0, Math.PI)"
               fill="none"
-              stroke="@KnownColor.WhiteSmoke"
+              stroke="@Theme.BackgroundString()"
               stroke-width="@padding" />
+
         <path d="@ArcPath(radius + padding / 2, 0, Math.PI)"
               fill="none"
-              stroke="@KnownColor.Black"
+              stroke="@Theme.AxisColorString()"
               stroke-width="1px"
               vector-effect="non-scaling-stroke"/>
         <text>
-            <text x="@(width / 2)" y="@(height / 3)">NO DATA</text>
+            <text x="@(width / 2)" 
+                  y="@(height / 3)"
+                  fill="@Theme.TextColorString()">
+                  NO DATA
+            </text>
         </text>
     }
     else
@@ -52,7 +57,7 @@
 
             if (tx % 5 == 0)
             {
-                <line stroke="@KnownColor.Black"
+                <line stroke="@Theme.AxisColorString()"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
                       x1="@((int)(width / 2 - radius * Math.Cos(rot)))"
@@ -61,14 +66,15 @@
                       y2="@((int)(height - padding - (radius + padding / 5) * Math.Sin(rot)))" />
                 <text>
                     <text x="@((int)(width / 2 - (radius + padding / 2) * Math.Cos(rot)))"
-                          y="@((int)(height - padding - (radius + padding / 2) * Math.Sin(rot)))">
+                          y="@((int)(height - padding - (radius + padding / 2) * Math.Sin(rot)))"
+                          fill="@Theme.TextColorString()">
                           @tick
                     </text>
                 </text>
             }
             else
             {
-                <line stroke="@KnownColor.Black"
+                <line stroke="@Theme.AxisColorString()"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
                       x1="@((int)(width / 2 - radius * Math.Cos(rot)))"
@@ -80,7 +86,7 @@
         }
         <path d="@ArcPath(radius + padding / 2, 0, Math.PI)"
               fill="none"
-              stroke="@KnownColor.Black"
+              stroke="@Theme.AxisColorString()"
               stroke-width="1px"
               vector-effect="non-scaling-stroke" />
 
@@ -88,8 +94,8 @@
         {
             double rot = Math.PI * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
             <path d="@BarPath(rot)"
-                  fill="@KnownColor.GhostWhite"
-                  stroke="@KnownColor.Black"
+                  fill="@Theme.BackgroundString()"
+                  stroke="@Theme.AxisColorString()"
                   stroke-width="1px"
                   fill-opacity="1.0"
                   vector-effect="non-scaling-stroke">

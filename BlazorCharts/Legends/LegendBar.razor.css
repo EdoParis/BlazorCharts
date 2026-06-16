@@ -17,3 +17,12 @@
     align-items: center;
     justify-content: center;
 }
+
+circle {
+    transition-duration: 0.25s;
+    transform-origin: center;
+}
+
+    circle:hover {
+        fill-opacity: 1.0;
+    }

@@ -6,8 +6,8 @@ namespace BlazorGraphs.Structures
     public struct Theme
     {
         public Color? BackgroundColor { get; set; }
-        public Color? TextColor { get; set; }
         public Color? AxisColor { get; set; }
+        public Color? TextColor { get; set; }
         public string FontFamily { get; set; }
 
         public static Theme Dark

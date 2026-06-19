@@ -4,73 +4,82 @@
 
 <table style="width: 100%; table-layout: fixed;">
     <tr>
-        <td style="width: 50%"><LineChart Model="@linegram"></LineChart></td>
-        <td style="width: 50%"><LegendBar Model="@linegram"></LegendBar></td>
+        <td style="width: 50%"><LineChart Theme="Theme.Dark" Model="@linegram"></LineChart></td>
+        <td style="width: 50%"><LineChart Theme="Theme.Light" Model="@linegram"></LineChart></td>
+        <td style="width: 50%"><LineChart Theme="Theme.Arctic" Model="@linegram"></LineChart></td>
+        <td style="width: 50%"><LineChart Theme="Theme.Neon" Model="@linegram"></LineChart></td>
     </tr>
     <tr>
-        <td><HistChart Model="@histogram" OnClick="BinClickHandler"></HistChart></td>
-        <td><HistChart Model="@histogram2" OnClick="BinClickHandler"></HistChart></td>
+        <td><HistChart Theme="Theme.Dark" Model="@histogram"></HistChart></td>
+        <td><HistChart Theme="Theme.Light" Model="@histogram"></HistChart></td>
+        <td><HistChart Theme="Theme.Arctic" Model="@histogram"></HistChart></td>
+        <td><HistChart Theme="Theme.Neon" Model="@histogram"></HistChart></td>
     </tr>
     <tr>
-        <td><HorizontalBarChart Model="@bargram2" OnClick="BarClickHandler"></HorizontalBarChart></td>
-        <td><BarChart Model="@bargram2" OnClick="BarClickHandler"></BarChart></td>
+        <td><HorizontalBarChart Theme="Theme.Dark" Model="@bargram2"></HorizontalBarChart></td>
+        <td><HorizontalBarChart Theme="Theme.Light" Model="@bargram2"></HorizontalBarChart></td>
+        <td><HorizontalBarChart Theme="Theme.Arctic" Model="@bargram2"></HorizontalBarChart></td>
+        <td><HorizontalBarChart Theme="Theme.Neon" Model="@bargram2"></HorizontalBarChart></td>
     </tr>
     <tr>
-        <td><BarChart Model="@bargram" OnClick="BarClickHandler"></BarChart></td>
-        <td><HorizontalBarChart Model="@bargram" OnClick="BarClickHandler"></HorizontalBarChart></td>
+        <td><BarChart Theme="Theme.Dark" Model="@bargram2"></BarChart></td>
+        <td><BarChart Theme="Theme.Light" Model="@bargram2"></BarChart></td>
+        <td><BarChart Theme="Theme.Arctic" Model="@bargram2"></BarChart></td>
+        <td><BarChart Theme="Theme.Neon" Model="@bargram2"></BarChart></td>
     </tr>
     <tr>
-        <td><RadarChart Model="@radargram"></RadarChart></td>
-        <td><LegendBar Model="@radargram" Direction="Positioning.Vertical"></LegendBar></td>
+        <td><RadarChart Theme="Theme.Dark" Model="@radargram"></RadarChart></td>
+        <td><RadarChart Theme="Theme.Light" Model="@radargram"></RadarChart></td>
+        <td><RadarChart Theme="Theme.Arctic" Model="@radargram"></RadarChart></td>
+        <td><RadarChart Theme="Theme.Neon" Model="@radargram"></RadarChart></td>
     </tr>
     <tr>
-        <td>
-            <PolarChart Model="@polargram" OnClick="SliceClickHandler"></PolarChart>
-            <LegendBar Model="@polargram" Direction="Positioning.Horizontal"></LegendBar>
-        </td>
-        <td><LegendBar Model="@polargram"></LegendBar></td>
+        <td><PolarChart Theme="Theme.Dark" Model="@polargram"></PolarChart></td>
+        <td><PolarChart Theme="Theme.Light" Model="@polargram"></PolarChart></td>
+        <td><PolarChart Theme="Theme.Arctic" Model="@polargram"></PolarChart></td>
+        <td><PolarChart Theme="Theme.Neon" Model="@polargram"></PolarChart></td>
     </tr>
     <tr>
-        <td>
-            <PieChart Model="@piegram" OnClick="SliceClickHandler"></PieChart>
-            <LegendBar Model="@piegram" Direction="Positioning.Horizontal"></LegendBar>
-        </td>
-        <td><LegendBar Model="@piegram"></LegendBar></td>
+        <td><PieChart Theme="Theme.Dark" Model="@piegram"></PieChart></td>
+        <td><PieChart Theme="Theme.Light" Model="@piegram"></PieChart></td>
+        <td><PieChart Theme="Theme.Arctic" Model="@piegram"></PieChart></td>
+        <td><PieChart Theme="Theme.Neon" Model="@piegram"></PieChart></td>
     </tr>
     <tr>
-        <td>
-            <DonutChart Model="@piegram" OnClick="SliceClickHandler"></DonutChart>
-            <LegendBar Model="@piegram" Direction="Positioning.Horizontal"></LegendBar>
-        </td>
-        <td><LegendBar Model="@piegram"></LegendBar></td>
+        <td><DonutChart Theme="Theme.Dark" Model="@piegram"></DonutChart></td>
+        <td><DonutChart Theme="Theme.Light" Model="@piegram"></DonutChart></td>
+        <td><DonutChart Theme="Theme.Arctic" Model="@piegram"></DonutChart></td>
+        <td><DonutChart Theme="Theme.Neon" Model="@piegram"></DonutChart></td>
     </tr>
     <tr>
-        <td>
-            <LinearGauge Model="@gaugegram"></LinearGauge>
-            <LegendBar Model="@gaugegram" Direction="Positioning.Horizontal"></LegendBar>
-        </td>
-        <td><LegendBar Model="@gaugegram"></LegendBar></td>
+        <td><LinearGauge Theme="Theme.Dark" Model="@gaugegram2"></LinearGauge></td>
+        <td><LinearGauge Theme="Theme.Light" Model="@gaugegram2"></LinearGauge></td>
+        <td><LinearGauge Theme="Theme.Arctic" Model="@gaugegram2"></LinearGauge></td>
+        <td><LinearGauge Theme="Theme.Neon" Model="@gaugegram2"></LinearGauge></td>
     </tr>
     <tr>
-        <td>
-            <SemiCircleGauge Model="@gaugegram"></SemiCircleGauge>
-            <LegendBar Model="@gaugegram" Direction="Positioning.Horizontal"></LegendBar>
-        </td>
-        <td><LegendBar Model="@gaugegram"></LegendBar></td>
+        <td><LinearGauge Theme="Theme.Dark" Model="@gaugegram"></LinearGauge></td>
+        <td><LinearGauge Theme="Theme.Light" Model="@gaugegram"></LinearGauge></td>
+        <td><LinearGauge Theme="Theme.Arctic"></LinearGauge></td>
+        <td><LinearGauge Theme="Theme.Neon"></LinearGauge></td>
     </tr>
     <tr>
-        <td>
-            <LinearGauge Model="@gaugegram2"></LinearGauge>
-            <LegendBar Model="@gaugegram2" Direction="Positioning.Horizontal"></LegendBar>
-        </td>
-        <td><LegendBar Model="@gaugegram2"></LegendBar></td>
+        <td><SemiCircleGauge Theme="Theme.Dark" Model="@gaugegram2"></SemiCircleGauge></td>
+        <td><SemiCircleGauge Theme="Theme.Light" Model="@gaugegram2"></SemiCircleGauge></td>
+        <td><SemiCircleGauge Theme="Theme.Arctic" Model="@gaugegram2"></SemiCircleGauge></td>
+        <td><SemiCircleGauge Theme="Theme.Neon" Model="@gaugegram2"></SemiCircleGauge></td>
     </tr>
     <tr>
-        <td>
-            <SemiCircleGauge Model="@gaugegram2"></SemiCircleGauge>
-            <LegendBar Model="@gaugegram2" Direction="Positioning.Horizontal"></LegendBar>
-        </td>
-        <td><LegendBar Model="@gaugegram2"></LegendBar></td>
+        <td><SemiCircleGauge Theme="Theme.Dark" Model="@gaugegram"></SemiCircleGauge></td>
+        <td><SemiCircleGauge Theme="Theme.Light" Model="@gaugegram"></SemiCircleGauge></td>
+        <td><SemiCircleGauge Theme="Theme.Arctic" Model="@gaugegram"></SemiCircleGauge></td>
+        <td><SemiCircleGauge Theme="Theme.Neon" Model="@gaugegram"></SemiCircleGauge></td>
+    </tr>
+    <tr>
+        <td><LegendBar Theme="Theme.Dark" Model="piegram"></LegendBar></td>
+        <td><LegendBar Theme="Theme.Light" Model="piegram"></LegendBar></td>
+        <td><LegendBar Theme="Theme.Arctic" Model="piegram"></LegendBar></td>
+        <td><LegendBar Theme="Theme.Neon" Model="piegram"></LegendBar></td>
     </tr>
 </table>
 

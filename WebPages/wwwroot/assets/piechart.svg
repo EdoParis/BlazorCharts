@@ -2,23 +2,23 @@
 <?xml-stylesheet type="text/css" href="../css/charts.css"?>
 <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
 	<path fill="Purple" stroke="White" d="M 500 500 L 500 900 A 400 400 0 0 0 629 878 Z">
-		<title>Slice-1: 5</title>
+		<title>Slice-1</title>
 	</path>
-	<text x="572" y="933">Slice-1</text>
+	<text x="572" y="933">5</text>
 	<path fill="OrangeRed" stroke="White" d="M 500 500 L 629 878 A 400 400 0 0 0 794 229 Z">
-		<title>Slice-2: 30</title>
+		<title>Slice-2</title>
 	</path>
-	<text x="693" y="549">Slice-2</text>
+	<text x="693" y="549">30</text>
 	<path fill="Gold" stroke="White" d="M 500 500 L 794 229 A 400 400 0 0 0 690 148 Z">
-		<title>Slice-3: 5</title>
+		<title>Slice-3</title>
 	</path>
-	<text x="770" y="152">Slice-3</text>
+	<text x="770" y="152">5</text>
 	<path fill="Aqua" stroke="White" d="M 500 500 L 690 148 A 400 400 0 0 0 165 718 Z">
-		<title>Slice-4: 40</title>
+		<title>Slice-4</title>
 	</path>
-	<text x="352" y="364">Slice-4</text>
+	<text x="352" y="364">40</text>
 	<path fill="DodgerBlue" stroke="White" d="M 500 500 L 165 718 A 400 400 0 0 0 499 900 Z">
-		<title>Slice-5: 15</title>
+		<title>Slice-5</title>
 	</path>
-	<text x="404" y="675">Slice-5</text>
+	<text x="404" y="675">15</text>
 </svg>

@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>BlazorGraphs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/icon.png">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/charts.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-icons.css">
+</head>
+<body class="container-fluid vh-100">
+    <header class="row p-2 border-bottom align-items-center">
+        <img class="col-auto h-100 p-2" src="../assets/icon.png" />
+        <h2 class="col m-0 text-truncate">BlazorGraphs</h2>
+        <div class="col-auto">
+            <input id="menu-toggle" type="checkbox">
+            <label id="menu-label" for="menu-toggle" class="btn fs-3 p-0"></label>
+            <nav id="menu" class="shadow-sm border-bottom w-100 p-4">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                    <div class="col">
+                        <h5 class="text-truncate bi-graph-up"> Charts</h5>
+                        <ul class="list-group list-group-flush border-top border-bottom">
+                            <a class="list-group-item list-group-item-action" href="histogram.html">Histogram</a>
+                            <a class="list-group-item list-group-item-action" href="barchart.html">Barchart</a>
+                            <a class="list-group-item list-group-item-action" href="horizontalbarchart.html">Horizontal barchart</a>
+                            <a class="list-group-item list-group-item-action" href="linechart.html">Linechart</a>
+                            <a class="list-group-item list-group-item-action" href="radarchart.html">Radarchart</a>
+                            <a class="list-group-item list-group-item-action" href="polarchart.html">Polarchart</a>
+                            <a class="list-group-item list-group-item-action" href="piechart.html">Piechart</a>
+                            <a class="list-group-item list-group-item-action" href="donutchart.html">Donutchart</a>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                                <h5 class="text-truncate bi-speedometer2"> Gauges</h5>
+                                <ul class="list-group list-group-flush border-top border-bottom mb-3">
+                                    <a class="list-group-item list-group-item-action" href="lineargauge.html">Linear</a>
+                                    <a class="list-group-item list-group-item-action" href="semicirclegauge.html">Semicircle</a>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="text-truncate bi-list"> Other</h5>
+                                <ul class="list-group list-group-flush border-top border-bottom">
+                                    <a class="list-group-item list-group-item-action" href="legendbar.html">LegendBar</a>
+                                    <li class="list-group-item disabled">Themes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h5 class="text-truncate bi-journals"> About</h5>
+                        <ul class="list-group list-group-flush border-top border-bottom">
+                            <a class="list-group-item list-group-item-action" href="roadmap.html">Roadmap</a>
+                            <a class="list-group-item list-group-item-action" href="changelog.html">Changelog</a>
+                        </ul>
+                    </div>
+                </div>
+                <h5 class="d-flex justify-content-end mt-3"><a href="../index.html">Home <span class="bi-house"></span></a></h5>
+            </nav>
+        </div>
+    </header>
+    <main class="row bg-light p-3 h-100 overflow-auto">
+        <div class="col">
+            <h3>Themes</h3>
+            <p>
+                All the charts, gauges and legend in the library can be associated with a theme to define their style.
+            </p>
+            <h6 class="mt-4">Properties</h6>
+            <div class="overflow-auto mw-100">
+                <table class="table table-bordered text-nowrap align-middle mb-0">
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default behaviour</th>
+                    </tr>
+                    <tr>
+                        <td>BackGroundColor</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Chart area color</td>
+                        <td class="font-monospace"><span class="token string">transparent</span></td>
+                    </tr>
+                    <tr>
+                        <td>AxisColor</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Color of the chart axes</td>
+                        <td class="font-monospace"><span class="token string">currentColor</span></td>
+                    </tr>
+                    <tr>
+                        <td>TextColor</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Color of the text and tick labels of the chart</td>
+                        <td class="font-monospace"><span class="token string">currentColor</span></td>
+                    </tr>
+                    <tr>
+                        <td>FontFamily</td>
+                        <td class="font-monospace"><span class="token keyword">string</span></td>
+                        <td>Chart text font-family </td>
+                        <td class="font-monospace"><span class="token string">inherit</span></td>
+                    </tr>
+                </table>
+            </div>
+            <h6 class="mt-4">Default themes</h6>
+            <div class="overflow-auto mw-100">
+                <table class="table table-bordered text-nowrap align-middle mb-0">
+                    <tr>
+                        <th></th>
+                        <th>Light</th>
+                        <th>Dark</th>
+                        <th>Arctic</th>
+                        <th>Beach</th>
+                        <th>Neon</th>
+                    </tr>
+                    <tr>
+                        <td>BackgroundColor</td>
+                        <td><input type="color" class="form-control form-control-color" value="#F8F9FA" title="RGB: (248, 249, 250)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#121214" title="RGB: (18, 18, 20)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#F0F4F8" title="RGB: (240, 244, 248)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#F3EFE0" title="RGB: (243, 239, 224)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#0A0A14" title="RGB: (10, 10, 20)" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>AxisColor</td>
+                        <td><input type="color" class="form-control form-control-color" value="#212529" title="RGB: (33, 37, 41)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#F8F9FA" title="RGB: (248, 249, 250)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#94A3B8" title="RGB: (148, 163, 184)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#BEBEA0" title="RGB: (190, 190, 160)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#00C8E6" title="RGB: (0, 200, 230)" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>TextColor</td>
+                        <td><input type="color" class="form-control form-control-color" value="#212529" title="RGB: (33, 37, 41)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#F8F9FA" title="RGB: (248, 249, 250)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#475569" title="RGB: (71, 85, 105)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#2A445E" title="RGB: (42, 68, 94)" disabled></td>
+                        <td><input type="color" class="form-control form-control-color" value="#00F0FF" title="RGB: (0, 240, 255)" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>FontFamily</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

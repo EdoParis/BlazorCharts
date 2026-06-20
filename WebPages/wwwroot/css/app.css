@@ -56,13 +56,11 @@ a {
 }
 
 .chart {
-    height: 15rem;
-    width: 15rem;
+    width: 25rem;
     max-width: 100%;
 }
 
 .gauge {
-    height: 15rem;
     width: 25rem;
     max-width: 100%;
 }

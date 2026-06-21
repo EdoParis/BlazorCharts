@@ -67,7 +67,7 @@
         <div class="col">
             <h3>Themes</h3>
             <p>
-                All the charts, gauges and legend in the library can be associated with a theme to define their style.
+                All the charts, gauges and legends in the library can be associated with a theme to define their style.
             </p>
             <div class="d-flex flex-wrap justify-content-center">
                 <div class="card m-2 fit-content" style="background-color: #121214; color: #F8F9FA">
@@ -177,7 +177,14 @@
                     </tr>
                 </table>
             </div>
+            <h6 class="mt-4">Code example</h6>
+            <div id="snippet" class="w-100 small border"></div>
         </div>
+        <script>
+            fetch("../snippets/snippet_themes.html")
+                .then(r => r.text())
+                .then(html => { document.getElementById("snippet").innerHTML = html; });
+        </script>
     </main>
 </body>
 </html>

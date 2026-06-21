@@ -50,6 +50,20 @@ The legend component is separated from the charts, and has a dedicated namespace
 
 The `LegendBar` component accepts the same data models of charts as parameter, since this is separated from the chart, you can place everywhere you want and if horizontally or vertically oriented.
 
+#### Themes
+Is possible to customize the chart, gauges and legends simply passing the `Theme`. 
+It allows you to customize:
+- background color
+- axis color
+- text color
+- font family
+
+If you pass a partially empty theme, the library doesn't break. It delegates the fallback to the browser engine using native properties:
+- background color defaults to Transparent
+- text and axis colors fallback to currentColor
+- font family defaults to Inherit
+
+
 #### Histogram example
 This renders a fully interactive SVG histogram.
 ```
@@ -92,8 +106,9 @@ This renders a fully interactive SVG bar chart, with negative bars colored diffe
 #### Linechart example
 This renders a fully interactive SVG linechart, with the legend at the bottom of the chart.
 ```
-<LineChart Model="@linegram"></LineChart>
-<LegendBar Model="@linegram" 
+<LineChart Theme="@Theme.Dark" Model="@linegram"></LineChart>
+<LegendBar Theme="@Theme.Dark"
+           Model="@linegram" 
            Direction="Positioning.Horizontal">
 </LegendBar>
 
@@ -123,7 +138,7 @@ This renders a fully interactive SVG linechart, with the legend at the bottom of
 #### Gauge example
 This renders a fully interactive SVG linear gauge, the breakpoints are optional.
 ```
-<LinearGauge Model="@gaugegram"></LinearGauge>
+<LinearGauge Theme="@Theme.Arctic" Model="@gaugegram"></LinearGauge>
 
 @{
     gaugegram = new Gaugegram(0, 500, "G1", KnownColor.Navy);

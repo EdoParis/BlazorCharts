@@ -22,7 +22,7 @@ namespace DemoApp.Pages
         protected override void OnInitialized()
         {
             events = new List<string>();
-            histogram = new Histogram("Axis-X", "Axis-Y", KnownColor.LimeGreen, KnownColor.Orange);
+            histogram = new Histogram("Axis-X", "Axis-Y", KnownColor.RoyalBlue, KnownColor.MediumPurple);
             histogram2 = new Histogram("Axis-X", "Axis-Y", KnownColor.RoyalBlue);
             bargram = new Bargram("Axis-2", KnownColor.MediumPurple);
             bargram2 = new Bargram("Axis-2", KnownColor.MediumOrchid, KnownColor.MediumSlateBlue);
@@ -54,7 +54,7 @@ namespace DemoApp.Pages
                 {
                     Min = 2 * i,
                     Max = 2 * i + 2,
-                    Value = 10 - Math.Pow(i - 4, 2)
+                    Value = 5 - Math.Pow(i - 4, 2)
                 });
 
                 bargram.Add(new Bar()

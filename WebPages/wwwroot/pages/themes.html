@@ -69,10 +69,38 @@
             <p>
                 All the charts, gauges and legend in the library can be associated with a theme to define their style.
             </p>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="card m-2 fit-content" style="background-color: #121214; color: #F8F9FA">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h6>Dark histogram</h6>
+                            <h6 class="bi-moon-stars-fill"></h6>
+                        </div>
+                        <div class="chart">
+                            <object data="../assets/histogram_dark.svg" type="image/svg+xml"></object>
+                        </div>
+                    </div>
+                </div>
+                <div class="card m-2 fit-content" style="background-color: #F0F4F8; color: #475569 ">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h6>Arctic histogram</h6>
+                            <h6 class="bi-snow"></h6>
+                        </div>
+                        <div class="chart">
+                            <object data="../assets/histogram_arctic.svg" type="image/svg+xml"></object>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <h6 class="mt-4">Properties</h6>
+            <p>
+                The theme provides four properties for customization, each of which has a default behavior that is activated when this is <span class="token keyword font-monospace">null</span>,
+                so you only need to set the value for the ones you need.
+            </p>
             <div class="overflow-auto mw-100">
                 <table class="table table-bordered text-nowrap align-middle mb-0">
-                    <tr>
+                    <tr class="bg-white">
                         <th>Name</th>
                         <th>Type</th>
                         <th>Description</th>
@@ -107,7 +135,7 @@
             <h6 class="mt-4">Default themes</h6>
             <div class="overflow-auto mw-100">
                 <table class="table table-bordered text-nowrap align-middle mb-0">
-                    <tr>
+                    <tr class="bg-white">
                         <th></th>
                         <th>Light</th>
                         <th>Dark</th>
@@ -117,35 +145,35 @@
                     </tr>
                     <tr>
                         <td>BackgroundColor</td>
-                        <td><input type="color" class="form-control form-control-color" value="#F8F9FA" title="RGB: (248, 249, 250)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#121214" title="RGB: (18, 18, 20)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#F0F4F8" title="RGB: (240, 244, 248)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#F3EFE0" title="RGB: (243, 239, 224)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#0A0A14" title="RGB: (10, 10, 20)" disabled></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #F8F9FA" title="RGB: (248, 249, 250)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #121214" title="RGB: (18, 18, 20)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #F0F4F8" title="RGB: (240, 244, 248)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #F3EFE0" title="RGB: (243, 239, 224)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #0A0A14" title="RGB: (10, 10, 20)"></div></td>
                     </tr>
                     <tr>
                         <td>AxisColor</td>
-                        <td><input type="color" class="form-control form-control-color" value="#212529" title="RGB: (33, 37, 41)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#F8F9FA" title="RGB: (248, 249, 250)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#94A3B8" title="RGB: (148, 163, 184)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#BEBEA0" title="RGB: (190, 190, 160)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#00C8E6" title="RGB: (0, 200, 230)" disabled></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #212529" title="RGB: (33, 37, 41)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #F8F9FA" title="RGB: (248, 249, 250)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #94A3B8" title="RGB: (148, 163, 184)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #BEBEA0" title="RGB: (190, 190, 160)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #00C8E6" title="RGB: (0, 200, 230)"></div></td>
                     </tr>
                     <tr>
                         <td>TextColor</td>
-                        <td><input type="color" class="form-control form-control-color" value="#212529" title="RGB: (33, 37, 41)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#F8F9FA" title="RGB: (248, 249, 250)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#475569" title="RGB: (71, 85, 105)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#2A445E" title="RGB: (42, 68, 94)" disabled></td>
-                        <td><input type="color" class="form-control form-control-color" value="#00F0FF" title="RGB: (0, 240, 255)" disabled></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #212529" title="RGB: (33, 37, 41)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #F8F9FA" title="RGB: (248, 249, 250)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #475569" title="RGB: (71, 85, 105)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #2A445E" title="RGB: (42, 68, 94)"></div></td>
+                        <td><div class="border" style="height: 1.5em; background-color: #00F0FF" title="RGB: (0, 240, 255)"></div></td>
                     </tr>
                     <tr>
                         <td>FontFamily</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td><span class="token keyword font-monospace">null</span></td>
+                        <td><span class="token keyword font-monospace">null</span></td>
+                        <td><span class="token keyword font-monospace">null</span></td>
+                        <td><span class="token keyword font-monospace">null</span></td>
+                        <td><span class="token keyword font-monospace">null</span></td>
                     </tr>
                 </table>
             </div>

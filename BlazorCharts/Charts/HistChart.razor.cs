@@ -21,15 +21,5 @@ namespace BlazorGraphs.Charts
         private int originV => Model is null ? offsetV : offsetV + (int)(Model.AxisY.Min * scaleV);
         private double scaleH => (width - 2 * padding) / Model.AxisX.Size;
         private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
-
-        private string BinPath(Bin bin)
-        {
-            return $"M {offsetH + (int)((bin.Min - Model.AxisX.Min) * scaleH)} {originV} " + 
-                   $"v {-(int)(bin.Value * scaleV)} " +
-                   $"h {(int)((bin.Max - bin.Min) * scaleH)} " +
-                   $"v {(int)(bin.Value * scaleV)} " +
-                   $"h {(int)((bin.Min - bin.Max) * scaleH)} " +
-                   $"Z";
-        }
     }
 }

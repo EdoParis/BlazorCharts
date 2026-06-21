@@ -90,12 +90,12 @@ namespace BlazorGraphs.Models
             {
                 return [new LegendItem()
                 {
-                    Text = $"↑ {Title}",
+                    Text = $"{Title} ≥ 0",
                     Color = PrimaryColor
                 },
                 new LegendItem()
                 {
-                    Text = $"↓ {Title}",
+                    Text = $"{Title} < 0",
                     Color = SecondaryColor
                 }];
             }

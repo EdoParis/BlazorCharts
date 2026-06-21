@@ -18,16 +18,38 @@
     {
         foreach(Bin bin in Model)
         {
-            <path fill="@((bin.Value >= 0 ? Model.PrimaryColor : Model.SecondaryColor).ToHex())"
-                  stroke="@((bin.Value >= 0 ? Model.PrimaryColor : Model.SecondaryColor).ToHex())"
-                  fill-opacity="0.6"
-                  stroke-width="1px"
-                  vector-effect="non-scaling-stroke"
-                  d="@BinPath(bin)"
-                  @key="@bin"
-                  @onclick="async() => await OnClick.InvokeAsync(bin)">
-                <title>@($"value: {bin.Value}")</title>
-            </path>
+            @if (bin.Value < 0)
+            {
+                <rect x="@(offsetH + (int)((bin.Min - Model.AxisX.Min) * scaleH))"
+                      y="@originV"
+                      width="@((int)((bin.Max - bin.Min) * scaleH))"
+                      height="@((int)(-bin.Value * scaleV))"
+                      fill="@(Model.SecondaryColor.ToHex())"
+                      stroke="@(Model.SecondaryColor.ToHex())"
+                      fill-opacity="0.6"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      @key="@bin"
+                      @onclick="async () => await OnClick.InvokeAsync(bin)">
+                    <title>@($"value: {bin.Value}")</title>
+                </rect>
+            }
+            else
+            {
+                <rect x="@(offsetH + (int)((bin.Min - Model.AxisX.Min) * scaleH))"
+                      y="@(originV - (int)(bin.Value * scaleV))"
+                      width="@((int)((bin.Max - bin.Min) * scaleH))"
+                      height="@((int)(bin.Value * scaleV))"
+                      fill="@(Model.PrimaryColor.ToHex())"
+                      stroke="@(Model.PrimaryColor.ToHex())"
+                      fill-opacity="0.6"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      @key="@bin"
+                      @onclick="async () => await OnClick.InvokeAsync(bin)">
+                    <title>@($"value: {bin.Value}")</title>
+                </rect>
+            }
         }
 
         int tx = 0;

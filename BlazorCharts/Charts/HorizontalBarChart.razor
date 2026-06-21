@@ -21,16 +21,38 @@
             string label = kvp.Key;
             Bin bin = kvp.Value;
 
-            <path fill="@((bin.Value >= 0 ? Model.PrimaryColor : Model.SecondaryColor).ToHex())"
-                  stroke="@((bin.Value >= 0 ? Model.PrimaryColor : Model.SecondaryColor).ToHex())"
-                  fill-opacity="0.6"
-                  stroke-width="1px"
-                  vector-effect="non-scaling-stroke"
-                  d="@BinPath(bin)"
-                  @key="@kvp"
-                  @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
-                <title>@($"value: {bin.Value}")</title>
-            </path>
+            @if (bin.Value >= 0)
+            {
+                <rect x="@originH" 
+                      y="@(padding + (int)((bin.Min - Model.BinAxis.Min) * scaleV))"
+                      height="@((int)((bin.Max - bin.Min) * scaleV))"
+                      width="@((int)(bin.Value * scaleH))"
+                      fill="@(Model.PrimaryColor.ToHex())"
+                      stroke="@(Model.PrimaryColor.ToHex())"
+                      fill-opacity="0.6"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      @key="@kvp"
+                      @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
+                    <title>@($"value: {bin.Value}")</title>
+                </rect>
+            }
+            else
+            {
+                <rect x="@(originH + (int)(bin.Value * scaleH))" 
+                      y="@(padding + (int)((bin.Min - Model.BinAxis.Min) * scaleV))"
+                      height="@((int)((bin.Max - bin.Min) * scaleV))"
+                      width="@((int)(-bin.Value * scaleH))"
+                      fill="@(Model.SecondaryColor.ToHex())"
+                      stroke="@(Model.SecondaryColor.ToHex())"
+                      fill-opacity="0.6"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      @key="@kvp"
+                      @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
+                    <title>@($"value: {bin.Value}")</title>
+                </rect>
+            }
             <text>
                 <text x="@((int)(originH + padding / 2 * (bin.Value < 0 ? 1 : -1)))"
                       y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))"

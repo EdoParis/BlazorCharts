@@ -34,7 +34,7 @@
                       vector-effect="non-scaling-stroke"
                       @key="@kvp"
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
-                    <title>@($"value: {bin.Value}")</title>
+                    <title>@bin.Value.ToString("0.##")</title>
                 </rect>
             }
             else
@@ -50,7 +50,7 @@
                       vector-effect="non-scaling-stroke"
                       @key="@kvp"
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
-                    <title>@($"value: {bin.Value}")</title>
+                    <title>@bin.Value.ToString("0.##")</title>
                 </rect>
             }
             <text>

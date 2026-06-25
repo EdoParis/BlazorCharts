@@ -46,7 +46,7 @@
                   stroke="@Model.Color.ToHex()"
                   stroke-width="@padding"
                   stroke-opacity="0.6">
-                <title>@($"value: {Model.Value.ToString("0.##")}")</title>
+                <title>@Model.Value.ToString("0.##")</title>
             </path>
         }
         int tx = 0;
@@ -99,7 +99,7 @@
                   stroke-width="1px"
                   fill-opacity="1.0"
                   vector-effect="non-scaling-stroke">
-                <title>@($"value: {Model.Value.ToString("0.##")}")</title>
+                <title>@Model.Value.ToString("0.##")</title>
             </path>
         }
     }

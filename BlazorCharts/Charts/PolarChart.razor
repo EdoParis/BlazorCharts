@@ -57,7 +57,7 @@
                   d="@SlicePath(slice, 2 * Math.PI * progress)"
                   @key="@slice"
                   @onclick="async() => await OnClick.InvokeAsync(slice)">
-                <title>@($"{(string.IsNullOrEmpty(slice.Label) ? "value" : slice.Label)}: {slice.Value}")</title>
+                <title>@slice.Value.ToString("0.##")</title>
             </path>
 
             progress += 1d / Model.SlicesCount;

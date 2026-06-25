@@ -49,7 +49,7 @@
                   height="@(height - 2 * padding)"
                   fill="@Model.Color.ToHex()"
                   fill-opacity="0.6">
-                <title>@($"value: {Model.Value.ToString("0.##")}")</title>
+                <title>@Model.Value.ToString("0.##")</title>
             </rect>
         }
         int tx = 0;
@@ -103,7 +103,7 @@
                   stroke-width="1px"
                   fill-opacity="1.0"
                   vector-effect="non-scaling-stroke">
-                <title>@($"value: {Model.Value.ToString("0.##")}")</title>
+                <title>@Model.Value.ToString("0.##")</title>
             </rect>
         }
     }

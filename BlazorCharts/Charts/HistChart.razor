@@ -31,7 +31,7 @@
                       vector-effect="non-scaling-stroke"
                       @key="@bin"
                       @onclick="async () => await OnClick.InvokeAsync(bin)">
-                    <title>@($"value: {bin.Value}")</title>
+                    <title>@bin.Value.ToString("0.##")</title>
                 </rect>
             }
             else
@@ -47,7 +47,7 @@
                       vector-effect="non-scaling-stroke"
                       @key="@bin"
                       @onclick="async () => await OnClick.InvokeAsync(bin)">
-                    <title>@($"value: {bin.Value}")</title>
+                    <title>@bin.Value.ToString("0.##")</title>
                 </rect>
             }
         }

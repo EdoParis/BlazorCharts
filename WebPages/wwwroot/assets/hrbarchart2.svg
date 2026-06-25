@@ -2,43 +2,43 @@
 <?xml-stylesheet type="text/css" href="../css/charts.css"?>
 <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
 	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 455 138h 444 v 38 h -444 v -38 Z">
-		<title>value: 45</title>
+		<title>45</title>
 	</path>
 	<text x="405" y="157">09/06</text>
 	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 455 214h 434 v 38 h -434 v -38 Z">
-		<title>value: 44</title>
+		<title>44</title>
 	</path>
 	<text x="405" y="233">10/06</text>
 	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 455 290h 404 v 38 h -404 v -38 Z">
-		<title>value: 41</title>
+		<title>41</title>
 	</path>
 	<text x="405" y="309">11/06</text>
 	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 455 366h 355 v 38 h -355 v -38 Z">
-		<title>value: 36</title>
+		<title>36</title>
 	</path>
 	<text x="405" y="385">12/06</text>
 	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 455 442h 286 v 38 h -286 v -38 Z">
-		<title>value: 29</title>
+		<title>29</title>
 	</path>
 	<text x="405" y="461">13/06</text>
 	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 455 519h 197 v 38 h -197 v -38 Z">
-		<title>value: 20</title>
+		<title>20</title>
 	</path>
 	<text x="405" y="538">14/06</text>
 	<path fill="#BA55D3" stroke="#BA55D3" fill-opacity="0.6" d="M 455 595h 88 v 38 h -88 v -38 Z">
-		<title>value: 9</title>
+		<title>9</title>
 	</path>
 	<text x="405" y="614">15/06</text>
 	<path fill="#7B68EE" stroke="#7B68EE" fill-opacity="0.6" d="M 455 671h -39 v 38 h 39 v -38 Z">
-		<title>value: -4</title>
+		<title>-4</title>
 	</path>
 	<text x="505" y="690">16/06</text>
 	<path fill="#7B68EE" stroke="#7B68EE" fill-opacity="0.6" d="M 455 747h -187 v 38 h 187 v -38 Z">
-		<title>value: -19</title>
+		<title>-19</title>
 	</path>
 	<text x="505" y="766">17/06</text>
 	<path fill="#7B68EE" stroke="#7B68EE" fill-opacity="0.6" d="M 455 823h -355 v 38 h 355 v -38 Z">
-		<title>value: -36</title>
+		<title>-36</title>
 	</path>
 	<text x="505" y="842">18/06</text>
 	<line stroke="Black" y1="900" y2="880" x1="109" x2="109"></line>

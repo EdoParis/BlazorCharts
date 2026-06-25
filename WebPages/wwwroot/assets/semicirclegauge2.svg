@@ -44,6 +44,6 @@
 	<text x="900" y="499">500</text>
 	<path d="M 150 500 A 350 350 0 0 1 850 499" fill="none" stroke-width="1px" stroke="Black" vector-effect="non-scaling-stroke"></path>
 	<path d="M 327 183L 382 290L 399 281L 345 174 Z" fill="GhostWhite" stroke="Black" stroke-width="1px" fill-opacity="1.0" vector-effect="non-scaling-stroke">
-		<title>value: 175</title>
+		<title>175</title>
 	</path>
 </svg>

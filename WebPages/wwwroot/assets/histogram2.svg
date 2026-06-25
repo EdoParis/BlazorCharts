@@ -2,34 +2,34 @@
 <?xml-stylesheet type="text/css" href="../css/charts.css"?>
 <svg viewBox="-25 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
 	<path fill="#FFA500" stroke="#FFA500" fill-opacity="0.6" d="M 100 420 v 192 h 80 v -192 h -80 Z">
-		<title>value: -6</title>
+		<title>-6</title>
 	</path>
 	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 180 420 v -32 h 80 v 32 h -80 Z">
-		<title>value: 1</title>
+		<title>1</title>
 	</path>
 	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 260 420 v -192 h 80 v 192 h -80 Z">
-		<title>value: 6</title>
+		<title>6</title>
 	</path>
 	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 340 420 v -288 h 80 v 288 h -80 Z">
-		<title>value: 9</title>
+		<title>9</title>
 	</path>
 	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 420 420 v -320 h 80 v 320 h -80 Z">
-		<title>value: 10</title>
+		<title>10</title>
 	</path>
 	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 500 420 v -288 h 80 v 288 h -80 Z">
-		<title>value: 9</title>
+		<title>9</title>
 	</path>
 	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 580 420 v -192 h 80 v 192 h -80 Z">
-		<title>value: 6</title>
+		<title>6</title>
 	</path>
 	<path fill="#32CD32" stroke="#32CD32" fill-opacity="0.6" d="M 660 420 v -32 h 80 v 32 h -80 Z">
-		<title>value: 1</title>
+		<title>1</title>
 	</path>
 	<path fill="#FFA500" stroke="#FFA500" fill-opacity="0.6" d="M 740 420 v 192 h 80 v -192 h -80 Z">
-		<title>value: -6</title>
+		<title>-6</title>
 	</path>
 	<path fill="#FFA500" stroke="#FFA500" fill-opacity="0.6" d="M 820 420 v 480 h 80 v -480 h -80 Z">
-		<title>value: -15</title>
+		<title>-15</title>
 	</path>
 	<line stroke="Black" x1="140" x2="140" y1="410" y2="420"></line>
 	<line stroke="Black" x1="180" x2="180" y1="410" y2="420"></line>

@@ -2,34 +2,34 @@
 <?xml-stylesheet type="text/css" href="../css/charts.css"?>
 <svg viewBox="-25 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 100 900 v -216 h 80 v 216 h -80 Z">
-		<title>value: 10</title>
+		<title>10</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 180 900 v -281 h 80 v 281 h -80 Z">
-		<title>value: 13</title>
+		<title>13</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 260 900 v -345 h 80 v 345 h -80 Z">
-		<title>value: 16</title>
+		<title>16</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 340 900 v -410 h 80 v 410 h -80 Z">
-		<title>value: 19</title>
+		<title>19</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 420 900 v -475 h 80 v 475 h -80 Z">
-		<title>value: 22</title>
+		<title>22</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 500 900 v -540 h 80 v 540 h -80 Z">
-		<title>value: 25</title>
+		<title>25</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 580 900 v -605 h 80 v 605 h -80 Z">
-		<title>value: 28</title>
+		<title>28</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 660 900 v -670 h 80 v 670 h -80 Z">
-		<title>value: 31</title>
+		<title>31</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 740 900 v -735 h 80 v 735 h -80 Z">
-		<title>value: 34</title>
+		<title>34</title>
 	</path>
 	<path fill="MediumSlateBlue" stroke="MediumSlateBlue" d="M 820 900 v -800 h 80 v 800 h -80 Z">
-		<title>value: 37</title>
+		<title>37</title>
 	</path>
 	<text x="100" y="940">-20</text>
 	<line stroke="Black" x1="180" x2="180" y1="890" y2="900"></line>

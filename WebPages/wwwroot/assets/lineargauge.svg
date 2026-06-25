@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/css" href="../css/gauges.css"?>
 <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
 	<rect x="100" y="100" width="280" height="100" fill="RoyalBlue" stroke="White" fill-opacity="0.6">
-		<title>value: 175</title>
+		<title>175</title>
 	</rect>
 	<line stroke="Black" x1="100" x2="100" y1="220" y2="200"></line>
 	<text x="100" y="250">0</text>

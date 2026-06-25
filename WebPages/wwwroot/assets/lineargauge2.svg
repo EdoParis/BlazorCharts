@@ -43,6 +43,6 @@
 	<text x="900" y="250">500</text>
 	<line stroke="Black" x1="100" x2="900" y1="200" y2="200"></line>
 	<rect x="370" y="90" width="20" height="120" fill="GhostWhite" stroke="Black" stroke-width="1px" fill-opacity="1.0">
-		<title>value: 175</title>
+		<title>175</title>
 	</rect>
 </svg>

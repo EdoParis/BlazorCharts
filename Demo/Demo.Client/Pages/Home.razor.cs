@@ -32,10 +32,10 @@ namespace DemoApp.Pages
             radargram = new Radargram("R2", KnownColor.MediumVioletRed);
             gaugegram = new Gaugegram(0, 500, "G1", KnownColor.Navy);
             gaugegram2 = new Gaugegram(700, 1000, "G2", KnownColor.RoyalBlue);
-            gaugegram.Value = 175;
+            gaugegram.Value = 170;
             gaugegram2.Value = 800;
 
-            for (int i=0; i<10; i++)
+            for (int i=5; i<15; i++)
             {
                 histogram2.Add(new Bin()
                 {
@@ -54,7 +54,7 @@ namespace DemoApp.Pages
                 {
                     Min = 2 * i,
                     Max = 2 * i + 2,
-                    Value = 5 - Math.Pow(i - 4, 2)
+                    Value = 20 - Math.Pow(i - 4, 2)
                 });
 
                 bargram.Add(new Bar()
@@ -94,18 +94,18 @@ namespace DemoApp.Pages
             piegram.Add(new Slice("S4", 40, KnownColor.Aqua));
             piegram.Add(new Slice("S5", 15, KnownColor.DodgerBlue));
 
-            polargram.Add(new Slice("primavera", 20, KnownColor.Purple));
-            polargram.Add(new Slice("estate", 50, KnownColor.OrangeRed));
-            polargram.Add(new Slice("autunno", 85, KnownColor.Gold));
-            polargram.Add(new Slice("inverno", 25, KnownColor.Red));
-            polargram.Add(new Slice("undefined", 40, KnownColor.DodgerBlue));
+            polargram.Add(new Slice("S-1", 80, KnownColor.Purple));
+            polargram.Add(new Slice("S-2", 50, KnownColor.OrangeRed));
+            polargram.Add(new Slice("S-3", 120, KnownColor.Gold));
+            polargram.Add(new Slice("S-4", 45, KnownColor.Red));
+            polargram.Add(new Slice("S-5", 175, KnownColor.DodgerBlue));
 
-            radargram.Add(new Rating("C1",151));
+            radargram.Add(new Rating("C1",140));
             radargram.Add(new Rating("C2",130));
             radargram.Add(new Rating("C3",90));
             radargram.Add(new Rating("C4",80));
             radargram.Add(new Rating("C5",120));
-            radargram.Add(new Rating("C6",50));
+            radargram.Add(new Rating("C6",175));
 
             gaugegram.AddBreakpoint(new Breakpoint()
             {

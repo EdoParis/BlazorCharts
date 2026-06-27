@@ -2,7 +2,7 @@
 
 <PageTitle>Home</PageTitle>
 
-<table style="width: 100%; table-layout: fixed;">
+<table style="width: 100%; table-layout: fixed; font-family: system-ui">
     <tr>
         <td style="width: 50%"><LineChart Theme="Theme.Dark" Model="@linegram"></LineChart></td>
         <td style="width: 50%"><LineChart Theme="Theme.Light" Model="@linegram"></LineChart></td>
@@ -76,10 +76,10 @@
         <td><SemiCircleGauge Theme="Theme.Beach" Model="@gaugegram"></SemiCircleGauge></td>
     </tr>
     <tr>
-        <td><LegendBar Theme="Theme.Dark" Model="bargram2"></LegendBar></td>
-        <td><LegendBar Theme="Theme.Light" Model="bargram2"></LegendBar></td>
-        <td><LegendBar Theme="Theme.Arctic" Model="histogram"></LegendBar></td>
-        <td><LegendBar Theme="Theme.Beach" Model="histogram"></LegendBar></td>
+        <td><LegendBar Theme="Theme.Neon" Direction="Positioning.Horizontal" Model="linegram"></LegendBar></td>
+        <td><LegendBar Theme="Theme.Light" Direction="Positioning.Horizontal" Model="bargram2"></LegendBar></td>
+        <td><LegendBar Theme="Theme.Arctic" Direction="Positioning.Horizontal" Model="histogram"></LegendBar></td>
+        <td><LegendBar Theme="Theme.Dark" Direction="Positioning.Horizontal" Model="polargram"></LegendBar></td>
     </tr>
 </table>
 

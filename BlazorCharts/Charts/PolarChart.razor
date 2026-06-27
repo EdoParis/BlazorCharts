@@ -31,6 +31,7 @@
                     <text style="@TextStyles.Middle()" 
                           y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" 
                           x="@(width / 2)"
+                          dy="-0.5em"
                           fill="@Theme.TextColorString()">
                           @tick
                     </text>
@@ -58,7 +59,7 @@
         <text>
             <text style="@TextStyles.Middle()"
                   x="@(width / 2)" 
-                  y="@(padding / 2)"
+                  y="@(height - padding / 2)"
                   fill="@Theme.TextColorString()">
                   @Model.AxisR.Title
             </text>

@@ -10,13 +10,6 @@
                 cy="@((height / 2))"
                 r="@((Math.Min(width, height) - 2 * padding) / 2)"
                 style="pointer-events: none;" />
-        <text>
-            <text x="@(width / 2)"
-                  y="@((height / 2))"
-                  fill="@Theme.TextColorString()">
-                  NO DATA
-            </text>
-        </text>
     }
     else
     {
@@ -40,7 +33,8 @@
                   d="M @cx @cy l @dx @dy">
             </path>
             <text>
-                <text x="@(cx + dx + px)" 
+                <text style="@TextStyles.Middle()" 
+                      x="@(cx + dx + px)" 
                       y="@(cy + dy + py)"
                       fill="@Theme.TextColorString()">
                       @rating.Label
@@ -62,7 +56,7 @@
                 </path>
 
                 <text>
-                    <text class="tick"
+                    <text style="@TextStyles.End()"
                           x="@(width / 2)"
                           y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))"
                           fill="@Theme.TextColorString()">
@@ -87,20 +81,20 @@
                 int i = 0;
                 foreach (Rating rating in Model)
                 {
-                double r = rating.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
-                double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
-                double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
-                i++;
+                    double r = rating.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
+                    double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
+                    double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
+                    i++;
 
-                <circle fill="@Model.Color"
-                        stroke="@Theme.BackgroundString()"
-                        stroke-width="1px"
-                        vector-effect="non-scaling-stroke"
-                        cx="@((int)x)"
-                        cy="@((int)y)"
-                        r="0.5em">
-                        <title>@rating.Value.ToString("0.##")</title>
-                </circle>
+                    <circle fill="@Model.Color"
+                            stroke="@Theme.BackgroundString()"
+                            stroke-width="1px"
+                            vector-effect="non-scaling-stroke"
+                            cx="@((int)x)"
+                            cy="@((int)y)"
+                            r="10px">
+                            <title>@rating.Value.ToString("0.##")</title>
+                    </circle>
                 }
             }
         </g>

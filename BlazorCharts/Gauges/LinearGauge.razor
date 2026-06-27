@@ -6,13 +6,7 @@
               width="@(width - 2 * padding)"
               height="@(height - 2 * padding)"
               fill="@Theme.BackgroundString()"/>
-        <text>
-            <text x="@(width / 2)" 
-                  y="@(height / 2)"
-                  fill="@Theme.TextColorString()">
-                  NO DATA
-            </text>
-        </text>
+
         <line stroke="@Theme.AxisColorString()"
               stroke-width="1px"
               vector-effect="non-scaling-stroke"
@@ -58,14 +52,16 @@
             if (tx % 5 == 0)
             {
                 <line stroke="@Theme.AxisColorString()"
-                        stroke-width="1px"
-                        vector-effect="non-scaling-stroke"
-                        x1="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
-                        x2="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
-                        y1="@(offsetV + padding / 5)"
-                        y2="@offsetV" />
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      x1="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                      x2="@((int)(offsetH + (tick - Model.Axis.Min) * scaleH))"
+                      y1="@(offsetV + padding / 5)"
+                      y2="@offsetV" />
+
                 <text>
-                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.Axis.Min) / Model.Axis.Size))"
+                    <text style="@TextStyles.Middle()" 
+                          x="@((int)(padding + (width - 2 * padding) * (tick - Model.Axis.Min) / Model.Axis.Size))"
                           y="@(offsetV + padding / 2)"
                           fill="@Theme.TextColorString()">
                           @tick

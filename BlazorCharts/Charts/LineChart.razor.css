@@ -3,7 +3,7 @@ path {
     transition-duration: 0.25s;
 }
     path:hover {
-        stroke-width: 0.5em;
+        stroke-width: 3px;
     }
 
 circle {
@@ -11,27 +11,7 @@ circle {
     transition-duration: 0.25s;
 }
     circle:hover {
-        r: 1em;
-    }
-
-text {
-    font-size: 2.0rem;
-    text-anchor: middle;
-    pointer-events: none;
-    dominant-baseline: middle;
-}
-
-    text.anchor-start {
-        text-anchor: start;
-    }
-
-    text.anchor-end {
-        text-anchor: end;
-    }
-
-    text.rotated90 {
-        transform: rotate(-90deg);
-        transform-box: fill-box;
+        r: 15px;
     }
 
 svg {

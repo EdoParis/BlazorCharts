@@ -6,32 +6,6 @@ rect {
         fill-opacity: 1.0;
     }
 
-text {
-    font-size: 2.0rem;
-    text-anchor: middle;
-    pointer-events: none;
-    dominant-baseline: middle;
-}
-    text.anchor-start {
-        text-anchor: start;
-    }
-    
-    text.anchor-end {
-        text-anchor: end;
-    }
-
-    text.rotated45 {
-        transform: rotate(-45deg);
-        transform-box: fill-box;
-        transform-origin: center;
-    }
-
-    text.rotated90 {
-        transform: rotate(-90deg);
-        transform-box: fill-box;
-        transform-origin: center;
-    }
-
 svg {
     max-height: 100%;
     width: auto;

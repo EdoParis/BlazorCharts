@@ -6,11 +6,6 @@
               width="@(width - 2 * padding)"
               height="@(height - 2 * padding)"
               fill="@Theme.BackgroundString()"/>
-        <text>
-            <text y="@((height / 2))" 
-                  x="@(width / 2)"
-                  fill="@Theme.TextColorString()">NO DATA</text>
-        </text>
     }
     else
     {
@@ -34,6 +29,14 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
+                <text>
+                    <text style="@TextStyles.Rotated270()"
+                          x="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
+                          y="@(originV)"
+                          fill="@Theme.TextColorString()">
+                        @label
+                    </text>
+                </text>
             }
             else
             {
@@ -50,15 +53,15 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-            }
-            <text>
-                <text class="rotated90" 
-                      x="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
-                      y="@(originV + padding / 2 * (bin.Value >= 0 ? 1 : -1))"
-                      fill="@Theme.TextColorString()">
-                      @(label?.Length > 5 ? $"{label.Substring(0, 4)}.." : label)
+                <text>
+                    <text style="@TextStyles.Rotated90()"
+                          x="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
+                          y="@(originV)"
+                          fill="@Theme.TextColorString()">
+                        @label
+                    </text>
                 </text>
-            </text>            
+            }
         }
 
         int ty = 0;
@@ -75,9 +78,9 @@
             if (ty % 5 == 0)
             {
                 <text>
-                    <text class="anchor-end" 
+                    <text style="@TextStyles.End()"
                           y="@((int)(offsetV - (tick - Model.ValAxis.Min) * scaleV))" 
-                          x="@(3 * padding / 4)"
+                          x="@offsetH"
                           fill="@Theme.TextColorString()">
                           @tick
                     </text>
@@ -103,7 +106,7 @@
           y1="@originV"
           y2="@originV" />
 
-    <text class="anchor-start" 
+    <text style="@TextStyles.Start()"
           x="@(padding / 2)" 
           y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"
           fill="@Theme.TextColorString()">

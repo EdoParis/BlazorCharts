@@ -6,13 +6,7 @@
               width="@(width - 2 * padding)"
               height="@(height - 2 * padding)"
               fill="@Theme.BackgroundString()"/>
-        <text>
-            <text x="@(width / 2)"
-                  y="@((height / 2))"
-                  fill="@Theme.TextColorString()">
-                  NO DATA
-            </text>
-        </text>
+
         <line stroke="@Theme.AxisColorString()"
               stroke-width="1px"
               vector-effect="non-scaling-stroke"
@@ -48,15 +42,16 @@
               y2="@offsetV" />
 
         <text>
-            <text x="@(width / 2)" 
+            <text style="@TextStyles.Middle()"
+                  x="@(width / 2)" 
                   y="@(height - padding / 4)" 
                   fill="@Theme.TextColorString()">
                   @(Model?.TitleX)
             </text>
-            <text x="@(padding / 2)" 
+            <text style="@TextStyles.Start()"
+                  x="@(padding / 2)" 
                   y="@(padding / 2)"
-                  fill="@Theme.TextColorString()" 
-                  class="anchor-start">
+                  fill="@Theme.TextColorString()">
                   @(Model?.TitleY)
             </text>
         </text>
@@ -78,7 +73,8 @@
             if (tx % 5 == 0)
             {
                 <text>
-                    <text x="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))" 
+                    <text style="@TextStyles.Middle()"
+                          x="@((int)(padding + (width - 2 * padding) * (tick - Model.AxisX.Min) / Model.AxisX.Size))" 
                           y="@(offsetV + 2 * padding / 5)"
                           fill="@Theme.TextColorString()">
                           @tick
@@ -105,8 +101,8 @@
             if (ty % 5 == 0)
             {
                 <text>
-                    <text class="anchor-end"
-                          x="@(3 * padding / 4)"
+                    <text style="@TextStyles.End()"
+                          x="@offsetH"
                           y="@((int)(offsetV - (tick - Model.AxisY.Min) * scaleV))"
                           fill="@Theme.TextColorString()">
                           @tick
@@ -122,7 +118,8 @@
             {
                 <path fill="none"
                       stroke="@line.Color.ToHex()"
-                      stroke-width="0.5em"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
                       d="@LinePath(line)"
                       @key="@line">
                     <title>@($"{line.Label}")</title>
@@ -139,7 +136,7 @@
                             vector-effect="non-scaling-stroke"
                             cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
                             cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
-                            r="0.5em">
+                            r="10px">
                         <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
                     </circle>
                 }

@@ -5,14 +5,3 @@ path {
     path:hover {
         fill-opacity: 1.0;
     }
-
-text {
-    font-size: 2.0rem;
-    text-anchor: middle;
-    pointer-events: none;
-    dominant-baseline: middle;
-}
-    text.tick {
-        font-size: 1.5rem;
-        dominant-baseline: ideographic;
-    }

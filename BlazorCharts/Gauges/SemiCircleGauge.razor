@@ -11,13 +11,6 @@
               stroke="@Theme.AxisColorString()"
               stroke-width="1px"
               vector-effect="non-scaling-stroke"/>
-        <text>
-            <text x="@(width / 2)" 
-                  y="@(height / 3)"
-                  fill="@Theme.TextColorString()">
-                  NO DATA
-            </text>
-        </text>
     }
     else
     {
@@ -48,6 +41,14 @@
                   stroke-opacity="0.6">
                 <title>@Model.Value.ToString("0.##")</title>
             </path>
+            <text>
+                <text style="@TextStyles.LargeTop()"
+                      x="@(width / 2)"
+                      y="@(height - padding)"
+                      fill="@Theme.TextColorString()">
+                    @Model.Value.ToString("0.##")
+                </text>
+            </text>
         }
         int tx = 0;
         foreach (double tick in Model.Axis.Ticks(5))
@@ -64,8 +65,10 @@
                       x2="@((int)(width / 2 - (radius + padding / 5) * Math.Cos(rot)))"
                       y1="@((int)(height - padding - radius * Math.Sin(rot)))"
                       y2="@((int)(height - padding - (radius + padding / 5) * Math.Sin(rot)))" />
+
                 <text>
-                    <text x="@((int)(width / 2 - (radius + padding / 2) * Math.Cos(rot)))"
+                    <text style="@TextStyles.Middle()" 
+                          x="@((int)(width / 2 - (radius + padding / 2) * Math.Cos(rot)))"
                           y="@((int)(height - padding - (radius + padding / 2) * Math.Sin(rot)))"
                           fill="@Theme.TextColorString()">
                           @tick
@@ -101,6 +104,14 @@
                   vector-effect="non-scaling-stroke">
                 <title>@Model.Value.ToString("0.##")</title>
             </path>
+            <text>
+                <text style="@TextStyles.LargeTop()"
+                      x="@(width / 2)"
+                      y="@(height - padding)"
+                      fill="@Theme.TextColorString()">
+                    @Model.Value.ToString("0.##")
+                </text>
+            </text>
         }
     }
 </svg>

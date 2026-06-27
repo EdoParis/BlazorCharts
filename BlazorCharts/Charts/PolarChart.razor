@@ -10,13 +10,6 @@
                 cy="@((height / 2))"
                 r="@((Math.Min(width, height) - 2 * padding) / 2)"
                 style="pointer-events: none;" />
-        <text>
-            <text x="@(width / 2)"
-                  y="@((height / 2))"
-                  fill="@Theme.TextColorString()">
-                  NO DATA
-            </text>
-        </text>
     }
     else
     {
@@ -35,7 +28,7 @@
                         r="@((int)(tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" />
 
                 <text>
-                    <text class="tick" 
+                    <text style="@TextStyles.Middle()" 
                           y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" 
                           x="@(width / 2)"
                           fill="@Theme.TextColorString()">
@@ -63,7 +56,8 @@
             progress += 1d / Model.SlicesCount;
         }
         <text>
-            <text x="@(width / 2)" 
+            <text style="@TextStyles.Middle()"
+                  x="@(width / 2)" 
                   y="@(padding / 2)"
                   fill="@Theme.TextColorString()">
                   @Model.AxisR.Title

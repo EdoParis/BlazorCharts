@@ -8,7 +8,8 @@
                 vector-effect="non-scaling-stroke"
                 cx="@((width / 2))"
                 cy="@((height / 2))"
-                r="@((Math.Min(width, height) - 2 * padding) / 2)" />
+                r="@((Math.Min(width, height) - 2 * padding) / 2)"
+                style="pointer-events: none;" />
 
         <circle fill="@Theme.BackgroundString()"
                 fill-opacity="1.0"
@@ -17,21 +18,17 @@
                 vector-effect="non-scaling-stroke"
                 cx="@((width / 2))"
                 cy="@((height / 2))"
-                r="@((Math.Min(width, height) - 2 * padding) / 3)" />
-        <text>
-            <text x="@(width / 2)"
-                  y="@((height / 2))"
-                  fill="@Theme.TextColorString()">
-                NO DATA
-            </text>
-        </text>
+                r="@((Math.Min(width, height) - 2 * padding) / 3)"
+                style="pointer-events: none;" />
     }
     else
     {
         <text>
-            <text fill="@Theme.TextColorString()">
-                <tspan x="@(width / 2)" y="@(height / 2)">TOTAL</tspan>
-                <tspan x="@(width / 2)" y="@(height / 2)" dy="1.5em">@Model.Total</tspan>
+            <text style="@TextStyles.Large()"
+                  x="@(width / 2)"
+                  y="@(height / 2)"
+                  fill="@Theme.TextColorString()">
+                @Model.Total.ToString("0.##")
             </text>
         </text>
 
@@ -55,11 +52,11 @@
                                       SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                       SliceExternalPoint(slice, 2 * Math.PI * progress);
                 <text>
-                    <text class="tick" 
+                    <text style="@TextStyles.Middle()" 
                           x="@text_position.X" 
                           y="@text_position.Y"
                           fill="@Theme.TextColorString()">
-                        @slice.Value
+                        @slice.Value.ToString("0.##")
                     </text>
                 </text>
 

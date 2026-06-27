@@ -16,30 +16,24 @@
         int c = 0;
         foreach (Rating rating in Model)
         {
-            double r = Model.AxisR.Max / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
-            int cx = width / 2;
-            int cy = height / 2;
-            int dx = (int)(r * Math.Sin(2 * Math.PI / Model.Categories * c));
-            int dy = (int)(-r * Math.Cos(2 * Math.PI / Model.Categories * c));
-            int px = (int)(padding / 2 * Math.Sin(2 * Math.PI / Model.Categories * c));
-            int py = (int)(-padding / 2 * Math.Cos(2 * Math.PI / Model.Categories * c));
-            c++;
-
-            <path fill="transparent"
+            <line x1="@(width / 2)"
+                  y1="@(height / 2)"
+                  x2="@((int)((width / 2 + (width / 2 - padding) * Math.Sin(2 * Math.PI / Model.Categories * c))))"
+                  y2="@((int)((height / 2 - (height / 2 - padding) * Math.Cos(2 * Math.PI / Model.Categories * c))))"
                   stroke="@Theme.AxisColorString()"
                   stroke-width="1px"
                   stroke-opacity="0.3"
-                  vector-effect="non-scaling-stroke"
-                  d="M @cx @cy l @dx @dy">
-            </path>
+                  vector-effect="non-scaling-stroke"/>
+
             <text>
-                <text style="@TextStyles.Middle()" 
-                      x="@(cx + dx + px)" 
-                      y="@(cy + dy + py)"
+                <text style="@TextStyles.Middle()"
+                      x="@((int)((width / 2 + (width / 2 - padding / 2) * Math.Sin(2 * Math.PI / Model.Categories * c))))"
+                      y="@((int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c))))"
                       fill="@Theme.TextColorString()">
                       @rating.Label
                 </text>
             </text>
+            c++;
         }
 
         int tr = 0;

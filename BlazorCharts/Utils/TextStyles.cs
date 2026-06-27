@@ -4,8 +4,9 @@
     {
         private static string Default()
         {
-            return "font-size: 2.5rem;" +
-                "pointer-events: none;";
+            return "font-size: 40px;" +
+                "pointer-events: none;" +
+                "dominant-baseline: central;";
         }
 
         public static string Start()
@@ -26,6 +27,21 @@
             return Default() +
                 "text-anchor: end;" +
                 "transform: translateX(-0.5em);";
+        }
+
+        public static string Large()
+        {
+            return "font-size: 100px;" +
+                "pointer-events: none;" +
+                "text-anchor: middle;" +
+                "dominant-baseline: central";
+        }
+
+        public static string LargeTop()
+        {
+            return "font-size: 100px;" +
+                "pointer-events: none;" +
+                "text-anchor: middle;";
         }
 
         public static string Rotated45()

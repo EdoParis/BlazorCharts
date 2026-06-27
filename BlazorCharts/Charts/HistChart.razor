@@ -66,7 +66,8 @@
                     <text>
                         <text style="@TextStyles.Middle()"
                               x="@(offsetH + (int)((tick - Model.AxisX.Min) * scaleH))"
-                              y="@(originV + 2 * padding / 5 * (originV > height / 2 ? 1 : -1))"
+                              y="@originV"
+                              dy="@(originV > height / 2 ? 1 : -1)em"
                               fill="@Theme.TextColorString()">
                               @tick
                         </text>

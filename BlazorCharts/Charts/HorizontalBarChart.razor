@@ -80,7 +80,8 @@
                 <text>
                     <text style="@TextStyles.Middle()"
                           x="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))" 
-                          y="@(offsetV + 2 * padding / 5)"
+                          y="@offsetV"
+                          dy="1em"
                           fill="@Theme.TextColorString()">
                           @tick
                     </text>

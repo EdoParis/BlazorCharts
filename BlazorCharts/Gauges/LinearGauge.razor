@@ -95,7 +95,7 @@
                   y="@(9 * padding / 10)"
                   width="@(padding / 5)"
                   height="@(height - 9 * padding / 5)"
-                  fill="@Theme.BackgroundString()"
+                  fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
                   stroke="@Theme.AxisColorString()"
                   stroke-width="1px"
                   fill-opacity="1.0"

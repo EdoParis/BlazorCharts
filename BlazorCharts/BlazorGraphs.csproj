@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>2.3.0</Version>
+    <Version>2.3.1</Version>
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,7 +16,9 @@
 	  <RepositoryType>git</RepositoryType>
     <Description>Lightweight library to draw .svg charts and gauges for Blazor (No Javascript)</Description>
     <PackageReleaseNotes>
-		- Added Theme system for charts, gauges and legends customization 
+		- Improved labels positioning
+		- Fix grid in radar and polar charts
+		- Fix title of svg elements
 	</PackageReleaseNotes>
   </PropertyGroup>
 

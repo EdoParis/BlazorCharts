@@ -2,46 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://edoparis.github.io/BlazorCharts/</loc>
-		<lastmod>2026-06-01</lastmod>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>1.00</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/legendbar</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/histogram.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/histogram</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/barchart.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/barchart</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/horizontalbarchart.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/linechart</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/linechart.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/radarchart</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/radarchart.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/polarchart</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/polarchart.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/piechart</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/piechart.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/donutchart</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/donutchart.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/lineargauge</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/lineargauge.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://edoparis.github.io/BlazorCharts/pages/semicirclegauge</loc>
-		<lastmod>2026-06-01</lastmod>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/semicirclegauge.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/legendbar.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/themes.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/roadmap.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/changelog.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://edoparis.github.io/BlazorCharts/index.html</loc>
+		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.64</priority>
 	</url>
 </urlset>

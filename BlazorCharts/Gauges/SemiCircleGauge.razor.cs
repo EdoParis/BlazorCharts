@@ -30,33 +30,34 @@ namespace BlazorGraphs.Gauges
 
         private string BarPath(double degree)
         {
-            double r_out = radius + 3 * padding / 5;
-            double r_in = radius - 3 * padding / 5;
+            double bar_width = padding / 5;
+            double bar_height = 6 * padding / 5;
 
             Point P1 = new Point()
             {
-                X = (int)(width / 2 - r_out * Math.Cos(degree) - padding / 10 * Math.Sin(degree)),
-                Y = (int)(height - padding - r_out * Math.Sin(degree) + padding / 10 * Math.Cos(degree))
+                X = (int)(width / 2 - (radius + bar_height / 2) * Math.Cos(degree) - bar_width / 2 * Math.Sin(degree)),
+                Y = (int)(height - padding - (radius + bar_height / 2) * Math.Sin(degree) + bar_width / 2 * Math.Cos(degree))
             };
             Point P2 = new Point()
             {
-                X = (int)(width / 2 - r_in * Math.Cos(degree) - padding / 10 * Math.Sin(degree)),
-                Y = (int)(height - padding - r_in * Math.Sin(degree) + padding / 10 * Math.Cos(degree))
+                X = (int)(width / 2 - (radius + bar_height / 2) * Math.Cos(degree) + bar_width / 2 * Math.Sin(degree)),
+                Y = (int)(height - padding - (radius + bar_height / 2) * Math.Sin(degree) - bar_width / 2 * Math.Cos(degree))
             };
             Point P3 = new Point()
             {
-                X = (int)(width / 2 - r_in * Math.Cos(degree) + padding / 10 * Math.Sin(degree)),
-                Y = (int)(height - padding - r_in * Math.Sin(degree) - padding / 10 * Math.Cos(degree))
+                X = (int)(width / 2 - (radius - bar_height / 2) * Math.Cos(degree) + bar_width / 2 * Math.Sin(degree)),
+                Y = (int)(height - padding - (radius - bar_height / 2) * Math.Sin(degree) - bar_width / 2 * Math.Cos(degree))
             };
             Point P4 = new Point()
             {
-                X = (int)(width / 2 - r_out * Math.Cos(degree) + padding / 10 * Math.Sin(degree)),
-                Y = (int)(height - padding - r_out * Math.Sin(degree) - padding / 10 * Math.Cos(degree))
+                X = (int)(width / 2 - (radius - bar_height / 2) * Math.Cos(degree) - bar_width / 2 * Math.Sin(degree)),
+                Y = (int)(height - padding - (radius - bar_height / 2) * Math.Sin(degree) + bar_width / 2 * Math.Cos(degree))
             };
+
             return $"M {P1.X} {P1.Y}" +
                    $"L {P2.X} {P2.Y}" +
                    $"L {P3.X} {P3.Y}" +
-                   $"L {P4.X} {P4.Y} Z";
+                   $"L {P4.X} {P4.Y}Z";
         }
     }
 }

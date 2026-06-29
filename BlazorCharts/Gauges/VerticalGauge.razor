@@ -1,0 +1,107 @@
+﻿<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
+    @if (Model is null)
+    {
+        <rect x="@offsetH"
+              y="@padding"
+              width="@(width - 2 * padding)"
+              height="@(height - 2 * padding)"
+              fill="@Theme.BackgroundString()"/>
+
+        <line stroke="@Theme.AxisColorString()"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              x1="@offsetH"
+              x2="@offsetH"
+              y1="@offsetV"
+              y2="@padding" />
+    }
+    else
+    {
+        if (Model.HasBreakPoints)
+        {
+            double start_value = Model.Axis.Min;
+            foreach (Breakpoint breakpoint in Model)
+            {
+                <rect y="@((int)(offsetV - (breakpoint.Value - Model.Axis.Min) * scaleV))"
+                      x="@offsetH"
+                      height="@((int)((breakpoint.Value - start_value) * scaleV))"
+                      width="@(width - 2 * padding)"
+                      fill="@breakpoint.Color.ToHex()"
+                      fill-opacity="0.6"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke">
+                    <title>@breakpoint.Label</title>
+                </rect>
+                start_value = breakpoint.Value;
+            }
+        }
+        else if (Model.Axis.Contains(Model.Value))
+        {
+            <rect y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV))"
+                  x="@offsetH"
+                  height="@((int)((Model.Value - Model.Axis.Min) * scaleV))"
+                  width="@(width - 2 * padding)"
+                  fill="@Model.Color.ToHex()"
+                  fill-opacity="0.6">
+                <title>@Model.Value.ToString("0.##")</title>
+            </rect>
+        }
+        int tx = 0;
+        foreach (double tick in Model.Axis.Ticks(5))
+        {
+            if (tx % 5 == 0)
+            {
+                <line stroke="@Theme.AxisColorString()"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      y1="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
+                      y2="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
+                      x1="@(offsetH - padding / 5)"
+                      x2="@offsetH" />
+
+                <text>
+                    <text style="@TextStyles.End()"
+                          y="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
+                          x="@offsetH"
+                          dx="-0.5em"
+                          fill="@Theme.TextColorString()">
+                          @tick
+                    </text>
+                </text>
+            }
+            else
+            {
+                <line stroke="@Theme.AxisColorString()"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      y1="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
+                      y2="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
+                      x1="@(offsetH - padding / 10)"
+                      x2="@offsetH" />
+            }
+            tx++;
+        }
+        <line stroke="@Theme.AxisColorString()"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              x1="@offsetH"
+              x2="@offsetH"
+              y1="@offsetV"
+              y2="@padding" />
+
+        if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
+        {
+            <rect y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV - padding / 10))"
+                  x="@(offsetH - padding / 10)"
+                  height="@(padding / 5)"
+                  width="@(width - 9 * padding / 5)"
+                  fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
+                  stroke="@Theme.AxisColorString()"
+                  stroke-width="1px"
+                  fill-opacity="1.0"
+                  vector-effect="non-scaling-stroke">
+                <title>@Model.Value.ToString("0.##")</title>
+            </rect>
+        }
+    }
+</svg>

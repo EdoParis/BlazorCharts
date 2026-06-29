@@ -1,0 +1,7 @@
+rect {
+    transition-duration: 0.25s;
+}
+
+    rect:hover {
+        fill-opacity: 1.0;
+    }

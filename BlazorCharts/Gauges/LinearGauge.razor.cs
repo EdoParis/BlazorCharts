@@ -10,6 +10,7 @@ namespace BlazorGraphs.Gauges
         private const int PADDING = 100;
 
         [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Boolean Reverse { get; set; }
         [Parameter] public Gaugegram Model { get; set; }
         private int width = VIEW;
         private int height = 3 * PADDING;

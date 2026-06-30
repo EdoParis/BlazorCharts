@@ -1,17 +1,11 @@
 ﻿<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
     @if (Model is null)
     {
-        <rect x="@offsetH"
-              y="@padding"
-              width="@(width - 2 * padding)"
-              height="@(height - 2 * padding)"
-              fill="@Theme.BackgroundString()"/>
-
         <line stroke="@Theme.AxisColorString()"
               stroke-width="1px"
               vector-effect="non-scaling-stroke"
-              x1="@offsetH"
-              x2="@offsetH"
+              x1="@(width / 2)"
+              x2="@(width / 2)"
               y1="@offsetV"
               y2="@padding" />
     }
@@ -23,9 +17,9 @@
             foreach (Breakpoint breakpoint in Model)
             {
                 <rect y="@((int)(offsetV - (breakpoint.Value - Model.Axis.Min) * scaleV))"
-                      x="@offsetH"
+                      x="@(Reverse ? padding / 2 : width / 2)"
                       height="@((int)((breakpoint.Value - start_value) * scaleV))"
-                      width="@(width - 2 * padding)"
+                      width="@padding"
                       fill="@breakpoint.Color.ToHex()"
                       fill-opacity="0.6"
                       stroke-width="1px"
@@ -38,9 +32,9 @@
         else if (Model.Axis.Contains(Model.Value))
         {
             <rect y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV))"
-                  x="@offsetH"
+                  x="@(Reverse? padding / 2 : width / 2)"
                   height="@((int)((Model.Value - Model.Axis.Min) * scaleV))"
-                  width="@(width - 2 * padding)"
+                  width="@padding"
                   fill="@Model.Color.ToHex()"
                   fill-opacity="0.6">
                 <title>@Model.Value.ToString("0.##")</title>
@@ -56,14 +50,14 @@
                       vector-effect="non-scaling-stroke"
                       y1="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
                       y2="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                      x1="@(offsetH - padding / 5)"
-                      x2="@offsetH" />
+                      x1="@(Reverse ? 3 * padding / 2 + padding / 5 : width / 2 - padding / 5)"
+                      x2="@(Reverse ? 3 * padding / 2 : width / 2)" />
 
                 <text>
-                    <text style="@TextStyles.End()"
+                    <text style="@(Reverse ? TextStyles.Start() : TextStyles.End())"
                           y="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                          x="@offsetH"
-                          dx="-0.5em"
+                          x="@(Reverse ? 3 * padding / 2 : width / 2)"
+                          dx="@(Reverse ? "0.5em" : "-0.5em")"
                           fill="@Theme.TextColorString()">
                           @tick
                     </text>
@@ -76,23 +70,23 @@
                       vector-effect="non-scaling-stroke"
                       y1="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
                       y2="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                      x1="@(offsetH - padding / 10)"
-                      x2="@offsetH" />
+                      x1="@(Reverse ? 3 * padding / 2 + padding / 10 : width / 2 - padding / 10)"
+                      x2="@(Reverse ? 3 * padding / 2 : width / 2)" />
             }
             tx++;
         }
         <line stroke="@Theme.AxisColorString()"
               stroke-width="1px"
               vector-effect="non-scaling-stroke"
-              x1="@offsetH"
-              x2="@offsetH"
+              x1="@(Reverse ? 3 * padding / 2 : width / 2)"
+              x2="@(Reverse ? 3 * padding / 2 : width / 2)"
               y1="@offsetV"
               y2="@padding" />
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {
             <rect y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV - padding / 10))"
-                  x="@(offsetH - padding / 10)"
+                  x="@((Reverse ? padding / 2 : width / 2) - padding / 10)"
                   height="@(padding / 5)"
                   width="@(width - 9 * padding / 5)"
                   fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"

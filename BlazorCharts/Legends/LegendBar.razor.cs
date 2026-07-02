@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace BlazorGraphs.Legends
 {
+    [Obsolete("use LegendHorizontal or LegendVertical components instead")]
     public partial class LegendBar
     {
         [Parameter] public Positioning Direction { get; set; }

@@ -1,0 +1,12 @@
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.legend-item{
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}

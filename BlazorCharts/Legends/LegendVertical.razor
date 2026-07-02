@@ -1,0 +1,17 @@
+﻿<div style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString(); color: @Theme.TextColorString();">
+    @if (Model != null)
+    {
+        foreach (LegendItem item in Model.ToLegend())
+        {
+            <div class="legend-item">
+                <svg width="1.5em" height="1em" style="min-width:1.5em;">
+                    <circle cx="0.5em"
+                            cy="0.5em"
+                            r="0.4em"
+                            fill="@item.Color.ToHex()" />
+                </svg>
+                <div class="text-truncate">@item.Text</div>
+            </div>
+        }
+    }
+</div>

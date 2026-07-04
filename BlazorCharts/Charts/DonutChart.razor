@@ -23,14 +23,11 @@
     }
     else
     {
-        <text>
-            <text style="@TextStyles.Large()"
-                  x="@(width / 2)"
-                  y="@(height / 2)"
-                  fill="@Theme.TextColorString()">
-                @Model.Total.ToString("0.##")
-            </text>
-        </text>
+        <SvgTextMiddle X="@(width / 2)"
+                       Y="@(height / 2)"
+                       Size="100"
+                       Fill="@Theme.TextColor"
+                       Text="@Model.Total.ToString("0.##")" />
 
         double progress = 0;
         foreach (Slice slice in Model)
@@ -51,14 +48,12 @@
                 Point text_position = 10 * slice.Value > Model.Total ? 
                                       SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                       SliceExternalPoint(slice, 2 * Math.PI * progress);
-                <text>
-                    <text style="@TextStyles.Middle()" 
-                          x="@text_position.X" 
-                          y="@text_position.Y"
-                          fill="@Theme.TextColorString()">
-                        @slice.Value.ToString("0.##")
-                    </text>
-                </text>
+
+                <SvgTextMiddle X="@text_position.X"
+                               Y="@text_position.Y"
+                               Size="40"
+                               Fill="@Theme.TextColor"
+                               Text="@slice.Value.ToString("0.##")" />
 
                 progress += slice.Value / Model.Total;
             }

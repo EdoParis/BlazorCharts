@@ -25,14 +25,11 @@
                   stroke-opacity="0.3"
                   vector-effect="non-scaling-stroke"/>
 
-            <text>
-                <text style="@TextStyles.Middle()"
-                      x="@((int)((width / 2 + (width / 2 - padding / 2) * Math.Sin(2 * Math.PI / Model.Categories * c))))"
-                      y="@((int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c))))"
-                      fill="@Theme.TextColorString()">
-                      @rating.Label
-                </text>
-            </text>
+            <SvgTextMiddle X="@((int)((width / 2 + (width / 2 - padding / 2) * Math.Sin(2 * Math.PI / Model.Categories * c))))"
+                           Y="@((int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c))))"
+                           Size="40"
+                           Fill="@Theme.TextColor"
+                           Text="@rating.Label"/>
             c++;
         }
 
@@ -49,14 +46,11 @@
                       d="@Path(tick)">
                 </path>
 
-                <text>
-                    <text style="@TextStyles.End()"
-                          x="@(width / 2)"
-                          y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))"
-                          fill="@Theme.TextColorString()">
-                          @tick
-                    </text>
-                </text>
+                <SvgTextEnd X="@(width / 2)"
+                            Y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))"
+                            Size="40"
+                            Fill="@Theme.TextColor"
+                            Text="@tick.ToString()"/>
             }
             tr++;
         }

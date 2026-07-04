@@ -27,15 +27,11 @@
                         cy="@((height / 2))"
                         r="@((int)(tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" />
 
-                <text>
-                    <text style="@TextStyles.Middle()" 
-                          y="@((int)(height / 2 - (height / 2 - padding) * tick / Model.AxisR.Size))" 
-                          x="@(width / 2)"
-                          dy="-0.75em"
-                          fill="@Theme.TextColorString()">
-                          @tick
-                    </text>
-                </text>
+                <SvgTextTop X="@(width / 2)"
+                            Y="@((int)(height / 2 - (height / 2 - padding) * tick / Model.AxisR.Size))"
+                            Size="40"
+                            Fill="@Theme.TextColor"
+                            Text="@tick.ToString()"/>
             }
             tr++;
         }
@@ -56,13 +52,10 @@
 
             progress += 1d / Model.SlicesCount;
         }
-        <text>
-            <text style="@TextStyles.Middle()"
-                  x="@(width / 2)" 
-                  y="@(height - padding / 2)"
-                  fill="@Theme.TextColorString()">
-                  @Model.AxisR.Title
-            </text>
-        </text>
+        <SvgTextMiddle X="@(width / 2)"
+                       Y="@(height - padding / 2)"
+                       Size="40"
+                       Fill="@Theme.TextColor"
+                       Text="@Model?.AxisR?.Title"/>
     }
 </svg>

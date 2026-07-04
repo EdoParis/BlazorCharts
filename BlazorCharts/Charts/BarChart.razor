@@ -29,14 +29,11 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                <text>
-                    <text style="@TextStyles.Rotated270()"
-                          x="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
-                          y="@(originV)"
-                          fill="@Theme.TextColorString()">
-                        @label
-                    </text>
-                </text>
+                <SvgTextRotated270 X="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
+                                   Y="@(originV)"
+                                   Size="40"
+                                   Fill="@Theme.TextColor"
+                                   Text="@label" />
             }
             else
             {
@@ -53,14 +50,11 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                <text>
-                    <text style="@TextStyles.Rotated90()"
-                          x="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
-                          y="@(originV)"
-                          fill="@Theme.TextColorString()">
-                        @label
-                    </text>
-                </text>
+                <SvgTextRotated90 X="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
+                                  Y="@(originV)"
+                                  Size="40"
+                                  Fill="@Theme.TextColor"
+                                  Text="@label"/>
             }
         }
 
@@ -77,14 +71,11 @@
 
             if (ty % 5 == 0)
             {
-                <text>
-                    <text style="@TextStyles.End()"
-                          y="@((int)(offsetV - (tick - Model.ValAxis.Min) * scaleV))" 
-                          x="@offsetH"
-                          fill="@Theme.TextColorString()">
-                          @tick
-                    </text>
-                </text>
+                <SvgTextEnd X="@offsetH"
+                            Y="@((int)(offsetV - (tick - Model.ValAxis.Min) * scaleV))"
+                            Size="40"
+                            Fill="@Theme.TextColor"
+                            Text="@tick.ToString()" />
             }
             ty++;
         }
@@ -106,10 +97,9 @@
           y1="@originV"
           y2="@originV" />
 
-    <text style="@TextStyles.Start()"
-          x="@(padding / 2)" 
-          y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"
-          fill="@Theme.TextColorString()">
-          @(Model?.Title)
-    </text>
+    <SvgTextStart X="@(padding / 2)"
+                  Y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"
+                  Size="40"
+                  Fill="@Theme.TextColor"
+                  Text="@Model?.Title" />
 </svg>

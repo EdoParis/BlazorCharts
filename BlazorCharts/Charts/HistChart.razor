@@ -63,15 +63,22 @@
             {
                 if (tick != Model.AxisX.Min || originV == padding || originV == offsetV)
                 {
-                    <text>
-                        <text style="@TextStyles.Middle()"
-                              x="@(offsetH + (int)((tick - Model.AxisX.Min) * scaleH))"
-                              y="@originV"
-                              dy="@(originV > height / 2 ? 1 : -1)em"
-                              fill="@Theme.TextColorString()">
-                              @tick
-                        </text>
-                    </text>
+                    if (originV > height / 2)
+                    {
+                        <SvgTextBottom X="@(offsetH + (int)((tick - Model.AxisX.Min) * scaleH))" 
+                                       Y="originV"
+                                       Size="40"
+                                       Fill="@Theme.TextColor"
+                                       Text="@tick.ToString()"/>
+                    }
+                    else
+                    {
+                        <SvgTextTop X="@(offsetH + (int)((tick - Model.AxisX.Min) * scaleH))"
+                                    Y="originV"
+                                    Size="40"
+                                    Fill="@Theme.TextColor"
+                                    Text="@tick.ToString()" />
+                    }
                 }
             }
             tx++;
@@ -90,14 +97,11 @@
 
             if (ty % 5 == 0)
             {
-                <text>
-                    <text style="@TextStyles.End()"
-                          x="@offsetH"
-                          y="@(offsetV - (int)((tick - Model.AxisY.Min) * scaleV))"
-                          fill="@Theme.TextColorString()">
-                          @tick
-                    </text>
-                </text>
+                <SvgTextEnd X="offsetH"
+                            Y="@(offsetV - (int)((tick - Model.AxisY.Min) * scaleV))"
+                            Size="40"
+                            Fill="@Theme.TextColor"
+                            Text="@tick.ToString()"/>
             }
             ty++;
         }
@@ -118,17 +122,15 @@
           y1="@originV"
           y2="@originV" />
 
-    <text style="@TextStyles.Middle()"
-          x="@(width / 2)" 
-          y="@(originV > height / 2 ? height - padding / 4 : padding / 4)" 
-          fill="@Theme.TextColorString()">
-          @(Model?.TitleX)
-    </text>
+    <SvgTextMiddle X="@(width / 2)" 
+                   Y="@(originV > height / 2 ? height - padding / 4 : padding / 4)"
+                   Size="40"
+                   Fill="@Theme.TextColor"
+                   Text="@Model?.TitleX" />
 
-    <text style="@TextStyles.Start()"
-          x="@(padding / 2)" 
-          y="@(originV > height / 2 ? padding / 2 : height - padding / 2)" 
-          fill="@Theme.TextColorString()">
-          @(Model?.TitleY)
-    </text>
+    <SvgTextStart X="@(padding / 2)"
+                  Y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"
+                  Size="40"
+                  Fill="@Theme.TextColor"
+                  Text="@Model?.TitleY"/>
 </svg>

@@ -41,14 +41,6 @@
                   stroke-opacity="0.6">
                 <title>@Model.Value.ToString("0.##")</title>
             </path>
-            <text>
-                <text style="@TextStyles.LargeTop()"
-                      x="@(width / 2)"
-                      y="@(height - padding)"
-                      fill="@Theme.TextColorString()">
-                    @Model.Value.ToString("0.##")
-                </text>
-            </text>
         }
         int tx = 0;
         foreach (double tick in Model.Axis.Ticks(5))
@@ -66,14 +58,11 @@
                       y1="@((int)(height - padding - radius * Math.Sin(rot)))"
                       y2="@((int)(height - padding - (radius + padding / 5) * Math.Sin(rot)))" />
 
-                <text>
-                    <text style="@TextStyles.Middle()" 
-                          x="@((int)(width / 2 - (radius + padding / 2) * Math.Cos(rot)))"
-                          y="@((int)(height - padding - (radius + padding / 2) * Math.Sin(rot)))"
-                          fill="@Theme.TextColorString()">
-                          @tick
-                    </text>
-                </text>
+                <SvgTextMiddle X="@((int)(width / 2 - (radius + padding / 2) * Math.Cos(rot)))"
+                               Y="@((int)(height - padding - (radius + padding / 2) * Math.Sin(rot)))"
+                               Size="40"
+                               Fill="@Theme.TextColor"
+                               Text="@tick.ToString()"/>
             }
             else
             {
@@ -104,14 +93,12 @@
                   vector-effect="non-scaling-stroke">
                 <title>@Model.Value.ToString("0.##")</title>
             </path>
-            <text>
-                <text style="@TextStyles.LargeTop()"
-                      x="@(width / 2)"
-                      y="@(height - padding)"
-                      fill="@Theme.TextColorString()">
-                    @Model.Value.ToString("0.##")
-                </text>
-            </text>
         }
+
+        <SvgTextTop X="@(width / 2)"
+                    Y="@(height - padding / 2)"
+                    Size="@padding"
+                    Fill="@Theme.TextColor"
+                    Text="@Model.Value.ToString("0.##")" />
     }
 </svg>

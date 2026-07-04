@@ -53,15 +53,22 @@
                       x1="@(Reverse ? 3 * padding / 2 + padding / 5 : width / 2 - padding / 5)"
                       x2="@(Reverse ? 3 * padding / 2 : width / 2)" />
 
-                <text>
-                    <text style="@(Reverse ? TextStyles.Start() : TextStyles.End())"
-                          y="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                          x="@(Reverse ? 3 * padding / 2 : width / 2)"
-                          dx="@(Reverse ? "0.5em" : "-0.5em")"
-                          fill="@Theme.TextColorString()">
-                          @tick
-                    </text>
-                </text>
+                if (Reverse)
+                {
+                    <SvgTextStart X="@(3 * padding / 2 + padding / 5)"
+                                  Y="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
+                                  Fill="@Theme.TextColor"
+                                  Text="@tick.ToString()"
+                                  Size="40" />
+                }
+                else
+                {
+                    <SvgTextEnd X="@(width / 2 - padding / 5)"
+                                Y="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
+                                Fill="@Theme.TextColor"
+                                Text="@tick.ToString()"
+                                Size="40" />
+                }
             }
             else
             {

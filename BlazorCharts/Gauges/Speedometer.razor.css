@@ -1,0 +1,7 @@
+path {
+    transition-duration: 0.25s;
+}
+
+    path:hover {
+        stroke-opacity: 1.0;
+    }

@@ -1,7 +1,9 @@
 ﻿<pre class="language-csharp m-0">
 <code>
 &lt<span class="token tag bold">PieChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@piechart_model<span class="token string">"</span>/&gt
-&lt<span class="token tag bold">LegendBar</span> <span class="token property bold">Model</span><span class="token string">="</span>@piechart_model<span class="token string">"</span> <span class="token property bold">Direction</span><span class="token string">="</span><span class="token class-name">Positioning</span>.Horizontal<span class="token string">"</span>/&gt
+&lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Model</span><span class="token string">="</span>@piechart_model<span class="token string">"</span>/&gt
+&lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Model</span><span class="token string">="</span>@piechart_model<span class="token string">"</span>/&gt
+&lt<s><span class="token tag bold">LegendBar</span> <span class="token property bold">Model</span><span class="token string">="</span>@piechart_model<span class="token string">"</span> <span class="token property bold">Direction</span><span class="token string">="</span><span class="token class-name">Positioning</span>.Horizontal<span class="token string">"</span></s>/&gt <span class="token comment">//Obsolete component</span>
 
 @{
     <span class="token keyword">private</span> <span class="token property">Piegram</span> piechart_model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../assets/icon.png">
-    <link rel="stylesheet" href="../css/app.css">
-    <link rel="stylesheet" href="../css/charts.css">
+    <link rel="stylesheet" href="../css/app.css">    
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
 </head>
@@ -38,7 +37,9 @@
                                 <h5 class="text-truncate bi-speedometer2"> Gauges</h5>
                                 <ul class="list-group list-group-flush border-top border-bottom mb-3">
                                     <a class="list-group-item list-group-item-action" href="lineargauge.html">Linear</a>
+                                    <a class="list-group-item list-group-item-action" href="verticalgauge.html">Vertical</a>
                                     <a class="list-group-item list-group-item-action" href="semicirclegauge.html">Semicircle</a>
+                                    <a class="list-group-item list-group-item-action" href="speedometer.html">Speedometer</a>
                                 </ul>
                             </div>
                             <div>
@@ -76,20 +77,18 @@
             <hr />
             <h5 class="text-center">Short term</h5>
             <ul>
-                <li><span class="bi-plus-lg text-success"></span> Add vertical gauge</li>
                 <li><span class="bi-plus-lg text-success"></span> Add tornado chart</li>
-                <li><span class="bi-exclamation-triangle text-warning"></span> Mark Obsolete the direction parameter in legend component</li>
-                <li><span class="bi-recycle text-success"></span> Split legend in two separated components, one to draw vertical and the other to draw horizontally</li>
+                <li><span class="bi-plus-lg text-success"></span> Add waterfall chart</li>
+                <li><small class="bi-asterisk text-primary"></small> Add customizable tooltip</li>
             </ul>
             <hr />
             <h5 class="text-center">Mid term</h5>
             <ul>
-                <li><small class="bi-asterisk text-primary"></small> Add customizable tooltip</li>
                 <li><small class="bi-asterisk text-primary"></small> Add gantt chart</li>
+                <li><span class="bi-plus-lg text-success"></span> Add area chart</li>
                 <li><span class="bi-plus-lg text-success"></span> Add scatter chart</li>
                 <li><span class="bi-plus-lg text-success"></span> Add stepline chart</li>
                 <li><span class="bi-plus-lg text-success"></span> Add bubble chart</li>
-                <li><span class="bi-plus-lg text-success"></span> Add waterfall chart</li>
                 <li><span class="bi-plus-lg text-success"></span> Add column chart (like barchart but each bar has it's own color)</li>
                 <li><span class="bi-recycle text-success"></span> Refactoring linecharts</li>
                 <li><span class="bi-exclamation-triangle text-warning"></span> Remove DrawMode and Positioning enums</li>
@@ -100,6 +99,8 @@
             <hr />
             <h5 class="text-center">Long term</h5>
             <ul>
+                <li><small class="bi-plus-lg text-success"></small> Add stackedbar chart</li>
+                <li><small class="bi-plus-lg text-success"></small> Add groupedbar chart</li>
                 <li><small class="bi-asterisk text-primary"></small> Add combo charts</li>
                 <li><small class="bi-asterisk text-primary"></small> Add data sources to charts</li>
             </ul>

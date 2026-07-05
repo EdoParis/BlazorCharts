@@ -47,12 +47,22 @@
 	</url>
 	<url>
 		<loc>https://edoparis.github.io/BlazorCharts/pages/lineargauge.html</loc>
-		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<lastmod>2026-07-05T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/verticalgauge.html</loc>
+		<lastmod>2026-07-05T15:15:22+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
 		<loc>https://edoparis.github.io/BlazorCharts/pages/semicirclegauge.html</loc>
 		<lastmod>2026-06-28T15:15:22+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://edoparis.github.io/BlazorCharts/pages/speedometer.html</loc>
+		<lastmod>2026-07-05T15:15:22+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>

@@ -1,41 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent; font-family: system-ui">
-	<rect x="100" y="100" width="480" height="100" fill="#32CD32" fill-opacity="0.6">
-		<title>800</title>
+	<rect x="100" y="100" width="240" height="100" fill="#008000" fill-opacity="0.6" stroke-width="1px" vector-effect="non-scaling-stroke">
+		<title>LV-1</title>
+	</rect>
+	<rect x="340" y="100" width="160" height="100" fill="#FFD700" fill-opacity="0.6" stroke-width="1px" vector-effect="non-scaling-stroke">
+		<title>LV-2</title>
+	</rect>
+	<rect x="500" y="100" width="400" height="100" fill="#FF0000" fill-opacity="0.6" stroke-width="1px" vector-effect="non-scaling-stroke">
+		<title>LV-3</title>
 	</rect>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="100" x2="100" y1="220" y2="200"></line>
-	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="100" y="200" dy="1em" fill="currentColor">500</text>
+	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="100" y="200" dy="1em" fill="currentColor">0</text>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="132" x2="132" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="164" x2="164" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="196" x2="196" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="228" x2="228" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="260" x2="260" y1="220" y2="200"></line>
-	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="260" y="200" dy="1em" fill="currentColor">600</text>
+	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="260" y="200" dy="1em" fill="currentColor">100</text>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="292" x2="292" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="324" x2="324" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="356" x2="356" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="388" x2="388" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="420" x2="420" y1="220" y2="200"></line>
-	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="420" y="200" dy="1em" fill="currentColor">700</text>
+	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="420" y="200" dy="1em" fill="currentColor">200</text>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="452" x2="452" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="484" x2="484" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="516" x2="516" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="548" x2="548" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="580" x2="580" y1="220" y2="200"></line>
-	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="580" y="200" dy="1em" fill="currentColor">800</text>
+	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="580" y="200" dy="1em" fill="currentColor">300</text>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="612" x2="612" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="644" x2="644" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="676" x2="676" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="708" x2="708" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="740" x2="740" y1="220" y2="200"></line>
-	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="740" y="200" dy="1em" fill="currentColor">900</text>
+	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="740" y="200" dy="1em" fill="currentColor">400</text>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="772" x2="772" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="804" x2="804" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="836" x2="836" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="868" x2="868" y1="210" y2="200"></line>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="900" x2="900" y1="220" y2="200"></line>
-	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="900" y="200" dy="1em" fill="currentColor">1000</text>
+	<text style="font-size: 40px;pointer-events: none;dominant-baseline: central;text-anchor: middle;" x="900" y="200" dy="1em" fill="currentColor">500</text>
 	<line stroke="currentColor" stroke-width="1px" vector-effect="non-scaling-stroke" x1="100" x2="900" y1="200" y2="200"></line>
+	<rect x="362" y="90" width="20" height="120" fill="#FFFFFF" stroke="currentColor" stroke-width="1px" fill-opacity="1.0" vector-effect="non-scaling-stroke">
+		<title>170</title>
+	</rect>
 	<style>
 		rect {
 			transition-duration: 0.25s;

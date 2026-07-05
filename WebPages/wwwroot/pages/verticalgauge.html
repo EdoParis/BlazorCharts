@@ -28,7 +28,7 @@
                             <a class="list-group-item list-group-item-action" href="linechart.html">Linechart</a>
                             <a class="list-group-item list-group-item-action" href="radarchart.html">Radarchart</a>
                             <a class="list-group-item list-group-item-action" href="polarchart.html">Polarchart</a>
-                            <li class="list-group-item disabled">Piechart</li>
+                            <a class="list-group-item list-group-item-action" href="piechart.html">Piechart</a>
                             <a class="list-group-item list-group-item-action" href="donutchart.html">Donutchart</a>
                         </ul>
                     </div>
@@ -38,7 +38,7 @@
                                 <h5 class="text-truncate bi-speedometer2"> Gauges</h5>
                                 <ul class="list-group list-group-flush border-top border-bottom mb-3">
                                     <a class="list-group-item list-group-item-action" href="lineargauge.html">Linear</a>
-                                    <a class="list-group-item list-group-item-action" href="verticalgauge.html">Vertical</a>
+                                    <li class="list-group-item disabled">Vertical</li>
                                     <a class="list-group-item list-group-item-action" href="semicirclegauge.html">Semicircle</a>
                                     <a class="list-group-item list-group-item-action" href="speedometer.html">Speedometer</a>
                                 </ul>
@@ -64,17 +64,26 @@
             </nav>
         </div>
     </header>
-    <main class="row bg-light p-3 h-100 overflow-auto">
+    <main class="row  bg-light p-3 h-100 overflow-auto">
         <div class="col">
-            <h3>Piechart</h3>
+            <h3>Vertical gauge</h3>
             <p>
-                A pie chart is a circular statistical graphic which is divided into slices to illustrate numerical proportion.
-                In a pie chart, the arc length of each slice (and consequently its central angle and area) is proportional to the quantity it represents.
+                A Vertical gauge uses a linear dial to show a single metric against a defined scale.
+                Like a speedometer, it features a needle or a fill bar that marks the current value within the range.
+                The gauge can be flipped horizontally and also be provided with breakpoints to give context to the represented value.
             </p>
-            <div class="card m-2 fit-content m-auto mw-100">
-                <div class="card-body">
-                    <div class="chart">
-                        <object data="../assets/piechart.svg" type="image/svg+xml"></object>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="card m-2 fit-content mw-100">
+                    <div class="card-body">
+                        <div class="gauge">
+                            <table class="w-100">
+                                <tr>
+                                    <td><object data="../assets/verticalgauge.svg" type="image/svg+xml"></object></td>
+                                    <td><object data="../assets/verticalgauge3.svg" type="image/svg+xml"></object></td>
+                                    <td><object data="../assets/verticalgauge2.svg" type="image/svg+xml"></object></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,11 +92,11 @@
                 <div id="snippet" class="w-100 small border"></div>
             </p>
         </div>
+        <script>
+            fetch("../snippets/snippet_verticalgauge.html")
+                .then(r => r.text())
+                .then(html => { document.getElementById("snippet").innerHTML = html; });
+        </script>
     </main>
-    <script>
-        fetch("../snippets/snippet_piechart.html")
-            .then(r => r.text())
-            .then(html => { document.getElementById("snippet").innerHTML = html; });
-    </script>
 </body>
 </html>

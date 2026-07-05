@@ -24,7 +24,9 @@ Build fast, interactive charts and gauges using pure Blazor rendering:
 
 ## Gauges
 - Linear gauge
+- Vertical gauge
 - Semicircle gauge 
+- Speedometer
 
 ## Namespaces
 - BlazorGraphs.Enums
@@ -45,10 +47,10 @@ Use the data structures you find in `BlazorGraphs.Structures` to fill the data m
 
 #### Legends
 The legend component is separated from the charts, and has a dedicated namespace `BlazorGraphs.Legends`, which contains:
-- the component `LegendBar`
+- the components `LegendHorizontal` and `LegendVertical`
 - the struct `LegendItem`
 
-The `LegendBar` component accepts the same data models of charts as parameter, since this is separated from the chart, you can place everywhere you want and if horizontally or vertically oriented.
+The `LegendBar` component accepts the same data models of charts as parameter, since this is separated from the chart, you can place everywhere you want.
 
 #### Themes
 Is possible to customize the chart, gauges and legends simply passing the `Theme`. 
@@ -138,7 +140,7 @@ This renders a fully interactive SVG linechart, with the legend at the bottom of
 #### Gauge example
 This renders a fully interactive SVG linear gauge, the breakpoints are optional.
 ```
-<LinearGauge Theme="@Theme.Arctic" Model="@gaugegram"></LinearGauge>
+<LinearGauge Theme="@Theme.Arctic" Model="@gaugegram" Reverse="false"></LinearGauge>
 
 @{
     gaugegram = new Gaugegram(0, 500, "G1", KnownColor.Navy);

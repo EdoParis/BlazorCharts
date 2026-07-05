@@ -4,11 +4,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>2.3.1</Version>
+    <Version>2.4.0</Version>
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>blazor; dotnet; gauges; charts; charting; blazor-charts; data-visualization; svg; svg-charts; svg-rendering; no-js</PackageTags>
+    <PackageTags>blazor; dotnet; gauges; charts; blazor-charts; data-visualization; svg; no-js</PackageTags>
     <PackageIcon>ICON.png</PackageIcon>
     <Authors>Edoardo Paris;</Authors>
 	  <PackageProjectUrl>https://edoparis.github.io/BlazorCharts/</PackageProjectUrl>
@@ -16,9 +16,10 @@
 	  <RepositoryType>git</RepositoryType>
     <Description>Lightweight library to draw .svg charts and gauges for Blazor (No Javascript)</Description>
     <PackageReleaseNotes>
-		- Improved labels positioning
-		- Fix grid in radar and polar charts
-		- Fix title of svg elements
+		- Added Vertical gauge
+		- Added Speedometer
+		- Added Reverse parameter to Vertical and Linear gauges
+		- Marked obsolete LegendBar, and splitted in LegendVertical and LegendHorizontal
 	</PackageReleaseNotes>
   </PropertyGroup>
 

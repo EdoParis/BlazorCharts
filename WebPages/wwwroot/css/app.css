@@ -72,3 +72,18 @@ a {
 .h-stretch {
     height: stretch;
 }
+
+.pulse-animation{
+    animation: pulse alternate infinite 0.5s ease-in-out;
+}
+
+@keyframes pulse{
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}

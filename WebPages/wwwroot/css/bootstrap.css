@@ -7390,6 +7390,10 @@ textarea.form-control-lg {
   color: inherit !important;
 }
 
+.text-purple {
+    color: #6f42c1 !important;
+}
+
 .bg-primary {
   background-color: #0d6efd !important;
 }

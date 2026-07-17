@@ -1,54 +1,80 @@
 ﻿namespace BlazorGraphs.Internal
 {
-    internal class AxisLayout
+    internal abstract class AxisLayout
     {
-        private Func<int> location_delegate;
-        public int Location { get => location_delegate is null ? default : location_delegate(); }
-        public int TickSize { get; private set; }
-        public int EndingPoint { get; private set; }
-        public int StartingPoint { get; private set; }
-        public bool IsTickInternal { get; private set; }
-        public bool IsLabelInternal { get; private set; }
+        public int TickSize { get; protected set; }
+        public bool IsTickInternal { get; protected set; }
+        public bool IsLabelInternal { get; protected set; }
+        public bool ShowStartTick { get; protected set; }
+        public bool ShowEndTick { get; protected set; }
         public bool ShowTicks { get => TickSize > 0; }
 
-        public static AxisLayout FullInternal()
+        public AxisLayout()
         {
-            return new AxisLayout()
-            {
-                TickSize = 0,
-                IsTickInternal = true,
-                IsLabelInternal = true,
-            };
+            ShowStartTick = true;
+            ShowEndTick = true;
         }
 
-        public static AxisLayout FullExternal()
+        public static Horizontal HorizontalLayout()
         {
-            return new AxisLayout()
-            {
-                TickSize = 0,
-                IsTickInternal = false,
-                IsLabelInternal = false,
-            };
+            return new Horizontal();
         }
 
-        public static AxisLayout TicksInternal()
+        public static Vertical VerticalLayout()
         {
-            return new AxisLayout()
-            {
-                TickSize = 0,
-                IsTickInternal = true,
-                IsLabelInternal = false,
-            };
+            return new Vertical();
         }
 
-        public static AxisLayout LabelsInternal()
+        public AxisLayout FullInternal()
         {
-            return new AxisLayout()
-            {
-                TickSize = 0,
-                IsTickInternal = false,
-                IsLabelInternal = true,
-            };
+            IsTickInternal = true;
+            IsLabelInternal = true;
+            return this;
+        }
+
+        public AxisLayout FullExternal()
+        {
+            IsTickInternal = false;
+            IsLabelInternal = false;
+            return this;
+        }
+
+        public AxisLayout TicksInternal()
+        {
+            IsTickInternal = true;
+            IsLabelInternal = false;
+            return this;
+        }
+
+        public AxisLayout LabelsInternal()
+        {
+            IsTickInternal = false;
+            IsLabelInternal = true;
+            return this;
+        }
+
+        public AxisLayout WithoutStartTick()
+        {
+            ShowStartTick = false;
+            return this;
+        }
+
+        public AxisLayout WithoutEndTick()
+        {
+            ShowEndTick = false;
+            return this;
+        }
+
+        public AxisLayout WithStartTick()
+        {
+            ShowStartTick = true;
+            return this;
+        }
+
+        public AxisLayout WithEndTick()
+        {
+            ShowEndTick = true;
+            return this;
         }
 
         public AxisLayout WithTickSize(int tick_size)
@@ -57,28 +83,62 @@
             return this;
         }
 
-        public AxisLayout From(int starting_point)
+        public abstract AxisLayout At(int loc);
+
+        public abstract AxisLayout From(int starting_point);
+
+        public abstract AxisLayout To(int ending_point);
+
+        public class Horizontal : AxisLayout
         {
-            StartingPoint = starting_point;
-            return this;
+            public int VerticalLocation { get; protected set; }
+            public int HorizontalEndingPoint { get; protected set; }
+            public int HorizontalStartingPoint { get; protected set; }
+            public int Lenght { get => HorizontalEndingPoint - HorizontalStartingPoint; }
+
+            public override AxisLayout From(int starting_point)
+            {
+                HorizontalStartingPoint = starting_point;
+                return this;
+            }
+
+            public override AxisLayout To(int ending_point)
+            {
+                HorizontalEndingPoint = ending_point;
+                return this;
+            }
+
+            public override AxisLayout At(int location)
+            {
+                VerticalLocation = location;
+                return this;
+            }
         }
 
-        public AxisLayout To(int ending_point)
+        public class Vertical : AxisLayout
         {
-            EndingPoint = ending_point;
-            return this;
-        }
+            public int HorizontalLocation { get; protected set; }
+            public int VerticalEndingPoint { get; protected set; }
+            public int VerticalStartingPoint { get; protected set; }
+            public int Lenght { get => VerticalEndingPoint - VerticalStartingPoint; }
 
-        public AxisLayout At(int location)
-        {
-            location_delegate = () => location;
-            return this;
-        }
+            public override AxisLayout From(int starting_point)
+            {
+                VerticalStartingPoint = starting_point;
+                return this;
+            }
 
-        public AxisLayout At(Func<int> loc_delegate)
-        {
-            location_delegate = loc_delegate;
-            return this;
+            public override AxisLayout To(int ending_point)
+            {
+                VerticalEndingPoint = ending_point;
+                return this;
+            }
+
+            public override AxisLayout At(int location)
+            {
+                HorizontalLocation = location;
+                return this;
+            }
         }
     }
 }

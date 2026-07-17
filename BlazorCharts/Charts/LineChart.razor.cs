@@ -27,13 +27,15 @@ namespace BlazorGraphs.Charts
 
         protected override void OnInitialized()
         {
-            LayoutAxisX = AxisLayout.TicksInternal()
+            LayoutAxisX = AxisLayout.HorizontalLayout()
+                                    .TicksInternal()
                                     .WithTickSize(20)
                                     .From(padding)
                                     .To(width - padding)
                                     .At(height - padding);
 
-            LayoutAxisY = AxisLayout.TicksInternal()
+            LayoutAxisY = AxisLayout.VerticalLayout()
+                                    .TicksInternal()
                                     .WithTickSize(20)
                                     .From(height - padding)
                                     .To(padding)

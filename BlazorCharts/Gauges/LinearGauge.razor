@@ -41,7 +41,7 @@
             </rect>
         }
 
-        @Model.Axis.RenderHorizontal(Reverse ? ReverseAxisLayout : DefaultAxisLayout, Theme);
+        @Model.Axis.Render(Reverse ? AxisLayout.FullInternal().At(padding) : AxisLayout.FullExternal().At(height - padding), Theme);
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {

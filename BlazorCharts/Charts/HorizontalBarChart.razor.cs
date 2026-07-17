@@ -22,16 +22,21 @@ namespace BlazorGraphs.Charts
         private int originV => Model is null ? offsetV : offsetV + (int)(Model.BinAxis.Min * scaleV);
         private double scaleH => (width - 2 * padding) / Model.ValAxis.Size;
         private double scaleV => (height - 2 * padding) / Model.BinAxis.Size;
-
+        private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;
 
         protected override void OnInitialized()
         {
-            LayoutAxisX = AxisLayout.TicksInternal()
+            LayoutAxisX = AxisLayout.HorizontalLayout()
+                                    .TicksInternal()
                                     .WithTickSize(20)
                                     .From(padding)
                                     .To(width - padding)
                                     .At(height - padding);
+
+            LayoutAxisY = AxisLayout.VerticalLayout()
+                                    .From(height - padding)
+                                    .To(padding);
         }
     }
 }

@@ -19,22 +19,14 @@ namespace BlazorGraphs.Gauges
         private int offsetH => padding;
         private int offsetV => height - padding;
         private double scaleH => (width - 2 * padding) / Model.Axis.Size;
-        private AxisLayout DefaultAxisLayout;
-        private AxisLayout ReverseAxisLayout;
+        private AxisLayout AxisLayout;
 
         protected override void OnInitialized()
         {
-            DefaultAxisLayout = AxisLayout.FullExternal()
-                                          .WithTickSize(20)
-                                          .From(padding)
-                                          .To(width - padding)
-                                          .At(height - padding);
-
-            ReverseAxisLayout = AxisLayout.FullInternal()
-                                          .WithTickSize(20)
-                                          .From(padding)
-                                          .To(width - padding)
-                                          .At(padding);
+            AxisLayout = AxisLayout.HorizontalLayout()
+                                   .WithTickSize(20)
+                                   .From(padding)
+                                   .To(width - padding);
         }
     }
 }

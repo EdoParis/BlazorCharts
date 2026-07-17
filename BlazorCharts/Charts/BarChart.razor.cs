@@ -29,18 +29,16 @@ namespace BlazorGraphs.Charts
 
         protected override void OnInitialized()
         {
-            LayoutAxisY = AxisLayout.TicksInternal()
+            LayoutAxisY = AxisLayout.VerticalLayout()
+                                    .TicksInternal()
                                     .WithTickSize(20)
                                     .From(height - padding)
                                     .To(padding)
                                     .At(padding);
 
-            LayoutAxisX = AxisLayout.TicksInternal()
+            LayoutAxisX = AxisLayout.HorizontalLayout()
                                     .From(padding)
-                                    .To(width - padding)
-                                    .At(() => Model?.ValAxis is null ?
-                                              height - padding :
-                                              height - padding + (int)(Model.ValAxis.Min / Model.ValAxis.Size * (height - 2 * padding)));
+                                    .To(width - padding);
         }
     }
 }

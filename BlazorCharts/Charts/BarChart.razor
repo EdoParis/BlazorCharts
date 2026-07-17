@@ -57,8 +57,8 @@
                                   Text="@label"/>
             }
         }
-        @Model.ValAxis.RenderVertical(LayoutAxisY, Theme);
-        @Model.BinAxis.RenderHorizontal(LayoutAxisX, Theme);
+        @Model.ValAxis.Render(LayoutAxisY, Theme);
+        @Model.BinAxis.Render(LayoutAxisX.At(originV), Theme);
 
         <SvgTextStart X="@(padding / 2)"
                       Y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"

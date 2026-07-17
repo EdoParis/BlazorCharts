@@ -57,15 +57,8 @@
                               Y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))"/>
             }
         }
-        @Model.ValAxis.RenderHorizontal(LayoutAxisX, Theme);
-
-        <line stroke="@Theme.AxisColorString()"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke"
-              x1="@originH"
-              x2="@originH"
-              y1="@padding"
-              y2="@offsetV" />
+        @Model.ValAxis.Render(LayoutAxisX, Theme);
+        @Model.BinAxis.Render(LayoutAxisY.At(originH), Theme);
 
         <SvgTextMiddle X="@(width / 2)"
                        Y="@(height - padding / 4)"

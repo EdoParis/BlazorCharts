@@ -44,15 +44,24 @@
                 </rect>
             }
         }
-        @Model.AxisY.RenderVertical(LayoutAxisY, Theme);
+        @Model.AxisY.Render(LayoutAxisY, Theme);
 
-        if (Model?.AxisY?.Size > -2 * Model?.AxisY.Min)
+        int current_origin = originV;
+        if (current_origin == padding)
         {
-            @Model.AxisX.RenderHorizontal(LayoutAxisDownX, Theme);
+            @Model.AxisX.Render(LayoutAxisX.FullInternal().At(current_origin).WithStartTick(), Theme);
+        }
+        else if (current_origin == height - padding)
+        {
+            @Model.AxisX.Render(LayoutAxisX.TicksInternal().At(current_origin).WithStartTick(), Theme);
+        }
+        else if (Model?.AxisY?.Size / 2 > -Model?.AxisY.Min)
+        {
+            @Model.AxisX.Render(LayoutAxisX.TicksInternal().At(current_origin).WithoutStartTick(), Theme);
         }
         else
         {
-            @Model.AxisX.RenderHorizontal(LayoutAxisTopX, Theme);
+            @Model.AxisX.Render(LayoutAxisX.FullInternal().At(current_origin).WithoutStartTick(), Theme);
         }
     }
 

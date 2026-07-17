@@ -96,9 +96,8 @@
             return ticks;
         }
 
-        public IEnumerable<Tick> Ticks(AxisLayout layout)
+        public IEnumerable<Tick> Ticks()
         {
-            ArgumentNullException.ThrowIfNull(layout);
             List<Tick> ticks = new List<Tick>();
 
             if (Max != Min)
@@ -120,13 +119,13 @@
                     for (int i = 0; i < multiple; i++)
                     {
                         double tick_value = t + i * step / multiple;
-                        int tick_position = layout.StartingPoint + (int)((tick_value - Min) / Size * (layout.EndingPoint - layout.StartingPoint));
+                        double tick_position = (tick_value - Min) / Size;
 
                         if (tick_value != last_tick && range.Contains(tick_value))
                         {
                             ticks.Add(new Tick()
                             {
-                                Position = tick_position,
+                                RelativePosition = tick_position,
                                 IsMaster = i == 0,
                                 Label = i == 0 ? tick_value.ToString("0.###") : null
                             });

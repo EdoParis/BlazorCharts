@@ -1,12 +1,12 @@
 ﻿namespace BlazorGraphs.Internal
 {
-    internal struct Span
+    internal struct Interval
     {
         public double Min { get; private set; }
         public double Max { get; private set; }
         public double Size { get; private set; }
 
-        public Span(double min, double max)
+        public Interval(double min, double max)
         {
             if (double.IsInfinity(min) || double.IsInfinity(max))
                 throw new ArgumentOutOfRangeException("Infinite range");
@@ -22,7 +22,7 @@
             Size = Max - Min;
         }
 
-        public Span(IEnumerable<int> values)
+        public Interval(IEnumerable<int> values)
         {
             Min = values.FirstOrDefault();
             Max = values.FirstOrDefault();
@@ -38,7 +38,7 @@
             Size = Max - Min;
         }
 
-        public Span(IEnumerable<double> values)
+        public Interval(IEnumerable<double> values)
         {
             Min = values.FirstOrDefault();
             Max = values.FirstOrDefault();
@@ -54,7 +54,7 @@
             Size = Max - Min;
         }
 
-        public Span(IEnumerable<float> values)
+        public Interval(IEnumerable<float> values)
         {
             Min = values.FirstOrDefault();
             Max = values.FirstOrDefault();
@@ -75,7 +75,7 @@
             return value >= Min && value <= Max;
         }
 
-        public bool Overlap(Span other)
+        public bool Overlap(Interval other)
         {
             return other.Min < this.Max && 
                    other.Max > this.Min;

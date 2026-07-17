@@ -18,7 +18,7 @@ namespace BlazorGraphs.Models
 
         public Gaugegram(double min, double max, string title, KnownColor color = KnownColor.Black)
         {
-            Span range = new Span(min, max);
+            Interval range = new Interval(min, max);
             breakpoints = new List<Breakpoint>();
             Axis = new Axis(range, title);
             Color = color;

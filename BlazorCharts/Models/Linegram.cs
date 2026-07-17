@@ -39,8 +39,8 @@ namespace BlazorGraphs.Models
             InvalidArgumentException.ThrowIfInvalid(line);
             IsEmpty = IsEmpty && !(line.Points?.Any() ?? false);
             lines.Add(line);
-            AxisX.Update(new Span(line.Points?.Select(p => p.X)));
-            AxisY.Update(new Span(line.Points?.Select(p => p.Y)));
+            AxisX.Update(new Interval(line.Points?.Select(p => p.X)));
+            AxisY.Update(new Interval(line.Points?.Select(p => p.Y)));
         }
 
         public IEnumerable<LegendItem> ToLegend()

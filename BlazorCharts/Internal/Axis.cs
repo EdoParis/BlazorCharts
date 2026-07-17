@@ -2,7 +2,7 @@
 {
     internal class Axis
     {
-        private Span range;
+        private Interval range;
         private int multiple;
         private bool is_default;
 
@@ -19,7 +19,7 @@
             is_default = true;
         }
 
-        public Axis(Span interval, string title = null) : this(title)
+        public Axis(Interval interval, string title = null) : this(title)
         {
             range = interval;
             is_default = false;
@@ -37,24 +37,24 @@
 
             if (is_default)
             {
-                range = new Span(value, value);
+                range = new Interval(value, value);
             }
             else
             {
-                range = new Span(Math.Min(range.Min, value), 
-                                 Math.Max(range.Max, value));
+                range = new Interval(Math.Min(range.Min, value), 
+                                     Math.Max(range.Max, value));
             }
             is_default = false;
         }
 
-        public void Update(Span r)
+        public void Update(Interval r)
         {
             if (is_default)
                 range = r;
             else
             {
-                range = new Span(Math.Min(range.Min, r.Min), 
-                                 Math.Max(range.Max, r.Max));
+                range = new Interval(Math.Min(range.Min, r.Min), 
+                                     Math.Max(range.Max, r.Max));
             }
             is_default = false;
         }

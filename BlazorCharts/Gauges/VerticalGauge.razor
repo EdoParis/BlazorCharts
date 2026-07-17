@@ -40,55 +40,8 @@
                 <title>@Model.Value.ToString("0.##")</title>
             </rect>
         }
-        int tx = 0;
-        foreach (double tick in Model.Axis.Ticks(5))
-        {
-            if (tx % 5 == 0)
-            {
-                <line stroke="@Theme.AxisColorString()"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      y1="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                      y2="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                      x1="@(Reverse ? 3 * padding / 2 + padding / 5 : width / 2 - padding / 5)"
-                      x2="@(Reverse ? 3 * padding / 2 : width / 2)" />
-
-                if (Reverse)
-                {
-                    <SvgTextStart X="@(3 * padding / 2 + padding / 5)"
-                                  Y="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                                  Fill="@Theme.TextColor"
-                                  Text="@tick.ToString()"
-                                  Size="40" />
-                }
-                else
-                {
-                    <SvgTextEnd X="@(width / 2 - padding / 5)"
-                                Y="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                                Fill="@Theme.TextColor"
-                                Text="@tick.ToString()"
-                                Size="40" />
-                }
-            }
-            else
-            {
-                <line stroke="@Theme.AxisColorString()"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      y1="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                      y2="@((int)(offsetV - (tick - Model.Axis.Min) * scaleV))"
-                      x1="@(Reverse ? 3 * padding / 2 + padding / 10 : width / 2 - padding / 10)"
-                      x2="@(Reverse ? 3 * padding / 2 : width / 2)" />
-            }
-            tx++;
-        }
-        <line stroke="@Theme.AxisColorString()"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke"
-              x1="@(Reverse ? 3 * padding / 2 : width / 2)"
-              x2="@(Reverse ? 3 * padding / 2 : width / 2)"
-              y1="@offsetV"
-              y2="@padding" />
+        
+        @Model.Axis.RenderVertical(Reverse ? ReverseAxisLayout : DefaultAxisLayout, Theme);
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {

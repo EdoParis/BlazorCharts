@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Models;
+﻿using BlazorGraphs.Internal;
+using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 
@@ -18,5 +19,22 @@ namespace BlazorGraphs.Gauges
         private int offsetH => padding;
         private int offsetV => height - padding;
         private double scaleH => (width - 2 * padding) / Model.Axis.Size;
+        private AxisLayout DefaultAxisLayout;
+        private AxisLayout ReverseAxisLayout;
+
+        protected override void OnInitialized()
+        {
+            DefaultAxisLayout = AxisLayout.FullExternal()
+                                          .WithTickSize(20)
+                                          .From(padding)
+                                          .To(width - padding)
+                                          .At(height - padding);
+
+            ReverseAxisLayout = AxisLayout.FullInternal()
+                                          .WithTickSize(20)
+                                          .From(padding)
+                                          .To(width - padding)
+                                          .At(padding);
+        }
     }
 }

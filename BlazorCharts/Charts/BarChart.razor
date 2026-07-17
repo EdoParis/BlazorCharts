@@ -57,49 +57,13 @@
                                   Text="@label"/>
             }
         }
+        @Model.ValAxis.RenderVertical(LayoutAxisY, Theme);
+        @Model.BinAxis.RenderHorizontal(LayoutAxisX, Theme);
 
-        int ty = 0;
-        foreach (double tick in Model.ValAxis.Ticks(5))
-        {
-            <line stroke="@Theme.AxisColorString()"
-                  stroke-width="1px"
-                  vector-effect="non-scaling-stroke"
-                  x1="@(offsetH)"
-                  x2="@(offsetH + padding / (ty % 5 == 0 ? 5 : 10))"
-                  y1="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))"
-                  y2="@((int)(height - padding - (height - 2 * padding) * (tick - Model.ValAxis.Min) / Model.ValAxis.Size))" />
-
-            if (ty % 5 == 0)
-            {
-                <SvgTextEnd X="@offsetH"
-                            Y="@((int)(offsetV - (tick - Model.ValAxis.Min) * scaleV))"
-                            Size="40"
-                            Fill="@Theme.TextColor"
-                            Text="@tick.ToString()" />
-            }
-            ty++;
-        }
+        <SvgTextStart X="@(padding / 2)"
+                      Y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"
+                      Size="40"
+                      Fill="@Theme.TextColor"
+                      Text="@Model.Title" />
     }
-
-    <line stroke="@Theme.AxisColorString()"
-          stroke-width="1px"
-          vector-effect="non-scaling-stroke"
-          x1="@offsetH"
-          x2="@offsetH"
-          y1="@padding"
-          y2="@offsetV" />
-
-    <line stroke="@Theme.AxisColorString()"
-          stroke-width="1px"
-          vector-effect="non-scaling-stroke"
-          x1="@offsetH"
-          x2="@(width - padding)"
-          y1="@originV"
-          y2="@originV" />
-
-    <SvgTextStart X="@(padding / 2)"
-                  Y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"
-                  Size="40"
-                  Fill="@Theme.TextColor"
-                  Text="@Model?.Title" />
 </svg>

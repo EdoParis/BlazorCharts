@@ -1,8 +1,9 @@
-﻿using BlazorGraphs.Models;
+﻿using BlazorGraphs.Internal;
+using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
-using System.Drawing;
 using System;
+using System.Drawing;
 using System.Text;
 
 namespace BlazorGraphs.Charts
@@ -21,6 +22,23 @@ namespace BlazorGraphs.Charts
         private int offsetV => height - padding;
         private double scaleH => (width - 2 * padding) / Model.AxisX.Size;
         private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
+        private AxisLayout LayoutAxisY;
+        private AxisLayout LayoutAxisX;
+
+        protected override void OnInitialized()
+        {
+            LayoutAxisX = AxisLayout.TicksInternal()
+                                    .WithTickSize(20)
+                                    .From(padding)
+                                    .To(width - padding)
+                                    .At(height - padding);
+
+            LayoutAxisY = AxisLayout.TicksInternal()
+                                    .WithTickSize(20)
+                                    .From(height - padding)
+                                    .To(padding)
+                                    .At(padding);
+        }
 
         private string LinePath(Line line)
         {

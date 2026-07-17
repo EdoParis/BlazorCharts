@@ -9,11 +9,11 @@ namespace BlazorGraphs.Rendering
     {
         protected const string CURRENT = "currentColor";
 
+        [Parameter] public Color? Fill { get; set; }
         [Parameter] public string Text { get; set; }
         [Parameter] public int Size { get; set; }
         [Parameter] public int X { get; set; }
         [Parameter] public int Y { get; set; }
-        [Parameter] public Color? Fill { get; set; }
 
         protected virtual string Style
         {

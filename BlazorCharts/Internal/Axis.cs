@@ -3,6 +3,7 @@
     internal class Axis
     {
         private Span range;
+        private int multiple;
         private bool is_default;
 
         public string Title;
@@ -14,14 +15,14 @@
         {
             Title = title;
             range = default;
+            multiple = 5;
             is_default = true;
         }
 
-        public Axis(Span interval, string title = null)
+        public Axis(Span interval, string title = null) : this(title)
         {
-            Title = title;
             range = interval;
-            is_default = true;
+            is_default = false;
         }
 
         public bool Contains(double value)
@@ -58,6 +59,7 @@
             is_default = false;
         }
 
+        [Obsolete]
         public IEnumerable<double> Ticks(int multiple)
         {
             ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(multiple, 0);
@@ -87,6 +89,48 @@
                         {
                             ticks.Add(tick);
                             last_tick = tick;
+                        }
+                    }
+                }
+            }
+            return ticks;
+        }
+
+        public IEnumerable<Tick> Ticks(AxisLayout layout)
+        {
+            ArgumentNullException.ThrowIfNull(layout);
+            List<Tick> ticks = new List<Tick>();
+
+            if (Max != Min)
+            {
+                int step = (int)(Size / multiple);
+
+                if (step % multiple > multiple / 2)
+                    step = step - step % multiple + multiple;
+                else
+                    step = step - step % multiple;
+
+                if (step <= 0)
+                    step = 1;
+
+                for (double t = Min - Min % multiple; t <= Max; t += step)
+                {
+                    double? last_tick = null;
+
+                    for (int i = 0; i < multiple; i++)
+                    {
+                        double tick_value = t + i * step / multiple;
+                        int tick_position = layout.StartingPoint + (int)((tick_value - Min) / Size * (layout.EndingPoint - layout.StartingPoint));
+
+                        if (tick_value != last_tick && range.Contains(tick_value))
+                        {
+                            ticks.Add(new Tick()
+                            {
+                                Position = tick_position,
+                                IsMaster = i == 0,
+                                Label = i == 0 ? tick_value.ToString("0.###") : null
+                            });
+                            last_tick = tick_value;
                         }
                     }
                 }

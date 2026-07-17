@@ -57,49 +57,20 @@
                               Y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))"/>
             }
         }
+        @Model.ValAxis.RenderHorizontal(LayoutAxisX, Theme);
 
-        int tx = 0;
-        foreach (double tick in Model.ValAxis.Ticks(5))
-        {
-            <line stroke="@Theme.AxisColorString()"
-                  stroke-width="1px"
-                  vector-effect="non-scaling-stroke"
-                  y1="@(offsetV)"
-                  y2="@(offsetV - padding / (tx % 5 == 0 ? 5 : 10))"
-                  x1="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))"
-                  x2="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))" />
+        <line stroke="@Theme.AxisColorString()"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke"
+              x1="@originH"
+              x2="@originH"
+              y1="@padding"
+              y2="@offsetV" />
 
-            if (tx % 5 == 0)
-            {
-                <SvgTextBottom Text="@tick.ToString()"
-                               Fill="@Theme.TextColor"
-                               Size="40"
-                               X="@((int)(offsetH + (tick - Model.ValAxis.Min) * scaleH))"
-                               Y="@(offsetV)"/>
-            }
-            tx++;
-        }
+        <SvgTextMiddle X="@(width / 2)"
+                       Y="@(height - padding / 4)"
+                       Size="40"
+                       Fill="@Theme.TextColor"
+                       Text="@Model?.Title" />
     }
-
-    <line stroke="@Theme.AxisColorString()"
-          stroke-width="1px"
-          vector-effect="non-scaling-stroke"
-          x1="@originH"
-          x2="@originH"
-          y1="@padding"
-          y2="@offsetV" />
-
-    <line stroke="@Theme.AxisColorString()"
-          stroke-width="1px"
-          vector-effect="non-scaling-stroke"
-          x1="@offsetH"
-          x2="@(width - padding)"
-          y1="@offsetV"
-          y2="@offsetV" />
-
-    <SvgTextMiddle X="@(width / 2)"
-                   Y="@(height - padding / 4)"
-                   Size="40"
-                   Fill="@Theme.TextColor"
-                   Text="@Model?.Title"/>
 </svg>

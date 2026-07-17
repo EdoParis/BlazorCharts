@@ -44,83 +44,18 @@
                 </rect>
             }
         }
+        @Model.AxisY.RenderVertical(LayoutAxisY, Theme);
 
-        int tx = 0;
-        foreach (double tick in Model.AxisX.Ticks(5))
+        if (Model?.AxisY?.Size > -2 * Model?.AxisY.Min)
         {
-            if (tick != Model.AxisX.Min)
-            {
-                <line stroke="@Theme.AxisColorString()"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      x1="@(offsetH + (int)((tick - Model.AxisX.Min) * scaleH))"
-                      x2="@(offsetH + (int)((tick - Model.AxisX.Min) * scaleH))"
-                      y1="@(originV - padding / (tx % 5 == 0 ? 5 : 10))"
-                      y2="@(originV)" />
-            }
-
-            if (tx % 5 == 0)
-            {
-                if (tick != Model.AxisX.Min || originV == padding || originV == offsetV)
-                {
-                    if (originV > height / 2)
-                    {
-                        <SvgTextBottom X="@(offsetH + (int)((tick - Model.AxisX.Min) * scaleH))" 
-                                       Y="originV"
-                                       Size="40"
-                                       Fill="@Theme.TextColor"
-                                       Text="@tick.ToString()"/>
-                    }
-                    else
-                    {
-                        <SvgTextTop X="@(offsetH + (int)((tick - Model.AxisX.Min) * scaleH))"
-                                    Y="originV"
-                                    Size="40"
-                                    Fill="@Theme.TextColor"
-                                    Text="@tick.ToString()" />
-                    }
-                }
-            }
-            tx++;
+            @Model.AxisX.RenderHorizontal(LayoutAxisDownX, Theme);
         }
-
-        int ty = 0;
-        foreach (double tick in Model.AxisY.Ticks(5))
+        else
         {
-            <line stroke="@Theme.AxisColorString()"
-                  stroke-width="1px"
-                  vector-effect="non-scaling-stroke"
-                  x1="@(offsetH)"
-                  x2="@(offsetH + padding / (ty % 5 == 0 ? 5 : 10))"
-                  y1="@(offsetV - (int)((tick - Model.AxisY.Min) * scaleV))"
-                  y2="@(offsetV - (int)((tick - Model.AxisY.Min) * scaleV))" />
-
-            if (ty % 5 == 0)
-            {
-                <SvgTextEnd X="offsetH"
-                            Y="@(offsetV - (int)((tick - Model.AxisY.Min) * scaleV))"
-                            Size="40"
-                            Fill="@Theme.TextColor"
-                            Text="@tick.ToString()"/>
-            }
-            ty++;
+            @Model.AxisX.RenderHorizontal(LayoutAxisTopX, Theme);
         }
     }
-    <line stroke="@Theme.AxisColorString()"
-          stroke-width="1px"
-          vector-effect="non-scaling-stroke"
-          x1="@offsetH"
-          x2="@offsetH"
-          y1="@padding"
-          y2="@offsetV" />
 
-    <line stroke="@Theme.AxisColorString()"
-          stroke-width="1px"
-          vector-effect="non-scaling-stroke"
-          x1="@offsetH"
-          x2="@(width - padding)"
-          y1="@originV"
-          y2="@originV" />
 
     <SvgTextMiddle X="@(width / 2)" 
                    Y="@(originV > height / 2 ? height - padding / 4 : padding / 4)"

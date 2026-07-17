@@ -1,5 +1,6 @@
 ﻿using BlazorGraphs.Enums;
 using BlazorGraphs.Models;
+using BlazorGraphs.Internal;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 
@@ -23,5 +24,23 @@ namespace BlazorGraphs.Charts
         private int originV => Model is null ? offsetV : offsetV + (int)(Model.ValAxis.Min * scaleV);
         private double scaleH => (width - 2 * padding) / Model.BinAxis.Size;
         private double scaleV => (height - 2 * padding) / Model.ValAxis.Size;
+        private AxisLayout LayoutAxisY;
+        private AxisLayout LayoutAxisX;
+
+        protected override void OnInitialized()
+        {
+            LayoutAxisY = AxisLayout.TicksInternal()
+                                    .WithTickSize(20)
+                                    .From(height - padding)
+                                    .To(padding)
+                                    .At(padding);
+
+            LayoutAxisX = AxisLayout.TicksInternal()
+                                    .From(padding)
+                                    .To(width - padding)
+                                    .At(() => Model?.ValAxis is null ?
+                                              height - padding :
+                                              height - padding + (int)(Model.ValAxis.Min / Model.ValAxis.Size * (height - 2 * padding)));
+        }
     }
 }

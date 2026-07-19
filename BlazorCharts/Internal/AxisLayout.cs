@@ -1,13 +1,15 @@
-﻿namespace BlazorGraphs.Internal
+﻿using System.Drawing;
+
+namespace BlazorGraphs.Internal
 {
     internal abstract class AxisLayout
     {
-        public int TickSize { get; protected set; }
-        public bool IsTickInternal { get; protected set; }
-        public bool IsLabelInternal { get; protected set; }
-        public bool ShowStartTick { get; protected set; }
-        public bool ShowEndTick { get; protected set; }
-        public bool ShowTicks { get => TickSize > 0; }
+        public Int32 TickSize { get; protected set; }
+        public Boolean IsTickInternal { get; protected set; }
+        public Boolean IsLabelInternal { get; protected set; }
+        public Boolean ShowStartTick { get; protected set; }
+        public Boolean ShowEndTick { get; protected set; }
+        public Boolean ShowTicks { get => TickSize > 0; }
 
         public AxisLayout()
         {
@@ -23,6 +25,11 @@
         public static Vertical VerticalLayout()
         {
             return new Vertical();
+        }
+
+        public static Circular CircularLayout()
+        {
+            return new Circular();
         }
 
         public AxisLayout FullInternal()
@@ -91,24 +98,24 @@
 
         public class Horizontal : AxisLayout
         {
-            public int VerticalLocation { get; protected set; }
-            public int HorizontalEndingPoint { get; protected set; }
-            public int HorizontalStartingPoint { get; protected set; }
-            public int Lenght { get => HorizontalEndingPoint - HorizontalStartingPoint; }
+            public Int32 VerticalLocation { get; protected set; }
+            public Int32 HorizontalEndingPoint { get; protected set; }
+            public Int32 HorizontalStartingPoint { get; protected set; }
+            public Int32 Lenght { get => HorizontalEndingPoint - HorizontalStartingPoint; }
 
-            public override AxisLayout From(int starting_point)
+            public override Horizontal From(int starting_point)
             {
                 HorizontalStartingPoint = starting_point;
                 return this;
             }
 
-            public override AxisLayout To(int ending_point)
+            public override Horizontal To(int ending_point)
             {
                 HorizontalEndingPoint = ending_point;
                 return this;
             }
 
-            public override AxisLayout At(int location)
+            public override Horizontal At(int location)
             {
                 VerticalLocation = location;
                 return this;
@@ -117,26 +124,67 @@
 
         public class Vertical : AxisLayout
         {
-            public int HorizontalLocation { get; protected set; }
-            public int VerticalEndingPoint { get; protected set; }
-            public int VerticalStartingPoint { get; protected set; }
-            public int Lenght { get => VerticalEndingPoint - VerticalStartingPoint; }
+            public Int32 HorizontalLocation { get; protected set; }
+            public Int32 VerticalEndingPoint { get; protected set; }
+            public Int32 VerticalStartingPoint { get; protected set; }
+            public Int32 Lenght { get => VerticalEndingPoint - VerticalStartingPoint; }
 
-            public override AxisLayout From(int starting_point)
+            public override Vertical From(int starting_point)
             {
                 VerticalStartingPoint = starting_point;
                 return this;
             }
 
-            public override AxisLayout To(int ending_point)
+            public override Vertical To(int ending_point)
             {
                 VerticalEndingPoint = ending_point;
                 return this;
             }
 
-            public override AxisLayout At(int location)
+            public override Vertical At(int location)
             {
                 HorizontalLocation = location;
+                return this;
+            }
+        }
+
+        public class Circular : AxisLayout
+        {
+            public Point Center { get; protected set; }
+            public Int32 Radius { get; protected set; }
+            public Double EndingAngle { get; protected set; }
+            public Double StartingAngle { get; protected set; }
+            public Double Amplitude { get => EndingAngle - StartingAngle; }
+            public Boolean IsLargeAngle { get => Math.Abs(EndingAngle - StartingAngle) > Math.PI; }
+
+            public override Circular From(int starting_degree)
+            {
+                StartingAngle = starting_degree % 360 * Math.PI / 180;
+                return this;
+            }
+
+            public override Circular To(int ending_degree)
+            {
+                EndingAngle = ending_degree % 360 * Math.PI / 180;
+                return this;
+            }
+
+            public override Circular At(int loc)
+            {
+                Center = new Point(loc, loc);
+                return this;
+            }
+
+            public Circular At(Point point)
+            {
+                Center = point;
+                return this;
+            }
+
+            public Circular WithRadius(int radius)
+            {
+                ArgumentOutOfRangeException.ThrowIfLessThan(radius, 0);
+                Radius = radius;
                 return this;
             }
         }

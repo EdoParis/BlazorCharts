@@ -35,9 +35,9 @@ namespace BlazorGraphs.Charts
                                     .At(padding);
 
             LayoutAxisX = AxisLayout.HorizontalLayout()
-                                     .WithTickSize(20)
-                                     .From(padding)
-                                     .To(width - padding);
+                                    .WithTickSize(20)
+                                    .From(padding)
+                                    .To(width - padding);
         }
     }
 }

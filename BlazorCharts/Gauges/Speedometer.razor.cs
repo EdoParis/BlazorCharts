@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Models;
+﻿using BlazorGraphs.Internal;
+using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 using System.Drawing;
@@ -16,6 +17,18 @@ namespace BlazorGraphs.Gauges
         private int height = VIEW;
         private int radius = VIEW / 6;
         private int padding = PADDING;
+        AxisLayout AxisLayout;
+
+        protected override void OnInitialized()
+        {
+            AxisLayout = AxisLayout.CircularLayout()
+                                   .WithRadius(2 * radius)
+                                   .At(new Point(width / 2, height / 2))
+                                   .From(-45)
+                                   .To(225)
+                                   .WithTickSize(20)
+                                   .FullExternal();
+        }
 
         private string ArcPath(double radius, double start, double end)
         {

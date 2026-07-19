@@ -46,45 +46,8 @@
                 <title>@Model.Value.ToString("0.##")</title>
             </path>
         }
-
-        int tx = 0;
-        foreach (double tick in Model.Axis.Ticks(5))
-        {
-            double rot = -Math.PI / 4 + 3 * Math.PI / 2 * (tick - Model.Axis.Min) / Model.Axis.Size;
-
-            if (tx % 5 == 0)
-            {
-                <line stroke="@Theme.AxisColorString()"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      x1="@((int)(width / 2 - 2 * radius * Math.Cos(rot)))"
-                      x2="@((int)(width / 2 - (2 * radius + padding / 5) * Math.Cos(rot)))"
-                      y1="@((int)(height / 2 - 2 * radius * Math.Sin(rot)))"
-                      y2="@((int)(height / 2 - (2 * radius + padding / 5) * Math.Sin(rot)))" />
-
-                <SvgTextMiddle X="@((int)(width / 2 - (2 * radius + padding / 2) * Math.Cos(rot)))"
-                               Y="@((int)(height / 2 - (2 * radius + padding / 2) * Math.Sin(rot)))"
-                               Size="40"
-                               Fill="@Theme.TextColor"
-                               Text="@tick.ToString()"/>
-            }
-            else
-            {
-                <line stroke="@Theme.AxisColorString()"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      x1="@((int)(width / 2 - 2 * radius * Math.Cos(rot)))"
-                      x2="@((int)(width / 2 - (2 * radius + padding / 10) * Math.Cos(rot)))"
-                      y1="@((int)(height / 2 - 2 * radius * Math.Sin(rot)))"
-                      y2="@((int)(height / 2 - (2 * radius + padding / 10) * Math.Sin(rot)))" />
-            }
-            tx++;
-        }
-        <path d="@ArcPath(2 * radius, -Math.PI / 4, 5 * Math.PI / 4)"
-              fill="none"
-              stroke="@Theme.AxisColorString()"
-              stroke-width="1px"
-              vector-effect="non-scaling-stroke" />
+            
+        @Model.Axis.Render(AxisLayout, Theme);
 
         <SvgTextMiddle X="@(width / 2)"
                        Y="@(height/ 2 + radius)"

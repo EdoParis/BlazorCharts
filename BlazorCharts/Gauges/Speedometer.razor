@@ -1,7 +1,7 @@
 <svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
     @if (Model is null)
     {
-        <path d="@ArcPath(2 * radius, -Math.PI / 4, 5 * Math.PI / 4)"
+        <path d="@ArcPath(radius, -Math.PI / 4, 5 * Math.PI / 4)"
               fill="none"
               stroke="@Theme.AxisColorString()"
               stroke-width="1px"
@@ -24,7 +24,7 @@
             foreach (Breakpoint breakpoint in Model)
             {
                 double degree = -Math.PI / 4 + 3 * Math.PI / 2 * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
-                <path d="@ArcPath(2 * radius - padding / 2, start_degree, degree)"
+                <path d="@ArcPath(radius, start_degree, degree)"
                       fill="none"
                       stroke="@breakpoint.Color.ToHex()"
                       stroke-width="@padding"
@@ -38,7 +38,7 @@
         {
             double degree = -Math.PI / 4 + 3 * Math.PI / 2 * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
 
-            <path d="@ArcPath(2 * radius - padding / 2, -Math.PI / 4, degree)"
+            <path d="@ArcPath(radius, -Math.PI / 4, degree)"
                   fill="none"
                   stroke="@Model.Color.ToHex()"
                   stroke-width="@padding"
@@ -47,10 +47,10 @@
             </path>
         }
             
-        @Model.Axis.Render(AxisLayout, Theme);
+        @Model.Axis.Render(InnerAxis ? AxisInternalLayout : AxisExternalLayout, Theme);
 
         <SvgTextMiddle X="@(width / 2)"
-                       Y="@(height/ 2 + radius)"
+                       Y="@(height / 2 + radius - padding / 2)"
                        Size="@padding"
                        Fill="@Theme.TextColor"
                        Text="@Model.Value.ToString("0.##")" />

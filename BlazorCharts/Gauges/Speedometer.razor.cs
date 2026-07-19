@@ -12,22 +12,32 @@ namespace BlazorGraphs.Gauges
         private const int PADDING = 100;
 
         [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Boolean InnerAxis { get; set; }
         [Parameter] public Gaugegram Model { get; set; }
         private int width = VIEW;
         private int height = VIEW;
-        private int radius = VIEW / 6;
+        private int radius = VIEW / 2 - 2 * PADDING;
         private int padding = PADDING;
-        AxisLayout AxisLayout;
+        AxisLayout AxisInternalLayout;
+        AxisLayout AxisExternalLayout;
 
         protected override void OnInitialized()
         {
-            AxisLayout = AxisLayout.CircularLayout()
-                                   .WithRadius(2 * radius)
-                                   .At(new Point(width / 2, height / 2))
-                                   .From(-45)
-                                   .To(225)
-                                   .WithTickSize(20)
-                                   .FullExternal();
+            AxisExternalLayout = AxisLayout.CircularLayout()
+                                           .WithRadius(radius + padding / 2)
+                                           .At(new Point(width / 2, height / 2))
+                                           .WithTickSize(20)
+                                           .FullExternal()
+                                           .From(-45)
+                                           .To(225);
+
+            AxisInternalLayout = AxisLayout.CircularLayout()
+                                           .WithRadius(radius - padding / 2)
+                                           .At(new Point(width / 2, height / 2))
+                                           .WithTickSize(20)
+                                           .FullInternal()
+                                           .From(-45)
+                                           .To(225);
         }
 
         private string ArcPath(double radius, double start, double end)
@@ -44,27 +54,27 @@ namespace BlazorGraphs.Gauges
         private string BarPath(double degree)
         {
             double bar_width = padding / 5;
-            double bar_height = 2.2 * radius;
+            double bar_height = 1.1 * (radius + padding / 2);
 
             Point P1 = new Point()
             {
-                X = (int)(width / 2 - (radius + bar_height / 2) * Math.Cos(degree) - bar_width / 2 * Math.Sin(degree)),
-                Y = (int)(height / 2 - (radius + bar_height / 2) * Math.Sin(degree) + bar_width / 2 * Math.Cos(degree))
+                X = (int)(width / 2 - bar_height * Math.Cos(degree) - bar_width / 2 * Math.Sin(degree)),
+                Y = (int)(height / 2 - bar_height * Math.Sin(degree) + bar_width / 2 * Math.Cos(degree))
             };
             Point P2 = new Point()
             {
-                X = (int)(width / 2 - (radius + bar_height / 2) * Math.Cos(degree) + bar_width / 2 * Math.Sin(degree)),
-                Y = (int)(height / 2 - (radius + bar_height / 2) * Math.Sin(degree) - bar_width / 2 * Math.Cos(degree))
+                X = (int)(width / 2 - bar_height * Math.Cos(degree) + bar_width / 2 * Math.Sin(degree)),
+                Y = (int)(height / 2 - bar_height * Math.Sin(degree) - bar_width / 2 * Math.Cos(degree))
             };
             Point P3 = new Point()
             {
-                X = (int)(width / 2 - (radius - bar_height / 2) * Math.Cos(degree) + bar_width / 2 * Math.Sin(degree)),
-                Y = (int)(height / 2 - (radius - bar_height / 2) * Math.Sin(degree) - bar_width / 2 * Math.Cos(degree))
+                X = (int)(width / 2 + bar_width / 2 * Math.Sin(degree)),
+                Y = (int)(height / 2 - bar_width / 2 * Math.Cos(degree))
             };
             Point P4 = new Point()
             {
-                X = (int)(width / 2 - (radius - bar_height / 2) * Math.Cos(degree) - bar_width / 2 * Math.Sin(degree)),
-                Y = (int)(height / 2 - (radius - bar_height / 2) * Math.Sin(degree) + bar_width / 2 * Math.Cos(degree))
+                X = (int)(width / 2 - bar_width / 2 * Math.Sin(degree)),
+                Y = (int)(height / 2 + bar_width / 2 * Math.Cos(degree))
             };
 
             return $"M {P1.X} {P1.Y}" +

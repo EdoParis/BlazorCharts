@@ -1,17 +1,15 @@
-﻿using BlazorGraphs.Enums;
-using BlazorGraphs.Models;
+﻿using BlazorGraphs.Models;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorGraphs.Charts
 {
-    public partial class BarChart
+    public partial class VerticalBarChart
     {
         private const int VIEW = 1000;
         private const int PADDING = 100;
 
-        [Parameter] [Obsolete("use HorizontalBarChart component instead")] public Positioning Direction { get; set; }
         [Parameter] public Theme Theme { get; set; }
         [Parameter] public Bargram Model { get; set; }
         [Parameter] public EventCallback<Bar> OnClick {get; set; }

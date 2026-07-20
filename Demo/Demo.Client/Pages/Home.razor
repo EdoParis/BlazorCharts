@@ -4,16 +4,16 @@
 
 <table style="width: 100%; table-layout: fixed; font-family: system-ui">
     <tr>
-        <td style="width: 50%"><LineChart Theme="Theme.Dark" Model="@linegram"></LineChart></td>
+        <td style="width: 50%"><LineChart Theme="Theme.Dark" Model="@linegram" ShowPoints="true"></LineChart></td>
         <td style="width: 50%"><LineChart Theme="Theme.Light" Model="@linegram"></LineChart></td>
-        <td style="width: 50%"><StepLineChart Theme="Theme.Arctic" Model="@linegram"></StepLineChart></td>
-        <td style="width: 50%"><StepLineChart Theme="Theme.Neon" Model="@linegram"></StepLineChart></td>
+        <td style="width: 50%"><SteplineChart Theme="Theme.Arctic" Model="@linegram" ShowPoints="true"></SteplineChart></td>
+        <td style="width: 50%"><SteplineChart Theme="Theme.Neon" Model="@linegram"></SteplineChart></td>
     </tr>
     <tr>
-        <td style="width: 50%"><ScatterChart Theme="Theme.Dark" Model="@linegram"></ScatterChart></td>
-        <td style="width: 50%"><ScatterChart Theme="Theme.Light" Model="@linegram"></ScatterChart></td>
-        <td style="width: 50%"><ScatterChart Theme="Theme.Arctic" Model="@linegram"></ScatterChart></td>
-        <td style="width: 50%"><ScatterChart Theme="Theme.Neon" Model="@linegram"></ScatterChart></td>
+        <td><ScatterChart Theme="Theme.Dark" Model="@linegram"></ScatterChart></td>
+        <td><ScatterChart Theme="Theme.Light" Model="@linegram"></ScatterChart></td>
+        <td><ScatterChart Theme="Theme.Arctic" Model="@linegram"></ScatterChart></td>
+        <td><ScatterChart Theme="Theme.Neon" Model="@linegram"></ScatterChart></td>
     </tr>
     <tr>
         <td><HistChart Theme="Theme.Dark" Model="@histogram" OnClick="BinClickHandler"></HistChart></td>

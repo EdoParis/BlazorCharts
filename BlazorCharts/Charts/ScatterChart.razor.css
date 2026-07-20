@@ -3,7 +3,7 @@ path {
     transition-duration: 0.25s;
 }
     path:hover {
-        stroke-width: 3px;
+        stroke-width: 4px;
     }
 
 circle {

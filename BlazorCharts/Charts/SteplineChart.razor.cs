@@ -7,13 +7,14 @@ using System.Text;
 
 namespace BlazorGraphs.Charts
 {
-    public partial class StepLineChart
+    public partial class SteplineChart
     {
         private const int VIEW = 1000;
         private const int PADDING = 100;
 
         [Parameter] public Theme Theme { get; set; }
         [Parameter] public Linegram Model { get; set; }
+        [Parameter] public Boolean ShowPoints { get; set; }
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;

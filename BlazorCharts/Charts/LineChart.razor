@@ -21,18 +21,35 @@
                       Text="@Model?.TitleY"
                       Size="40" />
 
+        @Model.AxisX.Render(LayoutAxisX, Theme);
+        @Model.AxisY.Render(LayoutAxisY, Theme);
+
         foreach (Line line in Model)
         {
             <path fill="none"
                     stroke="@line.Color.ToHex()"
-                    stroke-width="1px"
+                    stroke-width="2px"
                     vector-effect="non-scaling-stroke"
                     d="@LinePath(line)"
                     @key="@line">
                 <title>@($"{line.Label}")</title>
             </path>
+
+            if (ShowPoints)
+            {
+                foreach (PointD point in line.Points)
+                {
+                    <circle fill="@Theme.BackgroundString()"
+                            stroke="@line.Color.ToHex()"
+                            stroke-width="1px"
+                            vector-effect="non-scaling-stroke"
+                            cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
+                            cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
+                            r="8px">
+                        <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
+                    </circle>
+                }
+            }
         }
-        @Model.AxisX.Render(LayoutAxisX, Theme);
-        @Model.AxisY.Render(LayoutAxisY, Theme);
     }
 </svg>

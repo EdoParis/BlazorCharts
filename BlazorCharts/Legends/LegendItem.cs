@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Structures;
+﻿using BlazorGraphs.Models;
+using BlazorGraphs.Structures;
 using System.Drawing;
 
 namespace BlazorGraphs.Legends

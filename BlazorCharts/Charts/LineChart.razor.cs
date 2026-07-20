@@ -47,7 +47,7 @@ namespace BlazorGraphs.Charts
             StringBuilder builder = new StringBuilder();
             bool starting_point = true;
 
-            foreach(PointF point in line.Points)
+            foreach(PointD point in line.Points)
             {
                 builder.Append($"{(starting_point ? "M" : "L")} {offsetH + (int)((point.X - Model.AxisX.Min) * scaleH)} {offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV)} ");
                 starting_point = false;

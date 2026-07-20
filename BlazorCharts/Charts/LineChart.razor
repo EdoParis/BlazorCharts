@@ -23,33 +23,14 @@
 
         foreach (Line line in Model)
         {
-            if (line.DrawMode.HasFlag(DrawMode.Drawline))
-            {
-                <path fill="none"
-                      stroke="@line.Color.ToHex()"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      d="@LinePath(line)"
-                      @key="@line">
-                    <title>@($"{line.Label}")</title>
-                </path>
-            }
-
-            if (line.DrawMode.HasFlag(DrawMode.Drawpoints))
-            {
-                foreach (PointF point in line.Points)
-                {
-                    <circle fill="@line.Color.ToHex()"
-                            stroke="@Theme.BackgroundString()"
-                            stroke-width="1px"
-                            vector-effect="non-scaling-stroke"
-                            cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
-                            cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
-                            r="10px">
-                        <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
-                    </circle>
-                }
-            }
+            <path fill="none"
+                    stroke="@line.Color.ToHex()"
+                    stroke-width="1px"
+                    vector-effect="non-scaling-stroke"
+                    d="@LinePath(line)"
+                    @key="@line">
+                <title>@($"{line.Label}")</title>
+            </path>
         }
         @Model.AxisX.Render(LayoutAxisX, Theme);
         @Model.AxisY.Render(LayoutAxisY, Theme);

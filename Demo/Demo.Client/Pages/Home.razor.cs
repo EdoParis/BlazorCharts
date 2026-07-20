@@ -70,23 +70,23 @@ namespace DemoApp.Pages
                 });
             }
 
-            List<PointF> points1 = new();
-            List<PointF> points2 = new();
-            List<PointF> points3 = new();
-            List<PointF> points4 = new();
+            List<PointD> points1 = new();
+            List<PointD> points2 = new();
+            List<PointD> points3 = new();
+            List<PointD> points4 = new();
 
             for (int i = 0; i < 20; i++)
             {
-                points1.Add(new PointF(i, i * i));
-                points2.Add(new PointF(i, (i + 2) * (i + 2)));
-                points3.Add(new PointF(i, (i + 3) * (i + 3)));
-                points4.Add(new PointF(i, (i + 4) * (i + 4)));
+                points1.Add(new PointD(i, i * i));
+                points2.Add(new PointD(i, (i + 2) * (i + 2)));
+                points3.Add(new PointD(i, (i + 3) * (i + 3)));
+                points4.Add(new PointD(i, (i + 4) * (i + 4)));
             }
 
             linegram.Add(new Line("F1", KnownColor.LimeGreen, points1));
-            linegram.Add(new Line("F2", KnownColor.OrangeRed, points2, DrawMode.Drawline));
-            linegram.Add(new Line("F3", KnownColor.CadetBlue, points3, DrawMode.Drawpoints));
-            linegram.Add(new Line("F4", KnownColor.DodgerBlue, points4, DrawMode.Drawpoints | DrawMode.Drawline));
+            linegram.Add(new Line("F2", KnownColor.OrangeRed, points2));
+            linegram.Add(new Line("F3", KnownColor.CadetBlue, points3));
+            linegram.Add(new Line("F4", KnownColor.DodgerBlue, points4));
 
             piegram.Add(new Slice("S1", 5, KnownColor.Purple));
             piegram.Add(new Slice("S2", 30, KnownColor.OrangeRed));

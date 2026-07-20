@@ -2,8 +2,6 @@
 using BlazorGraphs.Interfaces;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
-using BlazorGraphs.Structures;
-using System;
 using System.Collections;
 
 namespace BlazorGraphs.Models
@@ -36,7 +34,9 @@ namespace BlazorGraphs.Models
 
         public void Add(Line line)
         {
+            ArgumentNullException.ThrowIfNull(line);
             InvalidArgumentException.ThrowIfInvalid(line);
+
             IsEmpty = IsEmpty && !(line.Points?.Any() ?? false);
             lines.Add(line);
             AxisX.Update(new Interval(line.Points?.Select(p => p.X)));

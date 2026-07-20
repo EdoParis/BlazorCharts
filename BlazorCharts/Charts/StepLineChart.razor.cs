@@ -2,13 +2,12 @@
 using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
-using System;
 using System.Drawing;
 using System.Text;
 
 namespace BlazorGraphs.Charts
 {
-    public partial class LineChart
+    public partial class StepLineChart
     {
         private const int VIEW = 1000;
         private const int PADDING = 100;
@@ -47,7 +46,7 @@ namespace BlazorGraphs.Charts
             StringBuilder builder = new StringBuilder();
             Point? previous_point = null;
 
-            foreach (PointD point in line.Points)
+            foreach(PointD point in line.Points)
             {
                 Point p = new Point()
                 {
@@ -57,7 +56,14 @@ namespace BlazorGraphs.Charts
 
                 if (previous_point.HasValue)
                 {
-                    builder.Append($"L {p.X} {p.Y} ");
+                    if (point.Y == previous_point.Value.Y)
+                        builder.Append($"L {p.X} {p.Y} ");
+                    else
+                    {
+                        builder.Append($"L {(p.X + previous_point.Value.X) / 2} {previous_point.Value.Y} ");
+                        builder.Append($"L {(p.X + previous_point.Value.X) / 2} {p.Y} ");
+                        builder.Append($"L {p.X} {p.Y} ");
+                    }
                 }
                 else
                 {

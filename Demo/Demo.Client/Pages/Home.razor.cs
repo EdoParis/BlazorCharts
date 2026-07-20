@@ -74,12 +74,12 @@ namespace DemoApp.Pages
             List<PointD> points3 = new();
             List<PointD> points4 = new();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 10; i++)
             {
-                points1.Add(new PointD(i, i * i));
-                points2.Add(new PointD(i, (i + 2) * (i + 2)));
-                points3.Add(new PointD(i, (i + 3) * (i + 3)));
-                points4.Add(new PointD(i, (i + 4) * (i + 4)));
+                points1.Add(new PointD(2 * i, 50 + i * i));
+                points2.Add(new PointD(2 * i, (i + 2) * (i + 2)));
+                points3.Add(new PointD(2 * i, (i + 4) * (i + 4)));
+                points4.Add(new PointD(2 * i, (i + 6) * (i + 6)));
             }
 
             linegram.Add(new Line("F1", KnownColor.LimeGreen, points1));

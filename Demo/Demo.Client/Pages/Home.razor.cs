@@ -1,5 +1,4 @@
-﻿using BlazorGraphs.Enums;
-using BlazorGraphs.Models;
+﻿using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using System.Drawing;
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace BlazorGraphs.Charts
 {
-    public partial class PolarChart
+    public partial class PolarAreaChart
     {
         private const int VIEW = 1000;
         private const int PADDING = 100;

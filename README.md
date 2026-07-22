@@ -1,10 +1,18 @@
-﻿BlazorGraphs is a **lightweight SVG chart library for Blazor** with **no Javascript dependency**.
-Build fast, interactive charts and gauges using pure Blazor rendering:
+﻿Existing Blazor chart libraries often wrap Javascript libraries, requiring JSInterop and external dependencies.
+**BlazorGraphs** was built to provide a fully native Blazor experience using only **C# and SVG**.
 
-- Pure Blazor rendering (no JS interop)
-- Lightweight SVG output
-- Zero external dependencies
-- Simple API, fast integration
+Main features:
+- Native Blazor
+- SSR friendly
+- WASM
+- SVG
+- No JS
+
+The library clearly distinguishes between the **data representation model** and the **graphics rendering**. 
+This way, you populate the model entirely in C#, and then pass it directly to the chart component.
+
+Some components share the same data model, such as gauges, or the pie chart and the donut chart. 
+This way, to change visualizations, you simply assign the model to the other compatible component with zero code rewrites.
 
 ## Links
 
@@ -14,13 +22,16 @@ Build fast, interactive charts and gauges using pure Blazor rendering:
 
 ## Charts
 - Histogram
+- Bar charts (Vertical/Horizontal)
+- Area chart
 - Line chart
-- Bar chart
+- Stepline chart
+- Scatter chart
+- Bubble chart
 - Pie chart
 - Donut chart
-- Polar chart
+- PolarArea chart
 - Radar chart
-- Horizontal Bar chart
 
 ## Gauges
 - Linear gauge

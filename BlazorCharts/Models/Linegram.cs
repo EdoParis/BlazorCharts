@@ -9,8 +9,8 @@ namespace BlazorGraphs.Models
     public class Linegram : IEnumerable<Line>, ILegend
     {
         private List<Line> lines;
-        internal Axis AxisX { get; private set; }
-        internal Axis AxisY { get; private set; }
+        internal NumeriAxis AxisX { get; private set; }
+        internal NumeriAxis AxisY { get; private set; }
         internal bool IsEmpty { get; private set; }
         public string TitleX { get => AxisX?.Title; }
         public string TitleY { get => AxisY?.Title; }
@@ -19,16 +19,16 @@ namespace BlazorGraphs.Models
         public Linegram(string title_x, string title_y)
         {
             lines = new List<Line>();
-            AxisX = new Axis(title_x);
-            AxisY = new Axis(title_y);
+            AxisX = new NumeriAxis(title_x);
+            AxisY = new NumeriAxis(title_y);
             IsEmpty = true;
         }
 
         public void Clear()
         {
             lines.Clear();
-            AxisX = new Axis(TitleX);
-            AxisY = new Axis(TitleY);
+            AxisX = new NumeriAxis(TitleX);
+            AxisY = new NumeriAxis(TitleY);
             IsEmpty = true;
         }
 

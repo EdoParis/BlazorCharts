@@ -12,7 +12,7 @@ namespace BlazorGraphs.Models
     public class Radargram : IEnumerable<Rating>, ILegend
     {
         private List<Rating> Data;
-        internal Axis AxisR { get; private set; }
+        internal NumeriAxis AxisR { get; private set; }
         internal bool IsEmpty { get; private set; }
         public KnownColor Color { get; private set; }
         public string Title { get => AxisR?.Title; }
@@ -22,7 +22,7 @@ namespace BlazorGraphs.Models
         {
             Data = new();
             Color = color;
-            AxisR = new Axis(title_r);
+            AxisR = new NumeriAxis(title_r);
             IsEmpty = true;
         }
 

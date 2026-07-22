@@ -1,6 +1,6 @@
 ﻿namespace BlazorGraphs.Internal
 {
-    internal class Axis
+    internal class NumeriAxis
     {
         private Interval range;
         private int multiple;
@@ -11,7 +11,7 @@
         public double Max { get => range.Max; }
         public double Size { get => range.Size; }
 
-        public Axis(string title = null)
+        public NumeriAxis(string title = null)
         {
             Title = title;
             range = default;
@@ -19,7 +19,7 @@
             is_default = true;
         }
 
-        public Axis(Interval interval, string title = null) : this(title)
+        public NumeriAxis(Interval interval, string title = null) : this(title)
         {
             range = interval;
             is_default = false;

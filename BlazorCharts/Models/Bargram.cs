@@ -12,8 +12,8 @@ namespace BlazorGraphs.Models
     public class Bargram : IEnumerable<KeyValuePair<String, Bin>>, ILegend
     {
         private List<KeyValuePair<String, Bin>> bars;
-        internal Axis BinAxis { get; private set; }
-        internal Axis ValAxis { get; private set; }
+        internal NumeriAxis BinAxis { get; private set; }
+        internal NumeriAxis ValAxis { get; private set; }
         internal bool IsEmpty { get; private set; }
         public KnownColor PrimaryColor { get; private set; }
         public KnownColor SecondaryColor { get; private set; }
@@ -23,8 +23,8 @@ namespace BlazorGraphs.Models
         public Bargram(string title_y, KnownColor color = KnownColor.Black)
         {
             bars = new List<KeyValuePair<String, Bin>>();
-            ValAxis = new Axis(title_y);
-            BinAxis = new Axis();
+            ValAxis = new NumeriAxis(title_y);
+            BinAxis = new NumeriAxis();
             PrimaryColor = color;
             SecondaryColor = color;
             IsEmpty = true;
@@ -33,8 +33,8 @@ namespace BlazorGraphs.Models
         public Bargram(string title_y, KnownColor primary_color, KnownColor secondary_color)
         {
             bars = new List<KeyValuePair<String, Bin>>();
-            ValAxis = new Axis(title_y);
-            BinAxis = new Axis();
+            ValAxis = new NumeriAxis(title_y);
+            BinAxis = new NumeriAxis();
             PrimaryColor = primary_color;
             SecondaryColor = secondary_color;
             IsEmpty = true;
@@ -43,8 +43,8 @@ namespace BlazorGraphs.Models
         public void Clear()
         {
             bars.Clear();
-            BinAxis = new Axis();
-            ValAxis = new Axis(Title);
+            BinAxis = new NumeriAxis();
+            ValAxis = new NumeriAxis(Title);
             IsEmpty = true;
         }
 

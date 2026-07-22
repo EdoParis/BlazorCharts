@@ -9,7 +9,7 @@ namespace BlazorGraphs.Rendering
     {
         private const string CURRENT = "currentColor";
 
-        public static RenderFragment Render(this Axis axis, AxisLayout layout, Theme theme)
+        public static RenderFragment Render(this NumeriAxis axis, AxisLayout layout, Theme theme)
         {
             switch (layout)
             {
@@ -27,7 +27,7 @@ namespace BlazorGraphs.Rendering
             }
         }
 
-        public static RenderFragment Render(this Axis axis, AxisLayout.Horizontal layout, Theme theme)
+        public static RenderFragment Render(this NumeriAxis axis, AxisLayout.Horizontal layout, Theme theme)
         {
             return builder =>
             {
@@ -78,7 +78,7 @@ namespace BlazorGraphs.Rendering
             };
         }
 
-        public static RenderFragment Render(this Axis axis, AxisLayout.Vertical layout, Theme theme)
+        public static RenderFragment Render(this NumeriAxis axis, AxisLayout.Vertical layout, Theme theme)
         {
             return builder =>
             {
@@ -129,7 +129,7 @@ namespace BlazorGraphs.Rendering
             };
         }
 
-        public static RenderFragment Render(this Axis axis, AxisLayout.Circular layout, Theme theme)
+        public static RenderFragment Render(this NumeriAxis axis, AxisLayout.Circular layout, Theme theme)
         {
             return builder =>
             {

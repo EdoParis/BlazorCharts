@@ -2,15 +2,15 @@
 
 namespace BlazorGraphs.Exceptions
 {
-    internal class InvalidArgumentException : ArgumentOutOfRangeException
+    public class InvalidArgumentException : ArgumentOutOfRangeException
     {
-        public InvalidArgumentException(string param) : base($"Invalid {param} parameter")
+        internal InvalidArgumentException(string param) : base($"Invalid {param} parameter")
         { }
 
-        public InvalidArgumentException(string param, Exception innerException) : base($"Invalid {param} parameter", innerException)
+        internal InvalidArgumentException(string param, Exception innerException) : base($"Invalid {param} parameter", innerException)
         { }
 
-        public static void ThrowIfInvalid(IValidable validable)
+        internal static void ThrowIfInvalid<T>(T validable) where T : IValidable
         {
             if (!validable.IsValid())
                 throw new InvalidArgumentException(validable.GetType().Name);

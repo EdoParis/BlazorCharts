@@ -10,7 +10,7 @@ namespace DemoApp.Pages
         private Histogram histogram2;
         private Bargram bargram;
         private Bargram bargram2;
-        private Linegram linegram;
+        private Cartesiangram chartgram;
         private Piegram piegram;
         private Polargram polargram;
         private Radargram radargram;
@@ -25,7 +25,7 @@ namespace DemoApp.Pages
             histogram2 = new Histogram("Axis-X", "Axis-Y", KnownColor.RoyalBlue);
             bargram = new Bargram("Axis-2", KnownColor.MediumPurple);
             bargram2 = new Bargram("Axis-2", KnownColor.MediumOrchid, KnownColor.MediumSlateBlue);
-            linegram = new Linegram("X1", "Y1");
+            chartgram = new Cartesiangram("X1", "Y1");
             piegram = new Piegram();
             polargram = new Polargram("R1");
             radargram = new Radargram("R2", KnownColor.MediumVioletRed);
@@ -69,23 +69,23 @@ namespace DemoApp.Pages
                 });
             }
 
-            List<PointD> points1 = new();
-            List<PointD> points2 = new();
-            List<PointD> points3 = new();
-            List<PointD> points4 = new();
+            List<DataPoint> points1 = new();
+            List<DataPoint> points2 = new();
+            List<DataPoint> points3 = new();
+            List<DataPoint> points4 = new();
 
             for (int i = 0; i < 10; i++)
             {
-                points1.Add(new PointD(2 * i, 50 + i * i));
-                points2.Add(new PointD(2 * i, (i + 2) * (i + 2)));
-                points3.Add(new PointD(2 * i, (i + 4) * (i + 4)));
-                points4.Add(new PointD(2 * i, (i + 6) * (i + 6)));
+                points1.Add(new DataPoint() { X = 2 * i, Y = 50 + i * i });
+                points2.Add(new DataPoint() { X = 2 * i, Y = (i + 2) * (i + 2) });
+                points3.Add(new DataPoint() { X = 2 * i, Y = (i + 4) * (i + 4) });
+                points4.Add(new DataPoint() { X = 2 * i, Y = (i + 6) * (i + 6) });
             }
 
-            linegram.Add(new Line("F1", KnownColor.LimeGreen, points1));
-            linegram.Add(new Line("F2", KnownColor.OrangeRed, points2));
-            linegram.Add(new Line("F3", KnownColor.CadetBlue, points3));
-            linegram.Add(new Line("F4", KnownColor.DodgerBlue, points4));
+            chartgram.AddSerie("F1", KnownColor.LimeGreen, points1);
+            chartgram.AddSerie("F2", KnownColor.OrangeRed, points2);
+            chartgram.AddSerie("F3", KnownColor.CadetBlue, points3);
+            chartgram.AddSerie("F4", KnownColor.DodgerBlue, points4);
 
             piegram.Add(new Slice("S1", 5, KnownColor.Purple));
             piegram.Add(new Slice("S2", 30, KnownColor.OrangeRed));
@@ -110,19 +110,16 @@ namespace DemoApp.Pages
             {
                 Value = 150,
                 Color = KnownColor.Green,
-                Label = "LV-1"
             });
             gaugegram.AddBreakpoint(new Breakpoint()
             {
                 Value = 250,
                 Color = KnownColor.Gold,
-                Label = "LV-2"
             });
             gaugegram.AddBreakpoint(new Breakpoint()
             {
                 Value = 500,
                 Color = KnownColor.Red,
-                Label = "LV-3"
             });
         }
 

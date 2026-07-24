@@ -24,23 +24,23 @@
         @Model.AxisX.Render(LayoutAxisX, Theme);
         @Model.AxisY.Render(LayoutAxisY, Theme);
 
-        foreach (Line line in Model)
+        foreach (Serie<DataPoint> serie in Model.Series)
         {
             <path fill="none"
-                    stroke="@line.Color.ToHex()"
+                    stroke="@serie.Color.ToHex()"
                     stroke-width="2px"
                     vector-effect="non-scaling-stroke"
-                    d="@LinePath(line)"
-                    @key="@line">
-                <title>@($"{line.Label}")</title>
+                    d="@LinePath(serie)"
+                    @key="@serie">
+                <title>@($"{serie.Label}")</title>
             </path>
 
             if (ShowPoints)
             {
-                foreach (PointD point in line.Points)
+                foreach (DataPoint point in serie.Data)
                 {
                     <circle fill="@Theme.BackgroundString()" 
-                            stroke="@line.Color.ToHex()"
+                            stroke="@serie.Color.ToHex()"
                             stroke-width="1px"
                             vector-effect="non-scaling-stroke"
                             cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"

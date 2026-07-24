@@ -14,7 +14,7 @@ namespace BlazorGraphs.Charts
         private const int PADDING = 100;
 
         [Parameter] public Theme Theme { get; set; }
-        [Parameter] public Linegram Model { get; set; }
+        [Parameter] public Cartesiangram Model { get; set; }
         [Parameter] public Boolean ShowPoints { get; set; }
         private int width = VIEW;
         private int height = VIEW;
@@ -43,12 +43,12 @@ namespace BlazorGraphs.Charts
                                     .At(padding);
         }
 
-        private string LinePath(Line line)
+        private string LinePath(Serie<DataPoint> serie)
         {
             StringBuilder builder = new StringBuilder();
             Point? previous_point = null;
 
-            foreach (PointD point in line.Points)
+            foreach (DataPoint point in serie.Data)
             {
                 Point p = new Point()
                 {

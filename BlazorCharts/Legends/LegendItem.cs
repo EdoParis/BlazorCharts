@@ -17,12 +17,6 @@ namespace BlazorGraphs.Legends
             Text = slice.Label;
         }
 
-        public LegendItem(Line line)
-        {
-            Color = line.Color;
-            Text = line.Label;
-        }
-
         public LegendItem(Breakpoint threshold)
         {
             Color = threshold.Color;

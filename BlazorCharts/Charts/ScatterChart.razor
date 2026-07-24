@@ -24,11 +24,11 @@
         @Model.AxisX.Render(LayoutAxisX, Theme);
         @Model.AxisY.Render(LayoutAxisY, Theme);
 
-        foreach (Line line in Model)
+        foreach (Serie<DataPoint> serie in Model.Series)
         {
-            foreach (PointD point in line.Points)
+            foreach (DataPoint point in serie.Data)
             {
-                <circle fill="@line.Color.ToHex()"
+                <circle fill="@serie.Color.ToHex()"
                         stroke="@Theme.BackgroundString()"
                         stroke-width="1px"
                         vector-effect="non-scaling-stroke"

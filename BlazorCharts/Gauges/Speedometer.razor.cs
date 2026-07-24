@@ -54,7 +54,7 @@ namespace BlazorGraphs.Gauges
         private string BarPath(double degree)
         {
             double bar_width = padding / 5;
-            double bar_height = 1.1 * (radius + padding / 2);
+            double bar_height = radius + 3 * padding / 5;
 
             Point P1 = new Point()
             {

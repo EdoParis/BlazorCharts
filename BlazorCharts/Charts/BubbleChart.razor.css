@@ -1,0 +1,22 @@
+path {
+    cursor: pointer;
+    transition-duration: 0.25s;
+}
+    path:hover {
+        stroke-width: 4px;
+    }
+
+circle {
+    cursor: pointer;
+    transition-duration: 0.25s;
+}
+    circle:hover {
+        fill-opacity: 1.0;
+    }
+
+svg {
+    max-height: 100%;
+    width: auto;
+    margin: auto;
+    display: block;
+}

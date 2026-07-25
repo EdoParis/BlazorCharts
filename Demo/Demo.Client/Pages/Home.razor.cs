@@ -11,6 +11,7 @@ namespace DemoApp.Pages
         private Bargram bargram;
         private Bargram bargram2;
         private Cartesiangram chartgram;
+        private Bubblegram bubblegram;
         private Piegram piegram;
         private Polargram polargram;
         private Radargram radargram;
@@ -26,6 +27,7 @@ namespace DemoApp.Pages
             bargram = new Bargram("Axis-2", KnownColor.MediumPurple);
             bargram2 = new Bargram("Axis-2", KnownColor.MediumOrchid, KnownColor.MediumSlateBlue);
             chartgram = new Cartesiangram("X1", "Y1");
+            bubblegram = new Bubblegram("X1", "Y1");
             piegram = new Piegram();
             polargram = new Polargram("R1");
             radargram = new Radargram("R2", KnownColor.MediumVioletRed);
@@ -73,6 +75,8 @@ namespace DemoApp.Pages
             List<DataPoint> points2 = new();
             List<DataPoint> points3 = new();
             List<DataPoint> points4 = new();
+            List<BubblePoint> bubbles1 = new();
+            List<BubblePoint> bubbles2 = new();
 
             for (int i = 0; i < 10; i++)
             {
@@ -80,12 +84,17 @@ namespace DemoApp.Pages
                 points2.Add(new DataPoint() { X = 2 * i, Y = (i + 2) * (i + 2) });
                 points3.Add(new DataPoint() { X = 2 * i, Y = (i + 4) * (i + 4) });
                 points4.Add(new DataPoint() { X = 2 * i, Y = (i + 6) * (i + 6) });
+                bubbles1.Add(new BubblePoint() { X = 2 * i, Y = (i + 5) * (i + 4), Value = 25 + i });
+                bubbles2.Add(new BubblePoint() { X = 2 * i, Y = (i + 4) * (i + 4), Value = 10 + i });
             }
 
             chartgram.AddSerie("F1", KnownColor.LimeGreen, points1);
             chartgram.AddSerie("F2", KnownColor.OrangeRed, points2);
             chartgram.AddSerie("F3", KnownColor.CadetBlue, points3);
             chartgram.AddSerie("F4", KnownColor.DodgerBlue, points4);
+
+            bubblegram.AddSerie("B1", KnownColor.MediumPurple, bubbles1);
+            bubblegram.AddSerie("B2", KnownColor.OrangeRed, bubbles2);
 
             piegram.Add(new Slice("S1", 5, KnownColor.Purple));
             piegram.Add(new Slice("S2", 30, KnownColor.OrangeRed));

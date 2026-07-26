@@ -74,13 +74,13 @@
                     double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
                     i++;
 
-                    <circle fill="@Model.Color"
-                            stroke="@Theme.BackgroundString()"
+                    <circle fill="@(Theme.BackgroundColor.HasValue? Theme.BackgroundColor.Value.ToHex() : Model.Color.ToHex())"
+                            stroke="@Model.Color.ToHex()"
                             stroke-width="1px"
                             vector-effect="non-scaling-stroke"
                             cx="@((int)x)"
                             cy="@((int)y)"
-                            r="10px">
+                            r="8px">
                             <title>@rating.Value.ToString("0.##")</title>
                     </circle>
                 }

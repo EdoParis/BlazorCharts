@@ -4,8 +4,11 @@ path {
 }
 
     path:hover {
-        stroke-width: 4px;
+        stroke-width: 2px;
     }
+        path:hover ~ circle {
+            display: none;
+        }
 
 circle {
     cursor: pointer;

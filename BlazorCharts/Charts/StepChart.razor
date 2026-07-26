@@ -26,30 +26,32 @@
 
         foreach (Serie<DataPoint> serie in Model.Series)
         {
-            <path fill="none"
-                    stroke="@serie.Color.ToHex()"
-                    stroke-width="2px"
-                    vector-effect="non-scaling-stroke"
-                    d="@LinePath(serie)"
-                    @key="@serie">
-                <title>@($"{serie.Label}")</title>
-            </path>
+            <g>
+                <path fill="none"
+                      stroke="@serie.Color.ToHex()"
+                      stroke-width="1px"
+                      vector-effect="non-scaling-stroke"
+                      d="@LinePath(serie)"
+                      @key="@serie">
+                    <title>@($"{serie.Label}")</title>
+                </path>
 
-            if (ShowPoints)
-            {
-                foreach (DataPoint point in serie.Data)
+                @if (ShowPoints)
                 {
-                    <circle fill="@Theme.BackgroundString()" 
-                            stroke="@serie.Color.ToHex()"
-                            stroke-width="1px"
-                            vector-effect="non-scaling-stroke"
-                            cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
-                            cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
-                            r="8px">
-                        <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
-                    </circle>
+                    foreach (DataPoint point in serie.Data)
+                    {
+                        <circle fill="@(Theme.BackgroundColor.HasValue? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
+                                stroke="@serie.Color.ToHex()"
+                                stroke-width="1px"
+                                vector-effect="non-scaling-stroke"
+                                cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
+                                cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
+                                r="8px">
+                            <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
+                        </circle>
+                    }
                 }
-            }
+            </g>
         }
     }
 </svg>

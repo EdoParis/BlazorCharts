@@ -5,3 +5,11 @@ g > circle {
     g > circle:hover {
         r: 15px;
     }
+
+g > path:hover {
+    stroke-width: 2px;
+}
+
+    g > path:hover ~ circle {
+        display: none;
+    }

@@ -8,17 +8,17 @@ namespace BlazorGraphs.Models
 {
     public class Cartesiangram : ILegend
     { 
-        private List<Serie<DataPoint>> series;
+        private List<Serie<Datapoint>> series;
         internal Boolean IsEmpty { get; private set; }
         internal NumeriAxis AxisX { get; private set; }
         internal NumeriAxis AxisY { get; private set; }
-        internal IEnumerable<Serie<DataPoint>> Series { get => series.AsReadOnly(); }
+        internal IEnumerable<Serie<Datapoint>> Series { get => series.AsReadOnly(); }
         public string TitleX { get => AxisX?.Title; }
         public string TitleY { get => AxisY?.Title; }
 
         public Cartesiangram(string title_x, string title_y)
         {
-            series = new List<Serie<DataPoint>>();
+            series = new List<Serie<Datapoint>>();
             AxisX = new NumeriAxis(title_x);
             AxisY = new NumeriAxis(title_y);
             IsEmpty = true;
@@ -33,9 +33,9 @@ namespace BlazorGraphs.Models
             IsEmpty = true;
         }
 
-        public void AddSerie(string label, KnownColor color, IEnumerable<DataPoint> points)
+        public void AddSerie(string label, KnownColor color, IEnumerable<Datapoint> points)
         {
-            Serie<DataPoint> serie = new Serie<DataPoint>()
+            Serie<Datapoint> serie = new Serie<Datapoint>()
             {
                 Label = label,
                 Color = color

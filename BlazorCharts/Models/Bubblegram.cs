@@ -8,18 +8,18 @@ namespace BlazorGraphs.Models
 {
     public class Bubblegram : ILegend
     { 
-        private List<Serie<BubblePoint>> series;
+        private List<Serie<Bubblepoint>> series;
         internal Boolean IsEmpty { get; private set; }
         internal NumeriAxis AxisX { get; private set; }
         internal NumeriAxis AxisY { get; private set; }
         internal NumeriAxis AxisB { get; private set; }
-        internal IEnumerable<Serie<BubblePoint>> Series { get => series.AsReadOnly(); }
+        internal IEnumerable<Serie<Bubblepoint>> Series { get => series.AsReadOnly(); }
         public string TitleX { get => AxisX?.Title; }
         public string TitleY { get => AxisY?.Title; }
 
         public Bubblegram(string title_x, string title_y)
         {
-            series = new List<Serie<BubblePoint>>();
+            series = new List<Serie<Bubblepoint>>();
             AxisX = new NumeriAxis(title_x);
             AxisY = new NumeriAxis(title_y);
             AxisB = new NumeriAxis();
@@ -36,9 +36,9 @@ namespace BlazorGraphs.Models
             IsEmpty = true;
         }
 
-        public void AddSerie(string label, KnownColor color, IEnumerable<BubblePoint> points)
+        public void AddSerie(string label, KnownColor color, IEnumerable<Bubblepoint> points)
         {
-            Serie<BubblePoint> serie = new Serie<BubblePoint>()
+            Serie<Bubblepoint> serie = new Serie<Bubblepoint>()
             {
                 Label = label,
                 Color = color

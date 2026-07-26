@@ -2,7 +2,7 @@
 
 namespace BlazorGraphs.Structures
 {
-    public struct BubblePoint : IValidable
+    public struct Bubblepoint : IValidable
     {
         public double X { get; set; }
         public double Y { get; set; }

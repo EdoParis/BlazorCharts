@@ -24,7 +24,7 @@
         @Model.AxisX.Render(LayoutAxisX, Theme);
         @Model.AxisY.Render(LayoutAxisY, Theme);
 
-        foreach (Serie<DataPoint> serie in Model.Series)
+        foreach (Serie<Datapoint> serie in Model.Series)
         {
             <g>
                 <path fill="none"
@@ -38,7 +38,7 @@
 
                 @if (ShowPoints)
                 {
-                    foreach (DataPoint point in serie.Data)
+                    foreach (Datapoint point in serie.Data)
                     {
                         <circle fill="@(Theme.BackgroundColor.HasValue? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
                                 stroke="@serie.Color.ToHex()"

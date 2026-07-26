@@ -71,21 +71,21 @@ namespace DemoApp.Pages
                 });
             }
 
-            List<DataPoint> points1 = new();
-            List<DataPoint> points2 = new();
-            List<DataPoint> points3 = new();
-            List<DataPoint> points4 = new();
-            List<BubblePoint> bubbles1 = new();
-            List<BubblePoint> bubbles2 = new();
+            List<Datapoint> points1 = new();
+            List<Datapoint> points2 = new();
+            List<Datapoint> points3 = new();
+            List<Datapoint> points4 = new();
+            List<Bubblepoint> bubbles1 = new();
+            List<Bubblepoint> bubbles2 = new();
 
             for (int i = 0; i < 10; i++)
             {
-                points1.Add(new DataPoint() { X = 2 * i, Y = 50 + i * i });
-                points2.Add(new DataPoint() { X = 2 * i, Y = (i + 2) * (i + 2) });
-                points3.Add(new DataPoint() { X = 2 * i, Y = (i + 4) * (i + 4) });
-                points4.Add(new DataPoint() { X = 2 * i, Y = (i + 6) * (i + 6) });
-                bubbles1.Add(new BubblePoint() { X = 2 * i, Y = (i + 5) * (i + 4), Value = 25 + i });
-                bubbles2.Add(new BubblePoint() { X = 2 * i, Y = (i + 4) * (i + 4), Value = 10 + i });
+                points1.Add(new Datapoint() { X = 2 * i, Y = 50 + i * i });
+                points2.Add(new Datapoint() { X = 2 * i, Y = (i + 2) * (i + 2) });
+                points3.Add(new Datapoint() { X = 2 * i, Y = (i + 4) * (i + 4) });
+                points4.Add(new Datapoint() { X = 2 * i, Y = (i + 6) * (i + 6) });
+                bubbles1.Add(new Bubblepoint() { X = 2 * i, Y = (i + 5) * (i + 4), Value = 25 + i });
+                bubbles2.Add(new Bubblepoint() { X = 2 * i, Y = (i + 4) * (i + 4), Value = 10 + i });
             }
 
             chartgram.AddSerie("F1", KnownColor.LimeGreen, points1);

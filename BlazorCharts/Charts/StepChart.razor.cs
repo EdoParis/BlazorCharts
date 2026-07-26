@@ -42,12 +42,12 @@ namespace BlazorGraphs.Charts
                                     .At(padding);
         }
 
-        private string LinePath(Serie<DataPoint> serie)
+        private string LinePath(Serie<Datapoint> serie)
         {
             StringBuilder builder = new StringBuilder();
             Point? previous_point = null;
 
-            foreach(DataPoint point in serie.Data)
+            foreach(Datapoint point in serie.Data)
             {
                 Point p = new Point()
                 {

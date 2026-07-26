@@ -25,9 +25,9 @@
         @Model.AxisY.Render(LayoutAxisY, Theme)
         ;
 
-        foreach (Serie<BubblePoint> serie in Model.Series)
+        foreach (Serie<Bubblepoint> serie in Model.Series)
         {
-            foreach (BubblePoint bubble in serie.Data)
+            foreach (Bubblepoint bubble in serie.Data)
             {
                 double radius = 16 + (padding / 2 - 16) * (bubble.Radius - Model.AxisB.Min) / Model.AxisB.Size;
 

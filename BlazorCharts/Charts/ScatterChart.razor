@@ -24,9 +24,9 @@
         @Model.AxisX.Render(LayoutAxisX, Theme);
         @Model.AxisY.Render(LayoutAxisY, Theme);
 
-        foreach (Serie<DataPoint> serie in Model.Series)
+        foreach (Serie<Datapoint> serie in Model.Series)
         {
-            foreach (DataPoint point in serie.Data)
+            foreach (Datapoint point in serie.Data)
             {
                 <circle fill="@serie.Color.ToHex()"
                         stroke="@Theme.BackgroundString()"

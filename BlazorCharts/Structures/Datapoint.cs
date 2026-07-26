@@ -2,7 +2,7 @@
 
 namespace BlazorGraphs.Structures
 {
-    public struct DataPoint : IValidable
+    public struct Datapoint : IValidable
     {
         public double X { get; set; }
         public double Y { get; set; }
@@ -10,7 +10,7 @@ namespace BlazorGraphs.Structures
         public bool IsValid()
         {
             return !double.IsNaN(X) &&
-                   !double.IsNaN(Y) && 
+                   !double.IsNaN(Y) &&
                    !double.IsInfinity(X) &&
                    !double.IsInfinity(Y);
         }

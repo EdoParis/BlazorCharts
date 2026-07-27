@@ -29,11 +29,7 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                <SvgTextEnd Text="@label"
-                            Fill="@Theme.TextColor"
-                            Size="40"
-                            X="@originH"
-                            Y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))"/>
+                @label.Render(LayoutLabelsEnd.At(originH, (int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV)), Theme);
             }
             else
             {
@@ -50,20 +46,11 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                <SvgTextStart Text="@label"
-                              Fill="@Theme.TextColor"
-                              Size="40"
-                              X="@originH" 
-                              Y="@((int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV))"/>
+                @label.Render(LayoutLabelsStart.At(originH, (int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV)), Theme);
             }
         }
         @Model.ValAxis.Render(LayoutAxisX, Theme);
         @Model.BinAxis.Render(LayoutAxisY.At(originH), Theme);
-
-        <SvgTextMiddle X="@(width / 2)"
-                       Y="@(height - padding / 4)"
-                       Size="40"
-                       Fill="@Theme.TextColor"
-                       Text="@Model?.Title" />
+        @Model.Title.Render(LayoutTitle, Theme);
     }
 </svg>

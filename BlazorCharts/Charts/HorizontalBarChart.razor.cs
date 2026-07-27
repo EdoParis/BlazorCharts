@@ -24,6 +24,9 @@ namespace BlazorGraphs.Charts
         private double scaleV => (height - 2 * padding) / Model.BinAxis.Size;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;
+        private TextLayout LayoutTitle;
+        private TextLayout LayoutLabelsStart;
+        private TextLayout LayoutLabelsEnd;
 
         protected override void OnInitialized()
         {
@@ -37,6 +40,16 @@ namespace BlazorGraphs.Charts
             LayoutAxisY = AxisLayout.VerticalLayout()
                                     .From(height - padding)
                                     .To(padding);
+
+            LayoutTitle = TextLayout.MiddleLayout()
+                                    .Medium()
+                                    .At(width / 2, height - padding / 4);
+
+            LayoutLabelsEnd = TextLayout.EndLayout()
+                                        .Medium();
+
+            LayoutLabelsStart = TextLayout.StartLayout()
+                                          .Medium();
         }
     }
 }

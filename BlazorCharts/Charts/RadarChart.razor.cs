@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Models;
+﻿using BlazorGraphs.Internal;
+using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 using System.Text;
@@ -15,6 +16,14 @@ namespace BlazorGraphs.Charts
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;
+        private TextLayout LayoutLabels;
+        private TextLayout LayoutTicks;
+
+        protected override void OnInitialized()
+        {
+            LayoutLabels = TextLayout.MiddleLayout().Medium();
+            LayoutTicks = TextLayout.EndLayout().Medium();
+        }
 
         private string Path()
         {

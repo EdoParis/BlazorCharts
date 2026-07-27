@@ -14,6 +14,7 @@ namespace BlazorGraphs.Models
         internal NumeriAxis Axis { get; private set; }
         public KnownColor Color { get; private set; }
         public double Value { get; set; }
+        public string Title { get => Axis?.Title; }
         public bool HasBreakPoints { get => breakpoints?.Count > 0; }
 
         public Gaugegram(double min, double max, string title, KnownColor color = KnownColor.Black)

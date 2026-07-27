@@ -48,12 +48,8 @@
         }
             
         @Model.Axis.Render(InnerAxis ? AxisInternalLayout : AxisExternalLayout, Theme);
-
-        <SvgTextMiddle X="@(width / 2)"
-                       Y="@(height / 2 + radius - padding / 2)"
-                       Size="@padding"
-                       Fill="@Theme.TextColor"
-                       Text="@Model.Value.ToString("0.##")" />
+        @Model.Title.Render(TitleLayout, Theme);
+        @Model.Value.ToString("0.##").Render(ValueLayout, Theme);
 
         if (Model.Axis.Contains(Model.Value))
         {

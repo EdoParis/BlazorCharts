@@ -44,37 +44,35 @@
                 </rect>
             }
         }
-        @Model.AxisY.Render(LayoutAxisY, Theme);
 
         int current_origin = originV;
         if (current_origin == padding)
         {
+            @Model.TitleY.Render(LayoutTitleY.At(padding / 2, height - padding / 2), Theme);
+            @Model.TitleX.Render(LayoutTitleX.At(width / 2, padding / 4), Theme);
             @Model.AxisX.Render(LayoutAxisX.FullInternal().At(current_origin).WithStartTick(), Theme);
+            @Model.AxisY.Render(LayoutAxisY, Theme);
         }
         else if (current_origin == height - padding)
         {
+            @Model.TitleY.Render(LayoutTitleY.At(padding / 2, padding / 2), Theme);
+            @Model.TitleX.Render(LayoutTitleX.At(width / 2, height - padding / 4), Theme);
             @Model.AxisX.Render(LayoutAxisX.TicksInternal().At(current_origin).WithStartTick(), Theme);
+            @Model.AxisY.Render(LayoutAxisY, Theme);
         }
         else if (Model?.AxisY?.Size / 2 > -Model?.AxisY.Min)
         {
+            @Model.TitleY.Render(LayoutTitleY.At(padding / 2, padding / 2), Theme);
+            @Model.TitleX.Render(LayoutTitleX.At(width / 2, height - padding / 2), Theme);
             @Model.AxisX.Render(LayoutAxisX.TicksInternal().At(current_origin).WithoutStartTick(), Theme);
+            @Model.AxisY.Render(LayoutAxisY, Theme);
         }
         else
         {
+            @Model.TitleY.Render(LayoutTitleY.At(padding / 2, height - padding / 2), Theme);
+            @Model.TitleX.Render(LayoutTitleX.At(width / 2, padding / 2), Theme);
             @Model.AxisX.Render(LayoutAxisX.FullInternal().At(current_origin).WithoutStartTick(), Theme);
+            @Model.AxisY.Render(LayoutAxisY, Theme);
         }
     }
-
-
-    <SvgTextMiddle X="@(width / 2)" 
-                   Y="@(originV > height / 2 ? height - padding / 4 : padding / 4)"
-                   Size="40"
-                   Fill="@Theme.TextColor"
-                   Text="@Model?.TitleX" />
-
-    <SvgTextStart X="@(padding / 2)"
-                  Y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"
-                  Size="40"
-                  Fill="@Theme.TextColor"
-                  Text="@Model?.TitleY"/>
 </svg>

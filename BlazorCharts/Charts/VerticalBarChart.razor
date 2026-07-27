@@ -29,11 +29,7 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                <SvgTextRotated270 X="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
-                                   Y="@(originV)"
-                                   Size="40"
-                                   Fill="@Theme.TextColor"
-                                   Text="@label" />
+                @label.Render(LayoutLabelsTop.At(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH), originV), Theme)
             }
             else
             {
@@ -50,20 +46,11 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                <SvgTextRotated90 X="@(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH))"
-                                  Y="@(originV)"
-                                  Size="40"
-                                  Fill="@Theme.TextColor"
-                                  Text="@label"/>
+                @label.Render(LayoutLabelsBottom.At(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH), originV), Theme)
             }
         }
         @Model.ValAxis.Render(LayoutAxisY, Theme);
         @Model.BinAxis.Render(LayoutAxisX.At(originV), Theme);
-
-        <SvgTextStart X="@(padding / 2)"
-                      Y="@(originV > height / 2 ? padding / 2 : height - padding / 2)"
-                      Size="40"
-                      Fill="@Theme.TextColor"
-                      Text="@Model.Title" />
+        @Model.Title.Render(LayoutTitle.At(padding / 2, originV > height / 2 ? padding / 2 : height - padding / 2), Theme);
     }
 </svg>

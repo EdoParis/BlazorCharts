@@ -33,11 +33,7 @@
                                       SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                       SliceExternalPoint(slice, 2 * Math.PI * progress);
 
-                <SvgTextMiddle X="@text_position.X"
-                               Y="@text_position.Y"
-                               Size="40"
-                               Fill="@Theme.TextColor"
-                               Text="@slice.Value.ToString("0.##")" />
+                @slice.Value.ToString("0.##").Render(LayoutSliceValue.At(text_position), Theme);
 
                 progress += slice.Value / Model.Total;
             }

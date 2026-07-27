@@ -25,6 +25,8 @@ namespace BlazorGraphs.Charts
         private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;
+        private TextLayout LayoutTitleX;
+        private TextLayout LayoutTitleY;
 
         protected override void OnInitialized()
         {
@@ -41,6 +43,14 @@ namespace BlazorGraphs.Charts
                                     .From(height - padding)
                                     .To(padding)
                                     .At(padding);
+
+            LayoutTitleX = TextLayout.MiddleLayout()
+                                     .Medium()
+                                     .At(width / 2, height - padding / 4);
+
+            LayoutTitleY = TextLayout.StartLayout()
+                                     .Medium()
+                                     .At(padding / 2, padding / 2);
         }
 
         private string LinePath(Serie<Datapoint> serie)

@@ -20,6 +20,8 @@ namespace BlazorGraphs.Gauges
         private int padding = PADDING;
         AxisLayout AxisInternalLayout;
         AxisLayout AxisExternalLayout;
+        TextLayout ValueLayout;
+        TextLayout TitleLayout;
 
         protected override void OnInitialized()
         {
@@ -38,6 +40,14 @@ namespace BlazorGraphs.Gauges
                                            .FullInternal()
                                            .From(-45)
                                            .To(225);
+
+            ValueLayout = TextLayout.TopLayout()
+                                    .Large()
+                                    .At(width / 2, height / 2 + radius + padding / 2);
+
+            TitleLayout = TextLayout.MiddleLayout()
+                                    .Medium()
+                                    .At(width / 2, height / 2 + radius + padding / 2);
         }
 
         private string ArcPath(double radius, double start, double end)

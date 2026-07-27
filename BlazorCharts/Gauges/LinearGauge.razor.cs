@@ -20,6 +20,7 @@ namespace BlazorGraphs.Gauges
         private int offsetV => height - padding;
         private double scaleH => (width - 2 * padding) / Model.Axis.Size;
         private AxisLayout AxisLayout;
+        private TextLayout TitleLayout;
 
         protected override void OnInitialized()
         {
@@ -27,6 +28,9 @@ namespace BlazorGraphs.Gauges
                                    .WithTickSize(20)
                                    .From(padding)
                                    .To(width - padding);
+
+            TitleLayout = TextLayout.MiddleLayout()
+                                    .Medium();
         }
     }
 }

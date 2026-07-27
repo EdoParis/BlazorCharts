@@ -40,7 +40,7 @@
                 <title>@Model.Value.ToString("0.##")</title>
             </rect>
         }
-        
+        @Model.Title.Render(TitleLayout, Theme);
         @Model.Axis.Render(Reverse ? AxisLayout.FullInternal() : AxisLayout.FullExternal(), Theme);
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))

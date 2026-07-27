@@ -1,4 +1,5 @@
-﻿using BlazorGraphs.Models;
+﻿using BlazorGraphs.Internal;
+using BlazorGraphs.Models;
 using BlazorGraphs.Structures;
 using Microsoft.AspNetCore.Components;
 
@@ -15,6 +16,18 @@ namespace BlazorGraphs.Charts
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;
+        private TextLayout LayoutTitle;
+        private TextLayout LayoutTicks;
+
+        protected override void OnInitialized()
+        {
+            LayoutTitle = TextLayout.MiddleLayout()
+                                    .Medium()
+                                    .At(width / 2, height - padding / 2);
+
+            LayoutTicks = TextLayout.TopLayout()
+                                    .Medium();
+        }
 
         private string SlicePath(Slice slice, double rotation = 0)
         {

@@ -9,21 +9,10 @@
     }
     else
     {
-        <SvgTextMiddle X="@(width / 2)"
-                       Y="@(height - padding / 4)"
-                       Fill="@Theme.TextColor"
-                       Text="@Model?.TitleX"
-                       Size="40" />
-
-        <SvgTextStart X="@(padding / 2)"
-                      Y="@(padding / 2)"
-                      Fill="@Theme.TextColor"
-                      Text="@Model?.TitleY"
-                      Size="40" />
-
+        @Model.TitleX.Render(LayoutTitleX, Theme);
+        @Model.TitleY.Render(LayoutTitleY, Theme);
         @Model.AxisX.Render(LayoutAxisX, Theme);
-        @Model.AxisY.Render(LayoutAxisY, Theme)
-        ;
+        @Model.AxisY.Render(LayoutAxisY, Theme);
 
         foreach (Serie<Bubblepoint> serie in Model.Series)
         {

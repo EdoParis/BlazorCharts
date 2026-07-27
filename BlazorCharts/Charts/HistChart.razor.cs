@@ -24,6 +24,8 @@ namespace BlazorGraphs.Charts
         private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;
+        private TextLayout LayoutTitleY;
+        private TextLayout LayoutTitleX;
 
         protected override void OnInitialized()
         {
@@ -38,6 +40,13 @@ namespace BlazorGraphs.Charts
                                     .WithTickSize(20)
                                     .From(padding)
                                     .To(width - padding);
+
+            LayoutTitleX = TextLayout.MiddleLayout()
+                                     .Medium();
+
+            LayoutTitleY = TextLayout.StartLayout()
+                                     .Medium()
+                                     .At(padding / 2, padding / 2);
         }
     }
 }

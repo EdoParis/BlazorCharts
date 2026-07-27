@@ -25,11 +25,8 @@
                   stroke-opacity="0.3"
                   vector-effect="non-scaling-stroke"/>
 
-            <SvgTextMiddle X="@((int)((width / 2 + (width / 2 - padding / 2) * Math.Sin(2 * Math.PI / Model.Categories * c))))"
-                           Y="@((int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c))))"
-                           Size="40"
-                           Fill="@Theme.TextColor"
-                           Text="@rating.Label"/>
+            @rating.Label.Render(LayoutLabels.At((int)((width / 2 + (width / 2 - padding / 2) * Math.Sin(2 * Math.PI / Model.Categories * c))),
+                                                 (int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c)))), Theme);
             c++;
         }
 
@@ -46,11 +43,7 @@
                       d="@Path(tick)">
                 </path>
 
-                <SvgTextEnd X="@(width / 2)"
-                            Y="@((int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))"
-                            Size="40"
-                            Fill="@Theme.TextColor"
-                            Text="@tick.ToString()"/>
+                @tick.ToString().Render(LayoutTicks.At(width / 2, (int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding))), Theme);
             }
             tr++;
         }

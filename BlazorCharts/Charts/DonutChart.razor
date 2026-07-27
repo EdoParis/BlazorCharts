@@ -23,11 +23,7 @@
     }
     else
     {
-        <SvgTextMiddle X="@(width / 2)"
-                       Y="@(height / 2)"
-                       Size="100"
-                       Fill="@Theme.TextColor"
-                       Text="@Model.Total.ToString("0.##")" />
+        @Model.Total.ToString("0.##").Render(LayoutTotalValue, Theme);
 
         double progress = 0;
         foreach (Slice slice in Model)
@@ -49,11 +45,7 @@
                                       SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                       SliceExternalPoint(slice, 2 * Math.PI * progress);
 
-                <SvgTextMiddle X="@text_position.X"
-                               Y="@text_position.Y"
-                               Size="40"
-                               Fill="@Theme.TextColor"
-                               Text="@slice.Value.ToString("0.##")" />
+                @slice.Value.ToString("0.##").Render(LayoutSliceValue.At(text_position), Theme);
 
                 progress += slice.Value / Model.Total;
             }

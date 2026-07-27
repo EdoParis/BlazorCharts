@@ -42,8 +42,9 @@
                 <title>@Model.Value.ToString("0.##")</title>
             </path>
         }
-
         @Model.Axis.Render(AxisLayout, Theme);
+        @Model.Title.Render(TitleLayout, Theme);
+        @Model.Value.ToString("0.##").Render(ValueLayout, Theme);
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {
@@ -57,11 +58,5 @@
                 <title>@Model.Value.ToString("0.##")</title>
             </path>
         }
-
-        <SvgTextTop X="@(width / 2)"
-                    Y="@(height - padding / 2)"
-                    Size="@padding"
-                    Fill="@Theme.TextColor"
-                    Text="@Model.Value.ToString("0.##")" />
     }
 </svg>

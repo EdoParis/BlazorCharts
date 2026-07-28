@@ -11,19 +11,20 @@ namespace BlazorGraphs.Models
     public class Gaugegram : IEnumerable<Breakpoint>, ILegend
     {
         private List<Breakpoint> breakpoints;
-        internal NumeriAxis Axis { get; private set; }
+        internal NumericAxis Axis { get; private set; }
         public KnownColor Color { get; private set; }
+        public string Title { get; private set; }
         public double Value { get; set; }
-        public string Title { get => Axis?.Title; }
         public bool HasBreakPoints { get => breakpoints?.Count > 0; }
 
         public Gaugegram(double min, double max, string title, KnownColor color = KnownColor.Black)
         {
             Interval range = new Interval(min, max);
             breakpoints = new List<Breakpoint>();
-            Axis = new NumeriAxis(range, title);
+            Axis = new NumericAxis(range);
             Color = color;
             Value = min;
+            Title = title;
         }
 
         public void AddBreakpoint(Breakpoint breakpoint)
@@ -62,7 +63,7 @@ namespace BlazorGraphs.Models
                 return [new LegendItem()
                 {
                     Color = Color,
-                    Text = Axis.Title
+                    Text = Title
                 }];
             }
         }

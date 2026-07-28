@@ -4,7 +4,6 @@ using BlazorGraphs.Interfaces;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
 using System.Collections;
-using System;
 using System.Drawing;
 
 namespace BlazorGraphs.Models
@@ -12,39 +11,41 @@ namespace BlazorGraphs.Models
     public class Bargram : IEnumerable<KeyValuePair<String, Bin>>, ILegend
     {
         private List<KeyValuePair<String, Bin>> bars;
-        internal NumeriAxis BinAxis { get; private set; }
-        internal NumeriAxis ValAxis { get; private set; }
+        internal NumericAxis BinAxis { get; private set; }
+        internal NumericAxis ValAxis { get; private set; }
         internal bool IsEmpty { get; private set; }
+        public string Title { get; private set; }
         public KnownColor PrimaryColor { get; private set; }
         public KnownColor SecondaryColor { get; private set; }
-        public string Title { get => ValAxis?.Title; }
         public int BarsCount { get => bars?.Count ?? default; }
 
         public Bargram(string title_y, KnownColor color = KnownColor.Black)
         {
             bars = new List<KeyValuePair<String, Bin>>();
-            ValAxis = new NumeriAxis(title_y);
-            BinAxis = new NumeriAxis();
+            ValAxis = new NumericAxis();
+            BinAxis = new NumericAxis();
             PrimaryColor = color;
             SecondaryColor = color;
             IsEmpty = true;
+            Title = title_y;
         }
 
         public Bargram(string title_y, KnownColor primary_color, KnownColor secondary_color)
         {
             bars = new List<KeyValuePair<String, Bin>>();
-            ValAxis = new NumeriAxis(title_y);
-            BinAxis = new NumeriAxis();
+            ValAxis = new NumericAxis();
+            BinAxis = new NumericAxis();
             PrimaryColor = primary_color;
             SecondaryColor = secondary_color;
             IsEmpty = true;
+            Title = title_y;
         }
 
         public void Clear()
         {
             bars.Clear();
-            BinAxis = new NumeriAxis();
-            ValAxis = new NumeriAxis(Title);
+            BinAxis = new NumericAxis();
+            ValAxis = new NumericAxis();
             IsEmpty = true;
         }
 

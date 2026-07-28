@@ -11,14 +11,16 @@ namespace BlazorGraphs.Models
     public class Polargram : IEnumerable<Slice>, ILegend
     {
         private List<Slice> slices;
-        internal NumeriAxis AxisR { get; private set; }
+        internal NumericAxis AxisR { get; private set; }
         internal bool IsEmpty { get; private set; }
+        public string Title { get; private set; }
         public int SlicesCount { get => slices?.Count ?? default; }
 
-        public Polargram(string title_r)
+        public Polargram(string title)
         {
             slices = new List<Slice>();
-            AxisR = new NumeriAxis(title_r);
+            AxisR = new NumericAxis();
+            Title = title;
             IsEmpty = true;
         }
 

@@ -3,7 +3,6 @@ using BlazorGraphs.Interfaces;
 using BlazorGraphs.Structures;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
-using System;
 using System.Collections;
 using System.Drawing;
 
@@ -12,17 +11,18 @@ namespace BlazorGraphs.Models
     public class Radargram : IEnumerable<Rating>, ILegend
     {
         private List<Rating> Data;
-        internal NumeriAxis AxisR { get; private set; }
+        internal NumericAxis AxisR { get; private set; }
         internal bool IsEmpty { get; private set; }
         public KnownColor Color { get; private set; }
-        public string Title { get => AxisR?.Title; }
+        public string Title { get; private set; }
         public int Categories { get => Data?.Count ?? default; }
 
-        public Radargram(string title_r, KnownColor color = KnownColor.Black)
+        public Radargram(string title, KnownColor color = KnownColor.Black)
         {
             Data = new();
             Color = color;
-            AxisR = new NumeriAxis(title_r);
+            AxisR = new NumericAxis();
+            Title = title;
             IsEmpty = true;
         }
 

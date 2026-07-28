@@ -107,7 +107,7 @@ namespace BlazorGraphs.Internal
 
         public abstract AxisLayout To(int ending_point);
 
-        public abstract RenderFragment Render(NumeriAxis axis);
+        public abstract RenderFragment Render(NumericAxis axis);
 
         public class Horizontal : AxisLayout
         {
@@ -134,7 +134,7 @@ namespace BlazorGraphs.Internal
                 return this;
             }
 
-            public override RenderFragment Render(NumeriAxis axis)
+            public override RenderFragment Render(NumericAxis axis)
             {
                 return builder =>
                 {
@@ -211,7 +211,7 @@ namespace BlazorGraphs.Internal
                 return this;
             }
 
-            public override RenderFragment Render(NumeriAxis axis)
+            public override RenderFragment Render(NumericAxis axis)
             {
                 return builder =>
                 {
@@ -303,7 +303,7 @@ namespace BlazorGraphs.Internal
                 return this;
             }
 
-            public override RenderFragment Render(NumeriAxis axis)
+            public override RenderFragment Render(NumericAxis axis)
             {
                 return builder =>
                 {

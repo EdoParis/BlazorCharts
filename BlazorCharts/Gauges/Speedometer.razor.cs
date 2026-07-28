@@ -23,12 +23,21 @@ namespace BlazorGraphs.Gauges
         TextLayout ValueLayout;
         TextLayout TitleLayout;
 
+        protected override void OnParametersSet()
+        {
+            AxisExternalLayout.WithTheme(Theme);
+            AxisInternalLayout.WithTheme(Theme);
+            ValueLayout.WithTheme(Theme);
+            TitleLayout.WithTheme(Theme);
+        }
+
         protected override void OnInitialized()
         {
             AxisExternalLayout = AxisLayout.CircularLayout()
                                            .WithRadius(radius + padding / 2)
                                            .At(new Point(width / 2, height / 2))
                                            .WithTickSize(20)
+                                           .WithTheme(Theme)
                                            .FullExternal()
                                            .From(-45)
                                            .To(225);
@@ -37,16 +46,19 @@ namespace BlazorGraphs.Gauges
                                            .WithRadius(radius - padding / 2)
                                            .At(new Point(width / 2, height / 2))
                                            .WithTickSize(20)
+                                           .WithTheme(Theme)
                                            .FullInternal()
                                            .From(-45)
                                            .To(225);
 
             ValueLayout = TextLayout.TopLayout()
                                     .Large()
+                                    .WithTheme(Theme)
                                     .At(width / 2, height / 2 + radius + padding / 2);
 
             TitleLayout = TextLayout.MiddleLayout()
                                     .Medium()
+                                    .WithTheme(Theme)
                                     .At(width / 2, height / 2 + radius + padding / 2);
         }
 

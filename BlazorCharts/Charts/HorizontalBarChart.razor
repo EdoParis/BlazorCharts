@@ -29,7 +29,7 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                @label.Render(LayoutLabelsEnd.At(originH, (int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV)), Theme);
+                @LayoutLabelsEnd.At(originH, (int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV)).Render(label);
             }
             else
             {
@@ -46,11 +46,11 @@
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                @label.Render(LayoutLabelsStart.At(originH, (int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV)), Theme);
+                @LayoutLabelsStart.At(originH, (int)(padding + ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleV)).Render(label);
             }
         }
-        @Model.ValAxis.Render(LayoutAxisX, Theme);
-        @Model.BinAxis.Render(LayoutAxisY.At(originH), Theme);
-        @Model.Title.Render(LayoutTitle, Theme);
+        @LayoutTitle.Render(Model.Title);
+        @LayoutAxisX.Render(Model.ValAxis);
+        @LayoutAxisY.At(originH).Render(Model.BinAxis);
     }
 </svg>

@@ -19,13 +19,21 @@ namespace BlazorGraphs.Charts
         private TextLayout LayoutTitle;
         private TextLayout LayoutTicks;
 
+        protected override void OnParametersSet()
+        {
+            LayoutTitle.WithTheme(Theme);
+            LayoutTicks.WithTheme(Theme);
+        }
+
         protected override void OnInitialized()
         {
             LayoutTitle = TextLayout.MiddleLayout()
                                     .Medium()
+                                    .WithTheme(Theme)
                                     .At(width / 2, height - padding / 2);
 
             LayoutTicks = TextLayout.TopLayout()
+                                    .WithTheme(Theme)
                                     .Medium();
         }
 

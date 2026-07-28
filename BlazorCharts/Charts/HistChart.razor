@@ -48,31 +48,31 @@
         int current_origin = originV;
         if (current_origin == padding)
         {
-            @Model.TitleY.Render(LayoutTitleY.At(padding / 2, height - padding / 2), Theme);
-            @Model.TitleX.Render(LayoutTitleX.At(width / 2, padding / 4), Theme);
-            @Model.AxisX.Render(LayoutAxisX.FullInternal().At(current_origin).WithStartTick(), Theme);
-            @Model.AxisY.Render(LayoutAxisY, Theme);
+            @LayoutTitleY.At(padding / 2, height - padding / 2).Render(Model.TitleY);
+            @LayoutTitleX.At(width / 2, padding / 4).Render(Model.TitleX);
+            @LayoutAxisX.FullInternal().At(current_origin).WithStartTick().Render(Model.AxisX);
+            @LayoutAxisY.Render(Model.AxisY);
         }
         else if (current_origin == height - padding)
         {
-            @Model.TitleY.Render(LayoutTitleY.At(padding / 2, padding / 2), Theme);
-            @Model.TitleX.Render(LayoutTitleX.At(width / 2, height - padding / 4), Theme);
-            @Model.AxisX.Render(LayoutAxisX.TicksInternal().At(current_origin).WithStartTick(), Theme);
-            @Model.AxisY.Render(LayoutAxisY, Theme);
+            @LayoutTitleY.At(padding / 2, padding / 2).Render(Model.TitleY);
+            @LayoutTitleX.At(width / 2, height - padding / 4).Render(Model.TitleX);
+            @LayoutAxisX.TicksInternal().At(current_origin).WithStartTick().Render(Model.AxisX);
+            @LayoutAxisY.Render(Model.AxisY);
         }
         else if (Model?.AxisY?.Size / 2 > -Model?.AxisY.Min)
         {
-            @Model.TitleY.Render(LayoutTitleY.At(padding / 2, padding / 2), Theme);
-            @Model.TitleX.Render(LayoutTitleX.At(width / 2, height - padding / 2), Theme);
-            @Model.AxisX.Render(LayoutAxisX.TicksInternal().At(current_origin).WithoutStartTick(), Theme);
-            @Model.AxisY.Render(LayoutAxisY, Theme);
+            @LayoutTitleY.At(padding / 2, padding / 2).Render(Model.TitleY);
+            @LayoutTitleX.At(width / 2, height - padding / 2).Render(Model.TitleX);
+            @LayoutAxisX.TicksInternal().At(current_origin).WithoutStartTick().Render(Model.AxisX);
+            @LayoutAxisY.Render(Model.AxisY);
         }
         else
         {
-            @Model.TitleY.Render(LayoutTitleY.At(padding / 2, height - padding / 2), Theme);
-            @Model.TitleX.Render(LayoutTitleX.At(width / 2, padding / 2), Theme);
-            @Model.AxisX.Render(LayoutAxisX.FullInternal().At(current_origin).WithoutStartTick(), Theme);
-            @Model.AxisY.Render(LayoutAxisY, Theme);
+            @LayoutTitleY.At(padding / 2, height - padding / 2).Render(Model.TitleY);
+            @LayoutTitleX.At(width / 2, padding / 2).Render(Model.TitleX);
+            @LayoutAxisX.FullInternal().At(current_origin).WithoutStartTick().Render(Model.AxisX);
+            @LayoutAxisY.Render(Model.AxisY);
         }
     }
 </svg>

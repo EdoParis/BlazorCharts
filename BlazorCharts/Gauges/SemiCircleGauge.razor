@@ -42,9 +42,9 @@
                 <title>@Model.Value.ToString("0.##")</title>
             </path>
         }
-        @Model.Axis.Render(AxisLayout, Theme);
-        @Model.Title.Render(TitleLayout, Theme);
-        @Model.Value.ToString("0.##").Render(ValueLayout, Theme);
+        @AxisLayout.Render(Model.Axis);
+        @TitleLayout.Render(Model.Title);
+        @ValueLayout.Render(Model.Value);
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {

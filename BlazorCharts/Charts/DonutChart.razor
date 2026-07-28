@@ -23,7 +23,7 @@
     }
     else
     {
-        @Model.Total.ToString("0.##").Render(LayoutTotalValue, Theme);
+        @LayoutTotalValue.Render(Model.Total);
 
         double progress = 0;
         foreach (Slice slice in Model)
@@ -45,8 +45,7 @@
                                       SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                       SliceExternalPoint(slice, 2 * Math.PI * progress);
 
-                @slice.Value.ToString("0.##").Render(LayoutSliceValue.At(text_position), Theme);
-
+                @LayoutSliceValue.At(text_position).Render(slice.Value);
                 progress += slice.Value / Model.Total;
             }
         }

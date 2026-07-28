@@ -40,8 +40,17 @@
                 <title>@Model.Value.ToString("0.##")</title>
             </rect>
         }
-        @Model.Title.Render(Reverse ? TitleLayout.At(width / 2, height - padding / 2) : TitleLayout.At(width / 2, padding / 2), Theme)
-        @Model.Axis.Render(Reverse ? AxisLayout.FullInternal().At(padding) : AxisLayout.FullExternal().At(height - padding), Theme);
+
+        if (Reverse)
+        {
+            @TitleLayout.At(width / 2, height - padding / 2).Render(Model.Title);
+            @AxisLayout.FullInternal().At(padding).Render(Model.Axis);
+        }
+        else
+        {
+            @TitleLayout.At(width / 2, padding / 2).Render(Model.Title);
+            @AxisLayout.FullExternal().At(height - padding).Render(Model.Axis);
+        }
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {

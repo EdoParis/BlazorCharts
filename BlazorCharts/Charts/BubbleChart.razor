@@ -9,10 +9,10 @@
     }
     else
     {
-        @Model.TitleX.Render(LayoutTitleX, Theme);
-        @Model.TitleY.Render(LayoutTitleY, Theme);
-        @Model.AxisX.Render(LayoutAxisX, Theme);
-        @Model.AxisY.Render(LayoutAxisY, Theme);
+        @LayoutAxisX.Render(Model.AxisX);
+        @LayoutAxisY.Render(Model.AxisY);
+        @LayoutTitleX.Render(Model.TitleX);
+        @LayoutTitleY.Render(Model.TitleY);
 
         foreach (Serie<Bubblepoint> serie in Model.Series)
         {

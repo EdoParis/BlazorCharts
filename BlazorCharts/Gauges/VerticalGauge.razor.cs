@@ -19,19 +19,27 @@ namespace BlazorGraphs.Gauges
         private int offsetV => height - padding;
         private double scaleV => (height - 2 * padding) / Model.Axis.Size;
         private AxisLayout AxisLayout;
-        private TextLayout TitleLayout; 
+        private TextLayout TitleLayout;
+
+        protected override void OnParametersSet()
+        {
+            AxisLayout.WithTheme(Theme);
+            TitleLayout.WithTheme(Theme);
+        }
 
         protected override void OnInitialized()
         {
             AxisLayout = AxisLayout.VerticalLayout()
                                    .FullExternal()
                                    .WithTickSize(20)
+                                   .WithTheme(Theme)
                                    .From(height - padding)
                                    .To(padding)
                                    .At(width / 2);
 
             TitleLayout = TextLayout.MiddleLayout()
                                     .Medium()
+                                    .WithTheme(Theme)
                                     .At(width / 2, padding / 2);
         }
     }

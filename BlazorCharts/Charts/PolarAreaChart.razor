@@ -27,7 +27,7 @@
                         cy="@((height / 2))"
                         r="@((int)(tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" />
 
-                @tick.ToString().Render(LayoutTicks.At(width / 2, (int)(height / 2 - (height / 2 - padding) * tick / Model.AxisR.Size)), Theme);
+                @LayoutTicks.At(width / 2, (int)(height / 2 - (height / 2 - padding) * tick / Model.AxisR.Size)).Render(tick)
             }
             tr++;
         }
@@ -48,6 +48,6 @@
 
             progress += 1d / Model.SlicesCount;
         }
-        @Model?.AxisR?.Title.Render(LayoutTitle, Theme);
+        @LayoutTitle.Render(Model?.AxisR?.Title);
     }
 </svg>

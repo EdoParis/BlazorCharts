@@ -20,12 +20,20 @@ namespace BlazorGraphs.Charts
         private TextLayout LayoutSliceValue;
         private TextLayout LayoutTotalValue;
 
+        protected override void OnParametersSet()
+        {
+            LayoutSliceValue.WithTheme(Theme);
+            LayoutTotalValue.WithTheme(Theme);
+        }
+
         protected override void OnInitialized()
         {
             LayoutSliceValue = TextLayout.MiddleLayout()
+                                         .WithTheme(Theme)
                                          .Medium();
 
             LayoutTotalValue = TextLayout.MiddleLayout()
+                                         .WithTheme(Theme)
                                          .Large()
                                          .At(height / 2, width / 2);
         }

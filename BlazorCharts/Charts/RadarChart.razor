@@ -25,8 +25,8 @@
                   stroke-opacity="0.3"
                   vector-effect="non-scaling-stroke"/>
 
-            @rating.Label.Render(LayoutLabels.At((int)((width / 2 + (width / 2 - padding / 2) * Math.Sin(2 * Math.PI / Model.Categories * c))),
-                                                 (int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c)))), Theme);
+            @LayoutLabels.At((int)((width / 2 + (width / 2 - padding / 2) * Math.Sin(2 * Math.PI / Model.Categories * c))),
+                             (int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c)))).Render(rating.Label)
             c++;
         }
 
@@ -42,8 +42,7 @@
                       vector-effect="non-scaling-stroke"
                       d="@Path(tick)">
                 </path>
-
-                @tick.ToString().Render(LayoutTicks.At(width / 2, (int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding))), Theme);
+                @LayoutTicks.At(width / 2, (int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding))).Render(tick.ToString());
             }
             tr++;
         }

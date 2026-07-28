@@ -33,8 +33,7 @@
                                       SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                       SliceExternalPoint(slice, 2 * Math.PI * progress);
 
-                @slice.Value.ToString("0.##").Render(LayoutSliceValue.At(text_position), Theme);
-
+                @LayoutSliceValue.At(text_position).Render(slice.Value);
                 progress += slice.Value / Model.Total;
             }
         }

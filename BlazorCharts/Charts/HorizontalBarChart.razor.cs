@@ -28,27 +28,41 @@ namespace BlazorGraphs.Charts
         private TextLayout LayoutLabelsStart;
         private TextLayout LayoutLabelsEnd;
 
+        protected override void OnParametersSet()
+        {
+            LayoutAxisX.WithTheme(Theme);
+            LayoutAxisY.WithTheme(Theme);
+            LayoutTitle.WithTheme(Theme);
+            LayoutLabelsStart.WithTheme(Theme);
+            LayoutLabelsEnd.WithTheme(Theme);
+        }
+
         protected override void OnInitialized()
         {
             LayoutAxisX = AxisLayout.HorizontalLayout()
                                     .TicksInternal()
                                     .WithTickSize(20)
+                                    .WithTheme(Theme)
                                     .From(padding)
                                     .To(width - padding)
                                     .At(height - padding);
 
             LayoutAxisY = AxisLayout.VerticalLayout()
+                                    .WithTheme(Theme)
                                     .From(height - padding)
                                     .To(padding);
 
             LayoutTitle = TextLayout.MiddleLayout()
                                     .Medium()
+                                    .WithTheme(Theme)
                                     .At(width / 2, height - padding / 4);
 
             LayoutLabelsEnd = TextLayout.EndLayout()
+                                        .WithTheme(Theme)
                                         .Medium();
 
             LayoutLabelsStart = TextLayout.StartLayout()
+                                          .WithTheme(Theme)
                                           .Medium();
         }
     }

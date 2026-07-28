@@ -19,10 +19,16 @@ namespace BlazorGraphs.Charts
         private TextLayout LayoutLabels;
         private TextLayout LayoutTicks;
 
+        protected override void OnParametersSet()
+        {
+            LayoutLabels.WithTheme(Theme);
+            LayoutTicks.WithTheme(Theme);
+        }
+
         protected override void OnInitialized()
         {
-            LayoutLabels = TextLayout.MiddleLayout().Medium();
-            LayoutTicks = TextLayout.EndLayout().Medium();
+            LayoutLabels = TextLayout.MiddleLayout().Medium().WithTheme(Theme);
+            LayoutTicks = TextLayout.EndLayout().Medium().WithTheme(Theme);
         }
 
         private string Path()

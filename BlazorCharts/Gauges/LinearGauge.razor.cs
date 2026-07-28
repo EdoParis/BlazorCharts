@@ -22,15 +22,21 @@ namespace BlazorGraphs.Gauges
         private AxisLayout AxisLayout;
         private TextLayout TitleLayout;
 
+        protected override void OnParametersSet()
+        {
+            AxisLayout.WithTheme(Theme);
+            TitleLayout.WithTheme(Theme);
+        }
+
         protected override void OnInitialized()
         {
             AxisLayout = AxisLayout.HorizontalLayout()
                                    .WithTickSize(20)
+                                   .WithTheme(Theme)
                                    .From(padding)
                                    .To(width - padding);
 
-            TitleLayout = TextLayout.MiddleLayout()
-                                    .Medium();
+            TitleLayout = TextLayout.MiddleLayout().Medium().WithTheme(Theme);
         }
     }
 }

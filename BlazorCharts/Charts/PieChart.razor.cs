@@ -19,10 +19,16 @@ namespace BlazorGraphs.Charts
         private int padding = PADDING;
         TextLayout LayoutSliceValue;
 
+        protected override void OnParametersSet()
+        {
+            LayoutSliceValue.WithTheme(Theme);
+        }
+
         protected override void OnInitialized()
         {
             LayoutSliceValue = TextLayout.MiddleLayout()
-                                         .Medium();
+                                         .Medium()
+                                         .WithTheme(Theme);
         }
 
         private string SlicePath(Slice slice, double rotation = 0)

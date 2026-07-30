@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace BlazorGraphs.Gauges
 {
-    public partial class LinearGauge
+    public partial class HorizontalGauge
     {
         private const int VIEW = 1000;
         private const int PADDING = 100;

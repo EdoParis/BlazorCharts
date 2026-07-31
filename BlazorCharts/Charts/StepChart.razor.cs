@@ -64,12 +64,12 @@ namespace BlazorGraphs.Charts
                                      .At(padding / 2, padding / 2);
         }
 
-        private string LinePath(Serie<Datapoint> serie)
+        private string PolylinePoints(Serie<Datapoint> serie)
         {
             StringBuilder builder = new StringBuilder();
             Point? previous_point = null;
 
-            foreach(Datapoint point in serie.Data)
+            foreach (Datapoint point in serie.Data)
             {
                 Point p = new Point()
                 {
@@ -80,17 +80,17 @@ namespace BlazorGraphs.Charts
                 if (previous_point.HasValue)
                 {
                     if (point.Y == previous_point.Value.Y)
-                        builder.Append($"L {p.X} {p.Y} ");
+                        builder.Append($"{p.X},{p.Y} ");
                     else
                     {
-                        builder.Append($"L {(p.X + previous_point.Value.X) / 2} {previous_point.Value.Y} ");
-                        builder.Append($"L {(p.X + previous_point.Value.X) / 2} {p.Y} ");
-                        builder.Append($"L {p.X} {p.Y} ");
+                        builder.Append($"{(p.X + previous_point.Value.X) / 2},{previous_point.Value.Y} ");
+                        builder.Append($"{(p.X + previous_point.Value.X) / 2},{p.Y} ");
+                        builder.Append($"{p.X},{p.Y} ");
                     }
                 }
                 else
                 {
-                    builder.Append($"M {p.X} {p.Y} ");
+                    builder.Append($"{p.X},{p.Y} ");
                 }
                 previous_point = p;
             }

@@ -65,10 +65,9 @@ namespace BlazorGraphs.Charts
                                      .At(padding / 2, padding / 2);
         }
 
-        private string LinePath(Serie<Datapoint> serie)
+        private string PolylinePoints(Serie<Datapoint> serie)
         {
             StringBuilder builder = new StringBuilder();
-            Point? previous_point = null;
 
             foreach (Datapoint point in serie.Data)
             {
@@ -77,16 +76,7 @@ namespace BlazorGraphs.Charts
                     X = offsetH + (int)((point.X - Model.AxisX.Min) * scaleH),
                     Y = offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV)
                 };
-
-                if (previous_point.HasValue)
-                {
-                    builder.Append($"L {p.X} {p.Y} ");
-                }
-                else
-                {
-                    builder.Append($"M {p.X} {p.Y} ");
-                }
-                previous_point = p;
+                builder.Append($"{p.X},{p.Y} ");
             }
             return builder.ToString();
         }

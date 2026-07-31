@@ -1,14 +1,15 @@
-path {
+g, polyline {
     cursor: pointer;
     transition-duration: 0.25s;
 }
 
-    path:hover {
+    polyline:hover {
         stroke-width: 2px;
     }
-        path:hover ~ circle {
-            display: none;
-        }
+
+    polyline:hover ~ circle {
+        display: none;
+    }
 
 circle {
     cursor: pointer;

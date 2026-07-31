@@ -16,32 +16,38 @@
 
         foreach (Serie<Datapoint> serie in Model.Series)
         {
-            <g>
-                <path fill="none"
-                      stroke="@serie.Color.ToHex()"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      d="@LinePath(serie)"
-                      @key="@serie">
-                    <title>@($"{serie.Label}")</title>
-                </path>
+            if (!serie.IsEmpty)
+            {
+                string path = PolylinePoints(serie);
 
-                @if (ShowPoints)
-                {
-                    foreach (Datapoint point in serie.Data)
+                <g @key="@serie">
+                    <polyline points="@path"
+                              fill="none"
+                              stroke="@serie.Color.ToHex()"
+                              stroke-width="1px"
+                              stroke-linejoin="round"
+                              stroke-linecap="round"
+                              vector-effect="non-scaling-stroke">
+                    </polyline>
+                    <title>@($"{serie.Label}")</title>
+
+                    @if (ShowPoints)
                     {
-                        <circle fill="@(Theme.BackgroundColor.HasValue ? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
-                                stroke="@serie.Color.ToHex()"
-                                stroke-width="1px"
-                                vector-effect="non-scaling-stroke"
-                                cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
-                                cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
-                                r="8px">
-                            <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
-                        </circle>
+                        foreach (Datapoint point in serie.Data)
+                        {
+                            <circle fill="@(Theme.BackgroundColor.HasValue ? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
+                                    stroke="@serie.Color.ToHex()"
+                                    stroke-width="1px"
+                                    vector-effect="non-scaling-stroke"
+                                    cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
+                                    cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
+                                    r="8px">
+                                <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
+                            </circle>
+                        }
                     }
-                }
-            </g>
+                </g>
+            }
         }
     }
 </svg>

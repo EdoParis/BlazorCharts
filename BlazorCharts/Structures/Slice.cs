@@ -7,15 +7,15 @@ namespace BlazorGraphs.Structures
     {
         public string Label { get; set; }
         public double Value { get; set; }
-        public KnownColor Color { get; set; }
+        public Color Color { get; set; }
 
-        public Slice(double value, KnownColor color)
+        public Slice(double value, Color color)
         {
             Value = value;
             Color = color;
         }
 
-        public Slice(string label, double value, KnownColor color)
+        public Slice(string label, double value, Color color)
         {
             Label = label;
             Value = value;

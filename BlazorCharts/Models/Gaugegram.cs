@@ -1,8 +1,8 @@
 ﻿using BlazorGraphs.Exceptions;
 using BlazorGraphs.Interfaces;
+using BlazorGraphs.Structures;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
-using BlazorGraphs.Structures;
 using System.Drawing;
 using System.Collections;
 
@@ -12,16 +12,15 @@ namespace BlazorGraphs.Models
     {
         private List<Breakpoint> breakpoints;
         internal NumericAxis Axis { get; private set; }
-        public KnownColor Color { get; private set; }
-        public string Title { get; private set; }
-        public double Value { get; set; }
-        public bool HasBreakPoints { get => breakpoints?.Count > 0; }
+        public Color Color { get; private set; }
+        public String Title { get; private set; }
+        public Double Value { get; set; }
+        public Boolean HasBreakPoints { get => breakpoints?.Count > 0; }
 
-        public Gaugegram(double min, double max, string title, KnownColor color = KnownColor.Black)
+        public Gaugegram(double min, double max, string title, Color color)
         {
-            Interval range = new Interval(min, max);
+            Axis = new NumericAxis(new Interval(min, max));
             breakpoints = new List<Breakpoint>();
-            Axis = new NumericAxis(range);
             Color = color;
             Value = min;
             Title = title;

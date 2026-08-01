@@ -13,13 +13,13 @@ namespace BlazorGraphs.Models
         private List<KeyValuePair<String, Bin>> bars;
         internal NumericAxis BinAxis { get; private set; }
         internal NumericAxis ValAxis { get; private set; }
-        internal bool IsEmpty { get; private set; }
-        public string Title { get; private set; }
-        public KnownColor PrimaryColor { get; private set; }
-        public KnownColor SecondaryColor { get; private set; }
-        public int BarsCount { get => bars?.Count ?? default; }
+        internal Boolean IsEmpty { get; private set; }
+        public String Title { get; private set; }
+        public Color PrimaryColor { get; private set; }
+        public Color SecondaryColor { get; private set; }
+        public Int32 BarsCount { get => bars?.Count ?? default; }
 
-        public Bargram(string title_y, KnownColor color = KnownColor.Black)
+        public Bargram(string title_y, Color color)
         {
             bars = new List<KeyValuePair<String, Bin>>();
             ValAxis = new NumericAxis();
@@ -30,7 +30,7 @@ namespace BlazorGraphs.Models
             Title = title_y;
         }
 
-        public Bargram(string title_y, KnownColor primary_color, KnownColor secondary_color)
+        public Bargram(string title_y, Color primary_color, Color secondary_color)
         {
             bars = new List<KeyValuePair<String, Bin>>();
             ValAxis = new NumericAxis();

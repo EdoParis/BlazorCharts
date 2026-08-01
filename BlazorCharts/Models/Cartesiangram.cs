@@ -13,8 +13,8 @@ namespace BlazorGraphs.Models
         internal NumericAxis AxisX { get; private set; }
         internal NumericAxis AxisY { get; private set; }
         internal IEnumerable<Serie<Datapoint>> Series { get => series.AsReadOnly(); }
-        public string TitleX { get; private set; }
-        public string TitleY { get; private set; }
+        public String TitleX { get; private set; }
+        public String TitleY { get; private set; }
 
         public Cartesiangram(string title_x, string title_y)
         {
@@ -35,7 +35,7 @@ namespace BlazorGraphs.Models
             IsEmpty = true;
         }
 
-        public void AddSerie(string label, KnownColor color, IEnumerable<Datapoint> points)
+        public void AddSerie(string label, Color color, IEnumerable<Datapoint> points)
         {
             Serie<Datapoint> serie = new Serie<Datapoint>()
             {

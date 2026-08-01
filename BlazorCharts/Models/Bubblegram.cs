@@ -14,8 +14,8 @@ namespace BlazorGraphs.Models
         internal NumericAxis AxisY { get; private set; }
         internal NumericAxis AxisB { get; private set; }
         internal IEnumerable<Serie<Bubblepoint>> Series { get => series.AsReadOnly(); }
-        public string TitleX { get; private set; }
-        public string TitleY { get; private set; }
+        public String TitleX { get; private set; }
+        public String TitleY { get; private set; }
 
         public Bubblegram(string title_x, string title_y)
         {
@@ -38,7 +38,7 @@ namespace BlazorGraphs.Models
             IsEmpty = true;
         }
 
-        public void AddSerie(string label, KnownColor color, IEnumerable<Bubblepoint> points)
+        public void AddSerie(string label, Color color, IEnumerable<Bubblepoint> points)
         {
             Serie<Bubblepoint> serie = new Serie<Bubblepoint>()
             {

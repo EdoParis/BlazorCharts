@@ -9,7 +9,7 @@ namespace BlazorGraphs.Internal
         private List<T> data;
 
         public string Label { get; set; }
-        public KnownColor Color { get; set; }
+        public Color Color { get; set; }
         public IEnumerable<T> Data { get => data.AsReadOnly(); }
         public int Length { get => data.Count; }
         public bool IsEmpty { get => data.Count == 0; }

@@ -12,12 +12,12 @@ namespace BlazorGraphs.Models
     {
         private List<Rating> Data;
         internal NumericAxis AxisR { get; private set; }
-        internal bool IsEmpty { get; private set; }
-        public KnownColor Color { get; private set; }
-        public string Title { get; private set; }
-        public int Categories { get => Data?.Count ?? default; }
+        internal Boolean IsEmpty { get; private set; }
+        public Color Color { get; private set; }
+        public String Title { get; private set; }
+        public Int32 Categories { get => Data?.Count ?? default; }
 
-        public Radargram(string title, KnownColor color = KnownColor.Black)
+        public Radargram(string title, Color color)
         {
             Data = new();
             Color = color;

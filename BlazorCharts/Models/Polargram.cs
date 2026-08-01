@@ -1,9 +1,8 @@
 ﻿using BlazorGraphs.Exceptions;
 using BlazorGraphs.Interfaces;
+using BlazorGraphs.Structures;
 using BlazorGraphs.Internal;
 using BlazorGraphs.Legends;
-using BlazorGraphs.Structures;
-using System;
 using System.Collections;
 
 namespace BlazorGraphs.Models
@@ -12,9 +11,9 @@ namespace BlazorGraphs.Models
     {
         private List<Slice> slices;
         internal NumericAxis AxisR { get; private set; }
-        internal bool IsEmpty { get; private set; }
-        public string Title { get; private set; }
-        public int SlicesCount { get => slices?.Count ?? default; }
+        internal Boolean IsEmpty { get; private set; }
+        public String Title { get; private set; }
+        public Int32 SlicesCount { get => slices?.Count ?? default; }
 
         public Polargram(string title)
         {

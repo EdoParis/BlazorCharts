@@ -22,17 +22,17 @@ namespace DemoApp.Pages
         protected override void OnInitialized()
         {
             events = new List<string>();
-            histogram = new Histogram("Axis-X", "Axis-Y", KnownColor.RoyalBlue, KnownColor.MediumPurple);
-            histogram2 = new Histogram("Axis-X", "Axis-Y", KnownColor.RoyalBlue);
-            bargram = new Bargram("Axis-2", KnownColor.MediumPurple);
-            bargram2 = new Bargram("Axis-2", KnownColor.MediumOrchid, KnownColor.MediumSlateBlue);
+            histogram = new Histogram("Axis-X", "Axis-Y", Color.RoyalBlue, Color.MediumPurple);
+            histogram2 = new Histogram("Axis-X", "Axis-Y", Color.RoyalBlue);
+            bargram = new Bargram("Axis-2", Color.MediumPurple);
+            bargram2 = new Bargram("Axis-2", Color.MediumOrchid, Color.MediumSlateBlue);
             chartgram = new Cartesiangram("X1", "Y1");
             bubblegram = new Bubblegram("X1", "Y1");
             piegram = new Piegram();
             polargram = new Polargram("R1");
-            radargram = new Radargram("R2", KnownColor.MediumVioletRed);
-            gaugegram = new Gaugegram(0, 500, "G1", KnownColor.Navy);
-            gaugegram2 = new Gaugegram(700, 1000, "G2", KnownColor.RoyalBlue);
+            radargram = new Radargram("R2", Color.MediumVioletRed);
+            gaugegram = new Gaugegram(0, 500, "G1", Color.Navy);
+            gaugegram2 = new Gaugegram(700, 1000, "G2", Color.RoyalBlue);
             gaugegram.Value = 170;
             gaugegram2.Value = 800;
 
@@ -88,25 +88,25 @@ namespace DemoApp.Pages
                 bubbles2.Add(new Bubblepoint() { X = 2 * i, Y = (i + 4) * (i + 4), Value = 10 + i });
             }
 
-            chartgram.AddSerie("F1", KnownColor.LimeGreen, points1);
-            chartgram.AddSerie("F2", KnownColor.OrangeRed, points2);
-            chartgram.AddSerie("F3", KnownColor.CadetBlue, points3);
-            chartgram.AddSerie("F4", KnownColor.DodgerBlue, points4);
+            chartgram.AddSerie("F1", Color.LimeGreen, points1);
+            chartgram.AddSerie("F2", Color.OrangeRed, points2);
+            chartgram.AddSerie("F3", Color.CadetBlue, points3);
+            chartgram.AddSerie("F4", Color.DodgerBlue, points4);
 
-            bubblegram.AddSerie("B1", KnownColor.MediumPurple, bubbles1);
-            bubblegram.AddSerie("B2", KnownColor.OrangeRed, bubbles2);
+            bubblegram.AddSerie("B1", Color.MediumPurple, bubbles1);
+            bubblegram.AddSerie("B2", Color.OrangeRed, bubbles2);
 
-            piegram.Add(new Slice("S1", 5, KnownColor.Purple));
-            piegram.Add(new Slice("S2", 30, KnownColor.OrangeRed));
-            piegram.Add(new Slice("S3", 5, KnownColor.Gold));
-            piegram.Add(new Slice("S4", 40, KnownColor.Aqua));
-            piegram.Add(new Slice("S5", 15, KnownColor.DodgerBlue));
+            piegram.Add(new Slice("S1", 5, Color.Purple));
+            piegram.Add(new Slice("S2", 30, Color.OrangeRed));
+            piegram.Add(new Slice("S3", 5, Color.Gold));
+            piegram.Add(new Slice("S4", 40, Color.Aqua));
+            piegram.Add(new Slice("S5", 15, Color.DodgerBlue));
 
-            polargram.Add(new Slice("S-1", 80, KnownColor.Purple));
-            polargram.Add(new Slice("S-2", 50, KnownColor.OrangeRed));
-            polargram.Add(new Slice("S-3", 120, KnownColor.Gold));
-            polargram.Add(new Slice("S-4", 45, KnownColor.Red));
-            polargram.Add(new Slice("S-5", 175, KnownColor.DodgerBlue));
+            polargram.Add(new Slice("S-1", 80, Color.Purple));
+            polargram.Add(new Slice("S-2", 50, Color.OrangeRed));
+            polargram.Add(new Slice("S-3", 120, Color.Gold));
+            polargram.Add(new Slice("S-4", 45, Color.Red));
+            polargram.Add(new Slice("S-5", 175, Color.DodgerBlue));
 
             radargram.Add(new Rating("C1",140));
             radargram.Add(new Rating("C2",130));
@@ -118,17 +118,17 @@ namespace DemoApp.Pages
             gaugegram.AddBreakpoint(new Breakpoint()
             {
                 Value = 150,
-                Color = KnownColor.Green,
+                Color = Color.Green,
             });
             gaugegram.AddBreakpoint(new Breakpoint()
             {
                 Value = 250,
-                Color = KnownColor.Gold,
+                Color = Color.Gold,
             });
             gaugegram.AddBreakpoint(new Breakpoint()
             {
                 Value = 500,
-                Color = KnownColor.Red,
+                Color = Color.Red,
             });
         }
 

@@ -1,7 +1,7 @@
 ﻿using BlazorGraphs.Exceptions;
 using BlazorGraphs.Interfaces;
-using BlazorGraphs.Legends;
 using BlazorGraphs.Structures;
+using BlazorGraphs.Legends;
 using System.Collections;
 
 namespace BlazorGraphs.Models
@@ -9,9 +9,9 @@ namespace BlazorGraphs.Models
     public class Piegram : IEnumerable<Slice>, ILegend
     {
         private List<Slice> slices;
-        internal bool IsEmpty { get; private set; }
-        public double Total { get; private set; }
-        public int SlicesCount { get => slices?.Count ?? default; }
+        internal Boolean IsEmpty { get; private set; }
+        public Double Total { get; private set; }
+        public Int32 SlicesCount { get => slices?.Count ?? default; }
 
         public Piegram()
         {

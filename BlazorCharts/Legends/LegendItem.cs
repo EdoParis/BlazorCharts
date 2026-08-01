@@ -1,12 +1,11 @@
-﻿using BlazorGraphs.Models;
-using BlazorGraphs.Structures;
+﻿using BlazorGraphs.Structures;
 using System.Drawing;
 
 namespace BlazorGraphs.Legends
 {
     public struct LegendItem
     {
-        public KnownColor Color { get; set; }
+        public Color Color { get; set; }
         public string Text { get; set; }
 
         public LegendItem() { }

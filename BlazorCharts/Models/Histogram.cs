@@ -13,14 +13,14 @@ namespace BlazorGraphs.Models
         private List<Bin> bins;
         internal NumericAxis AxisX { get; private set; }
         internal NumericAxis AxisY { get; private set; }
-        internal bool IsEmpty { get; private set; }
-        public KnownColor PrimaryColor { get; private set; }
-        public KnownColor SecondaryColor { get; private set; }
-        public string TitleX { get; private set; }
-        public string TitleY { get; private set; }
-        public int BinsCount { get => bins?.Count ?? default; }
+        internal Boolean IsEmpty { get; private set; }
+        public Color PrimaryColor { get; private set; }
+        public Color SecondaryColor { get; private set; }
+        public String TitleX { get; private set; }
+        public String TitleY { get; private set; }
+        public Int32 BinsCount { get => bins?.Count ?? default; }
 
-        public Histogram(string title_x, string title_y, KnownColor color = KnownColor.Black)
+        public Histogram(string title_x, string title_y, Color color)
         {
             bins = new List<Bin>();
             AxisX = new NumericAxis();
@@ -32,7 +32,7 @@ namespace BlazorGraphs.Models
             IsEmpty = true;
         }
 
-        public Histogram(string title_x, string title_y, KnownColor primary_color, KnownColor secondary_color)
+        public Histogram(string title_x, string title_y, Color primary_color, Color secondary_color)
         {
             bins = new List<Bin>();
             AxisX = new NumericAxis();

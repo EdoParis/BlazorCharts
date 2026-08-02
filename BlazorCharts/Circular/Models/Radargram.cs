@@ -37,6 +37,12 @@ namespace BlazorGraphs
             IsEmpty = false;
         }
 
+        public void AddRange(IEnumerable<Rating> collection)
+        {
+            foreach (Rating rating in collection)
+                Add(rating);
+        }
+
         public IEnumerator<Rating> GetEnumerator()
         {
             return Data.GetEnumerator();

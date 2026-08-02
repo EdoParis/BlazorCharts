@@ -63,6 +63,12 @@ namespace BlazorGraphs
             ValAxis.Update(bin.Value);
         }
 
+        public void AddRange(IEnumerable<Bar> collection)
+        {
+            foreach (Bar bar in collection)
+                Add(bar);
+        }
+
         public IEnumerator<KeyValuePair<string, Bin>> GetEnumerator()
         {
             return bars.GetEnumerator();

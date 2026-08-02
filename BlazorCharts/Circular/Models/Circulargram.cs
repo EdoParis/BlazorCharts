@@ -38,6 +38,12 @@ namespace BlazorGraphs
             IsEmpty = Total == 0;
         }
 
+        public void AddRange(IEnumerable<Slice> collection)
+        {
+            foreach (Slice slice in collection)
+                Add(slice);
+        }
+
         public IEnumerable<LegendItem> ToLegend()
         {
             return slices.Select(s => new LegendItem(s));

@@ -59,6 +59,12 @@ namespace BlazorGraphs
             AxisY.Update(bin.Value);
         }
 
+        public void AddRange(IEnumerable<Bin> collection)
+        {
+            foreach (Bin bin in collection)
+                Add(bin);
+        }
+
         public IEnumerator<Bin> GetEnumerator()
         {
             return bins.GetEnumerator();

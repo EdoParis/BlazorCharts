@@ -105,6 +105,8 @@ namespace DemoApp.Pages
             radargram.Add(new Rating("C4",80));
             radargram.Add(new Rating("C5",120));
             radargram.Add(new Rating("C6",175));
+            radargram.Add(new Rating("B9",150));
+            radargram.Add(new Rating("D1",100));
 
             gaugegram.AddBreakpoint(new Breakpoint()
             {

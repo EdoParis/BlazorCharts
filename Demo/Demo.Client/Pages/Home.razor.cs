@@ -1,6 +1,5 @@
-﻿using BlazorGraphs.Models;
-using BlazorGraphs.Structures;
-using System.Drawing;
+﻿using System.Drawing;
+using BlazorGraphs;
 
 namespace DemoApp.Pages
 {
@@ -12,8 +11,7 @@ namespace DemoApp.Pages
         private Bargram bargram2;
         private Cartesiangram chartgram;
         private Bubblegram bubblegram;
-        private Piegram piegram;
-        private Polargram polargram;
+        private Circulargram circulargram;
         private Radargram radargram;
         private Gaugegram gaugegram;
         private Gaugegram gaugegram2;
@@ -28,8 +26,7 @@ namespace DemoApp.Pages
             bargram2 = new Bargram("Axis-2", Color.MediumOrchid, Color.MediumSlateBlue);
             chartgram = new Cartesiangram("X1", "Y1");
             bubblegram = new Bubblegram("X1", "Y1");
-            piegram = new Piegram();
-            polargram = new Polargram("R1");
+            circulargram = new Circulargram("R1");
             radargram = new Radargram("R2", Color.MediumVioletRed);
             gaugegram = new Gaugegram(0, 500, "G1", Color.Navy);
             gaugegram2 = new Gaugegram(700, 1000, "G2", Color.RoyalBlue);
@@ -96,17 +93,11 @@ namespace DemoApp.Pages
             bubblegram.AddSerie("B1", Color.MediumPurple, bubbles1);
             bubblegram.AddSerie("B2", Color.OrangeRed, bubbles2);
 
-            piegram.Add(new Slice("S1", 5, Color.Purple));
-            piegram.Add(new Slice("S2", 30, Color.OrangeRed));
-            piegram.Add(new Slice("S3", 5, Color.Gold));
-            piegram.Add(new Slice("S4", 40, Color.Aqua));
-            piegram.Add(new Slice("S5", 15, Color.DodgerBlue));
-
-            polargram.Add(new Slice("S-1", 80, Color.Purple));
-            polargram.Add(new Slice("S-2", 50, Color.OrangeRed));
-            polargram.Add(new Slice("S-3", 120, Color.Gold));
-            polargram.Add(new Slice("S-4", 45, Color.Red));
-            polargram.Add(new Slice("S-5", 175, Color.DodgerBlue));
+            circulargram.Add(new Slice("S1", 22, Color.Purple));
+            circulargram.Add(new Slice("S2", 40, Color.OrangeRed));
+            circulargram.Add(new Slice("S4", 58, Color.Gold));
+            circulargram.Add(new Slice("S3", 75, Color.Aqua));
+            circulargram.Add(new Slice("S5", 45, Color.DodgerBlue));
 
             radargram.Add(new Rating("C1",140));
             radargram.Add(new Rating("C2",130));

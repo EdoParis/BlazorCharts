@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace BlazorGraphs.Structures
+namespace BlazorGraphs
 {
     public struct Theme
     {

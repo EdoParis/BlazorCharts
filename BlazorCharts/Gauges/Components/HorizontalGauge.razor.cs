@@ -1,0 +1,40 @@
+﻿using Microsoft.AspNetCore.Components;
+using BlazorGraphs.Core;
+
+namespace BlazorGraphs.Components
+{
+    public partial class HorizontalGauge
+    {
+        private const int VIEW = 1000;
+        private const int PADDING = 100;
+
+        [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Boolean Reverse { get; set; }
+        [Parameter] public Gaugegram Model { get; set; }
+        private int width = VIEW;
+        private int height = 3 * PADDING;
+        private int padding = PADDING;
+        private int offsetH => padding;
+        private int offsetV => height - padding;
+        private double scaleH => (width - 2 * padding) / Model.Axis.Size;
+        private AxisLayout AxisLayout;
+        private TextLayout TitleLayout;
+
+        protected override void OnParametersSet()
+        {
+            AxisLayout.WithTheme(Theme);
+            TitleLayout.WithTheme(Theme);
+        }
+
+        protected override void OnInitialized()
+        {
+            AxisLayout = AxisLayout.HorizontalLayout()
+                                   .WithTickSize(20)
+                                   .WithTheme(Theme)
+                                   .From(padding)
+                                   .To(width - padding);
+
+            TitleLayout = TextLayout.MiddleLayout().Medium().WithTheme(Theme);
+        }
+    }
+}

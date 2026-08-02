@@ -11,8 +11,8 @@ namespace BlazorGraphs.Components
         private const int PADDING = 100;
 
         [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Boolean HidePoints { get; set; }
         [Parameter] public Cartesiangram Model { get; set; }
-        [Parameter] public bool ShowPoints { get; set; }
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;

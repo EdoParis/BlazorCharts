@@ -4,10 +4,10 @@
 
 <table style="width: 100%; table-layout: fixed; font-family: system-ui">
     <tr>
-        <td style="width: 50%"><LineChart Theme="Theme.Dark" Model="@chartgram" ShowPoints="true"></LineChart></td>
-        <td style="width: 50%"><LineChart Theme="Theme.Light" Model="@chartgram" ShowPoints="true"></LineChart></td>
-        <td style="width: 50%"><StepChart Theme="Theme.Arctic" Model="@chartgram" ShowPoints="true"></StepChart></td>
-        <td style="width: 50%"><StepChart Theme="Theme.Neon" Model="@chartgram" ShowPoints="true"></StepChart></td>
+        <td style="width: 50%"><LineChart Theme="Theme.Dark" Model="@chartgram"></LineChart></td>
+        <td style="width: 50%"><LineChart Theme="Theme.Light" Model="@chartgram" HidePoints></LineChart></td>
+        <td style="width: 50%"><StepChart Theme="Theme.Arctic" Model="@chartgram"></StepChart></td>
+        <td style="width: 50%"><StepChart Theme="Theme.Neon" Model="@chartgram" HidePoints></StepChart></td>
     </tr>
     <tr>
         <td><ScatterChart Theme="Theme.Dark" Model="@chartgram"></ScatterChart></td>
@@ -41,7 +41,7 @@
     </tr>
     <tr>
         <td><PolarAreaChart Model="@circulargram"></PolarAreaChart></td>
-        <td><PolarAreaChart Theme="Theme.Light" Model="@circulargram"></PolarAreaChart></td>
+        <td><PolarAreaChart Theme="Theme.Arctic" Model="@circulargram"></PolarAreaChart></td>
         <td><PolarAreaChart Theme="Theme.Dark" Model="@circulargram"></PolarAreaChart></td>
         <td><PolarAreaChart Theme="Theme.Light" Model="@circulargram"></PolarAreaChart></td>
     </tr>
@@ -60,20 +60,20 @@
     <tr>
         <td><HorizontalGauge Theme="Theme.Dark" Model="@gaugegram2"></HorizontalGauge></td>
         <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram2"></HorizontalGauge></td>
-        <td><HorizontalGauge Theme="Theme.Dark" Model="@gaugegram2" Reverse="true"></HorizontalGauge></td>
-        <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram2" Reverse="true"></HorizontalGauge></td>
+        <td><HorizontalGauge Theme="Theme.Dark" Model="@gaugegram2" Reverse></HorizontalGauge></td>
+        <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram2" Reverse></HorizontalGauge></td>
     </tr>
     <tr>
         <td><HorizontalGauge Theme="Theme.Dark" Model="@gaugegram"></HorizontalGauge></td>
         <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram"></HorizontalGauge></td>
-        <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram" Reverse="true"></HorizontalGauge></td>
-        <td><HorizontalGauge Theme="Theme.Beach" Model="@gaugegram" Reverse="true"></HorizontalGauge></td>
+        <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram" Reverse></HorizontalGauge></td>
+        <td><HorizontalGauge Theme="Theme.Beach" Model="@gaugegram" Reverse></HorizontalGauge></td>
     </tr>
     <tr>
         <td>
             <table style="width:100%">
                 <tr>
-                    <td><VerticalGauge Theme="Theme.Light" Model="@gaugegram2" Reverse="true"></VerticalGauge></td>
+                    <td><VerticalGauge Theme="Theme.Light" Model="@gaugegram2" Reverse></VerticalGauge></td>
                     <td><VerticalGauge Theme="Theme.Beach" Model="@gaugegram2"></VerticalGauge></td>
                     <td><VerticalGauge Model="@gaugegram2"></VerticalGauge></td>
                 </tr>
@@ -82,7 +82,7 @@
         <td>
             <table style="width:100%">
                 <tr>
-                    <td><VerticalGauge Theme="Theme.Beach" Model="@gaugegram2" Reverse="true"></VerticalGauge></td>
+                    <td><VerticalGauge Theme="Theme.Beach" Model="@gaugegram2" Reverse></VerticalGauge></td>
                     <td><VerticalGauge Theme="Theme.Beach" Model="@gaugegram2"></VerticalGauge></td>
                     <td><VerticalGauge Theme="Theme.Light"></VerticalGauge></td>
                 </tr>
@@ -91,7 +91,7 @@
         <td>
             <table style="width:100%">
                 <tr>
-                    <td><VerticalGauge Theme="Theme.Arctic" Model="@gaugegram" Reverse="true"></VerticalGauge></td>
+                    <td><VerticalGauge Theme="Theme.Arctic" Model="@gaugegram" Reverse></VerticalGauge></td>
                     <td><VerticalGauge Theme="Theme.Dark" Model="@gaugegram"></VerticalGauge></td>
                     <td><VerticalGauge Theme="Theme.Light" Model="@gaugegram"></VerticalGauge></td>
                 </tr>
@@ -102,7 +102,7 @@
                 <tr>
                     <td><VerticalGauge Model="@gaugegram"></VerticalGauge></td>
                     <td><VerticalGauge Theme="Theme.Arctic" Model="@gaugegram"></VerticalGauge></td>
-                    <td><VerticalGauge Theme="Theme.Beach" Model="@gaugegram" Reverse="true"></VerticalGauge></td>
+                    <td><VerticalGauge Theme="Theme.Beach" Model="@gaugegram" Reverse></VerticalGauge></td>
                 </tr>
             </table>
         </td>
@@ -114,10 +114,10 @@
         <td><SemiCircleGauge Theme="Theme.Beach" Model="@gaugegram"></SemiCircleGauge></td>
     </tr>
     <tr>
-        <td><Speedometer Theme="Theme.Light" Model="@gaugegram2" InnerAxis="true"></Speedometer></td>
-        <td><Speedometer Theme="Theme.Light" Model="@gaugegram2" InnerAxis="false"></Speedometer></td>
-        <td><Speedometer Theme="Theme.Dark" Model="@gaugegram" InnerAxis="true"></Speedometer></td>
-        <td><Speedometer Theme="Theme.Light" Model="@gaugegram" InnerAxis="false"></Speedometer></td>
+        <td><Speedometer Theme="Theme.Light" Model="@gaugegram2" InnerAxis></Speedometer></td>
+        <td><Speedometer Theme="Theme.Light" Model="@gaugegram2"></Speedometer></td>
+        <td><Speedometer Theme="Theme.Dark" Model="@gaugegram" InnerAxis></Speedometer></td>
+        <td><Speedometer Theme="Theme.Light" Model="@gaugegram"></Speedometer></td>
     </tr>
     <tr>
         <td><LegendHorizontal Theme="Theme.Beach" Model="chartgram"></LegendHorizontal></td>

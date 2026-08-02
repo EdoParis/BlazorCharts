@@ -33,7 +33,7 @@
                     </polyline>
                     <title>@($"{serie.Label}")</title>
 
-                    @if (ShowPoints)
+                    @if (!HidePoints)
                     {
                         foreach (Datapoint point in serie.Data)
                         {

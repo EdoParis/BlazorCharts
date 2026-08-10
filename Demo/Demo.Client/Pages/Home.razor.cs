@@ -10,6 +10,7 @@ namespace DemoApp.Pages
         private Bargram bargram;
         private Bargram bargram2;
         private Cartesiangram chartgram;
+        private Cartesiangram chartgram2;
         private Bubblegram bubblegram;
         private Circulargram circulargram;
         private Radargram radargram;
@@ -25,6 +26,7 @@ namespace DemoApp.Pages
             bargram = new Bargram("Axis-2", Color.MediumPurple);
             bargram2 = new Bargram("Axis-2", Color.MediumOrchid, Color.MediumSlateBlue);
             chartgram = new Cartesiangram("X1", "Y1");
+            chartgram2 = new Cartesiangram("X1", "Y1");
             bubblegram = new Bubblegram("X1", "Y1");
             circulargram = new Circulargram("R1");
             radargram = new Radargram("R2", Color.MediumVioletRed);
@@ -85,10 +87,25 @@ namespace DemoApp.Pages
                 bubbles2.Add(new Bubblepoint() { X = 2 * i, Y = (i + 4) * (i + 4), Value = 10 + i });
             }
 
+            Random rnd = new Random();
+            List<Datapoint> points5 = new();
+            List<Datapoint> points6 = new();
+            List<Datapoint> points7 = new();
+            for (int i = 0; i < 20; i++)
+            {
+                points5.Add(new Datapoint() { X = 10 * rnd.NextDouble(), Y = 10 * rnd.NextDouble() });
+                points6.Add(new Datapoint() { X = 5 + 20 * rnd.NextDouble(), Y = 5 + 20 * rnd.NextDouble() });
+                points7.Add(new Datapoint() { X = 50 * rnd.NextDouble(), Y = 20 + 5 * rnd.NextDouble() });
+            }
+
             chartgram.AddSerie("F1", Color.LimeGreen, points1);
             chartgram.AddSerie("F2", Color.OrangeRed, points2);
             chartgram.AddSerie("F3", Color.CadetBlue, points3);
             chartgram.AddSerie("F4", Color.DodgerBlue, points4);
+
+            chartgram2.AddSerie("F1", Color.Gold, points5);
+            chartgram2.AddSerie("F2", Color.OrangeRed, points6);
+            chartgram2.AddSerie("F3", Color.RoyalBlue, points7);
 
             bubblegram.AddSerie("B1", Color.MediumPurple, bubbles1);
             bubblegram.AddSerie("B2", Color.OrangeRed, bubbles2);

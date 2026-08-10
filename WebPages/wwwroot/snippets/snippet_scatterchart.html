@@ -1,0 +1,21 @@
+﻿<pre class="language-csharp m-0">
+<code>
+&lt<span class="token tag bold">ScatterChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@model<span class="token string">"</span> /&gt
+
+@{
+    <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> model = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
+
+    <span class="token class-name">List</span>&lt<span class="token class-name">DataPoint</span>&gt points1 = <span class="token keyword">new</span>();
+    <span class="token class-name">List</span>&lt<span class="token class-name">DataPoint</span>&gt points2 = <span class="token keyword">new</span>();
+
+    <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 20; i++)
+    {
+        points1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">DataPoint</span>(){ X = i, Y = i });
+        points2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">DataPoint</span>(){ X = i, Y = 2 * i});
+    }
+
+    model.<span class="token function">AddSerie</span>(<span class="token string">"Points1"</span>, <span class="token class-name">Color</span>.Red, points1);
+    model.<span class="token function">AddSerie</span>(<span class="token string">"Points2"</span>, <span class="token class-name">Color</span>.Blue, points2);
+}
+</code>
+</pre>

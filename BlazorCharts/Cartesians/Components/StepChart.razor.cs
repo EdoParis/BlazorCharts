@@ -77,7 +77,8 @@ namespace BlazorGraphs.Components
 
                 if (previous_point.HasValue)
                 {
-                    if (point.Y == previous_point.Value.Y)
+                    if (point.X == previous_point.Value.X || 
+                        point.Y == previous_point.Value.Y)
                         builder.Append($"{p.X},{p.Y} ");
                     else
                     {

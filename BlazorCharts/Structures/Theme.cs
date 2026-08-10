@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using BlazorGraphs.Core;
+using System.Drawing;
 
 namespace BlazorGraphs
 {
@@ -7,7 +8,19 @@ namespace BlazorGraphs
         public Color? BackgroundColor { get; set; }
         public Color? AxisColor { get; set; }
         public Color? TextColor { get; set; }
-        public string FontFamily { get; set; }
+        public String FontFamily { get; set; }
+
+        public static Theme FromColor(Color color)
+        {
+            Color opposite_color = color.Invert();
+
+            return new Theme()
+            {
+                BackgroundColor = color,
+                AxisColor = opposite_color,
+                TextColor = opposite_color
+            };
+        }
 
         public static Theme Dark
         {

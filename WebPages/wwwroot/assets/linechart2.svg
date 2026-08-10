@@ -60,138 +60,18 @@
 	<g>
 		<polyline points="100,734 188,730 277,720 366,701 455,676 544,643 633,604 722,557 811,502 900,441 " fill="none" stroke="#32CD32" stroke-width="1px" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></polyline>
 		<title>F1</title>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="100" cy="734" r="8px">
-			<title>(0, 50)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="188" cy="730" r="8px">
-			<title>(2, 51)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="277" cy="720" r="8px">
-			<title>(4, 54)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="366" cy="701" r="8px">
-			<title>(6, 59)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="455" cy="676" r="8px">
-			<title>(8, 66)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="544" cy="643" r="8px">
-			<title>(10, 75)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="633" cy="604" r="8px">
-			<title>(12, 86)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="722" cy="557" r="8px">
-			<title>(14, 99)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="811" cy="502" r="8px">
-			<title>(16, 114)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#32CD32" stroke-width="1px" vector-effect="non-scaling-stroke" cx="900" cy="441" r="8px">
-			<title>(18, 131)</title>
-		</circle>
 	</g>
 	<g>
 		<polyline points="100,900 188,882 277,857 366,824 455,785 544,738 633,683 722,622 811,553 900,477 " fill="none" stroke="#FF4500" stroke-width="1px" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></polyline>
 		<title>F2</title>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="100" cy="900" r="8px">
-			<title>(0, 4)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="188" cy="882" r="8px">
-			<title>(2, 9)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="277" cy="857" r="8px">
-			<title>(4, 16)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="366" cy="824" r="8px">
-			<title>(6, 25)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="455" cy="785" r="8px">
-			<title>(8, 36)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="544" cy="738" r="8px">
-			<title>(10, 49)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="633" cy="683" r="8px">
-			<title>(12, 64)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="722" cy="622" r="8px">
-			<title>(14, 81)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="811" cy="553" r="8px">
-			<title>(16, 100)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#FF4500" stroke-width="1px" vector-effect="non-scaling-stroke" cx="900" cy="477" r="8px">
-			<title>(18, 121)</title>
-		</circle>
 	</g>
 	<g>
 		<polyline points="100,857 188,824 277,785 366,738 455,683 544,622 633,553 722,477 811,394 900,303 " fill="none" stroke="#5F9EA0" stroke-width="1px" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></polyline>
 		<title>F3</title>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="100" cy="857" r="8px">
-			<title>(0, 16)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="188" cy="824" r="8px">
-			<title>(2, 25)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="277" cy="785" r="8px">
-			<title>(4, 36)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="366" cy="738" r="8px">
-			<title>(6, 49)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="455" cy="683" r="8px">
-			<title>(8, 64)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="544" cy="622" r="8px">
-			<title>(10, 81)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="633" cy="553" r="8px">
-			<title>(12, 100)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="722" cy="477" r="8px">
-			<title>(14, 121)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="811" cy="394" r="8px">
-			<title>(16, 144)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#5F9EA0" stroke-width="1px" vector-effect="non-scaling-stroke" cx="900" cy="303" r="8px">
-			<title>(18, 169)</title>
-		</circle>
 	</g>
 	<g>
 		<polyline points="100,785 188,738 277,683 366,622 455,553 544,477 633,394 722,303 811,205 900,100 " fill="none" stroke="#1E90FF" stroke-width="1px" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></polyline>
 		<title>F4</title>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="100" cy="785" r="8px">
-			<title>(0, 36)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="188" cy="738" r="8px">
-			<title>(2, 49)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="277" cy="683" r="8px">
-			<title>(4, 64)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="366" cy="622" r="8px">
-			<title>(6, 81)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="455" cy="553" r="8px">
-			<title>(8, 100)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="544" cy="477" r="8px">
-			<title>(10, 121)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="633" cy="394" r="8px">
-			<title>(12, 144)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="722" cy="303" r="8px">
-			<title>(14, 169)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="811" cy="205" r="8px">
-			<title>(16, 196)</title>
-		</circle>
-		<circle fill="#FFFFFF" stroke="#1E90FF" stroke-width="1px" vector-effect="non-scaling-stroke" cx="900" cy="100" r="8px">
-			<title>(18, 225)</title>
-		</circle>
 	</g>
 	<style>
 		g, polyline {

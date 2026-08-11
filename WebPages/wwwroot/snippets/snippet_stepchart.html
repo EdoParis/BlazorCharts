@@ -5,13 +5,13 @@
 @{
     <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> model = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
 
-    <span class="token class-name">List</span>&lt<span class="token class-name">DataPoint</span>&gt points1 = <span class="token keyword">new</span>();
-    <span class="token class-name">List</span>&lt<span class="token class-name">DataPoint</span>&gt points2 = <span class="token keyword">new</span>();
+    <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points1 = <span class="token keyword">new</span>();
+    <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points2 = <span class="token keyword">new</span>();
 
     <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
     {
-        points1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">DataPoint</span>(){ X = i, Y = i });
-        points2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">DataPoint</span>(){ X = i, Y = 2 * i});
+        points1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = i });
+        points2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = 2 * i});
     }
 
     model.<span class="token function">AddSerie</span>(<span class="token string">"Line1"</span>, <span class="token class-name">Color</span>.Red, points1);

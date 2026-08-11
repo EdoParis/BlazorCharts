@@ -28,28 +28,28 @@
 	<text x="500" y="100" dx="-0.5em" style="font-size: 40px; pointer-events: none; dominant-baseline: central; text-anchor: end; fill: #000000;">200</text>
 	<g>
 		<path fill="#C71585" stroke="#C71585" fill-opacity="0.3" stroke-width="1px" vector-effect="non-scaling-stroke" d="M 500 220 L 683 316 L 680 500 L 613 613 L 500 740 L 252 747 L 200 500 L 358 358 Z"></path>
-		<circle fill="#FFFFFF" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="500" cy="220" r="8px">
+		<circle fill="#C71585" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="500" cy="220" r="8px">
 			<title>140</title>
 		</circle>
-		<circle fill="#FFFFFF" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="683" cy="316" r="8px">
+		<circle fill="#C71585" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="683" cy="316" r="8px">
 			<title>130</title>
 		</circle>
-		<circle fill="#FFFFFF" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="680" cy="500" r="8px">
+		<circle fill="#C71585" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="680" cy="500" r="8px">
 			<title>90</title>
 		</circle>
-		<circle fill="#FFFFFF" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="613" cy="613" r="8px">
+		<circle fill="#C71585" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="613" cy="613" r="8px">
 			<title>80</title>
 		</circle>
-		<circle fill="#FFFFFF" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="500" cy="740" r="8px">
+		<circle fill="#C71585" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="500" cy="740" r="8px">
 			<title>120</title>
 		</circle>
-		<circle fill="#FFFFFF" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="252" cy="747" r="8px">
+		<circle fill="#C71585" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="252" cy="747" r="8px">
 			<title>175</title>
 		</circle>
-		<circle fill="#FFFFFF" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="200" cy="500" r="8px">
+		<circle fill="#C71585" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="200" cy="500" r="8px">
 			<title>150</title>
 		</circle>
-		<circle fill="#FFFFFF" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="358" cy="358" r="8px">
+		<circle fill="#C71585" stroke="#C71585" stroke-width="1px" vector-effect="non-scaling-stroke" cx="358" cy="358" r="8px">
 			<title>100</title>
 		</circle>
 	</g>

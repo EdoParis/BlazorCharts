@@ -82,13 +82,14 @@
     </header>
     <main class="row bg-light p-3 h-100 overflow-auto">
         <div class="col">
-            <h3>Polarchart</h3>
+            <h3>Polar Areachart</h3>
             <p>
                 Polar area charts are similar to pie charts, but each segment has the same angle and the radius differs depending on the value.
                 This type of chart is often useful when we want to show a comparison data similar to a pie chart, but also show a scale of values for context.
             </p>
             <div class="card m-2 fit-content m-auto mw-100">
                 <div class="card-body">
+                    <h6>Polar areachart</h6>
                     <div class="chart">
                         <object data="../assets/polarchart.svg" type="image/svg+xml"></object>
                     </div>
@@ -101,7 +102,7 @@
         </div>
     </main>
     <script>
-        fetch("../snippets/snippet_polarchart.html")
+        fetch("../snippets/snippet_polarareachart.html")
             .then(r => r.text())
             .then(html => { document.getElementById("snippet").innerHTML = html; });
     </script>

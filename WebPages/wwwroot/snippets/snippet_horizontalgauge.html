@@ -1,29 +1,29 @@
 ﻿<pre class="language-csharp m-0">
 <code>
-&lt<span class="token tag bold">LinearGauge</span> <span class="token property bold">Model</span><span class="token string">="</span>@gauge_model<span class="token string">"</span>
+&lt<span class="token tag bold">HorizontalGauge</span> <span class="token property bold">Model</span><span class="token string">="</span>@gauge_model<span class="token string">"</span>
             <span class="token property bold">Reverse</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
 
 @{
-    <span class="token keyword">private</span> <span class="token property">Gaugegram</span> gauge_model = <span class="token keyword">new</span> <span class="token class-name">Gaugegram</span>(0, 500, <span class="token string">"Gauge-1"</span>, <span class="token class-name">KnownColor</span>.Navy);
+    <span class="token keyword">private</span> <span class="token property">Gaugegram</span> gauge_model = <span class="token keyword">new</span> <span class="token class-name">Gaugegram</span>(0, 500, <span class="token string">"Gauge-1"</span>, <span class="token class-name">Color</span>.Navy);
     gauge_model.Value = 170;
 
     <span class="token comment">//OPTIONAL: add breakpoints to set the gauge colors up to the desired value.</span>
     piechart_model.<span class="token function">AddBreakpoint</span>()
     {
         Value = 150,
-        Color = <span class="token class-name">KnownColor</span>.Green,
+        Color = <span class="token class-name">Color</span>.Green,
         Label = <span class="token string">"LV-1"</span>
     };
     piechart_model.<span class="token function">AddBreakpoint</span>()
     {
         Value = 250,
-        Color = <span class="token class-name">KnownColor</span>.Gold,
+        Color = <span class="token class-name">Color</span>.Gold,
         Label = <span class="token string">"LV-2"</span>
     };
     piechart_model.<span class="token function">AddBreakpoint</span>()
     {
         Value = 500,
-        Color = <span class="token class-name">KnownColor</span>.Red,
+        Color = <span class="token class-name">Color</span>.Red,
         Label = <span class="token string">"LV-3"</span>
     };
 }

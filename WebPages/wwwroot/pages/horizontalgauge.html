@@ -82,9 +82,9 @@
     </header>
     <main class="row  bg-light p-3 h-100 overflow-auto">
         <div class="col">
-            <h3>Linear gauge</h3>
+            <h3>Horizontal gauge</h3>
             <p>
-                A Linear gauge uses a linear dial to show a single metric against a defined scale.
+                A horizontal gauge uses a linear dial to show a single metric against a defined scale.
                 Like a speedometer, it features a needle or a fill bar that marks the current value within the range.
                 The gauge can be flipped vertically and also be provided with breakpoints to give context to the represented value.
             </p>
@@ -105,7 +105,7 @@
             </p>
         </div>
         <script>
-            fetch("../snippets/snippet_lineargauge.html")
+            fetch("../snippets/snippet_horizontalgauge.html")
                 .then(r => r.text())
                 .then(html => { document.getElementById("snippet").innerHTML = html; });
         </script>

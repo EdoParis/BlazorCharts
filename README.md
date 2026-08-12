@@ -18,50 +18,47 @@ This way, to change visualizations, you simply assign the model to the other com
 
 - 🔗 Repository: https://github.com/EdoParis/BlazorCharts
 - 🌐 Documentation: https://edoparis.github.io/BlazorCharts/
-- 📦 NuGet: https://www.nuget.org/packages/BlazorGraphs
+- 📦 NuGet: https://www.BlazorGraphs.it
 
 ## Charts
 - Histogram
-- Bar charts (Vertical/Horizontal)
-- Area chart
+- Vertical Barchart
+- Horizontal Barchart
 - Line chart
-- Stepline chart
+- Step chart
 - Scatter chart
 - Bubble chart
 - Pie chart
 - Donut chart
-- PolarArea chart
 - Radar chart
+- PolarArea chart
 
 ## Gauges
-- Linear gauge
+- Horizontal gauge
 - Vertical gauge
 - Semicircle gauge 
 - Speedometer
 
 ## Namespaces
-- BlazorGraphs.Enums
-- BlazorGraphs.Gauges
-- BlazorGraphs.Charts
-- BlazorGraphs.Models
-- BlazorGraphs.Legends
-- BlazorGraphs.Structures	
+- BlazorGraphs	
+- BlazorGraphs.Components
+
+The root namespace contains all datamodels and structures needed to populate the charts, 
+while `BlazorGraphs.Components` contains all the charting, gauges and legends components.
 
 ## How to use
 Each chart or gauge have a dedicated data model as parameter, the data model contains all the data needed to draw the chart.
 
 Each data model has two methods:
-- `Add`: to add new data to the model
+- `Add` or `AddSerie` : to add new data or a new serie if the model supports it
 - `Clear`: to remove all the existing data from the model
 
-Use the data structures you find in `BlazorGraphs.Structures` to fill the data model.
-
 #### Legends
-The legend component is separated from the charts, and has a dedicated namespace `BlazorGraphs.Legends`, which contains:
-- the components `LegendHorizontal` and `LegendVertical`
-- the struct `LegendItem`
+The legend is separated from the charts, there are two separated components:
+- `LegendHorizontal`
+- `LegendVertical`
 
-The `LegendBar` component accepts the same data models of charts as parameter, since this is separated from the chart, you can place everywhere you want.
+The legend components accepts the same data models of charts as parameter, since this is separated from the chart, you can place everywhere you want.
 
 #### Themes
 Is possible to customize the chart, gauges and legends simply passing the `Theme`. 
@@ -80,14 +77,14 @@ If you pass a partially empty theme, the library doesn't break. It delegates the
 #### Histogram example
 This renders a fully interactive SVG histogram.
 ```
-<HistChart Model="@histogram"></HistChart>
+<HistChart Model="@model"></HistChart>
 
 @{
-    histogram = new Histogram("asseX", "asseY", KnownColor.CadetBlue);
+    Histogram model = new Histogram("asseX", "asseY", KnownColor.CadetBlue);
 
     for (int i = 0; i < 10; i++)
     {
-        histogram.Add(new Bin()
+        model.Add(new Bin()
         {
             Min = i, //bin left side
             Max = i + 1, //bin right side
@@ -97,17 +94,16 @@ This renders a fully interactive SVG histogram.
 }
 ```
 #### Barchart example
-This renders a fully interactive SVG bar chart, with negative bars colored differently from positive ones.
+This renders a fully interactive SVG vertical barchart, with negative bars colored differently from positive ones.
 ```
-<BarChart Model="@bargram">
-</BarChart>
+<VerticalBarChart Model="@model"/>
 
 @{
-    bargram = new Bargram("asseY", KnownColor.RoyalBlue, KnownColor.OrangeRed);
+    Bargram model = new Bargram("asseY", KnownColor.RoyalBlue, KnownColor.OrangeRed);
 
     for (int i = 0; i < 10; i++)
     {
-        bargram.Add(new Bar()
+        model.Add(new Bar()
         {
             Label = $"Bar-{i}", //bar label
             Value = 5 - i //bar height
@@ -116,59 +112,57 @@ This renders a fully interactive SVG bar chart, with negative bars colored diffe
 }
 ```
 
-#### Linechart example
-This renders a fully interactive SVG linechart, with the legend at the bottom of the chart.
+#### Cartesian charts example
+This renders a fully interactive SVG linechart, scatterchart and stepchart, all using the same datamodel.
 ```
-<LineChart Theme="@Theme.Dark" Model="@linegram"></LineChart>
-<LegendBar Theme="@Theme.Dark"
-           Model="@linegram" 
-           Direction="Positioning.Horizontal">
-</LegendBar>
+<LineChart Theme="@Theme.Dark" Model="@model"/>
+<StepChart Theme="@Theme.Dark" Model="@model"/>
+<ScatterChart Theme="@Theme.Light" Model="@model"/>
 
 @{
-    linegram = new Linegram("X1", "Y1");
+    Cartesiangram model = new Cartesiangram("X1", "Y1");
 
-    List<PointF> points1 = new();
-    List<PointF> points2 = new();
-    List<PointF> points3 = new();
-    List<PointF> points4 = new();
+    List<Datapoint> points1 = new();
+    List<Datapoint> points2 = new();
+    List<Datapoint> points3 = new();
+    List<Datapoint> points4 = new();
 
     for (int i=0; i<10; i++)
     {
-        points1.Add(new PointF(i, i));
-        points2.Add(new PointF(i, i + 2));
-        points3.Add(new PointF(i, i + 3));
-        points4.Add(new PointF(i, i + 4));
+        points1.Add(new Datapoint(i, i));
+        points2.Add(new Datapoint(i, i + 2));
+        points3.Add(new Datapoint(i, i + 3));
+        points4.Add(new Datapoint(i, i + 4));
     }
 
-    linegram.Add(new Line("F1", KnownColor.LimeGreen, points1));
-    linegram.Add(new Line("F2", KnownColor.OrangeRed, points2, DrawMode.Drawline));
-    linegram.Add(new Line("F3", KnownColor.CadetBlue, points3, DrawMode.Drawpoints));
-    linegram.Add(new Line("F4", KnownColor.DodgerBlue, points4, DrawMode.Drawpoints | DrawMode.Drawline));
+    model.AddSerie("F1", KnownColor.LimeGreen, points1);
+    model.AddSerie("F2", KnownColor.OrangeRed, points2);
+    model.AddSerie("F3", KnownColor.CadetBlue, points3);
+    model.AddSerie("F4", KnownColor.DodgerBlue, points4);
 }
 ```
 
 #### Gauge example
-This renders a fully interactive SVG linear gauge, the breakpoints are optional.
+This renders a fully interactive SVG horizontal gauge, the breakpoints are optional.
 ```
-<LinearGauge Theme="@Theme.Arctic" Model="@gaugegram" Reverse="false"></LinearGauge>
+<HorizontalGauge Theme="@Theme.Arctic" Model="@model" Reverse="false"/>
 
 @{
-    gaugegram = new Gaugegram(0, 500, "G1", KnownColor.Navy);
-    gaugegram.Value = 175;
-    gaugegram.AddBreakpoint(new Breakpoint()
+    Gaugegram model = new Gaugegram(0, 500, "G1", KnownColor.Navy);
+    model.Value = 175;
+    model.AddBreakpoint(new Breakpoint()
     {
         Value = 150,
         Color = KnownColor.Green,
         Label = "LV-1"
     });
-    gaugegram.AddBreakpoint(new Breakpoint()
+    model.AddBreakpoint(new Breakpoint()
     {
         Value = 250,
         Color = KnownColor.Gold,
         Label = "LV-2"
     });
-    gaugegram.AddBreakpoint(new Breakpoint()
+    model.AddBreakpoint(new Breakpoint()
     {
         Value = 500,
         Color = KnownColor.Red,

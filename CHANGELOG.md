@@ -6,6 +6,25 @@ Legend symbols:
 * 🟨 **Change**
 * 🟥 **Bug**
 
+## Version 3.0
+* 🟩 Circular parameter to RadarChart
+* 🟩 InnerAxis parameter to Speedometer
+* 🟩 Scatter chart
+* 🟩 Stepline chart
+* 🟩 Bubbles chart
+* 🟦 Centralized axis rendering
+* 🟦 Centralized text rendering
+* 🟪 Refactoring Line chart
+* 🟪 Replaced Linegram and Line models with Cartesiangram
+* 🟪 Reduced namespaces to only BlazorGraphs and BlazorGraphs.Components
+* 🟨 Changed color properties to use Color type instead of KnownColor enum
+* 🟨 Unified Polargram and Piegram models to Circulargram
+* 🟨 Renamed BarChart as VerticalBarChart
+* 🟨 Renamed PolarChart as PolarAreaChart
+* 🟨 Renamed LinearGauge as HorizontalGauge
+* 🟨 Removed obsolete component LegendBar
+* 🟨 Removed enums
+
 ## Version 2.4
 * 🟩 Vertical gauge
 * 🟩 Speedometer

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://edoparis.github.io/BlazorCharts/sitemap.xml
-

@@ -1,94 +1,108 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<!--	created with www.mysitemapgenerator.com	-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://blazorgraphs.it/</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>1.0</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/histogram.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://blazorgraphs.it/pages/barchart.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<loc>https://blazorgraphs.it/pages/verticalbarchart.html</loc>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/horizontalbarchart.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/linechart.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://blazorgraphs.it/pages/stepchart.html</loc>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://blazorgraphs.it/pages/scatterchart.html</loc>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://blazorgraphs.it/pages/bubblechart.html</loc>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/radarchart.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://blazorgraphs.it/pages/polarchart.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<loc>https://blazorgraphs.it/pages/polarareachart.html</loc>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/piechart.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/donutchart.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://blazorgraphs.it/pages/lineargauge.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<loc>https://blazorgraphs.it/pages/horizontalgauge.html</loc>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/verticalgauge.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/semicirclegauge.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/speedometer.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/legendbar.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/themes.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/roadmap.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/pages/changelog.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/index.html</loc>
-		<lastmod>2026-08-07T16:52:00+01:00</lastmod>
+		<lastmod>2026-08-12T12:00:00+01:00</lastmod>
 		<priority>1.0</priority>
 	</url>
 </urlset>

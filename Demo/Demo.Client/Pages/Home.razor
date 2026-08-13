@@ -4,68 +4,90 @@
 
 <table style="width: 100%; table-layout: fixed; font-family: system-ui">
     <tr>
-        <td style="width: 50%"><LineChart Theme="Theme.Dark" Model="@chartgram"></LineChart></td>
-        <td style="width: 50%"><LineChart Theme="Theme.Light" Model="@chartgram" HidePoints></LineChart></td>
-        <td style="width: 50%"><StepChart Theme="Theme.Arctic" Model="@chartgram"></StepChart></td>
-        <td style="width: 50%"><StepChart Theme="Theme.FromColor(Color.LightCyan)" Model="@chartgram" HidePoints></StepChart></td>
+        <td style="width: 50%"><LineChart Theme="Theme.FromColor(Color.White)" Model="@chartgram"></LineChart></td>
+        <td style="width: 50%"><LineChart Theme="Theme.FromColor(Color.White)" Model="@chartgram" HidePoints></LineChart></td>
+    </tr>
+    <tr>
+        <td><StepChart Theme="Theme.FromColor(Color.White)" Model="@chartgram"></StepChart></td>
+        <td><StepChart Theme="Theme.FromColor(Color.White)" Model="@chartgram" HidePoints></StepChart></td>
     </tr>
     <tr>
         <td><ScatterChart Model="@chartgram2"></ScatterChart></td>
-        <td><ScatterChart Theme="Theme.FromColor(Color.White)" Model="@chartgram2"></ScatterChart></td>
-        <td><BubbleChart Theme="Theme.Light" Model="@bubblegram"></BubbleChart></td>
+        <td><ScatterChart Theme="Theme.FromColor(Color.White)" Model="@chartgram"></ScatterChart></td>
+    </tr>
+    <tr>
+        <td><BubbleChart Theme="Theme.FromColor(Color.White)" Model="@bubblegram"></BubbleChart></td>
         <td><BubbleChart Theme="Theme.Neon" Model="@bubblegram"></BubbleChart></td>
     </tr>
     <tr>
         <td><HistChart Theme="Theme.Dark" Model="@histogram" OnClick="BinClickHandler"></HistChart></td>
         <td><HistChart Theme="Theme.Light" Model="@histogram" OnClick="BinClickHandler"></HistChart></td>
+    </tr>
+    <tr>
         <td><HistChart Theme="Theme.Arctic" Model="@histogram" OnClick="BinClickHandler"></HistChart></td>
         <td><HistChart Theme="Theme.Beach" Model="@histogram" OnClick="BinClickHandler"></HistChart></td>
     </tr>
     <tr>
         <td><HorizontalBarChart Theme="Theme.Dark" Model="@bargram2" OnClick="BarClickHandler"></HorizontalBarChart></td>
         <td><HorizontalBarChart Theme="Theme.Light" Model="@bargram2" OnClick="BarClickHandler"></HorizontalBarChart></td>
+    </tr>
+    <tr>
         <td><HorizontalBarChart Theme="Theme.Arctic" Model="@bargram2" OnClick="BarClickHandler"></HorizontalBarChart></td>
         <td><HorizontalBarChart Theme="Theme.Beach" Model="@bargram2" OnClick="BarClickHandler"></HorizontalBarChart></td>
     </tr>
     <tr>
         <td><VerticalBarChart Theme="Theme.Dark" Model="@bargram2" OnClick="BarClickHandler"></VerticalBarChart></td>
         <td><VerticalBarChart Theme="Theme.Light" Model="@bargram2" OnClick="BarClickHandler"></VerticalBarChart></td>
+    </tr>
+    <tr>
         <td><VerticalBarChart Theme="Theme.Arctic" Model="@bargram2" OnClick="BarClickHandler"></VerticalBarChart></td>
         <td><VerticalBarChart Theme="Theme.Beach" Model="@bargram2" OnClick="BarClickHandler"></VerticalBarChart></td>
     </tr>
     <tr>
         <td><RadarChart Theme="Theme.Dark" Model="@radargram" Circular></RadarChart></td>
         <td><RadarChart Theme="Theme.Dark" Model="@radargram"></RadarChart></td>
+    </tr>
+    <tr>
         <td><RadarChart Theme="Theme.Light" Model="@radargram" Circular></RadarChart></td>
         <td><RadarChart Theme="Theme.Arctic" Model="@radargram"></RadarChart></td>
     </tr>
     <tr>
         <td><PolarAreaChart Model="@circulargram"></PolarAreaChart></td>
         <td><PolarAreaChart Theme="Theme.Arctic" Model="@circulargram"></PolarAreaChart></td>
+    </tr>
+    <tr>
         <td><PolarAreaChart Theme="Theme.Dark" Model="@circulargram"></PolarAreaChart></td>
         <td><PolarAreaChart Theme="Theme.Light" Model="@circulargram"></PolarAreaChart></td>
     </tr>
     <tr>
         <td><PieChart Model="@circulargram"></PieChart></td>
         <td><PieChart Theme="Theme.Light" Model="@circulargram"></PieChart></td>
+    </tr>
+    <tr>
         <td><PieChart Theme="Theme.Dark" Model="@circulargram"></PieChart></td>
         <td><PieChart Theme="Theme.Light" Model="@circulargram"></PieChart></td>
     </tr>
     <tr>
         <td><DonutChart Model="@circulargram"></DonutChart></td>
         <td><DonutChart Theme="Theme.Light" Model="@circulargram"></DonutChart></td>
+    </tr>
+    <tr>
         <td><DonutChart Theme="Theme.Dark" Model="@circulargram"></DonutChart></td>
         <td><DonutChart Theme="Theme.Light" Model="@circulargram"></DonutChart></td>
     </tr>
     <tr>
         <td><HorizontalGauge Theme="Theme.Dark" Model="@gaugegram2"></HorizontalGauge></td>
         <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram2"></HorizontalGauge></td>
+    </tr>
+    <tr>
         <td><HorizontalGauge Theme="Theme.Dark" Model="@gaugegram2" Reverse></HorizontalGauge></td>
         <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram2" Reverse></HorizontalGauge></td>
     </tr>
     <tr>
         <td><HorizontalGauge Theme="Theme.Dark" Model="@gaugegram"></HorizontalGauge></td>
         <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram"></HorizontalGauge></td>
+    </tr>
+    <tr>
         <td><HorizontalGauge Theme="Theme.Light" Model="@gaugegram" Reverse></HorizontalGauge></td>
         <td><HorizontalGauge Theme="Theme.Beach" Model="@gaugegram" Reverse></HorizontalGauge></td>
     </tr>
@@ -88,6 +110,8 @@
                 </tr>
             </table>
         </td>
+    </tr>
+    <tr>
         <td>
             <table style="width:100%">
                 <tr>
@@ -110,18 +134,24 @@
     <tr>
         <td><SemiCircleGauge Theme="Theme.Dark" Model="@gaugegram2"></SemiCircleGauge></td>
         <td><SemiCircleGauge Theme="Theme.Dark" Model="@gaugegram2"></SemiCircleGauge></td>
+    </tr>
+    <tr>
         <td><SemiCircleGauge Theme="Theme.Light" Model="@gaugegram"></SemiCircleGauge></td>
         <td><SemiCircleGauge Theme="Theme.Beach" Model="@gaugegram"></SemiCircleGauge></td>
     </tr>
     <tr>
         <td><Speedometer Theme="Theme.Light" Model="@gaugegram2" InnerAxis></Speedometer></td>
         <td><Speedometer Theme="Theme.Light" Model="@gaugegram2"></Speedometer></td>
+    </tr>
+    <tr>
         <td><Speedometer Theme="Theme.Dark" Model="@gaugegram" InnerAxis></Speedometer></td>
         <td><Speedometer Theme="Theme.Light" Model="@gaugegram"></Speedometer></td>
     </tr>
     <tr>
         <td><LegendHorizontal Theme="Theme.Beach" Model="chartgram"></LegendHorizontal></td>
         <td><LegendVertical Theme="Theme.Light" Model="bargram2"></LegendVertical></td>
+    </tr>
+    <tr>
         <td><LegendVertical Theme="Theme.Dark" Model="gaugegram"></LegendVertical></td>
         <td><LegendHorizontal Theme="Theme.Dark" Model="circulargram"></LegendHorizontal></td>
     </tr>

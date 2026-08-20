@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementi di soluzione", "El
 		ROADMAP.md = ROADMAP.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServer", "WebSite\WebSite\WebServer.csproj", "{81D3286A-5AD4-49B4-9EB6-E80CE3E9B02C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebSite\WebSite.Client\WebApp.csproj", "{32FCFFD1-745F-4BC0-A029-EAE10A7F27AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,14 @@ Global
 		{09E61386-ACAF-4CEE-A3D3-0AABB6F6B7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E61386-ACAF-4CEE-A3D3-0AABB6F6B7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E61386-ACAF-4CEE-A3D3-0AABB6F6B7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81D3286A-5AD4-49B4-9EB6-E80CE3E9B02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81D3286A-5AD4-49B4-9EB6-E80CE3E9B02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81D3286A-5AD4-49B4-9EB6-E80CE3E9B02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81D3286A-5AD4-49B4-9EB6-E80CE3E9B02C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32FCFFD1-745F-4BC0-A029-EAE10A7F27AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32FCFFD1-745F-4BC0-A029-EAE10A7F27AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32FCFFD1-745F-4BC0-A029-EAE10A7F27AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32FCFFD1-745F-4BC0-A029-EAE10A7F27AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

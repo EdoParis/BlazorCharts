@@ -1,0 +1,26 @@
+html, body {
+    overscroll-behavior: none;
+    overflow: hidden;
+    height: 100dvh;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+    a:link {
+        color: black;
+    }
+
+    a:visited {
+        color: black;
+    }
+
+.fit-content {
+    width: fit-content;
+}
+
+.h-stretch {
+    height: stretch !important;
+}

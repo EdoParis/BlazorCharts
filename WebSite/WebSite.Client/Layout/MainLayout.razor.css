@@ -1,0 +1,7 @@
+﻿header {
+    height: 4rem;
+}
+
+main {
+    max-height: calc(100dvh - 4rem);
+}

@@ -3,8 +3,71 @@
 <header class="row p-2 border-bottom align-items-center">
     <img class="col-auto h-100 p-2" src="Icon.png" />
     <h2 class="col m-0 text-truncate">BlazorGraphs</h2>
-    <div class="col-auto bi-list fs-2"></div>
+    <div class="col-auto fs-4" role="button" @onclick="@OnToggleMenu">
+        @(HiddenMenu ? "☰" : "✕")
+    </div>
 </header>
+<nav class="shadow-sm border-bottom w-100 p-4" hidden="@HiddenMenu">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div class="col">
+            <h5 class="bi-graph-up text-truncate"> Cartesians</h5>
+            <ul class="list-group list-group-flush border-top border-bottom mb-3">
+                <a class="list-group-item list-group-item-action" href="linechart" @onclick="@OnHideMenu">Linechart</a>
+                <a class="list-group-item list-group-item-action" href="stepchart">Stepchart</a>
+                <a class="list-group-item list-group-item-action" href="scatterchart">Scatterchart</a>
+                <a class="list-group-item list-group-item-action" href="bubblechart">Bubblechart</a>
+            </ul>
+            <h5 class="bi-pie-chart text-truncate"> Circular</h5>
+            <ul class="list-group list-group-flush border-top border-bottom">
+                <a class="list-group-item list-group-item-action" href="piechart">Piechart</a>
+                <a class="list-group-item list-group-item-action" href="donutchart">Donutchart</a>
+                <a class="list-group-item list-group-item-action" href="polarareachart">PolarAreachart</a>
+                <a class="list-group-item list-group-item-action" href="radarchart">Radarchart</a>
+            </ul>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                    <h5 class="bi-bar-chart text-truncate"> Bars</h5>
+                    <ul class="list-group list-group-flush border-top border-bottom mb-3">
+                        <a class="list-group-item list-group-item-action" href="histogram">Histogram</a>
+                        <a class="list-group-item list-group-item-action" href="verticalbarchart">Vertical barchart</a>
+                        <a class="list-group-item list-group-item-action" href="horizontalbarchart">Horizontal barchart</a>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="bi-speedometer2 text-truncate"> Gauges</h5>
+                    <ul class="list-group list-group-flush border-top border-bottom">
+                        <a class="list-group-item list-group-item-action" href="horizontalgauge">Horizontal</a>
+                        <a class="list-group-item list-group-item-action" href="verticalgauge">Vertical</a>
+                        <a class="list-group-item list-group-item-action" href="semicirclegauge">Semicircle</a>
+                        <a class="list-group-item list-group-item-action" href="speedometer">Speedometer</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                    <h5 class="text-truncate bi-list"> Other</h5>
+                    <ul class="list-group list-group-flush border-top border-bottom mb-3">
+                        <a class="list-group-item list-group-item-action" href="legendbar">Legend</a>
+                        <a class="list-group-item list-group-item-action" href="themes">Themes</a>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-truncate bi-journals"> About</h5>
+                    <ul class="list-group list-group-flush border-top border-bottom">
+                        <a class="list-group-item list-group-item-action" href="roadmap">Roadmap</a>
+                        <a class="list-group-item list-group-item-action" href="changelog">Changelog</a>
+                        <a class="list-group-item list-group-item-action" href="https://github.com/sponsors/EdoParis"><span class="bi-heart-fill text-danger pulse-animation my-auto"></span> Support</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 class="d-flex justify-content-end mt-3" @onclick="@OnHideMenu"><a href="#">Home <span class="bi-house"></span></a></h5>
+</nav>
 <main class="row overflow-auto bg-light h-100 p-3">
     <div class="col">
         @Body

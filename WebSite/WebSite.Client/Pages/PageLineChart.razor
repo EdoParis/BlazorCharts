@@ -1,0 +1,46 @@
+﻿@page "/linechart"
+
+<PageTitle>LineChart</PageTitle>
+
+<h3>Linechart</h3>
+<p>
+    A line chart or line graph, is type of chart displays information as a series of data points called 'markers'.
+    The measurement points are ordered (typically by their x-axis value) and joined with straight line segments.
+</p>
+<div class="d-flex flex-wrap justify-content-center">
+    <ChartCard Title="LineChart">
+        <LineChart Model="@model"></LineChart>
+    </ChartCard>
+    <ChartCard Title="LineChart with white background">
+        <LineChart Model="@model" Theme="@Theme.FromColor(Color.White)"></LineChart>
+    </ChartCard>
+    <ChartCard Title="LineChart without points">
+        <LineChart Model="@model" HidePoints></LineChart>
+    </ChartCard>
+</div>
+<p>
+    <h6>Code example</h6>
+    <div class="w-100 small border">
+        <pre class="language-csharp m-0">
+            <code>
+&lt<span class="token tag bold">LineChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@model<span class="token string">"</span> <span class="token property bold">HidePoints</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
+
+@@{
+    <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> model = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
+
+    <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points1 = <span class="token keyword">new</span>();
+    <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points2 = <span class="token keyword">new</span>();
+
+    <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+    {
+        points1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = i });
+        points2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = 2 * i});
+    }
+
+    model.<span class="token function">AddSerie</span>(<span class="token string">"Line1"</span>, <span class="token class-name">Color</span>.Red, points1);
+    model.<span class="token function">AddSerie</span>(<span class="token string">"Line2"</span>, <span class="token class-name">Color</span>.Blue, points2);
+}
+            </code>
+        </pre>
+    </div>
+</p>

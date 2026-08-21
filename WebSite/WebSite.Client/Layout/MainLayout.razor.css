@@ -5,3 +5,15 @@
 main {
     max-height: calc(100dvh - 4rem);
 }
+
+nav {
+    background: white;
+    width: 100%;
+    cursor: pointer;
+    position: fixed;
+    overflow: auto;
+    z-index: 1000;
+    top: 4rem;
+    left: 0;
+    max-height: calc(100dvh - 4rem);
+}

@@ -4,7 +4,7 @@ namespace WebServer
 {
     public class Program
     {
-        private static uint Port;
+        private static uint port;
 
         public static void Main(string[] args)
         {
@@ -12,7 +12,7 @@ namespace WebServer
 
             WebApplicationBuilder builder = WebApplication.CreateBuilder();
             builder.WebHost.UseWebRoot("wwwroot")
-                           .UseUrls($"http://+:{Port}")
+                           .UseUrls($"http://+:{port}")
                            .UseStaticWebAssets();
             builder.Logging.ClearProviders();
             builder.Services.AddControllers();
@@ -52,8 +52,8 @@ namespace WebServer
                 {
                     switch (comand)
                     {
-                        case "port":
-                            uint.TryParse(arg, out Port);
+                        case nameof(port):
+                            uint.TryParse(arg, out port);
                             comand = null;
                             break;
                     }

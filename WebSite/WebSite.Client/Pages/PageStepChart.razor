@@ -1,4 +1,4 @@
-﻿@page "/linechart"
+﻿@page "/stepchart"
 
 <PageTitle>LineChart</PageTitle>
 
@@ -9,13 +9,13 @@
 </p>
 <div class="d-flex flex-wrap justify-content-center">
     <ChartCard Title="LineChart">
-        <LineChart Model="@model"></LineChart>
+        <StepChart Model="@model"></StepChart>
     </ChartCard>
     <ChartCard Title="LineChart with white background">
-        <LineChart Model="@model" Theme="@Theme.FromColor(Color.White)"></LineChart>
+        <StepChart Model="@model" Theme="@Theme.FromColor(Color.White)"></StepChart>
     </ChartCard>
     <ChartCard Title="LineChart without points">
-        <LineChart Model="@model" HidePoints></LineChart>
+        <StepChart Model="@model" HidePoints></StepChart>
     </ChartCard>
 </div>
 <p>
@@ -23,7 +23,7 @@
     <div class="w-100 small border">
         <pre class="language-csharp m-0">
             <code>
-&lt<span class="token tag bold">LineChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">HidePoints</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
+&lt<span class="token tag bold">StepChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">HidePoints</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
 
 @@{
     <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> model = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);

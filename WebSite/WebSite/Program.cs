@@ -11,8 +11,7 @@ namespace WebServer
             ReadParameters(args);
 
             WebApplicationBuilder builder = WebApplication.CreateBuilder();
-            builder.WebHost.UseWebRoot("wwwroot")
-                           .UseUrls($"http://+:{port}")
+            builder.WebHost.UseUrls($"http://+:{port}")
                            .UseStaticWebAssets();
             builder.Logging.ClearProviders();
             builder.Services.AddControllers();

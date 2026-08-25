@@ -1,21 +1,16 @@
-﻿@page "/stepchart"
+﻿@page "/scatterchart"
 
-<PageTitle>StepChart</PageTitle>
+<PageTitle>ScatterChart</PageTitle>
 
-<h3>Stepchart</h3>
+<h3>Scatterchart</h3>
 <p>
-    A step chart, is type of chart displays information as a series of data points called 'markers'. 
-    The measurement points are ordered (typically by their x-axis value) and joined with stepline segments.
+    A scatter chart is type of chart that show collection of points, 
+    each having the value of one variable determining the position on the horizontal axis
+    and the value of the other variable determining the position on the vertical axis.
 </p>
 <div class="d-flex flex-wrap justify-content-center">
-    <ChartCard Title="Stepchart">
-        <StepChart Model="@model"></StepChart>
-    </ChartCard>
-    <ChartCard Title="Stepchart with white background">
-        <StepChart Model="@model" Theme="@Theme.FromColor(Color.White)"></StepChart>
-    </ChartCard>
-    <ChartCard Title="Stepchart without points">
-        <StepChart Model="@model" HidePoints></StepChart>
+    <ChartCard Title="Scatterchart">
+        <ScatterChart Model="@model" Theme="@Theme.FromColor(Color.White)"></ScatterChart>
     </ChartCard>
 </div>
 <p>
@@ -23,7 +18,7 @@
     <div class="w-100 small border">
         <pre class="language-csharp m-0">
             <code>
-&lt<span class="token tag bold">StepChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">HidePoints</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
+&lt<span class="token tag bold">ScatterChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
 
 @@{
     <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> model = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);

@@ -1,0 +1,58 @@
+﻿@page "/verticalgauge"
+
+<PageTitle>Vertical Gauge</PageTitle>
+
+<h3>Vertical gauge</h3>
+<p>
+    A Vertical gauge uses a linear dial to show a single metric against a defined scale.
+    Like a speedometer, it features a needle or a fill bar that marks the current value within the range.
+    The gauge can be flipped horizontally and also be provided with breakpoints to give context to the represented value.
+</p>
+<div class="d-flex flex-wrap justify-content-center">
+    <ChartCard>
+        <table class="w-100">
+            <tr>
+                <td><VerticalGauge Model="@model1"></VerticalGauge></td>
+                <td><VerticalGauge Model="@model2" Reverse></VerticalGauge></td>
+                <td><VerticalGauge Model="@model3" Reverse></VerticalGauge></td>
+            </tr>
+        </table>
+    </ChartCard>
+</div>
+<p>
+    <h6>Code example</h6>
+    <div class="w-100 small border">
+        <pre class="language-csharp m-0">
+            <code>
+&lt<span class="token tag bold">VerticalGauge</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>
+            <span class="token property bold">Reverse</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
+
+@@{
+    <span class="token keyword">private</span> <span class="token property">Gaugegram</span> model = <span class="token keyword">new</span> <span class="token class-name">Gaugegram</span>(0, 500, <span class="token string">"Gauge-1"</span>, <span class="token class-name">Color</span>.Navy);
+    model.Value = 170;
+
+    <span class="token comment">//OPTIONAL: add breakpoints to set the gauge colors up to the desired value.</span>
+    model.<span class="token function">AddBreakpoint</span>()
+    {
+        Value = 150,
+        Color = <span class="token class-name">Color</span>.Green,
+        Label = <span class="token string">"LV-1"</span>
+    };
+    model.<span class="token function">AddBreakpoint</span>()
+    {
+        Value = 250,
+        Color = <span class="token class-name">Color</span>.Gold,
+        Label = <span class="token string">"LV-2"</span>
+    };
+    model.<span class="token function">AddBreakpoint</span>()
+    {
+        Value = 500,
+        Color = <span class="token class-name">Color</span>.Red,
+        Label = <span class="token string">"LV-3"</span>
+    };
+}
+            </code>
+        </pre>
+    </div>
+</p>
+

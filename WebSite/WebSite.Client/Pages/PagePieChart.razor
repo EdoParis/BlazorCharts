@@ -1,0 +1,38 @@
+﻿@page "/piechart"
+
+<PageTitle>PieChart</PageTitle>
+
+<h3>Piechart</h3>
+<p>
+    A pie chart is a circular chart which is divided into slices to illustrate numerical proportion.
+    In a pie chart, the arc length of each slice (and consequently its central angle and area) is proportional to the quantity it represents.
+</p>
+<div class="d-flex flex-wrap justify-content-center">
+    <ChartCard Title="Piechart">
+        <PieChart Model="@model" Theme="@Theme.FromColor(Color.White)" OnClick="@OnSliceClick"></PieChart>
+    </ChartCard>
+</div>
+<p>
+    <h6>Code example</h6>
+    <div class="w-100 small border">
+        <pre class="language-csharp m-0">
+            <code>
+&lt<span class="token tag bold">PieChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> 
+        <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
+
+@@{
+    <span class="token keyword">private</span> <span class="token property">Circulargram</span> model = <span class="token keyword">new</span> <span class="token class-name">Circulargram</span>(<span class="token string">"PolarChart-1"</span>);
+
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice1"</span>, 10, <span class="token class-name">Color</span>.Red);
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice2"</span>, 20, <span class="token class-name">Color</span>.Orange);
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice3"</span>, 30, <span class="token class-name">Color</span>.Green);
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnClickHandler</span>(<span class="token class-name">Slice</span> slice)
+    {
+        <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked slice</span> {slice.Label} <span class="token string">with value:</span> {slice.Value}<span class="token string">"</span>);
+    }
+}
+            </code>
+        </pre>
+    </div>
+</p>

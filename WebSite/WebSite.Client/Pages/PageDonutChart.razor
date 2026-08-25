@@ -1,0 +1,39 @@
+﻿@page "/donutchart"
+
+<PageTitle>DonutChart</PageTitle>
+
+<h3>Donutchart</h3>
+<p>
+    A donut chart is a visualization representing data in a circular form, with each point represented by a slice.
+    It looks like a pie chart with one essential difference: the center of the chart has been cut out to look like a donut.
+    This modification makes the chart more aesthetically pleasing and sweet.
+</p>
+<div class="d-flex flex-wrap justify-content-center">
+    <ChartCard Title="Donutchart">
+        <DonutChart Model="@model" Theme="@Theme.FromColor(Color.White)" OnClick="@OnSliceClick"></DonutChart>
+    </ChartCard>
+</div>
+<p>
+    <h6>Code example</h6>
+    <div class="w-100 small border">
+        <pre class="language-csharp m-0">
+            <code>
+&lt<span class="token tag bold">DonutChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> 
+        <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
+
+@@{
+    <span class="token keyword">private</span> <span class="token property">Circulargram</span> model = <span class="token keyword">new</span> <span class="token class-name">Circulargram</span>(<span class="token string">"PolarChart-1"</span>);
+
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice1"</span>, 10, <span class="token class-name">Color</span>.Red);
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice2"</span>, 20, <span class="token class-name">Color</span>.Orange);
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"Slice3"</span>, 30, <span class="token class-name">Color</span>.Green);
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnClickHandler</span>(<span class="token class-name">Slice</span> slice)
+    {
+        <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked slice</span> {slice.Label} <span class="token string">with value:</span> {slice.Value}<span class="token string">"</span>);
+    }
+}
+            </code>
+        </pre>
+    </div>
+</p>

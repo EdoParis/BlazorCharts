@@ -1,0 +1,41 @@
+﻿@page "/radarchart"
+
+<PageTitle>RadarChart</PageTitle>
+
+<h3>Radarchart</h3>
+<p>
+    A radar chart, also known as a spider chart, is a type of chart used to visualize multivariate data. 
+    The chart consists of a series of spokes radiating out from a central point, with each spoke representing a different variable. 
+    The data is plotted on each spoke using a line or area, and the end result looks like a spider web or star.
+</p>
+<div class="d-flex flex-wrap justify-content-center">
+    <ChartCard Title="Radarchart">
+        <RadarChart Model="@model1"></RadarChart>
+    </ChartCard>
+    <ChartCard Title="Radarchart with white background">
+        <RadarChart Model="@model2" Theme="@Theme.FromColor(Color.White)"></RadarChart>
+    </ChartCard>
+    <ChartCard Title="Radarchart with circular grid">
+        <RadarChart Model="@model3" Theme="@Theme.FromColor(Color.White)" Circular></RadarChart>
+    </ChartCard>
+</div>
+<p>
+    <h6>Code example</h6>
+    <div class="w-100 small border">
+        <pre class="language-csharp m-0">
+            <code>
+&lt<span class="token tag bold">RadarChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>
+            <span class="token property bold">Circular</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
+
+@@{
+    <span class="token keyword">private</span> <span class="token property">Radargram</span> model = <span class="token keyword">new</span> <span class="token class-name">Radargram</span>(<span class="token string">"RadarChart-1"</span>, <span class="token class-name">Color</span>.MediumVioletBlue);
+
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Rating</span>(<span class="token string">"R1"</span>, 10);
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Rating</span>(<span class="token string">"R2"</span>, 20);
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Rating</span>(<span class="token string">"R3"</span>, 30);
+    model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Rating</span>(<span class="token string">"R4"</span>, 15);
+}
+            </code>
+        </pre>
+    </div>
+</p>

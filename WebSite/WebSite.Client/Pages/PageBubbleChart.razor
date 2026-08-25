@@ -1,0 +1,40 @@
+﻿@page "/bubblechart"
+
+<PageTitle>BubbleChart</PageTitle>
+
+<h3>Bubblechart</h3>
+<p>
+    A bubble chart is type of chart that show collection of circles,
+    each defined by the coordinates of its center and its radius.
+</p>
+<div class="d-flex flex-wrap justify-content-center">
+    <ChartCard Title="Bubblechart">
+        <BubbleChart Model="@model" Theme="@Theme.FromColor(Color.White)"></BubbleChart>
+    </ChartCard>
+</div>
+<p>
+    <h6>Code example</h6>
+    <div class="w-100 small border">
+        <pre class="language-csharp m-0">
+            <code>
+&lt<span class="token tag bold">BubbleChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
+
+@@{
+    <span class="token keyword">private</span> <span class="token property">Bubblegram</span> model = <span class="token keyword">new</span> <span class="token class-name">Bubblegram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
+
+    <span class="token class-name">List</span>&lt<span class="token class-name">Bubblepoint</span>&gt bubbles1 = <span class="token keyword">new</span>();
+    <span class="token class-name">List</span>&lt<span class="token class-name">Bubblepoint</span>&gt bubbles2 = <span class="token keyword">new</span>();
+
+    <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+    {
+        bubbles1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bubblepoint</span>(){ X = i, Y = i, Value = 25 + i });
+        bubbles2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bubblepoint</span>(){ X = i, Y = 2 * i, Value = 10 + i});
+    }
+
+    model.<span class="token function">AddSerie</span>(<span class="token string">"Bubbles1"</span>, <span class="token class-name">Color</span>.MediumPurple, bubbles1);
+    model.<span class="token function">AddSerie</span>(<span class="token string">"Bubbles2"</span>, <span class="token class-name">Color</span>.OrangeRed, bubbles2);
+}
+            </code>
+        </pre>
+    </div>
+</p>

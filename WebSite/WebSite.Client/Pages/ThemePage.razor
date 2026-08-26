@@ -1,0 +1,143 @@
+﻿@page "/themes"
+
+<PageTitle>Themes</PageTitle>
+
+<h3>Themes</h3>
+<p>
+    All the charts, gauges and legends in the library can be associated with a theme to define their style.
+</p>
+<div class="d-flex flex-wrap justify-content-center">
+    <ChartCard Title="Dark histogram" Theme="@Theme.Dark">
+        <HistChart Model="@model" Theme="@Theme.Dark"></HistChart>
+    </ChartCard>
+    <ChartCard Title="Arctic histogram" Theme="@Theme.Arctic">
+        <HistChart Model="@model" Theme="@Theme.Arctic"></HistChart>
+    </ChartCard>
+    <ChartCard Title="Neon histogram" Theme="@Theme.Neon">
+        <HistChart Model="@model" Theme="@Theme.Neon"></HistChart>
+    </ChartCard>
+</div>
+<h6 class="mt-4">Properties</h6>
+<p>
+    The theme provides four properties for customization, each of which has a default behavior that is activated when this is <span class="token keyword font-monospace">null</span>,
+    so you only need to set the value for the ones you need.
+</p>
+<div class="overflow-auto mw-100 border">
+    <table class="table text-nowrap align-middle mb-0 bg-white">
+        <tr class="shadow-sm">
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default behaviour</th>
+        </tr>
+        <tr>
+            <td>BackGroundColor</td>
+            <td class="font-monospace"><span class="token property">Color</span>?</td>
+            <td>Chart area color</td>
+            <td class="font-monospace"><span class="token string">transparent</span></td>
+        </tr>
+        <tr>
+            <td>AxisColor</td>
+            <td class="font-monospace"><span class="token property">Color</span>?</td>
+            <td>Color of the chart axes</td>
+            <td class="font-monospace"><span class="token string">currentColor</span></td>
+        </tr>
+        <tr>
+            <td>TextColor</td>
+            <td class="font-monospace"><span class="token property">Color</span>?</td>
+            <td>Color of the text and tick labels of the chart</td>
+            <td class="font-monospace"><span class="token string">currentColor</span></td>
+        </tr>
+        <tr>
+            <td>FontFamily</td>
+            <td class="font-monospace"><span class="token keyword">string</span></td>
+            <td>Chart text font-family </td>
+            <td class="font-monospace"><span class="token string">inherit</span></td>
+        </tr>
+    </table>
+</div>
+<h6 class="mt-4">Default themes</h6>
+<div class="overflow-auto mw-100 border">
+    <table class="table text-nowrap align-middle mb-0 bg-white">
+        <tr class="shadow-sm">
+            <th></th>
+            <th>Light</th>
+            <th>Dark</th>
+            <th>Arctic</th>
+            <th>Beach</th>
+            <th>Neon</th>
+        </tr>
+        <tr>
+            <td>BackgroundColor</td>
+            <td><div class="border" style="height: 1.5em; background-color: #F8F9FA" title="RGB: (248, 249, 250)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #121214" title="RGB: (18, 18, 20)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #F0F4F8" title="RGB: (240, 244, 248)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #F3EFE0" title="RGB: (243, 239, 224)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #0A0A14" title="RGB: (10, 10, 20)"></div></td>
+        </tr>
+        <tr>
+            <td>AxisColor</td>
+            <td><div class="border" style="height: 1.5em; background-color: #212529" title="RGB: (33, 37, 41)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #F8F9FA" title="RGB: (248, 249, 250)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #94A3B8" title="RGB: (148, 163, 184)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #BEBEA0" title="RGB: (190, 190, 160)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #00C8E6" title="RGB: (0, 200, 230)"></div></td>
+        </tr>
+        <tr>
+            <td>TextColor</td>
+            <td><div class="border" style="height: 1.5em; background-color: #212529" title="RGB: (33, 37, 41)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #F8F9FA" title="RGB: (248, 249, 250)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #475569" title="RGB: (71, 85, 105)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #2A445E" title="RGB: (42, 68, 94)"></div></td>
+            <td><div class="border" style="height: 1.5em; background-color: #00F0FF" title="RGB: (0, 240, 255)"></div></td>
+        </tr>
+        <tr>
+            <td>FontFamily</td>
+            <td><span class="token keyword font-monospace">null</span></td>
+            <td><span class="token keyword font-monospace">null</span></td>
+            <td><span class="token keyword font-monospace">null</span></td>
+            <td><span class="token keyword font-monospace">null</span></td>
+            <td><span class="token keyword font-monospace">null</span></td>
+        </tr>
+    </table>
+</div>
+<p>
+    <h6>Code example</h6>
+    <div class="w-100 small border">
+        <pre class="language-csharp m-0">
+            <code>
+<span class="token comment">//Render chart and legend using a custom theme</span>
+&lt<span class="token tag bold">HistChart</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@hist_model<span class="token string">"</span>/&gt
+&lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@hist_model<span class="token string">"</span>/&gt
+
+<span class="token comment">//Or using a built-in static theme for both</span>
+&lt<span class="token tag bold">HistChart</span> <span class="token property bold">Theme</span><span class="token string">="</span><span class="token property">Theme</span>.Dark<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@hist_model<span class="token string">"</span>/&gt
+&lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Theme</span><span class="token string">="</span><span class="token property">Theme</span>.Dark<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@hist_model<span class="token string">"</span>/&gt
+
+@@{
+    <span class="token comment">//Define you theme.</span>
+    <span class="token keyword">private</span> <span class="token property">Theme</span> custom_theme = <span class="token keyword">new</span> <span class="token class-name">Theme</span>()
+    {
+        BackgroundColor = <span class="token property">Color</span>.Snow,
+        AxisColor = <span class="token property">Color</span>.DarkGray,
+        TextColor = <span class="token property">Color</span>.Black,
+        FontFamily = <span class="token keyword">null</span> <span class="token comment">//Font will be inherited</span>
+    };
+
+    <span class="token comment">//Fill model with data.</span>
+    <span class="token keyword">private</span> <span class="token property">Histogram</span> hist_model = <span class="token keyword">new</span> <span class="token class-name">Histogram</span>(<span class="token string">"Asse-X"</span>, <span class="token string">"Asse-Y"</span>, <span class="token class-name">Color</span>.LightSteelBlue, <span class="token class-name">Color</span>.MediumPurple);
+
+    <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+    {
+        hist_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bin</span>()
+        {
+            Min = i,
+            Max = i + 1,
+            Value = 10 + 3 * i
+        });
+    }
+}
+            </code>
+        </pre>
+    </div>
+</p>

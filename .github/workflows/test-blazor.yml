@@ -27,27 +27,7 @@ jobs:
       - name: Prepare GitHub Pages files
         run: |
           touch publish/wwwroot/.nojekyll
-
-          cat > publish/wwwroot/404.html <<'EOF'
-          <!DOCTYPE html>
-          <html lang="it">
-          <head>
-              <meta charset="utf-8">
-              <script>
-                  sessionStorage.redirect = location.href;
-
-                  location.replace(
-                      location.origin +
-                      location.pathname.split('/').slice(0, -1).join('/') +
-                      '/'
-                  );
-              </script>
-          </head>
-          <body>
-              <p>Reindirizzamento...</p>
-          </body>
-          </html>
-          EOF
+          cp publish/wwwroot/index.html publish/wwwroot/404.html
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4

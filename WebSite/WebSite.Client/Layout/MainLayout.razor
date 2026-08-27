@@ -12,17 +12,17 @@
         <div class="col">
             <h5 class="bi-graph-up text-truncate"> Cartesians</h5>
             <ul class="list-group list-group-flush border-top border-bottom mb-3">
-                <a class="list-group-item list-group-item-action" href="linechart" @onclick="@OnHideMenu">Linechart</a>
-                <a class="list-group-item list-group-item-action" href="stepchart" @onclick="@OnHideMenu">Stepchart</a>
-                <a class="list-group-item list-group-item-action" href="scatterchart" @onclick="@OnHideMenu">Scatterchart</a>
-                <a class="list-group-item list-group-item-action" href="bubblechart" @onclick="@OnHideMenu">Bubblechart</a>
+                <a class="list-group-item @(CurrentPage == PageEnum.LineChart ? "disabled" : "list-group-item-action")" href="linechart" @onclick="@(() => OnPage(PageEnum.LineChart))">Linechart</a>
+                <a class="list-group-item @(CurrentPage == PageEnum.StepChart ? "disabled" : "list-group-item-action")" href="stepchart" @onclick="@(() => OnPage(PageEnum.StepChart))">Stepchart</a>
+                <a class="list-group-item @(CurrentPage == PageEnum.ScatterChart ? "disabled" : "list-group-item-action")" href="scatterchart" @onclick="@(() => OnPage(PageEnum.ScatterChart))">Scatterchart</a>
+                <a class="list-group-item @(CurrentPage == PageEnum.BubbleChart ? "disabled" : "list-group-item-action")" href="bubblechart" @onclick="@(() => OnPage(PageEnum.BubbleChart))">Bubblechart</a>
             </ul>
             <h5 class="bi-pie-chart text-truncate"> Circular</h5>
             <ul class="list-group list-group-flush border-top border-bottom">
-                <a class="list-group-item list-group-item-action" href="piechart" @onclick="@OnHideMenu">Piechart</a>
-                <a class="list-group-item list-group-item-action" href="donutchart" @onclick="@OnHideMenu">Donutchart</a>
-                <a class="list-group-item list-group-item-action" href="polarareachart" @onclick="@OnHideMenu">PolarAreachart</a>
-                <a class="list-group-item list-group-item-action" href="radarchart" @onclick="@OnHideMenu">Radarchart</a>
+                <a class="list-group-item @(CurrentPage == PageEnum.PieChart ? "disabled" : "list-group-item-action")" href="piechart" @onclick="@(() => OnPage(PageEnum.PieChart))">Piechart</a>
+                <a class="list-group-item @(CurrentPage == PageEnum.DonutChart ? "disabled" : "list-group-item-action")" href="donutchart" @onclick="@(() => OnPage(PageEnum.DonutChart))">Donutchart</a>
+                <a class="list-group-item @(CurrentPage == PageEnum.PolarAreaChart ? "disabled" : "list-group-item-action")" href="polarareachart" @onclick="@(() => OnPage(PageEnum.PolarAreaChart))">PolarAreachart</a>
+                <a class="list-group-item @(CurrentPage == PageEnum.RadarChart ? "disabled" : "list-group-item-action")" href="radarchart" @onclick="@(() => OnPage(PageEnum.RadarChart))">Radarchart</a>
             </ul>
         </div>
         <div class="col">
@@ -30,18 +30,18 @@
                 <div>
                     <h5 class="bi-bar-chart text-truncate"> Bars</h5>
                     <ul class="list-group list-group-flush border-top border-bottom mb-3">
-                        <a class="list-group-item list-group-item-action" href="histogram" @onclick="@OnHideMenu">Histogram</a>
-                        <a class="list-group-item list-group-item-action" href="verticalbarchart" @onclick="@OnHideMenu">Vertical barchart</a>
-                        <a class="list-group-item list-group-item-action" href="horizontalbarchart" @onclick="@OnHideMenu">Horizontal barchart</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.Histogram ? "disabled" : "list-group-item-action")" href="histogram" @onclick="@(() => OnPage(PageEnum.Histogram))">Histogram</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.VerticalBarChart ? "disabled" : "list-group-item-action")" href="verticalbarchart" @onclick="@(() => OnPage(PageEnum.VerticalBarChart))">Vertical barchart</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.HorizontalBarChart ? "disabled" : "list-group-item-action")" href="horizontalbarchart" @onclick="@(() => OnPage(PageEnum.HorizontalBarChart))">Horizontal barchart</a>
                     </ul>
                 </div>
                 <div>
                     <h5 class="bi-speedometer2 text-truncate"> Gauges</h5>
                     <ul class="list-group list-group-flush border-top border-bottom">
-                        <a class="list-group-item list-group-item-action" href="horizontalgauge" @onclick="@OnHideMenu">Horizontal</a>
-                        <a class="list-group-item list-group-item-action" href="verticalgauge" @onclick="@OnHideMenu">Vertical</a>
-                        <a class="list-group-item list-group-item-action" href="semicirclegauge" @onclick="@OnHideMenu">Semicircle</a>
-                        <a class="list-group-item list-group-item-action" href="speedometer" @onclick="@OnHideMenu">Speedometer</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.HorizontalGauge ? "disabled" : "list-group-item-action")" href="horizontalgauge" @onclick="@(() => OnPage(PageEnum.HorizontalGauge))">Horizontal</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.VerticalGauge ? "disabled" : "list-group-item-action")" href="verticalgauge" @onclick="@(() => OnPage(PageEnum.VerticalGauge))">Vertical</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.SemicircleGauge ? "disabled" : "list-group-item-action")" href="semicirclegauge" @onclick="@(() => OnPage(PageEnum.SemicircleGauge))">Semicircle</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.Speedometer ? "disabled" : "list-group-item-action")" href="speedometer" @onclick="@(() => OnPage(PageEnum.Speedometer))">Speedometer</a>
                     </ul>
                 </div>
             </div>
@@ -51,22 +51,22 @@
                 <div>
                     <h5 class="text-truncate bi-list"> Other</h5>
                     <ul class="list-group list-group-flush border-top border-bottom mb-3">
-                        <a class="list-group-item list-group-item-action" href="legendbar" @onclick="@OnHideMenu">Legend</a>
-                        <a class="list-group-item list-group-item-action" href="themes" @onclick="@OnHideMenu">Themes</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.LegendBar ? "disabled" : "list-group-item-action")" href="legendbar" @onclick="@(() => OnPage(PageEnum.LegendBar))">Legend</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.Themes ? "disabled" : "list-group-item-action")" href="themes" @onclick="@(() => OnPage(PageEnum.Themes))">Themes</a>
                     </ul>
                 </div>
                 <div>
                     <h5 class="text-truncate bi-journals"> About</h5>
                     <ul class="list-group list-group-flush border-top border-bottom">
-                        <a class="list-group-item list-group-item-action" href="roadmap" @onclick="@OnHideMenu">Roadmap</a>
-                        <a class="list-group-item list-group-item-action" href="changelog" @onclick="@OnHideMenu">Changelog</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.Roadmap ? "disabled" : "list-group-item-action")" href="roadmap" @onclick="@(() => OnPage(PageEnum.Roadmap))">Roadmap</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.Changelog ? "disabled" : "list-group-item-action")" href="changelog" @onclick="@(() => OnPage(PageEnum.Changelog))">Changelog</a>
                         <a class="list-group-item list-group-item-action" href="https://github.com/sponsors/EdoParis"><span class="bi-heart-fill text-danger pulse-animation my-auto"></span> Support</a>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <h5 class="d-flex justify-content-end mt-3" @onclick="@OnHideMenu"><a href="#">Home <span class="bi-house"></span></a></h5>
+    <h5 class="d-flex justify-content-end mt-3" @onclick="@(() => OnPage(PageEnum.Home))"><a href="#">Home <span class="bi-house"></span></a></h5>
 </nav>
 <main class="row overflow-auto bg-light h-100 p-3">
     <div class="col">

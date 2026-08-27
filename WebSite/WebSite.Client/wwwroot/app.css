@@ -8,9 +8,12 @@ a {
     text-decoration: none !important;
     color: black;
 }
-
     a:link {
         color: black;
+    }
+
+    a:hover {
+        color: royalblue !important;
     }
 
     a:visited {
@@ -23,4 +26,19 @@ a {
 
 .h-stretch {
     height: stretch !important;
+}
+
+.pulse-animation {
+    animation: pulse alternate infinite 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
 }

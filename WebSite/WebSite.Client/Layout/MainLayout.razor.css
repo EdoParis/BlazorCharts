@@ -9,7 +9,7 @@ main {
 nav {
     background: white;
     width: 100%;
-    cursor: pointer;
+    cursor: default;
     position: fixed;
     overflow: auto;
     z-index: 1000;

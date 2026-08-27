@@ -1,0 +1,56 @@
+name: Test Blazor WebAssembly
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: feature/demo-live
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publish Blazor WebAssembly
+        run: dotnet publish WebSite/WebSite.Client/WebApp.csproj -c Release -o publish
+
+      - name: Prepare GitHub Pages files
+        run: |
+          touch publish/wwwroot/.nojekyll
+
+          cat > publish/wwwroot/404.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="it">
+          <head>
+              <meta charset="utf-8">
+              <script>
+                  sessionStorage.redirect = location.href;
+
+                  location.replace(
+                      location.origin +
+                      location.pathname.split('/').slice(0, -1).join('/') +
+                      '/'
+                  );
+              </script>
+          </head>
+          <body>
+              <p>Reindirizzamento...</p>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: blazor-site
+          path: ./publish/wwwroot

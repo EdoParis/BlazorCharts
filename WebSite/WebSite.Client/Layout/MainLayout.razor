@@ -69,7 +69,7 @@
     <h5 class="d-flex justify-content-end mt-3" @onclick="@(() => OnPage(PageEnum.Home))"><a href="#">Home <span class="bi-house"></span></a></h5>
 </nav>
 <main class="row overflow-auto bg-light h-100 p-3">
-    <div class="col">
+    <div class="col fadein-animation" @key="@CurrentPage">
         @Body
     </div>
 </main>

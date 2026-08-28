@@ -32,6 +32,14 @@ a {
     animation: pulse alternate infinite 0.5s ease-in-out;
 }
 
+.spin-animation {
+    animation: spin infinite 2s linear;
+}
+
+.fadein-animation {
+    animation: fadein 0.5s ease-in;
+}
+
 @keyframes pulse {
 
     0% {
@@ -40,5 +48,27 @@ a {
 
     100% {
         opacity: 0.5;
+    }
+}
+
+@keyframes fadein{
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

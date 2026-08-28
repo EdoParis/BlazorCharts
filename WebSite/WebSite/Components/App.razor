@@ -15,7 +15,10 @@
 </head>
 
 <body id="app" class="container-fluid vh-100">
-    <Routes @rendermode="InteractiveWebAssembly" />
+    <Routes @rendermode="new InteractiveWebAssemblyRenderMode(prerender: false)" />
+    <div class="d-flex justify-content-center">
+        <img class="m-5 pulse-animation" style="width: 10rem" src="icon.png" />
+    </div>
     <script src="_framework/blazor.web.js"></script>
 </body>
 

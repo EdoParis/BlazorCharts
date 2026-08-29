@@ -55,7 +55,7 @@ namespace BlazorGraphs.Components
 
             foreach (Rating rating in Model)
             {
-                double r = radius / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
+                double r = radius * (Math.Min(width, height) - 2 * padding) / 2;
                 double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
                 double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
 

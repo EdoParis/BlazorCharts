@@ -16,7 +16,7 @@
     else
     {
         int tr = 0;
-        foreach (double tick in Model.AxisR.Ticks(5))
+        foreach (Tick tick in Model.AxisR.Ticks())
         {
             if (tr > 0 && tr % 5 == 0)
             {
@@ -27,9 +27,9 @@
                         vector-effect="non-scaling-stroke"
                         cx="@((width / 2))"
                         cy="@((height / 2))"
-                        r="@((int)(tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" />
+                        r="@((int)(tick.RelativePosition * (Math.Min(width, height) / 2 - padding)))" />
 
-                @LayoutTicks.At(width / 2, (int)(height / 2 - (height / 2 - padding) * tick / Model.AxisR.Size)).Render(tick)
+                @LayoutTicks.At(width / 2, (int)(height / 2 - (height / 2 - padding) * tick.RelativePosition)).Render(tick.Label)
             }
             tr++;
         }

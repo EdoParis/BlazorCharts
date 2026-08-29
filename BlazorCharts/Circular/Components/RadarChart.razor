@@ -33,7 +33,7 @@
         }
 
         int tr = 0;
-        foreach (double tick in Model.AxisR.Ticks(5))
+        foreach (Tick tick in Model.AxisR.Ticks())
         {
             if (tr > 0 && tr % 5 == 0)
             {
@@ -46,7 +46,7 @@
                             vector-effect="non-scaling-stroke"
                             cx="@((width / 2))"
                             cy="@((height / 2))"
-                            r="@((int)(tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding)))" />
+                            r="@((int)(tick.RelativePosition * (Math.Min(width, height) / 2 - padding)))" />
                 }
                 else
                 {
@@ -55,9 +55,9 @@
                           stroke-width="1px"
                           stroke-opacity="0.3"
                           vector-effect="non-scaling-stroke"
-                          d="@Path(tick)"/>
+                          d="@Path(tick.RelativePosition)"/>
                 }
-                @LayoutTicks.At(width / 2, (int)(height / 2 - tick / Model.AxisR.Size * (Math.Min(width, height) / 2 - padding))).Render(tick.ToString());
+                @LayoutTicks.At(width / 2, (int)(height / 2 - tick.RelativePosition * (Math.Min(width, height) / 2 - padding))).Render(tick.Label);
             }
             tr++;
         }

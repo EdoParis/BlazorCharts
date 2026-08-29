@@ -57,43 +57,6 @@
             is_default = false;
         }
 
-        [Obsolete]
-        public IEnumerable<double> Ticks(int multiple)
-        {
-            ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(multiple, 0);
-            List<double> ticks = new List<double>();
-
-            if (Max != Min)
-            {
-                int step = (int)(Size / multiple);
-
-                if (step % multiple > multiple / 2)
-                    step = step - step % multiple + multiple;
-                else
-                    step = step - step % multiple;
-
-                if (step <= 0)
-                    step = 1;
-
-                for (double t = Min - Min % multiple; t <= Max; t += step)
-                {
-                    double? last_tick = null;
-
-                    for (int i = 0; i < multiple; i++)
-                    {
-                        double tick = (int)(t + i * step / multiple);
-
-                        if (tick != last_tick && range.Contains(tick))
-                        {
-                            ticks.Add(tick);
-                            last_tick = tick;
-                        }
-                    }
-                }
-            }
-            return ticks;
-        }
-
         public IEnumerable<Tick> Ticks()
         {
             List<Tick> ticks = new List<Tick>();

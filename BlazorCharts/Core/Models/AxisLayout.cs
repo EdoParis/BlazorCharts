@@ -308,7 +308,7 @@ namespace BlazorGraphs.Core
                     int startpoint_x = (int)Math.Round(Center.X - Radius * Math.Cos(StartingAngle));
                     int startpoint_y = (int)Math.Round(Center.Y - Radius * Math.Sin(StartingAngle));
                     int endpoint_x = (int)Math.Round(Center.X - Radius * Math.Cos(EndingAngle));
-                    int endpoint_y = (int)Math.Round(Center.X - Radius * Math.Sin(EndingAngle));
+                    int endpoint_y = (int)Math.Round(Center.Y - Radius * Math.Sin(EndingAngle));
 
                     builder.OpenElement(0, "path");
                     builder.AddAttribute(1, "fill", "none");

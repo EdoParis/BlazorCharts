@@ -80,7 +80,7 @@ This renders a fully interactive SVG histogram.
 <HistChart Model="@model"></HistChart>
 
 @{
-    Histogram model = new Histogram("asseX", "asseY", KnownColor.CadetBlue);
+    Histogram model = new Histogram("asseX", "asseY", Color.CadetBlue);
 
     for (int i = 0; i < 10; i++)
     {
@@ -99,7 +99,7 @@ This renders a fully interactive SVG vertical barchart, with negative bars color
 <VerticalBarChart Model="@model"/>
 
 @{
-    Bargram model = new Bargram("asseY", KnownColor.RoyalBlue, KnownColor.OrangeRed);
+    Bargram model = new Bargram("asseY", Color.RoyalBlue, Color.OrangeRed);
 
     for (int i = 0; i < 10; i++)
     {
@@ -135,10 +135,10 @@ This renders a fully interactive SVG linechart, scatterchart and stepchart, all 
         points4.Add(new Datapoint(i, i + 4));
     }
 
-    model.AddSerie("F1", KnownColor.LimeGreen, points1);
-    model.AddSerie("F2", KnownColor.OrangeRed, points2);
-    model.AddSerie("F3", KnownColor.CadetBlue, points3);
-    model.AddSerie("F4", KnownColor.DodgerBlue, points4);
+    model.AddSerie("F1", Color.LimeGreen, points1);
+    model.AddSerie("F2", Color.OrangeRed, points2);
+    model.AddSerie("F3", Color.CadetBlue, points3);
+    model.AddSerie("F4", Color.DodgerBlue, points4);
 }
 ```
 
@@ -148,24 +148,24 @@ This renders a fully interactive SVG horizontal gauge, the breakpoints are optio
 <HorizontalGauge Theme="@Theme.Arctic" Model="@model" Reverse="false"/>
 
 @{
-    Gaugegram model = new Gaugegram(0, 500, "G1", KnownColor.Navy);
+    Gaugegram model = new Gaugegram(0, 500, "G1", Color.Navy);
     model.Value = 175;
     model.AddBreakpoint(new Breakpoint()
     {
         Value = 150,
-        Color = KnownColor.Green,
+        Color = Color.Green,
         Label = "LV-1"
     });
     model.AddBreakpoint(new Breakpoint()
     {
         Value = 250,
-        Color = KnownColor.Gold,
+        Color = Color.Gold,
         Label = "LV-2"
     });
     model.AddBreakpoint(new Breakpoint()
     {
         Value = 500,
-        Color = KnownColor.Red,
+        Color = Color.Red,
         Label = "LV-3"
     });
 }

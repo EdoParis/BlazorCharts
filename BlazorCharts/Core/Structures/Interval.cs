@@ -22,22 +22,6 @@
             Size = Max - Min;
         }
 
-        public Interval(IEnumerable<int> values)
-        {
-            Min = values.FirstOrDefault();
-            Max = values.FirstOrDefault();
-
-            foreach (double val in values)
-            {
-                if (val < Min)
-                    Min = val;
-
-                if (val > Max)
-                    Max = val;
-            }
-            Size = Max - Min;
-        }
-
         public Interval(IEnumerable<double> values)
         {
             Min = values.FirstOrDefault();
@@ -51,22 +35,13 @@
                 if (val > Max)
                     Max = val;
             }
-            Size = Max - Min;
-        }
 
-        public Interval(IEnumerable<float> values)
-        {
-            Min = values.FirstOrDefault();
-            Max = values.FirstOrDefault();
-
-            foreach (double val in values)
+            if (Min == Max)
             {
-                if (val < Min)
-                    Min = val;
-
-                if (val > Max)
-                    Max = val;
+                Min -= 1;
+                Max += 1;
             }
+
             Size = Max - Min;
         }
 

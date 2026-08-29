@@ -30,6 +30,8 @@ namespace BlazorGraphs.Core
 
         public void AddRange(IEnumerable<T> values)
         {
+            ArgumentNullException.ThrowIfNull(values);
+
             foreach (T value in values)
             {
                 ExceptionUtils.ThrowIfInvalid(value);

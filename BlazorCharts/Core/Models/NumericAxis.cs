@@ -110,7 +110,7 @@
                 if (step <= 0)
                     step = 1;
 
-                for (double t = Min - Min % multiple; t <= Max; t += step)
+                for (double t = Min - Math.Abs(Min % multiple); t <= Max; t += step)
                 {
                     double? last_tick = null;
 

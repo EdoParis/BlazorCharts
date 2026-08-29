@@ -53,10 +53,10 @@ namespace BlazorGraphs
             ExceptionUtils.ThrowIfInvalid(bin);
             IsEmpty = false;
             bins.Add(bin);
-            AxisX.Update(bin.Min);
-            AxisX.Update(bin.Max);
-            AxisY.Update(0);
-            AxisY.Update(bin.Value);
+            AxisX.Include(bin.Min);
+            AxisX.Include(bin.Max);
+            AxisY.Include(0);
+            AxisY.Include(bin.Value);
         }
 
         public void AddRange(IEnumerable<Bin> collection)

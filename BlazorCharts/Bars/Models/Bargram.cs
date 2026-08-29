@@ -57,10 +57,10 @@ namespace BlazorGraphs
                 Value = bar.Value
             };
             bars.Add(KeyValuePair.Create(bar.Label, bin));
-            BinAxis.Update(0);
-            BinAxis.Update(bin.Max + 1);
-            ValAxis.Update(0);
-            ValAxis.Update(bin.Value);
+            BinAxis.Include(0);
+            BinAxis.Include(bin.Max + 1);
+            ValAxis.Include(0);
+            ValAxis.Include(bin.Value);
         }
 
         public void AddRange(IEnumerable<Bar> collection)

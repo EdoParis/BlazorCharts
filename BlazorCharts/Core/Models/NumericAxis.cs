@@ -28,7 +28,7 @@
             return range.Contains(value);
         }
 
-        public void Update(double value)
+        public void Include(double value)
         {
             if (double.IsNaN(value) || double.IsInfinity(value))
                 throw new ArgumentOutOfRangeException(nameof(value));
@@ -45,7 +45,7 @@
             is_default = false;
         }
 
-        public void Update(Interval r)
+        public void Include(Interval r)
         {
             if (is_default)
                 range = r;

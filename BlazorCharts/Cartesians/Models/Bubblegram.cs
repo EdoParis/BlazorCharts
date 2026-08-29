@@ -44,9 +44,9 @@ namespace BlazorGraphs
             };
             serie.AddRange(points);
             series.Add(serie);
-            AxisX.Update(new Interval(points?.Select(p => p.X)));
-            AxisY.Update(new Interval(points?.Select(p => p.Y)));
-            AxisB.Update(new Interval(points?.Select(p => p.Radius)));
+            AxisX.Include(Interval.From(points.Select(p => p.X)));
+            AxisY.Include(Interval.From(points.Select(p => p.Y)));
+            AxisB.Include(Interval.From(points.Select(p => p.Radius)));
             IsEmpty = IsEmpty && serie.IsEmpty;
         }
 

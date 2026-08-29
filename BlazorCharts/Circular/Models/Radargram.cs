@@ -32,8 +32,8 @@ namespace BlazorGraphs
         {
             ExceptionUtils.ThrowIfInvalid(rating);
             Data.Add(rating);
-            AxisR.Update(0);
-            AxisR.Update((int)(rating.Value / 25 + 1) * 25);
+            AxisR.Include(0);
+            AxisR.Include((int)(rating.Value / 25 + 1) * 25);
             IsEmpty = false;
         }
 

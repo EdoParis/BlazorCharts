@@ -22,27 +22,26 @@
             Size = Max - Min;
         }
 
-        public Interval(IEnumerable<double> values)
+        public static Interval From(IEnumerable<double> values)
         {
-            Min = values.FirstOrDefault();
-            Max = values.FirstOrDefault();
+            double min = values.FirstOrDefault();
+            double max = values.FirstOrDefault();
 
             foreach (double val in values)
             {
-                if (val < Min)
-                    Min = val;
+                if (val < min)
+                    min = val;
 
-                if (val > Max)
-                    Max = val;
+                if (val > max)
+                    max = val;
             }
 
-            if (Min == Max)
+            if (min == max)
             {
-                Min -= 1;
-                Max += 1;
+                min -= 1;
+                max += 1;
             }
-
-            Size = Max - Min;
+            return new Interval(min, max);
         }
 
         public bool Contains(double value)

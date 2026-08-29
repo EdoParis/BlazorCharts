@@ -32,8 +32,8 @@ namespace BlazorGraphs
         {
             ExceptionUtils.ThrowIfInvalid(slice);
             slices.Add(slice);
-            AxisR.Update(0);
-            AxisR.Update((int)(slice.Value / 25 + 1) * 25);
+            AxisR.Include(0);
+            AxisR.Include((int)(slice.Value / 25 + 1) * 25);
             Total += slice.Value;
             IsEmpty = Total == 0;
         }

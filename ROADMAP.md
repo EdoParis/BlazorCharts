@@ -9,6 +9,7 @@ Legend symbols:
 ## Short term
 * ⭐ Website redesign for live demos
 * ⭐ Customizable tooltip
+* 🟩 Time axis
 * 🟩 Spline chart
 * 🟩 Polarline chart
 * 🟩 Polarstep chart

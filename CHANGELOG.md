@@ -24,6 +24,7 @@ Legend symbols:
 * 🟨 Renamed LinearGauge as HorizontalGauge
 * 🟨 Removed obsolete component LegendBar
 * 🟨 Removed enums
+* 🟥 Fix zero size axis-interval
 
 ## Version 2.4
 * 🟩 Vertical gauge

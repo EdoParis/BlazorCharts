@@ -20,6 +20,10 @@ a {
         color: black;
     }
 
+.text-purple {
+    color: #6f42c1 !important;
+}
+
 .fit-content {
     width: fit-content;
 }

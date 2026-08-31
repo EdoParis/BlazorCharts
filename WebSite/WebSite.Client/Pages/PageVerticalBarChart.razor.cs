@@ -1,41 +1,48 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorGraphs;
+using Microsoft.AspNetCore.Components;
+using System;
 using System.Drawing;
-using BlazorGraphs;
 
 namespace WebApp.Pages
 {
     public partial class PageVerticalBarChart : ComponentBase
     {
         private Bargram model1;
-        private Bargram model2;
-        private Bargram model3;
+        private Random random;
+        private Double offset;
 
         protected override void OnInitialized()
         {
-            model1 = new Bargram("Axis-2", Color.MediumPurple);
-            model2 = new Bargram("Axis-2", Color.MediumPurple);
-            model3 = new Bargram("Axis-2", Color.MediumOrchid, Color.MediumSlateBlue);
+            random = new Random();
+            offset = Math.Round(50 * (2 * random.NextDouble() - 1));
+            model1 = new Bargram("Axis-2", Color.MediumPurple, Color.CadetBlue);
 
-            for (int i = 5; i < 15; i++)
+            for (int i = 0; i < 10; i++)
             {
                 model1.Add(new Bar()
                 {
                     Label = DateOnly.FromDateTime(DateTime.Now).AddDays(i).ToString("dd/MM"),
-                    Value = 200 - i * i
-                });
-
-                model2.Add(new Bar()
-                {
-                    Label = DateOnly.FromDateTime(DateTime.Now).AddDays(i).ToString("dd/MM"),
-                    Value = -i * i
-                });
-
-                model3.Add(new Bar()
-                {
-                    Label = DateOnly.FromDateTime(DateTime.Now).AddDays(i).ToString("dd/MM"),
-                    Value = 90 - i * i
+                    Value = Math.Round(offset * Math.Cos(model1.BarsCount / 3d))
                 });
             }
+        }
+
+        private void OnChartClear()
+        {
+            model1?.Clear();
+            offset = Math.Round(50 * (2 * random.NextDouble() - 1));
+        }
+
+        private void OnBarAdd()
+        {
+            if (model1 is null)
+                return;
+
+            model1.Add(new Bar()
+            {
+                Value = Math.Round(offset * Math.Cos(model1.BarsCount / 3d)),
+                Label = DateOnly.FromDateTime(DateTime.Now).AddDays(model1.BarsCount).ToString("dd/MM")
+            });
         }
 
         private void OnBarClick(Bar bar)

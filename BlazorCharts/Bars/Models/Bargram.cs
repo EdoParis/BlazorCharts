@@ -11,8 +11,8 @@ namespace BlazorGraphs
         internal NumericAxis ValAxis { get; private set; }
         internal bool IsEmpty { get; private set; }
         public string Title { get; private set; }
-        public Color PrimaryColor { get; private set; }
-        public Color SecondaryColor { get; private set; }
+        public Color PrimaryColor { get; set; }
+        public Color SecondaryColor { get; set; }
         public int BarsCount { get => bars?.Count ?? default; }
 
         public Bargram(string title_y, Color color)

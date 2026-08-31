@@ -10,8 +10,8 @@ namespace BlazorGraphs
         internal NumericAxis AxisX { get; private set; }
         internal NumericAxis AxisY { get; private set; }
         internal bool IsEmpty { get; private set; }
-        public Color PrimaryColor { get; private set; }
-        public Color SecondaryColor { get; private set; }
+        public Color PrimaryColor { get; set; }
+        public Color SecondaryColor { get; set; }
         public string TitleX { get; private set; }
         public string TitleY { get; private set; }
         public int BinsCount { get => bins?.Count ?? default; }

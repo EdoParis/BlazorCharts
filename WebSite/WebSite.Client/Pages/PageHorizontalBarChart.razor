@@ -8,22 +8,29 @@
     Levels are plotted on one chart axis, and values are plotted on the other axis.
     Each categorical value claims one bar, and the length of each bar corresponds to the bar’s value
 </p>
-<div class="d-flex flex-wrap justify-content-center">
-    <ChartCard Title="Horizontal barchart">
-        <HorizontalBarChart Model="@model1" OnClick="OnBarClick"></HorizontalBarChart>
-    </ChartCard>
-    <ChartCard Title="Bicolored barchart">
-        <HorizontalBarChart Model="@model3" OnClick="OnBarClick"></HorizontalBarChart>
-    </ChartCard>
-    <ChartCard Title="Negative barchart">
-        <HorizontalBarChart Model="@model2" OnClick="OnBarClick"></HorizontalBarChart>
-    </ChartCard>
-</div>
-<p>
-    <h6>Code example</h6>
-    <div class="w-100 small border">
-        <pre class="language-csharp m-0">
-            <code>
+<div class="row row-cols-1 row-cols-md-2">
+    <div class="col">
+        <div class="card mx-auto fit-content overflow-hidden mb-3">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-6 col-form-label">Primary color</div>
+                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.PrimaryColor.ToHex())" @onchange="@((e) => model1.PrimaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6 col-form-label">Secondary color</div>
+                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.SecondaryColor.ToHex())" @onchange="@((e) => model1.SecondaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-12">
+                        <HorizontalBarChart Model="@model1" OnClick="OnBarClick"></HorizontalBarChart>
+                    </div>
+                    <div class="col-6"><button type="button" class="btn btn-danger w-100" @onclick="OnChartClear">Clear</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-primary w-100" @onclick="OnBarAdd">Add Bar</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <h6>Code example</h6>
+        <div class="w-100 small border">
+            <pre class="language-csharp m-0">
+                <code>
 &lt<span class="token tag bold">HorizontalBarChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
 
 @@{
@@ -44,7 +51,8 @@
         <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked bar with label:</span> {bar.Label}<span class="token string">"</span>);
     }
 }
-            </code>
-        </pre>
+                </code>
+            </pre>
+        </div>
     </div>
-</p>
+</div>

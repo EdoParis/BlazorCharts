@@ -9,7 +9,7 @@ namespace BlazorGraphs
         private List<Rating> Data;
         internal NumericAxis AxisR { get; private set; }
         internal bool IsEmpty { get; private set; }
-        public Color Color { get; private set; }
+        public Color Color { get; set; }
         public string Title { get; private set; }
         public int Categories { get => Data?.Count ?? default; }
 
@@ -26,6 +26,7 @@ namespace BlazorGraphs
         {
             Data.Clear();
             IsEmpty = true;
+            AxisR = new NumericAxis();
         }
 
         public void Add(Rating rating)

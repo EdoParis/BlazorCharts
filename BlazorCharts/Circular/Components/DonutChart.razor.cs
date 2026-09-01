@@ -17,11 +17,13 @@ namespace BlazorGraphs.Components
         private int padding = PADDING;
         private TextLayout LayoutSliceValue;
         private TextLayout LayoutTotalValue;
+        private TextLayout LayoutTextTitle;
 
         protected override void OnParametersSet()
         {
             LayoutSliceValue.WithTheme(Theme);
             LayoutTotalValue.WithTheme(Theme);
+            LayoutTextTitle.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
@@ -34,6 +36,11 @@ namespace BlazorGraphs.Components
                                          .WithTheme(Theme)
                                          .Large()
                                          .At(height / 2, width / 2);
+
+            LayoutTextTitle = TextLayout.MiddleLayout()
+                                        .Medium()
+                                        .At(width / 2, padding / 5)
+                                        .WithTheme(Theme);
         }
 
         private string SlicePath(Slice slice, double rotation = 0)

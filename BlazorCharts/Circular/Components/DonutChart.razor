@@ -25,8 +25,6 @@
     }
     else
     {
-        @LayoutTotalValue.Render(Model.Total);
-
         double progress = 0;
         foreach (Slice slice in Model)
         {
@@ -51,5 +49,7 @@
                 progress += slice.Value / Model.Total;
             }
         }
+        @LayoutTextTitle.Render(Model.Title);
+        @LayoutTotalValue.Render(Model.Total);
     }
 </svg>

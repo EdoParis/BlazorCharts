@@ -10,7 +10,7 @@ namespace BlazorGraphs
         internal bool IsEmpty { get; private set; }
         public double Total { get; private set; }
         public int SlicesCount { get => slices?.Count ?? default; }
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
         public Circulargram(string title = null)
         {

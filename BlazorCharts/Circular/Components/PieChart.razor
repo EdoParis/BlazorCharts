@@ -35,9 +35,10 @@
                                       SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                       SliceExternalPoint(slice, 2 * Math.PI * progress);
 
-                @LayoutSliceValue.At(text_position).Render(slice.Value);
+                @LayoutTextSlice.At(text_position).Render(slice.Value);
                 progress += slice.Value / Model.Total;
             }
         }
+        @LayoutTextTitle.Render(Model.Title)
     }
 </svg>

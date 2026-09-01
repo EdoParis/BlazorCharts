@@ -15,18 +15,25 @@ namespace BlazorGraphs.Components
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;
-        TextLayout LayoutSliceValue;
+        TextLayout LayoutTextSlice;
+        TextLayout LayoutTextTitle;
 
         protected override void OnParametersSet()
         {
-            LayoutSliceValue.WithTheme(Theme);
+            LayoutTextSlice.WithTheme(Theme);
+            LayoutTextTitle.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
         {
-            LayoutSliceValue = TextLayout.MiddleLayout()
+            LayoutTextSlice = TextLayout.MiddleLayout()
                                          .Medium()
                                          .WithTheme(Theme);
+
+            LayoutTextTitle = TextLayout.MiddleLayout()
+                                        .Medium()
+                                        .At(width / 2, padding / 5)
+                                        .WithTheme(Theme);
         }
 
         private string SlicePath(Slice slice, double rotation = 0)

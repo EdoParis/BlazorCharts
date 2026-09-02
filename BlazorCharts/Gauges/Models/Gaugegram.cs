@@ -8,8 +8,8 @@ namespace BlazorGraphs
     {
         private List<Breakpoint> breakpoints;
         internal NumericAxis Axis { get; private set; }
-        public Color Color { get; private set; }
-        public string Title { get; private set; }
+        public Color Color { get; set; }
+        public string Title { get; set; }
         public double Value { get; set; }
         public bool HasBreakPoints { get => breakpoints?.Count > 0; }
 

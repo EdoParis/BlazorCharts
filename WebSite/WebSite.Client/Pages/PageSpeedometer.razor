@@ -8,22 +8,32 @@
     It features a needle that marks the current value within the range.
     The gauge can also be provided with breakpoints to give context to the represented value.
 </p>
-<div class="d-flex flex-wrap justify-content-center">
-    <ChartCard Title="Speedometer">
-        <Speedometer Model="@model1"></Speedometer>
-    </ChartCard>
-    <ChartCard Title="Speedometer with inner axis">
-        <Speedometer Model="@model1" InnerAxis></Speedometer>
-    </ChartCard>
-    <ChartCard Title="Speedometer and breakpoints">
-        <Speedometer Model="@model2"></Speedometer>
-    </ChartCard>
-</div>
-<p>
-    <h6>Code example</h6>
-    <div class="w-100 small border">
-        <pre class="language-csharp m-0">
-            <code>
+<div class="row row-cols-1 row-cols-md-2">
+    <div class="col">
+        <div class="card mx-auto fit-content overflow-hidden mb-3">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-6 col-form-label">Color</div>
+                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.Color.ToHex())" @onchange="OnColorChanged" /></div>
+                    <div class="col-6 col-form-label">Value</div>
+                    <div class="col-6"><input type="number" class="form-control form-control-color w-100" value="@(model1.Value)" @onchange="OnValueChanged" /></div>
+                    <div class="col-6">Inner axis</div>
+                    <div class="col-6"><div class="col-6 form-control-lg form-check form-switch form-check-reverse py-0 w-100"><input type="checkbox" class="form-check-input" @bind="@inner_axis" /></div></div>
+                    <div class="col-12">
+                        <Speedometer Model="@model1" InnerAxis="@inner_axis"></Speedometer>
+                    </div>
+                    <div class="col-6"><button type="button" class="btn btn-danger text-nowrap w-100" @onclick="OnGaugeClear">Clear breakpoints</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-primary text-nowrap w-100" @onclick="OnBreakPointAdd">Add Breakpoint</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div>
+            <h6>Code example</h6>
+            <div class="w-100 small border">
+                <pre class="language-csharp m-0">
+                    <code>
 &lt<span class="token tag bold">Speedometer</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>
             <span class="token property bold">InnerAxis</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
 
@@ -51,7 +61,9 @@
         Label = <span class="token string">"LV-3"</span>
     };
 }
-            </code>
-        </pre>
+                    </code>
+                </pre>
+            </div>
+        </div>
     </div>
-</p>
+</div>

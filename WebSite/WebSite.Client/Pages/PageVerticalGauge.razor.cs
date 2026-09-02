@@ -6,36 +6,63 @@ namespace WebApp.Pages
 {
     public partial class PageVerticalGauge : ComponentBase
     {
+        Random random;
+        Double last_threshold;
+        Boolean reverse;
         Gaugegram model1;
-        Gaugegram model2;
-        Gaugegram model3;
 
         protected override void OnInitialized()
         {
-            model1 = new Gaugegram(700, 1000, "G1", Color.RoyalBlue);
-            model2 = new Gaugegram(500, 1000, "G2", Color.LimeGreen);
-            model3 = new Gaugegram(0, 500, "G3", Color.Navy);
+            random = new Random();
+            model1 = new Gaugegram(0, 1000, null, Color.RoyalBlue);
             model1.Value = 800;
-            model2.Value = 800;
-            model3.Value = 170;
+        }
 
-            model3.AddBreakpoint(new Breakpoint()
+        private void OnGaugeClear()
+        {
+            model1?.Clear();
+            last_threshold = default;
+        }
+
+        private void OnColorChanged(ChangeEventArgs e)
+        {
+            if (model1 is null)
+                return;
+
+            model1.Color = ColorTranslator.FromHtml(e?.Value?.ToString());
+        }
+
+        private void OnValueChanged(ChangeEventArgs e)
+        {
+            if (model1 is null)
+                return;
+
+            if (double.TryParse(e?.Value?.ToString(), out double new_value))
             {
-                Value = 150,
-                Color = Color.Green,
-                Label = "LV-1" 
-            });
-            model3.AddBreakpoint(new Breakpoint()
+                model1.Value = new_value;
+            }
+        }
+
+        private void OnBreakPointAdd()
+        {
+            if (model1 is null)
+                return;
+
+            if (last_threshold >= 1000)
+                return;
+
+            last_threshold += Math.Round(100 + 250 * random.NextDouble());
+
+            if (last_threshold > 1000)
+                last_threshold = 1000;
+
+            model1.AddBreakpoint(new Breakpoint()
             {
-                Value = 250,
-                Color = Color.Gold,
-                Label = "LV-2"
-            });
-            model3.AddBreakpoint(new Breakpoint()
-            {
-                Value = 500,
-                Color = Color.Red,
-                Label = "LV-3"
+                Label = $"Level-{last_threshold}",
+                Value = last_threshold,
+                Color = Color.FromArgb((int)(50 + 200 * random.NextDouble()),
+                                       (int)(50 + 200 * random.NextDouble()),
+                                       (int)(50 + 200 * random.NextDouble()))
             });
         }
     }

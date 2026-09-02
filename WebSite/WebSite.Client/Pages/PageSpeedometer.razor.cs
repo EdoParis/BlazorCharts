@@ -7,7 +7,7 @@ namespace WebApp.Pages
     public partial class PageSpeedometer : ComponentBase
     {
         Random random;
-        Double last_breakpoint;
+        Double last_threshold;
         Boolean inner_axis;
         Gaugegram model1;
 
@@ -21,7 +21,7 @@ namespace WebApp.Pages
         private void OnGaugeClear()
         {
             model1?.Clear();
-            last_breakpoint = default;
+            last_threshold = default;
         }
 
         private void OnColorChanged(ChangeEventArgs e)
@@ -48,22 +48,22 @@ namespace WebApp.Pages
             if (model1 is null)
                 return;
 
-            if (last_breakpoint < 1000)
+            if (last_threshold >= 1000)
+                return;
+
+            last_threshold += Math.Round(100 + 250 * random.NextDouble());
+
+            if (last_threshold > 1000)
+                last_threshold = 1000;
+
+            model1.AddBreakpoint(new Breakpoint()
             {
-                last_breakpoint += Math.Round(100 + 250 * random.NextDouble());
-
-                if (last_breakpoint > 1000)
-                    last_breakpoint = 1000;
-
-                model1.AddBreakpoint(new Breakpoint()
-                {
-                    Label = $"Level-{last_breakpoint}",
-                    Value = last_breakpoint,
-                    Color = Color.FromArgb((int)(50 + 200 * random.NextDouble()),
-                                           (int)(50 + 200 * random.NextDouble()),
-                                           (int)(50 + 200 * random.NextDouble()))
-                });
-            }
+                Label = $"Level-{last_threshold}",
+                Value = last_threshold,
+                Color = Color.FromArgb((int)(50 + 200 * random.NextDouble()),
+                                       (int)(50 + 200 * random.NextDouble()),
+                                       (int)(50 + 200 * random.NextDouble()))
+            });
         }
     }
 }

@@ -8,9 +8,9 @@
     It looks like a pie chart with one essential difference: the center of the chart has been cut out to look like a donut.
     This modification makes the chart more aesthetically pleasing and sweet.
 </p>
-<div class="row row-cols-1 row-cols-md-2">
-    <div class="col">
-        <div class="card mx-auto fit-content overflow-hidden mb-3">
+<div class="row">
+    <div class="col col-sm-6 col-lg-4 col-12">
+        <div class="card fit-content overflow-hidden mb-3 w-100">
             <div class="card-body">
                 <div class="row g-3">
                     <div class="col-6 col-form-label">Title</div>
@@ -20,13 +20,13 @@
                     <div class="col-12">
                         <DonutChart Model="@model" OnClick="OnSliceClick"></DonutChart>
                     </div>
-                    <div class="col-6"><button type="button" class="btn btn-danger w-100" @onclick="OnChartClear">Clear</button></div>
-                    <div class="col-6"><button type="button" class="btn btn-primary w-100 text-nowrap" @onclick="OnSliceAdd">Add Slice</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnSliceAdd">Add Slice</button></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col col-sm-6 col-lg-8 col-12">
         <div>
             <h6>Code example</h6>
             <div class="w-100 small border">

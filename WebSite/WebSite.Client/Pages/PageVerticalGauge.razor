@@ -9,7 +9,7 @@
     The gauge can be flipped horizontally and also be provided with breakpoints to give context to the represented value.
 </p>
 <div class="row">
-    <div class="col col-md-6 col-lg-4 col-12">
+    <div class="col col-sm-6 col-lg-4 col-12">
         <div class="card fit-content overflow-hidden mb-3 w-100">
             <div class="card-body">
                 <div class="row g-3">
@@ -29,14 +29,14 @@
                             <label>Reverse</label>
                             <div class="form-control-lg form-check form-switch form-check-reverse py-0 w-100"><input type="checkbox" class="form-check-input" @bind="@reverse" /></div>
                         </p>
-                        <button type="button" class="btn btn-danger text-nowrap w-100 mb-3" @onclick="OnGaugeClear">Clear breakpoints</button>
-                        <button type="button" class="btn btn-primary text-nowrap w-100" @onclick="OnBreakPointAdd">Add Breakpoint</button>
+                        <button type="button" class="btn btn-danger text-truncate w-100 mb-3" @onclick="OnGaugeClear">Clear Breakpoints</button>
+                        <button type="button" class="btn btn-primary text-truncate w-100" @onclick="OnBreakPointAdd">Add Breakpoint</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col col-md-6 col-lg-8 col-12">
+    <div class="col col-sm-6 col-lg-8 col-12">
         <div>
             <h6>Code example</h6>
             <div class="w-100 small border">

@@ -8,9 +8,9 @@
     Levels are plotted on one chart axis, and values are plotted on the other axis.
     Each categorical value claims one bar, and the length of each bar corresponds to the bar’s value
 </p>
-<div class="row row-cols-1 row-cols-md-2">
-    <div class="col">
-        <div class="card mx-auto fit-content overflow-hidden mb-3">
+<div class="row">
+    <div class="col col-sm-6 col-lg-4 col-12">
+        <div class="card fit-content overflow-hidden mb-3 w-100">
             <div class="card-body">
                 <div class="row g-3">
                     <div class="col-6 col-form-label">Primary color</div>
@@ -20,13 +20,13 @@
                     <div class="col-12">
                         <HorizontalBarChart Model="@model1" OnClick="OnBarClick"></HorizontalBarChart>
                     </div>
-                    <div class="col-6"><button type="button" class="btn btn-danger w-100" @onclick="OnChartClear">Clear</button></div>
-                    <div class="col-6"><button type="button" class="btn btn-primary w-100" @onclick="OnBarAdd">Add Bar</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnBarAdd">Add Bar</button></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col col-sm-6 col-lg-8 col-12">
         <h6>Code example</h6>
         <div class="w-100 small border">
             <pre class="language-csharp m-0">

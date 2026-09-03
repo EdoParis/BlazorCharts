@@ -8,8 +8,8 @@
     Like a speedometer, it features a needle or a fill bar that marks the current value within the range.
     The gauge can also be provided with breakpoints to give context to the represented value.
 </p>
-<div class="row row-cols-1 row-cols-md-2">
-    <div class="col">
+<div class="row">
+    <div class="col col-sm-6 col-lg-4 col-12">
         <div class="card mx-auto fit-content overflow-hidden mb-3">
             <div class="card-body">
                 <div class="row g-3">
@@ -20,13 +20,13 @@
                     <div class="col-12">
                         <SemiCircleGauge Model="@model1"></SemiCircleGauge>
                     </div>
-                    <div class="col-6"><button type="button" class="btn btn-danger text-nowrap w-100" @onclick="OnGaugeClear">Clear breakpoints</button></div>
-                    <div class="col-6"><button type="button" class="btn btn-primary text-nowrap w-100" @onclick="OnBreakPointAdd">Add Breakpoint</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-danger text-truncate w-100" @onclick="OnGaugeClear">Clear Breakpoints</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-primary text-truncate w-100" @onclick="OnBreakPointAdd">Add Breakpoint</button></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col col-sm-6 col-lg-8 col-12">
         <div>
             <h6>Code example</h6>
             <div class="w-100 small border">

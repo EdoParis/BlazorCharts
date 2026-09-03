@@ -11,8 +11,9 @@ namespace BlazorGraphs
         internal NumericAxis AxisY { get; private set; }
         internal NumericAxis AxisB { get; private set; }
         internal IEnumerable<Serie<Bubblepoint>> Series { get => series.AsReadOnly(); }
-        public string TitleX { get; private set; }
-        public string TitleY { get; private set; }
+        public int SeriesCount { get => series?.Count ?? default; }
+        public string TitleX { get; set; }
+        public string TitleY { get; set; }
 
         public Bubblegram(string title_x, string title_y)
         {

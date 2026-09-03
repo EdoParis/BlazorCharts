@@ -10,8 +10,9 @@ namespace BlazorGraphs
         internal NumericAxis AxisX { get; private set; }
         internal NumericAxis AxisY { get; private set; }
         internal IEnumerable<Serie<Datapoint>> Series { get => series.AsReadOnly(); }
-        public string TitleX { get; private set; }
-        public string TitleY { get; private set; }
+        public int SeriesCount { get => series?.Count ?? default; }
+        public string TitleX { get; set; }
+        public string TitleY { get; set; }
 
         public Cartesiangram(string title_x, string title_y)
         {

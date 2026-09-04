@@ -27,7 +27,9 @@
                         cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
                         cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
                         r="8px"
-                        style="paint-order: stroke fill;">
+                        class="fade-in"
+                        style="paint-order: stroke fill;"
+                        @key="@point">
                     <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
                 </circle>
             }

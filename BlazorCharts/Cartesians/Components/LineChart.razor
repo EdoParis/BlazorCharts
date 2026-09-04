@@ -20,17 +20,19 @@
         {
             if (!serie.IsEmpty)
             {
-                string path = PolylinePoints(serie);
+                string path = LinePath(serie);
 
-                <g @key="@serie">
-                    <polyline points="@path"
-                              fill="none"
-                              stroke="@serie.Color.ToHex()"
-                              stroke-width="1px"
-                              stroke-linejoin="round"
-                              stroke-linecap="round"
-                              vector-effect="non-scaling-stroke">
-                    </polyline>
+                <g>
+                    <path d="@path"
+                          fill="none"
+                          class="fade-in"
+                          stroke="@serie.Color.ToHex()"
+                          stroke-width="1px"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                          @key="@serie">
+                    </path>
                     <title>@($"{serie.Label}")</title>
 
                     @if (!HidePoints)
@@ -41,9 +43,11 @@
                                     stroke="@serie.Color.ToHex()"
                                     stroke-width="1px"
                                     vector-effect="non-scaling-stroke"
+                                    class="fade-in"
                                     cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
                                     cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
-                                    r="8px">
+                                    r="8px"
+                                    @key="@point">
                                 <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>
                             </circle>
                         }

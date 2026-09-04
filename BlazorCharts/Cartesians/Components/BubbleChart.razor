@@ -27,9 +27,11 @@
                         stroke-width="1px"
                         fill-opacity="0.6"
                         vector-effect="non-scaling-stroke"
+                        class="fade-in"
                         cx="@(offsetH + (int)((bubble.X - Model.AxisX.Min) * scaleH))"
                         cy="@(offsetV - (int)((bubble.Y - Model.AxisY.Min) * scaleV))"
-                        r="@((int)radius)px">
+                        r="@((int)radius)px"
+                        @key="@bubble">
                     <title>@bubble.Value.ToString("0.##")</title>
                 </circle>
             }

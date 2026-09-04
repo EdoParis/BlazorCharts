@@ -1,13 +1,13 @@
-g, polyline {
+g, path {
     cursor: pointer;
     transition-duration: 0.25s;
 }
 
-    polyline:hover {
+    path:hover {
         stroke-width: 2px;
     }
 
-    polyline:hover ~ circle {
+    path:hover ~ circle {
         display: none;
     }
 
@@ -25,4 +25,19 @@ svg {
     width: auto;
     margin: auto;
     display: block;
+}
+
+.fade-in {
+    animation: fadein 0.5s ease-in;
+}
+
+@keyframes fadein {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

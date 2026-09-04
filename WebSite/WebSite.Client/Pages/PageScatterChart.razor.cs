@@ -46,8 +46,8 @@ namespace WebApp.Pages
 
             List<Datapoint> points = new();
             int n_points = (int)(10 + 10 * random.NextDouble());
-            int offset_x = (int)(50 * random.NextDouble());
-            int offset_y = (int)(50 * random.NextDouble());
+            int offset_x = (int)(50 * random.NextDouble() - 25);
+            int offset_y = (int)(50 * random.NextDouble() - 25);
 
             for (int i = 0; i < n_points; i++)
             {

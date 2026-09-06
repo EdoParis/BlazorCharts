@@ -24,6 +24,7 @@ namespace BlazorGraphs
         public void Clear()
         {
             slices.Clear();
+            AxisR = new NumericAxis();
             Total = default;
             IsEmpty = true;
         }

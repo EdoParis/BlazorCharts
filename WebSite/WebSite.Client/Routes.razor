@@ -1,6 +1,17 @@
-﻿<Router AppAssembly="typeof(Program).Assembly">
+﻿@inject NavigationManager Navigation
+
+<Router AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
+    <NotFound>
+        @code {
+            protected override void OnInitialized()
+            {
+                // Forza la navigazione verso la Home Page
+                Navigation.NavigateTo("/", forceLoad: false);
+            }
+        }
+    </NotFound>
 </Router>

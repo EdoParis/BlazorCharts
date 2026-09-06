@@ -36,7 +36,7 @@
         int tr = 0;
         foreach (Tick tick in Model.AxisR.Ticks())
         {
-            if (tr > 0 && tr % 5 == 0)
+            if (tick.IsMaster && tick.RelativePosition > 0)
             {
                 if (Circular)
                 {

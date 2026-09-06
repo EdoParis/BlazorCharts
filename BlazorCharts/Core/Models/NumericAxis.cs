@@ -73,7 +73,11 @@
                 if (step <= 0)
                     step = 1;
 
-                for (double t = Min - Min % multiple - multiple; t <= Max; t += step)
+                double ending_ticks = Max;
+                double starting_ticks = Min < 0 ? Min - Min % multiple - multiple : 
+                                                  Min - Min % multiple;
+
+                for (double t = starting_ticks; t <= ending_ticks; t += step)
                 {
                     double? last_tick = null;
 

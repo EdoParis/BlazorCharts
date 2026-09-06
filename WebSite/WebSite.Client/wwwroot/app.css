@@ -4,12 +4,23 @@ html, body {
     height: 100dvh;
 }
 
+main {
+    background: var(--bs-tertiary-bg) !important;
+}
+
+pre[class*="language-"],
+code[class*="language-"] {
+    background: var(--bs-tertiary-bg) !important;
+    color: var(--bs-body-color) !important;
+    text-shadow: none !important;
+}
+
 a {
     text-decoration: none !important;
-    color: black;
+    color: var(--bs-body-color);
 }
     a:link {
-        color: black;
+        color: var(--bs-body-color);
     }
 
     a:hover {
@@ -17,7 +28,7 @@ a {
     }
 
     a:visited {
-        color: black;
+        color: var(--bs-body-color);
     }
 
 .text-purple {

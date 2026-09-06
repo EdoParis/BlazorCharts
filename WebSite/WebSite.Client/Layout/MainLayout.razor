@@ -1,13 +1,14 @@
 ﻿@inherits LayoutComponentBase
 
-<header class="row p-2 border-bottom align-items-center">
+<header class="row p-2 bg-body text-body border-bottom align-items-center" data-bs-theme="@(IsDarkMode ? "dark" : "light")">
     <img class="col-auto h-100 p-2" src="icon.png" />
     <h2 class="col m-0 text-truncate">BlazorGraphs</h2>
+    <div class="col-auto fs-4 @(IsDarkMode ? "bi-sun-fill" : "bi-moon-fill")" role="button" @onclick="@OnToggleDark"></div>
     <div class="col-auto fs-4" role="button" @onclick="@OnToggleMenu">
         @(HiddenMenu ? "☰" : "✕")
     </div>
 </header>
-<nav class="shadow-sm border-bottom w-100 p-4" hidden="@HiddenMenu">
+<nav class="shadow border-bottom bg-body text-body w-100 p-4" hidden="@HiddenMenu" data-bs-theme="@(IsDarkMode ? "dark" : "light")">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
         <div class="col">
             <h5 class="bi-graph-up text-truncate"> Cartesians</h5>
@@ -68,7 +69,7 @@
     </div>
     <h5 class="d-flex justify-content-end mt-3" @onclick="@(() => OnPage(PageEnum.Home))"><a href="#">Home <span class="bi-house"></span></a></h5>
 </nav>
-<main class="row overflow-auto bg-light h-100 p-3">
+<main class="row overflow-auto text-body h-100 p-3" data-bs-theme="@(IsDarkMode ? "dark" : "light")">
     <div class="col fadein-animation" @key="@CurrentPage">
         @Body
     </div>

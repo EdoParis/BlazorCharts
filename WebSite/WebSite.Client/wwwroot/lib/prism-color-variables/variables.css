@@ -1,0 +1,132 @@
+.token.comment,
+.token.block-comment {
+    color: var(--code-highlight-comment-color, #708090);
+}
+
+.token.prolog {
+    color: var(--code-highlight-prolog-color, #708090);
+}
+
+.token.doctype {
+    color: var(--code-highlight-doctype-color, #708090);
+}
+
+.token.cdata {
+    color: var(--code-highlight-cdata-color, #708090);
+}
+
+.token.tag {
+    color: var(--code-highlight-tag-color, #905);
+}
+
+.token.entity {
+    color: var(--code-highlight-entity-color, #9a6e3a);
+}
+
+.token.atrule {
+    color: var(--code-highlight-atrule-color, #07a);
+}
+
+.token.url {
+    color: var(--code-highlight-url-color, #9a6e3a);
+}
+
+.token.selector {
+    color: var(--code-highlight-selector-color, #690);
+}
+
+.token.string {
+    color: var(--code-highlight-string-color, #690);
+}
+
+.token.property {
+    color: var(--code-highlight-property-color, #905);
+}
+
+.token.important {
+    color: var(--code-highlight-important-color, #e90);
+}
+
+.token.punctuation {
+    color: var(--code-highlight-punctuation-color, #999);
+}
+
+.token.number {
+    color: var(--code-highlight-number-color, #905);
+}
+
+.token.function {
+    color: var(--code-highlight-function-color, #dd4a68);
+}
+
+.token.class-name {
+    color: var(--code-highlight-class-name-color, #dd4a68);
+}
+
+.token.keyword {
+    color: var(--code-highlight-keyword-color, #07a);
+}
+
+.token.boolean {
+    color: var(--code-highlight-boolean-color, #905);
+}
+
+.token.operator {
+    color: var(--code-highlight-operator-color, #9a6e3a);
+}
+
+.token.char {
+    color: var(--code-highlight-char-color, #690);
+}
+
+.token.regex {
+    color: var(--code-highlight-regex-color, #e90);
+}
+
+.token.variable {
+    color: var(--code-highlight-variable-color, #e90);
+}
+
+.token.constant {
+    color: var(--code-highlight-constant-color, #905);
+}
+
+.token.symbol {
+    color: var(--code-highlight-symbol-color, #905);
+}
+
+.token.function-name {
+    color: var(--code-highlight-function-name-color, #905);
+}
+
+.token.builtin {
+    color: var(--code-highlight-builtin-color, #690);
+}
+
+.token.attr-name {
+    color: var(--code-highlight-attr-2f9c0a-color, #690);
+}
+
+.token.attr-value {
+    color: var(--code-highlight-attr-value-color, #07a);
+}
+
+.token.inserted {
+    color: var(--code-highlight-inserted-color, #690);
+}
+
+.token.deleted {
+    color: var(--code-highlight-deleted-color, #905);
+}
+
+.token.namespace {
+    color: var(--code-highlight-namespace-color, #708090);
+}
+
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}

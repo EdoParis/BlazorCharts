@@ -8,6 +8,7 @@ namespace WebApp.Layout
         [Inject] public NavigationManager NavManager { get; set; }
         private PageEnum CurrentPage = PageEnum.Home;
         private Boolean HiddenMenu = true;
+        private Boolean IsDarkMode = false;
 
         protected override void OnInitialized()
         {
@@ -24,6 +25,11 @@ namespace WebApp.Layout
                     return;
                 }
             }
+        }
+
+        private void OnToggleDark()
+        {
+            IsDarkMode = !IsDarkMode;
         }
 
         private void OnToggleMenu()

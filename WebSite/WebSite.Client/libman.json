@@ -19,10 +19,11 @@
       ]
     },
     {
-      "library": "prism@9000.0.1",
-      "destination": "wwwroot/lib/prism/",
+      "provider": "jsdelivr",
+      "library": "prism-color-variables@1.0.1",
+      "destination": "wwwroot/lib/prism-color-variables/",
       "files": [
-        "themes/prism.min.css"
+        "variables.css"
       ]
     }
   ]

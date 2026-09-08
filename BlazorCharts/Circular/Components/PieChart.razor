@@ -18,26 +18,46 @@
         double progress = 0;
         foreach(Slice slice in Model)
         {
-            if (slice.Value != 0)
+            if (slice.Value <= 0)
+                continue;
+
+            if (slice.Value >= Model.Total)
+            {
+                <circle fill="@slice.Color.ToHex()"
+                        class="fade-in"
+                        stroke="@Theme.BackgroundString()"
+                        fill-opacity="0.6"
+                        stroke-width="1px"
+                        vector-effect="non-scaling-stroke"
+                        cx="@((width / 2))"
+                        cy="@((height / 2))"
+                        r="@((Math.Min(width, height) - 2 * padding) / 2)"
+                        @key="@slice"
+                        @onclick="async () => await OnClick.InvokeAsync(slice)">
+                    <title>@slice.Label</title>
+                </circle>
+            }
+            else
             {
                 <path fill="@slice.Color.ToHex()"
+                      class="fade-in"
                       stroke="@Theme.BackgroundString()"
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
                       d="@SlicePath(slice, 2 * Math.PI * progress)"
                       @key="@slice"
-                      @onclick="async() => await OnClick.InvokeAsync(slice)">
+                      @onclick="async () => await OnClick.InvokeAsync(slice)">
                     <title>@slice.Label</title>
                 </path>
-
-                Point text_position = 10 * slice.Value > Model.Total ? 
-                                      SliceMidPoint(slice, 2 * Math.PI * progress) : 
-                                      SliceExternalPoint(slice, 2 * Math.PI * progress);
-
-                @LayoutTextSlice.At(text_position).Render(slice.Value);
-                progress += slice.Value / Model.Total;
             }
+
+            Point text_position = 10 * slice.Value > Model.Total ? 
+                                  SliceMidPoint(slice, 2 * Math.PI * progress) : 
+                                  SliceExternalPoint(slice, 2 * Math.PI * progress);
+
+            @LayoutTextSlice.At(text_position).Render(slice.Value);
+            progress += slice.Value / Model.Total;
         }
         @LayoutTextTitle.Render(Model.Title)
     }

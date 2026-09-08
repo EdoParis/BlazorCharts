@@ -48,13 +48,14 @@ namespace BlazorGraphs.Components
             double radius_out = Math.Min(width, height) / 2 - padding;
             double radius_in = 2 * radius_out / 3;
             double theta = 2 * Math.PI * slice.Value / Model.Total;
-            bool is_wide = theta > Math.PI;
 
             return $"M {(int)(width / 2 + radius_in * Math.Sin(rotation))} {(int)(height / 2 - radius_in * Math.Cos(rotation))}  " +
                    $"L {(int)(width / 2 + radius_out * Math.Sin(rotation))} {(int)(height / 2 - radius_out * Math.Cos(rotation))} " +
-                   $"A {(int)radius_out} {(int)radius_out} 0 {(is_wide ? 1 : 0)} 1 {(int)(width / 2 + radius_out * Math.Sin(theta + rotation))} {(int)(height / 2 - radius_out * Math.Cos(theta + rotation))} " +
+                   $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius_out * Math.Cos(theta / 2 + rotation))} " +
+                   $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta + rotation))} {(int)(height / 2 - radius_out * Math.Cos(theta + rotation))} " +
                    $"L {(int)(width / 2 + radius_in * Math.Sin(theta + rotation))} {(int)(height / 2 - radius_in * Math.Cos(theta + rotation))} " +
-                   $"A {(int)radius_in} {(int)radius_in} 0 {(is_wide ? 1 : 0)} 0 {(int)(width / 2 + radius_in * Math.Sin(rotation))} {(int)(height / 2 - radius_in * Math.Cos(rotation))} " +
+                   $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius_in * Math.Cos(theta / 2 + rotation))} " +
+                   $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin(rotation))} {(int)(height / 2 - radius_in * Math.Cos(rotation))} " +
                    "Z";
         }
 

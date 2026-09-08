@@ -39,11 +39,11 @@ namespace BlazorGraphs.Components
         {
             double radius = slice.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
             double theta = 2 * Math.PI / Model.SlicesCount;
-            bool is_wide = theta > Math.PI;
 
             return $"M {width / 2} {height / 2} " + 
                    $"L {(int)(width / 2 + radius * Math.Sin(rotation))} {(int)(height / 2 - radius * Math.Cos(rotation))} " +
-                   $"A {(int)radius} {(int)radius} 0 {(is_wide ? 1 : 0)} 1 {(int)(width / 2 + radius * Math.Sin(theta + rotation))} {(int)(height / 2 - radius * Math.Cos(theta + rotation))} " +
+                   $"A {(int)radius} {(int)radius} 0 0 1 {(int)(width / 2 + radius * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius * Math.Cos(theta / 2 + rotation))} " +
+                   $"A {(int)radius} {(int)radius} 0 0 1 {(int)(width / 2 + radius * Math.Sin(theta + rotation))} {(int)(height / 2 - radius * Math.Cos(theta + rotation))} " +
                    "Z";
         }
     }

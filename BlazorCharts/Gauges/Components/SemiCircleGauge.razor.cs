@@ -48,14 +48,17 @@ namespace BlazorGraphs.Components
                                     .At(width / 2, height - padding / 2);
         }
 
-        private string ArcPath(double radius, double start, double end)
+        private string ArcPath(double start, double end)
         {
             int startpoint_x = (int)Math.Round(width / 2 - radius * Math.Cos(start));
             int startpoint_y = (int)Math.Round(height - padding - radius * Math.Sin(start));
+            int middlepoint_x = (int)Math.Round(width / 2 - radius * Math.Cos((start + end) / 2));
+            int middlepoint_y = (int)Math.Round(height - padding - radius * Math.Sin((start + end ) / 2));
             int endpoint_x = (int)Math.Round(width / 2 - radius * Math.Cos(end));
             int endpoint_y = (int)Math.Round(height - padding - radius * Math.Sin(end));
 
             return $"M {startpoint_x} {startpoint_y} " +
+                   $"A {radius} {radius} 0 0 1 {middlepoint_x} {middlepoint_y} " +
                    $"A {radius} {radius} 0 0 1 {endpoint_x} {endpoint_y}";
         }
 

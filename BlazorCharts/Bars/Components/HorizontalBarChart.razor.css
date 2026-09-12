@@ -12,3 +12,26 @@ svg {
     margin: auto;
     display: block;
 }
+
+.extend-right {
+    animation: scale-x 0.5s linear;
+    transform-box: fill-box;
+    transform-origin: left center;
+}
+
+.extend-left {
+    animation: scale-x 0.5s linear;
+    transform-box: fill-box;
+    transform-origin: right center;
+}
+
+@keyframes scale-x {
+
+    0% {
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}

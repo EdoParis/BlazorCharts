@@ -26,9 +26,9 @@ namespace BlazorGraphs
         {
             get => new Theme()
             {
-                BackgroundColor = Color.FromArgb(18, 18, 20),
-                TextColor = Color.FromArgb(248, 249, 250),
-                AxisColor = Color.FromArgb(248, 249, 250)
+                BackgroundColor = Color.FromArgb(33, 37, 41),
+                TextColor = Color.FromArgb(255, 255, 255),
+                AxisColor = Color.FromArgb(255, 255, 255)
             };
         }
 
@@ -36,7 +36,7 @@ namespace BlazorGraphs
         {
             get => new Theme()
             {
-                BackgroundColor = Color.FromArgb(248, 249, 250),
+                BackgroundColor = Color.FromArgb(255, 255, 255),
                 TextColor = Color.FromArgb(33, 37, 41),
                 AxisColor = Color.FromArgb(33, 37, 41)
             };
@@ -66,7 +66,7 @@ namespace BlazorGraphs
         {
             get => new Theme()
             {
-                BackgroundColor = Color.FromArgb(10, 10, 20),
+                BackgroundColor = Color.FromArgb(33, 37, 41),
                 TextColor = Color.FromArgb(0, 240, 255),
                 AxisColor = Color.FromArgb(0, 200, 230)
             };

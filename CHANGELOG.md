@@ -6,6 +6,12 @@ Legend symbols:
 * 🟨 **Change**
 * 🟥 **Bug**
 
+## Version 3.0.2
+* 🟦 Improved animations
+* 🟥 Fix single slice rendering for circular charts
+* 🟥 Fix ticks for negative intervals
+* 🟥 Fix zero size axis-interval
+
 ## Version 3.0
 * 🟩 Circular parameter to RadarChart
 * 🟩 InnerAxis parameter to Speedometer

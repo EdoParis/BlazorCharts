@@ -7,7 +7,6 @@ Legend symbols:
 * 🟨 **Change**
 
 ## Short term
-* ⭐ Website redesign for live demos
 * ⭐ Customizable tooltip
 * 🟩 Time axis
 * 🟩 Spline chart

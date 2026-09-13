@@ -1,0 +1,10 @@
+﻿@inject NavigationManager NavManager
+
+@code {
+    protected override void OnInitialized()
+    {
+        // Effettua il redirect alla Home pulendo la cronologia (replace: true)
+        // in modo che l'utente non rimanga bloccato cliccando il tasto "Indietro"
+        NavManager.NavigateTo("/", replace: true);
+    }
+}

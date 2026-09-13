@@ -6,11 +6,17 @@
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
     <NotFound>
-        @code {
-            protected override void OnInitialized()
+        @code 
+        {
+            protected override void OnAfterRender(bool firstRender)
             {
-                // Forza la navigazione verso la Home Page
-                Navigation.NavigateTo("/", forceLoad: false);
+                if (!firstRender)
+                {
+                    // forza la navigazione verso la Home Page
+                    // se la sezione NotFound rimane anche al
+                    // rendering successivo (evita falsi positivi)
+                    Navigation.NavigateTo("/", forceLoad: false);
+                }
             }
         }
     </NotFound>

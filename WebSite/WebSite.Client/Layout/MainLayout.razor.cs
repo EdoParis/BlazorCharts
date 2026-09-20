@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 using WebApp.Enums;
 
 namespace WebApp.Layout
 {
-    public partial class MainLayout : LayoutComponentBase
+    public partial class MainLayout : LayoutComponentBase, IDisposable
     {
         [Inject] public NavigationManager NavManager { get; set; }
         private PageEnum CurrentPage = PageEnum.Home;
@@ -13,18 +14,25 @@ namespace WebApp.Layout
         protected override void OnInitialized()
         {
             string current_url = NavManager?.ToBaseRelativePath(NavManager.Uri);
+            FindPage(current_url);
 
+            NavManager.LocationChanged += OnPage;
+        }
+
+        private PageEnum FindPage(string current_url)
+        {
             if (string.IsNullOrEmpty(current_url))
-                return;
+                return PageEnum.Home;
 
             foreach (PageEnum page in Enum.GetValues<PageEnum>())
             {
                 if (current_url.EndsWith(page.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
-                    CurrentPage = page;
-                    return;
+                    return page;
                 }
             }
+
+            return PageEnum.Home;
         }
 
         private void OnToggleDark()
@@ -37,10 +45,19 @@ namespace WebApp.Layout
             HiddenMenu = !HiddenMenu;
         }
 
-        private void OnPage(PageEnum page)
+        private void OnPage(object sender, LocationChangedEventArgs args)
         {
             HiddenMenu = true;
-            CurrentPage = page;
+            CurrentPage = FindPage(args?.Location);
+            StateHasChanged();
+        }
+
+        public void Dispose()
+        {
+            if (NavManager is null)
+                return;
+
+            NavManager.LocationChanged -= OnPage;
         }
     }
 }

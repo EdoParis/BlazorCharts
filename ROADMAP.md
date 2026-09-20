@@ -13,6 +13,7 @@ Legend symbols:
 * 🟩 Polarline chart
 * 🟩 Polarstep chart
 * 🟩 Polarscatter chart
+* 🟩 Boolean parameter to alternate percentage/absolute visualization in Piechart and Donutchart
 
 ## Mid term
 * ⭐ Gantt chart

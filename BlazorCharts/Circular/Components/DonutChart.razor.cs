@@ -10,6 +10,7 @@ namespace BlazorGraphs.Components
         private const int PADDING = 100;
 
         [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Boolean Percentage { get; set; } 
         [Parameter] public Circulargram Model { get; set; }
         [Parameter] public EventCallback<Slice> OnClick { get; set; }
         private int width = VIEW;

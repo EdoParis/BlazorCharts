@@ -18,9 +18,6 @@
         double progress = 0;
         foreach(Slice slice in Model)
         {
-            if (slice.Value <= 0)
-                continue;
-
             if (slice.Value >= Model.Total)
             {
                 <circle fill="@slice.Color.ToHex()"
@@ -55,8 +52,14 @@
             Point text_position = 10 * slice.Value > Model.Total ? 
                                   SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                   SliceExternalPoint(slice, 2 * Math.PI * progress);
-
-            @LayoutTextSlice.At(text_position).Render(slice.Value);
+            if (Percentage)
+            {
+                @LayoutTextSlice.At(text_position).Render($"{(100 * slice.Value / Model.Total).ToString("0.#")}%");
+            }
+            else
+            {
+                @LayoutTextSlice.At(text_position).Render(slice.Value);
+            }
             progress += slice.Value / Model.Total;
         }
         @LayoutTextTitle.Render(Model.Title)

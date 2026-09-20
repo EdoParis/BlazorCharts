@@ -28,9 +28,6 @@
         double progress = 0;
         foreach (Slice slice in Model)
         {
-            if (slice.Value <= 0)
-                continue;
-
             <path fill="@slice.Color.ToHex()"
                   class="fade-in"
                   stroke="@Theme.BackgroundString()"
@@ -48,8 +45,14 @@
                 Point text_position = 10 * slice.Value > Model.Total ? 
                                       SliceMidPoint(slice, 2 * Math.PI * progress) : 
                                       SliceExternalPoint(slice, 2 * Math.PI * progress);
-
-                @LayoutSliceValue.At(text_position).Render(slice.Value);
+                if (Percentage)
+                {
+                    @LayoutSliceValue.At(text_position).Render($"{(100 * slice.Value / Model.Total).ToString("0.#")}%");
+                }
+                else
+                {
+                    @LayoutSliceValue.At(text_position).Render(slice.Value);
+                }
             }
             progress += slice.Value / Model.Total;
         }

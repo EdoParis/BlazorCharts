@@ -31,6 +31,11 @@
                     <td class="font-monospace"><span class="token keyword">EventCallback</span>&lt<span class="token keyword">Slice</span>&gt</td>
                     <td>Slice click event</td>
                 </tr>
+                <tr>
+                    <td>Percentage</td>
+                    <td class="font-monospace"><span class="token property">Boolean</span></td>
+                    <td>Show percentage value of each slice or the absolute one</td>
+                </tr>
             </table>
         </div>
     </div>
@@ -44,8 +49,10 @@
                     <div class="col-6"><input type="text" class="form-control" value="@(model?.Title)" @onchange="@((e) => model.Title = e?.Value?.ToString())" /></div>
                     <div class="col-6 col-form-label">Next color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(slice_color.ToHex())" @onchange="@((e) => slice_color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6">Percentage</div>
+                    <div class="col-6"><div class="col-6 form-control-lg form-check form-switch form-check-reverse py-0 w-100"><input type="checkbox" class="form-check-input" @bind="@percentage" /></div></div>
                     <div class="col-12">
-                        <PieChart Model="@model" OnClick="OnSliceClick"></PieChart>
+                        <PieChart Model="@model" Percentage="@percentage" OnClick="OnSliceClick"></PieChart>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnSliceAdd">Add Slice</button></div>
@@ -56,6 +63,7 @@
                     <pre class="language-csharp m-0 h-100">
                         <code>
  &lt<span class="token tag bold">PieChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> 
+         <span class="token property bold">Percentage</span><span class="token string">="</span>false<span class="token string">"</span>
          <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
  
  @@{

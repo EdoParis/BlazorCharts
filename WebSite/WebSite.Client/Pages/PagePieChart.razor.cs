@@ -8,6 +8,7 @@ namespace WebApp.Pages
     {
         private Circulargram model;
         private Random random;
+        private Boolean percentage;
         private Color slice_color;
 
         protected override void OnInitialized()

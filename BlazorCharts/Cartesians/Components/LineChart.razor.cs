@@ -7,19 +7,11 @@ namespace BlazorGraphs.Components
 {
     public partial class LineChart
     {
-        private const int VIEW = 1000;
-        private const int PADDING = 100;
-
         [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Double AspectRatio { get; set; }
         [Parameter] public Boolean HidePoints { get; set; }
         [Parameter] public Cartesiangram Model { get; set; }
-        private int width = VIEW;
-        private int height = VIEW;
-        private int padding = PADDING;
-        private int offsetH => padding;
-        private int offsetV => height - padding;
-        private double scaleH => (width - 2 * padding) / Model.AxisX.Size;
-        private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
+        private ViewLayout LayoutView;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;
         private TextLayout LayoutTitleX;
@@ -27,39 +19,41 @@ namespace BlazorGraphs.Components
 
         protected override void OnParametersSet()
         {
-            LayoutAxisX.WithTheme(Theme);
-            LayoutAxisY.WithTheme(Theme);
-            LayoutTitleX.WithTheme(Theme);
+            LayoutView.WithAspectRatio(AspectRatio);
+            LayoutAxisX.WithTheme(Theme).From(LayoutView.Padding).To(LayoutView.Width - LayoutView.Padding).At(LayoutView.Height - LayoutView.Padding);
+            LayoutAxisY.WithTheme(Theme).From(LayoutView.Height - LayoutView.Padding).To(LayoutView.Padding).At(LayoutView.Padding);
+            LayoutTitleX.WithTheme(Theme).At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 4);
             LayoutTitleY.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
         {
+            LayoutView = ViewLayout.Default();
             LayoutAxisX = AxisLayout.HorizontalLayout()
                                     .TicksInternal()
                                     .WithTickSize(20)
                                     .WithTheme(Theme)
-                                    .From(padding)
-                                    .To(width - padding)
-                                    .At(height - padding);
+                                    .From(LayoutView.Padding)
+                                    .To(LayoutView.Width - LayoutView.Padding)
+                                    .At(LayoutView.Height - LayoutView.Padding);
 
             LayoutAxisY = AxisLayout.VerticalLayout()
                                     .TicksInternal()
                                     .WithTickSize(20)
                                     .WithTheme(Theme)
-                                    .From(height - padding)
-                                    .To(padding)
-                                    .At(padding);
+                                    .From(LayoutView.Height - LayoutView.Padding)
+                                    .To(LayoutView.Padding)
+                                    .At(LayoutView.Padding);
 
             LayoutTitleX = TextLayout.MiddleLayout()
                                      .WithTheme(Theme)
                                      .Medium()
-                                     .At(width / 2, height - padding / 4);
+                                     .At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 4);
 
             LayoutTitleY = TextLayout.StartLayout()
                                      .WithTheme(Theme)
                                      .Medium()
-                                     .At(padding / 2, padding / 2);
+                                     .At(LayoutView.Padding / 2, LayoutView.Padding / 2);
         }
 
         private string LinePath(Serie<Datapoint> serie)
@@ -71,8 +65,8 @@ namespace BlazorGraphs.Components
             {
                 Point p = new Point()
                 {
-                    X = offsetH + (int)((point.X - Model.AxisX.Min) * scaleH),
-                    Y = offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV)
+                    X = LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size),
+                    Y = LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size)
                 };
 
                 if (previous_point.HasValue)

@@ -10,10 +10,12 @@ namespace WebApp.Pages
         private Random random;
         private Color line_color;
         private Boolean hidepoints;
+        private Double aspectratio;
 
         protected override void OnInitialized()
         {
             random = new Random();
+            aspectratio = AspectRatio.Square;
             line_color = Color.MediumOrchid;
             model = new Cartesiangram("AxisX", "AxisY");
             List<Datapoint> points1 = new();

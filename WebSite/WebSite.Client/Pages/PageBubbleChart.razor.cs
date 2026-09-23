@@ -9,10 +9,12 @@ namespace WebApp.Pages
         private Bubblegram model;
         private Random random;
         private Color serie_color;
+        private Double aspectratio;
 
         protected override void OnInitialized()
         {
             random = new Random();
+            aspectratio = AspectRatio.Square;
             serie_color = Color.MediumOrchid;
             model = new Bubblegram("AxisX", "AxisY");
             List<Bubblepoint> bubbles1 = new();

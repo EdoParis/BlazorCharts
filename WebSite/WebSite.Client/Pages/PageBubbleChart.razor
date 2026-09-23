@@ -26,6 +26,11 @@
                     <td class="font-monospace"><span class="token keyword">Bubblegram</span></td>
                     <td>Data model</td>
                 </tr>
+                <tr>
+                    <td>AspectRatio</td>
+                    <td class="font-monospace"><span class="token property">Double</span></td>
+                    <td>Define the width/height ratio of the chart</td>
+                </tr>
             </table>
         </div>
     </div>
@@ -39,10 +44,23 @@
                     <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleX)" @onchange="@((e) => model.TitleX = e?.Value?.ToString())" /></div>
                     <div class="col-6 col-form-label">Title Y</div>
                     <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleY)" @onchange="@((e) => model.TitleY = e?.Value?.ToString())" /></div>
+                    <div class="col-6 col-form-label">Aspect ratio</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="@aspectratio">
+                            <option value="@AspectRatio.Square">@nameof(AspectRatio.Square)</option>
+                            <option value="@AspectRatio.Vertical">@nameof(AspectRatio.Vertical)</option>
+                            <option value="@AspectRatio.Portrait">@nameof(AspectRatio.Portrait)</option>
+                            <option value="@AspectRatio.Standard">@nameof(AspectRatio.Standard)</option>
+                            <option value="@AspectRatio.Photo">@nameof(AspectRatio.Photo)</option>
+                            <option value="@AspectRatio.Widescreen">@nameof(AspectRatio.Widescreen)</option>
+                            <option value="@AspectRatio.Panoramic">@nameof(AspectRatio.Panoramic)</option>
+                            <option value="@AspectRatio.Ultrawide">@nameof(AspectRatio.Ultrawide)</option>
+                        </select>
+                    </div>
                     <div class="col-6 col-form-label">Next color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(serie_color.ToHex())" @onchange="@((e) => serie_color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-12">
-                        <BubbleChart Model="@model"></BubbleChart>
+                        <BubbleChart Model="@model" AspectRatio="@aspectratio"></BubbleChart>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnSeriesAdd">Add Serie</button></div>

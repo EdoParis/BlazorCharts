@@ -6,7 +6,7 @@ namespace BlazorGraphs.Components
     public partial class HistChart
     {
         [Parameter] public Theme Theme { get; set; }
-        [Parameter] public Double AspectRatio { get; set; }
+        [Parameter] public Double AspectRatio { get; set; } = AspectRatios.Square;
         [Parameter] public Histogram Model { get; set; }
         [Parameter] public EventCallback<Bin> OnClick { get; set; }
         private ViewLayout LayoutView;

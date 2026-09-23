@@ -15,7 +15,7 @@ namespace WebApp.Pages
         protected override void OnInitialized()
         {
             random = new Random();
-            aspectratio = AspectRatio.Square;
+            aspectratio = AspectRatios.Square;
             line_color = Color.MediumOrchid;
             model = new Cartesiangram("AxisX", "AxisY");
             List<Datapoint> points1 = new();

@@ -8,7 +8,7 @@ namespace BlazorGraphs.Components
     public partial class LineChart
     {
         [Parameter] public Theme Theme { get; set; }
-        [Parameter] public Double AspectRatio { get; set; }
+        [Parameter] public Double AspectRatio { get; set; } = AspectRatios.Square;
         [Parameter] public Boolean HidePoints { get; set; }
         [Parameter] public Cartesiangram Model { get; set; }
         private ViewLayout LayoutView;

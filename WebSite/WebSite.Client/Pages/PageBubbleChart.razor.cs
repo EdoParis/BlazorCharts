@@ -14,7 +14,7 @@ namespace WebApp.Pages
         protected override void OnInitialized()
         {
             random = new Random();
-            aspectratio = AspectRatio.Square;
+            aspectratio = AspectRatios.Square;
             serie_color = Color.MediumOrchid;
             model = new Bubblegram("AxisX", "AxisY");
             List<Bubblepoint> bubbles1 = new();

@@ -6,7 +6,7 @@ namespace BlazorGraphs.Components
     public partial class BubbleChart
     {
         [Parameter] public Theme Theme { get; set; }
-        [Parameter] public Double AspectRatio { get; set; }
+        [Parameter] public Double AspectRatio { get; set; } = AspectRatios.Square;
         [Parameter] public Bubblegram Model { get; set; }
         private ViewLayout LayoutView;
         private AxisLayout LayoutAxisY;

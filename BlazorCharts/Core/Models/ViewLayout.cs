@@ -18,17 +18,17 @@
 
         public static ViewLayout Default()
         {
-            return new ViewLayout().WithAspectRatio(AspectRatio.Square);
+            return new ViewLayout().WithAspectRatio(AspectRatios.Square);
         }
 
         public ViewLayout WithAspectRatio(double aspect_ratio)
         {
-            ArgumentOutOfRangeException.ThrowIfGreaterThan(aspect_ratio, AspectRatio.Maximum);
-            ArgumentOutOfRangeException.ThrowIfLessThan(aspect_ratio, AspectRatio.Minimum);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(aspect_ratio, AspectRatios.Maximum);
+            ArgumentOutOfRangeException.ThrowIfLessThan(aspect_ratio, AspectRatios.Minimum);
             ExceptionUtils.ThrowIfInfinity(aspect_ratio);
             ExceptionUtils.ThrowIfNaN(aspect_ratio);
 
-            if (aspect_ratio > AspectRatio.Square)
+            if (aspect_ratio > AspectRatios.Square)
             {
                 Width = 2 * PADDING + (int)((SIZE - 2 * PADDING) * aspect_ratio);
                 Height = SIZE;

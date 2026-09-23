@@ -9,10 +9,12 @@ namespace WebApp.Pages
         private Histogram model1;
         private Random random;
         private Double offset;
+        private Double aspectratio;
 
         protected override void OnInitialized()
         {
             random = new Random();
+            aspectratio = AspectRatio.Square;
             offset = Math.Round(50 * (2 * random.NextDouble() - 1));
             model1 = new Histogram("Axis-X", "Axis-Y", Color.RoyalBlue, Color.Orange);
 

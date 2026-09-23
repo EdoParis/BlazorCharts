@@ -32,6 +32,11 @@
                     <td class="font-monospace"><span class="token keyword">EventCallback</span>&lt<span class="token keyword">Bin</span>&gt</td>
                     <td>Bin click event</td>
                 </tr>
+                <tr>
+                    <td>AspectRatio</td>
+                    <td class="font-monospace"><span class="token property">Double</span></td>
+                    <td>Define the width/height ratio of the chart</td>
+                </tr>
             </table>
         </div>
     </div>
@@ -45,8 +50,21 @@
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.PrimaryColor.ToHex())" @onchange="@((e) => model1.PrimaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-6 col-form-label">Secondary color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.SecondaryColor.ToHex())" @onchange="@((e) => model1.SecondaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6 col-form-label">Aspect ratio</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="@aspectratio">
+                            <option value="@AspectRatio.Square">@nameof(AspectRatio.Square)</option>
+                            <option value="@AspectRatio.Vertical">@nameof(AspectRatio.Vertical)</option>
+                            <option value="@AspectRatio.Portrait">@nameof(AspectRatio.Portrait)</option>
+                            <option value="@AspectRatio.Standard">@nameof(AspectRatio.Standard)</option>
+                            <option value="@AspectRatio.Photo">@nameof(AspectRatio.Photo)</option>
+                            <option value="@AspectRatio.Widescreen">@nameof(AspectRatio.Widescreen)</option>
+                            <option value="@AspectRatio.Panoramic">@nameof(AspectRatio.Panoramic)</option>
+                            <option value="@AspectRatio.Ultrawide">@nameof(AspectRatio.Ultrawide)</option>
+                        </select>
+                    </div>
                     <div class="col-12">
-                        <HistChart Model="@model1" OnClick="OnBinClick"></HistChart>
+                        <HistChart Model="@model1" AspectRatio="@aspectratio" OnClick="OnBinClick"></HistChart>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnBinAdd">Add Bin</button></div>

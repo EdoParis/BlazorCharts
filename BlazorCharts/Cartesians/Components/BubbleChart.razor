@@ -1,13 +1,13 @@
 ﻿@namespace BlazorGraphs.Components
 
-<svg viewBox="@(-padding / 2) 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
+<svg viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
     @if (Model is null || Model.IsEmpty)
     {
-        <rect x="@offsetH"
-              y="@padding"
-              width="@(width - 2 * padding)"
-              height="@(height - 2 * padding)"
-              fill="@Theme.BackgroundString()"/>
+        <rect x="@LayoutView.Padding"
+              y="@LayoutView.Padding"
+              width="@LayoutView.InternalWidth"
+              height="@LayoutView.InternalHeight"
+              fill="@Theme.BackgroundString()" />
     }
     else
     {
@@ -20,7 +20,7 @@
         {
             foreach (Bubblepoint bubble in serie.Data)
             {
-                double radius = 16 + (padding / 2 - 16) * (bubble.Radius - Model.AxisB.Min) / Model.AxisB.Size;
+                double radius = 16 + (LayoutView.Padding / 2 - 16) * (bubble.Radius - Model.AxisB.Min) / Model.AxisB.Size;
 
                 <circle fill="@serie.Color.ToHex()"
                         stroke="@Theme.BackgroundString()"
@@ -28,8 +28,8 @@
                         fill-opacity="0.6"
                         vector-effect="non-scaling-stroke"
                         class="fade-in"
-                        cx="@(offsetH + (int)((bubble.X - Model.AxisX.Min) * scaleH))"
-                        cy="@(offsetV - (int)((bubble.Y - Model.AxisY.Min) * scaleV))"
+                        cx="@(LayoutView.Padding + (int)((bubble.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
+                        cy="@(LayoutView.Height - LayoutView.Padding - (int)((bubble.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
                         r="@((int)radius)px"
                         @key="@bubble">
                     <title>@bubble.Value.ToString("0.##")</title>

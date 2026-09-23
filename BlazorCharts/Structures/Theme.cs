@@ -71,5 +71,15 @@ namespace BlazorGraphs
                 AxisColor = Color.FromArgb(0, 200, 230)
             };
         }
+
+        public static Theme Night
+        {
+            get => new Theme()
+            {
+                BackgroundColor = Color.FromArgb(45, 45, 68),
+                TextColor = Color.FromArgb(160, 160, 160),
+                AxisColor = Color.FromArgb(80, 80, 100)
+            };
+        }
     }
 }

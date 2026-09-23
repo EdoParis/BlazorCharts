@@ -14,6 +14,7 @@ namespace WebApp.Pages
             {3, (nameof(Theme.Arctic), Theme.Arctic) },
             {4, (nameof(Theme.Beach), Theme.Beach) },
             {5, (nameof(Theme.Neon), Theme.Neon) },
+            {6, (nameof(Theme.Night), Theme.Night) },
         };
         private Histogram model;
         private Theme theme;

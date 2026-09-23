@@ -1,13 +1,13 @@
 ﻿@namespace BlazorGraphs.Components
 
-<svg viewBox="@(-padding / 2) 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
+<svg viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
     @if (Model is null || Model.IsEmpty)
     {
-        <rect x="@offsetH"
-              y="@padding"
-              width="@(width - 2 * padding)"
-              height="@(height - 2 * padding)"
-              fill="@Theme.BackgroundString()"/>
+        <rect x="@LayoutView.Padding"
+              y="@LayoutView.Padding"
+              width="@LayoutView.InternalWidth"
+              height="@LayoutView.InternalHeight"
+              fill="@Theme.BackgroundString()" />
     }
     else
     {
@@ -39,13 +39,13 @@
                     {
                         foreach (Datapoint point in serie.Data)
                         {
-                            <circle fill="@(Theme.BackgroundColor.HasValue? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
+                            <circle fill="@(Theme.BackgroundColor.HasValue ? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
                                     stroke="@serie.Color.ToHex()"
                                     stroke-width="1px"
                                     vector-effect="non-scaling-stroke"
                                     class="fade-in"
-                                    cx="@(offsetH + (int)((point.X - Model.AxisX.Min) * scaleH))"
-                                    cy="@(offsetV - (int)((point.Y - Model.AxisY.Min) * scaleV))"
+                                    cx="@(LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
+                                    cy="@(LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
                                     r="8px"
                                     @key="@point">
                                 <title>(@point.X.ToString("0.##"), @point.Y.ToString("0.##"))</title>

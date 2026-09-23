@@ -17,8 +17,8 @@
             if (min > max)
                 throw new ArgumentOutOfRangeException("min must be lower or equal than max");
 
-            Min = min;
-            Max = max;
+            Min = Math.Floor(min);
+            Max = Math.Ceiling(max);
             Size = Max - Min;
         }
 

@@ -28,9 +28,18 @@
             ExceptionUtils.ThrowIfInfinity(aspect_ratio);
             ExceptionUtils.ThrowIfNaN(aspect_ratio);
 
+            if (aspect_ratio > AspectRatio.Square)
+            {
+                Width = 2 * PADDING + (int)((SIZE - 2 * PADDING) * aspect_ratio);
+                Height = SIZE;
+            }
+            else
+            {
+                Width = SIZE;
+                Height = 2 * PADDING + (int)((SIZE - 2 * PADDING) / aspect_ratio);
+            }
+
             Ratio = aspect_ratio;
-            Width = SIZE;
-            Height = 2 * PADDING + (int)((SIZE - 2 * PADDING) / aspect_ratio);
             Padding = PADDING;
             InternalWidth = Width - 2 * Padding;
             InternalHeight = Height - 2 * Padding;

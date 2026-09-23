@@ -5,21 +5,11 @@ namespace BlazorGraphs.Components
 {
     public partial class HistChart
     {
-        private const int VIEW = 1000;
-        private const int PADDING = 100;
-
         [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Double AspectRatio { get; set; }
         [Parameter] public Histogram Model { get; set; }
         [Parameter] public EventCallback<Bin> OnClick { get; set; }
-        private int width = VIEW;
-        private int height = VIEW;
-        private int padding = PADDING;
-        private int offsetH => padding;
-        private int offsetV => height - padding;
-        private int originH => Model is null ? offsetH : offsetH - (int)(Model.AxisX.Min * scaleH);
-        private int originV => Model is null ? offsetV : offsetV + (int)(Model.AxisY.Min * scaleV);
-        private double scaleH => (width - 2 * padding) / Model.AxisX.Size;
-        private double scaleV => (height - 2 * padding) / Model.AxisY.Size;
+        private ViewLayout LayoutView;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;
         private TextLayout LayoutTitleY;
@@ -27,27 +17,29 @@ namespace BlazorGraphs.Components
 
         protected override void OnParametersSet()
         {
-            LayoutAxisX.WithTheme(Theme);
-            LayoutAxisY.WithTheme(Theme);
+            LayoutView.WithAspectRatio(AspectRatio);
+            LayoutAxisX.WithTheme(Theme).From(LayoutView.Padding).To(LayoutView.Width - LayoutView.Padding);
+            LayoutAxisY.WithTheme(Theme).From(LayoutView.Height - LayoutView.Padding).To(LayoutView.Padding).At(LayoutView.Padding);
             LayoutTitleX.WithTheme(Theme);
             LayoutTitleY.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
         {
+            LayoutView = ViewLayout.Default();
             LayoutAxisY = AxisLayout.VerticalLayout()
                                     .TicksInternal()
                                     .WithTickSize(20)
                                     .WithTheme(Theme)
-                                    .From(height - padding)
-                                    .To(padding)
-                                    .At(padding);
+                                    .From(LayoutView.Height - LayoutView.Padding)
+                                    .To(LayoutView.Padding)
+                                    .At(LayoutView.Padding);
 
             LayoutAxisX = AxisLayout.HorizontalLayout()
                                     .WithTickSize(20)
                                     .WithTheme(Theme)
-                                    .From(padding)
-                                    .To(width - padding);
+                                    .From(LayoutView.Padding)
+                                    .To(LayoutView.Width - LayoutView.Padding);
 
             LayoutTitleX = TextLayout.MiddleLayout()
                                      .Medium()
@@ -56,7 +48,7 @@ namespace BlazorGraphs.Components
             LayoutTitleY = TextLayout.StartLayout()
                                      .Medium()
                                      .WithTheme(Theme)
-                                     .At(padding / 2, padding / 2);
+                                     .At(LayoutView.Padding / 2, LayoutView.Padding / 2);
         }
     }
 }

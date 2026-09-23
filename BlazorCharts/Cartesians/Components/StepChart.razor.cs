@@ -7,9 +7,6 @@ namespace BlazorGraphs.Components
 {
     public partial class StepChart
     {
-        private const int VIEW = 1000;
-        private const int PADDING = 100;
-
         [Parameter] public Theme Theme { get; set; }
         [Parameter] public Double AspectRatio { get; set; }
         [Parameter] public Boolean HidePoints { get; set; }

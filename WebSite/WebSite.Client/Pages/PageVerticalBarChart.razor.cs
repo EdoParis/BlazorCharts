@@ -10,10 +10,12 @@ namespace WebApp.Pages
         private Bargram model1;
         private Random random;
         private Double offset;
+        private Double aspectratio;
 
         protected override void OnInitialized()
         {
             random = new Random();
+            aspectratio = AspectRatios.Square;
             offset = Math.Round(50 * (2 * random.NextDouble() - 1));
             model1 = new Bargram("Axis-2", Color.MediumPurple, Color.CadetBlue);
 

@@ -32,6 +32,11 @@
                     <td class="font-monospace"><span class="token keyword">EventCallback</span>&lt<span class="token keyword">Bar</span>&gt</td>
                     <td>Bar click event</td>
                 </tr>
+                <tr>
+                    <td>AspectRatio</td>
+                    <td class="font-monospace"><span class="token property">Double</span></td>
+                    <td>Define the width/height ratio of the chart</td>
+                </tr>
             </table>
         </div>
     </div>
@@ -45,8 +50,21 @@
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.PrimaryColor.ToHex())" @onchange="@((e) => model1.PrimaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-6 col-form-label">Secondary color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.SecondaryColor.ToHex())" @onchange="@((e) => model1.SecondaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6 col-form-label">Aspect ratio</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="@aspectratio">
+                            <option value="@AspectRatios.Square">@nameof(AspectRatios.Square)</option>
+                            <option value="@AspectRatios.Vertical">@nameof(AspectRatios.Vertical)</option>
+                            <option value="@AspectRatios.Portrait">@nameof(AspectRatios.Portrait)</option>
+                            <option value="@AspectRatios.Standard">@nameof(AspectRatios.Standard)</option>
+                            <option value="@AspectRatios.Photo">@nameof(AspectRatios.Photo)</option>
+                            <option value="@AspectRatios.Widescreen">@nameof(AspectRatios.Widescreen)</option>
+                            <option value="@AspectRatios.Panoramic">@nameof(AspectRatios.Panoramic)</option>
+                            <option value="@AspectRatios.Ultrawide">@nameof(AspectRatios.Ultrawide)</option>
+                        </select>
+                    </div>
                     <div class="col-12">
-                        <VerticalBarChart Model="@model1" OnClick="OnBarClick"></VerticalBarChart>
+                        <VerticalBarChart Model="@model1" OnClick="OnBarClick" AspectRatio="@aspectratio"></VerticalBarChart>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnBarAdd">Add Bar</button></div>

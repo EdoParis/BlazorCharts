@@ -11,7 +11,7 @@
     }
     else
     {
-        int originV = LayoutAxisY.StartingPoint.Y - (int)(Model.AxisY.Min * LayoutAxisY.Amplitude / Model.AxisY.Size);
+        int originV = LayoutAxisY.StartingPoint.Y + (int)(Model.AxisY.Origin * LayoutAxisY.Amplitude);
 
         foreach(Bin bin in Model)
         {

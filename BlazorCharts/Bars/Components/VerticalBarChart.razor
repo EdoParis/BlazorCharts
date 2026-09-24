@@ -1,16 +1,22 @@
 ﻿@namespace BlazorGraphs.Components
 
-<svg viewBox="@(-padding / 2) 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
+<svg xmlns="http://www.w3.org/2000/svg" 
+     style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
+     viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
+     @key="@Model">
+
     @if (Model is null || Model.IsEmpty)
     {
-        <rect x="@offsetH"
-              y="@padding"
-              width="@(width - 2 * padding)"
-              height="@(height - 2 * padding)"
-              fill="@Theme.BackgroundString()"/>
+        <rect x="@LayoutView.Padding"
+              y="@LayoutView.Padding"
+              width="@LayoutView.InternalWidth"
+              height="@LayoutView.InternalHeight"
+              fill="@Theme.BackgroundString()" />
     }
     else
     {
+        int originV = LayoutAxisY.StartingPoint.Y + (int)(Model.ValAxis.Origin * LayoutAxisY.Amplitude);
+
         foreach (KeyValuePair<string, Bin> kvp in Model)
         {
             string label = kvp.Key;
@@ -18,43 +24,43 @@
 
             @if (bin.Value < 0)
             {
-                <rect x="@(offsetH + (int)((bin.Min - Model.BinAxis.Min) * scaleH))"
+                <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size))"
                       y="@originV"
-                      width="@((int)((bin.Max - bin.Min) * scaleH))"
-                      height="@((int)(-bin.Value * scaleV))"
+                      width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size))"
+                      height="@((int)(bin.Value * LayoutAxisY.Amplitude / Model.ValAxis.Size))"
                       fill="@(Model.SecondaryColor.ToHex())"
                       stroke="@(Model.SecondaryColor.ToHex())"
                       class="scale-down"
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
-                      @key="@kvp"
+                      @key="@bin"
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                @LayoutLabelsTop.At(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH), originV).Render(label);
+                @LayoutLabelsTop.At(LayoutAxisX.StartingPoint.X + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size), originV).Render(label);
             }
             else
             {
-                <rect x="@(offsetH + (int)((bin.Min - Model.BinAxis.Min) * scaleH))"
-                      y="@(originV - (int)(bin.Value * scaleV))"
-                      width="@((int)((bin.Max - bin.Min) * scaleH))"
-                      height="@((int)(bin.Value * scaleV))"
+                <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size))"
+                      y="@(originV + (int)(bin.Value * LayoutAxisY.Amplitude / Model.ValAxis.Size))"
+                      width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size))"
+                      height="@((int)(-bin.Value * LayoutAxisY.Amplitude / Model.ValAxis.Size))"
                       fill="@(Model.PrimaryColor.ToHex())"
                       stroke="@(Model.PrimaryColor.ToHex())"
                       class="scale-up"
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
-                      @key="@kvp"
+                      @key="@bin"
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
                     <title>@bin.Value.ToString("0.##")</title>
                 </rect>
-                @LayoutLabelsBottom.At(offsetH + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * scaleH), originV).Render(label);
+                @LayoutLabelsBottom.At(LayoutAxisX.StartingPoint.X + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size), originV).Render(label);
             }
         }
         @LayoutAxisY.Render(Model.ValAxis);
         @LayoutAxisX.At(originV).Render(Model.BinAxis);
-        @LayoutTitle.At(padding / 2, originV > height / 2 ? padding / 2 : height - padding / 2).Render(Model.Title);
+        @LayoutTitle.At(LayoutView.Padding / 2, originV > LayoutView.Height / 2 ? LayoutView.Padding / 2 : LayoutView.Height - LayoutView.Padding / 2).Render(Model.Title);
     }
 </svg>

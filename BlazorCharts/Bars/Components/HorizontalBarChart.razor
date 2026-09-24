@@ -15,7 +15,7 @@
     }
     else
     {
-        int originH = LayoutAxisX.StartingPoint.X - (int)(Model.ValAxis.Min * LayoutAxisX.Amplitude / Model.ValAxis.Size);
+        int originH = LayoutAxisX.StartingPoint.X + (int)(Model.ValAxis.Origin * LayoutAxisX.Amplitude);
 
         foreach(KeyValuePair<string, Bin> kvp in Model)
         {

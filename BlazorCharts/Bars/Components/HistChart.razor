@@ -7,20 +7,20 @@
               y="@LayoutView.Padding"
               width="@LayoutView.InternalWidth"
               height="@LayoutView.InternalHeight"
-        fill="@Theme.BackgroundString()" />
+              fill="@Theme.BackgroundString()" />
     }
     else
     {
-        int originV = LayoutView.Height - LayoutView.Padding + (int)(Model.AxisY.Min * LayoutView.InternalHeight / Model.AxisY.Size);
+        int originV = LayoutAxisY.StartingPoint.Y - (int)(Model.AxisY.Min * LayoutAxisY.Amplitude / Model.AxisY.Size);
 
         foreach(Bin bin in Model)
         {
             @if (bin.Value < 0)
             {
-                <rect x="@(LayoutView.Padding + (int)((bin.Min - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
+                <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.AxisX.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
                       y="@originV"
-                      width="@((int)((bin.Max - bin.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
-                      height="@((int)(-bin.Value * LayoutView.InternalHeight / Model.AxisY.Size))"
+                      width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
+                      height="@((int)(bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
                       fill="@(Model.SecondaryColor.ToHex())"
                       stroke="@(Model.SecondaryColor.ToHex())"
                       class="scale-down"
@@ -34,10 +34,10 @@
             }
             else
             {
-                <rect x="@(LayoutView.Padding + (int)((bin.Min - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
-                      y="@(originV - (int)(bin.Value * LayoutView.InternalHeight / Model.AxisY.Size))"
-                      width="@((int)((bin.Max - bin.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
-                      height="@((int)(bin.Value * LayoutView.InternalHeight / Model.AxisY.Size))"
+                <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.AxisX.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
+                      y="@(originV + (int)(bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
+                      width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
+                      height="@((int)(-bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
                       fill="@(Model.PrimaryColor.ToHex())"
                       stroke="@(Model.PrimaryColor.ToHex())"
                       class="scale-up"

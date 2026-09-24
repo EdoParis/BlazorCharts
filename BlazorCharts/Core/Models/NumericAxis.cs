@@ -9,6 +9,7 @@
         public double Min { get => range.Min; }
         public double Max { get => range.Max; }
         public double Size { get => range.Size; }
+        public double Origin { get; private set; }
 
         public NumericAxis()
         {
@@ -21,6 +22,7 @@
         {
             range = interval;
             is_default = false;
+            Origin = -range.Min / range.Size;
         }
 
         public bool Contains(double value)
@@ -43,6 +45,7 @@
                                      Math.Max(range.Max, value));
             }
             is_default = false;
+            Origin = -range.Min / range.Size;
         }
 
         public void Include(Interval r)
@@ -55,6 +58,7 @@
                                      Math.Max(range.Max, r.Max));
             }
             is_default = false;
+            Origin = -range.Min / range.Size;
         }
 
         public IEnumerable<Tick> Ticks()

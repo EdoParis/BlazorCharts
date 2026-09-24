@@ -5,21 +5,11 @@ namespace BlazorGraphs.Components
 {
     public partial class HorizontalBarChart
     {
-        private const int VIEW = 1000;
-        private const int PADDING = 100;
-
         [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Double AspectRatio { get; set; } = AspectRatios.Square;
         [Parameter] public Bargram Model { get; set; }
         [Parameter] public EventCallback<Bar> OnClick {get; set; }
-        private int width = VIEW;
-        private int height = VIEW;
-        private int padding = PADDING;
-        private int offsetH => padding;
-        private int offsetV => height - padding;
-        private int originH => Model is null ? offsetH : offsetH - (int)(Model.ValAxis.Min * scaleH);
-        private int originV => Model is null ? offsetV : offsetV + (int)(Model.BinAxis.Min * scaleV);
-        private double scaleH => (width - 2 * padding) / Model.ValAxis.Size;
-        private double scaleV => (height - 2 * padding) / Model.BinAxis.Size;
+        private ViewLayout LayoutView;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;
         private TextLayout LayoutTitle;
@@ -28,32 +18,31 @@ namespace BlazorGraphs.Components
 
         protected override void OnParametersSet()
         {
-            LayoutAxisX.WithTheme(Theme);
-            LayoutAxisY.WithTheme(Theme);
-            LayoutTitle.WithTheme(Theme);
-            LayoutLabelsStart.WithTheme(Theme);
-            LayoutLabelsEnd.WithTheme(Theme);
+            LayoutView.WithAspectRatio(AspectRatio);
+            LayoutAxisY.WithTheme(Theme).From(LayoutView.Height - LayoutView.Padding).To(LayoutView.Padding);
+            LayoutAxisX.WithTheme(Theme).From(LayoutView.Padding).To(LayoutView.Width - LayoutView.Padding).At(LayoutView.Height - LayoutView.Padding); ;
+            LayoutTitle.WithTheme(Theme).At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 4);
         }
 
         protected override void OnInitialized()
         {
-            LayoutAxisX = AxisLayout.HorizontalLayout()
-                                    .TicksInternal()
-                                    .WithTickSize(20)
-                                    .WithTheme(Theme)
-                                    .From(padding)
-                                    .To(width - padding)
-                                    .At(height - padding);
-
+            LayoutView = ViewLayout.Default();
             LayoutAxisY = AxisLayout.VerticalLayout()
                                     .WithTheme(Theme)
-                                    .From(height - padding)
-                                    .To(padding);
+                                    .From(LayoutView.Height - LayoutView.Padding)
+                                    .To(LayoutView.Padding);
+
+            LayoutAxisX = AxisLayout.HorizontalLayout()
+                                    .WithTickSize(20)
+                                    .WithTheme(Theme)
+                                    .From(LayoutView.Padding)
+                                    .To(LayoutView.Width - LayoutView.Padding)
+                                    .At(LayoutView.Height - LayoutView.Padding);
 
             LayoutTitle = TextLayout.MiddleLayout()
                                     .Medium()
                                     .WithTheme(Theme)
-                                    .At(width / 2, height - padding / 4);
+                                    .At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 4);
 
             LayoutLabelsEnd = TextLayout.EndLayout()
                                         .WithTheme(Theme)

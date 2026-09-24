@@ -54,6 +54,7 @@
                     <div class="col-6">
                         <select class="form-select" @bind="@aspectratio">
                             <option value="@AspectRatios.Square">@nameof(AspectRatios.Square)</option>
+                            <option value="@AspectRatios.Higher">@nameof(AspectRatios.Higher)</option>
                             <option value="@AspectRatios.Vertical">@nameof(AspectRatios.Vertical)</option>
                             <option value="@AspectRatios.Portrait">@nameof(AspectRatios.Portrait)</option>
                             <option value="@AspectRatios.Standard">@nameof(AspectRatios.Standard)</option>
@@ -61,6 +62,7 @@
                             <option value="@AspectRatios.Widescreen">@nameof(AspectRatios.Widescreen)</option>
                             <option value="@AspectRatios.Panoramic">@nameof(AspectRatios.Panoramic)</option>
                             <option value="@AspectRatios.Ultrawide">@nameof(AspectRatios.Ultrawide)</option>
+                            <option value="@AspectRatios.Ultralarge">@nameof(AspectRatios.Ultralarge)</option>
                         </select>
                     </div>
                     <div class="col-12">
@@ -74,7 +76,9 @@
                 <div class="h-100 w-100 small border">
                     <pre class="language-csharp m-0 h-100">
                         <code>
- &lt<span class="token tag bold">HorizontalBarChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">HorizontalBarChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> 
+                    <span class="token property bold">AspectRatio</span><span class="token string">="</span><span class="token class-name">AspectRatios</span>.Square<span class="token string">"</span>
+                    <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
  
  @@{
      <span class="token comment">//NB: secondary color is optional.</span>

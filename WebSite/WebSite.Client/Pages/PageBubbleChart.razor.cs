@@ -7,6 +7,7 @@ namespace WebApp.Pages
     public partial class PageBubbleChart : ComponentBase
     {
         private Bubblegram model;
+        private IColorStream colorstream;
         private Random random;
         private Color serie_color;
         private Double aspectratio;
@@ -14,6 +15,7 @@ namespace WebApp.Pages
         protected override void OnInitialized()
         {
             random = new Random();
+            colorstream = new RandomPalette();
             aspectratio = AspectRatios.Square;
             serie_color = Color.MediumOrchid;
             model = new Bubblegram("AxisX", "AxisY");
@@ -61,10 +63,7 @@ namespace WebApp.Pages
                 });
             }
             model.AddSerie($"Fn-{model.SeriesCount + 1}", serie_color, bubbles);
-
-            serie_color = Color.FromArgb((int)(50 + 200 * random.NextDouble()),
-                                         (int)(50 + 200 * random.NextDouble()),
-                                         (int)(50 + 200 * random.NextDouble()));
+            serie_color = colorstream.Next();
         }
     }
 }

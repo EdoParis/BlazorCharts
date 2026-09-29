@@ -1,0 +1,79 @@
+﻿@page "/colors"
+
+<PageTitle>Colors</PageTitle>
+
+<h3>Colors</h3>
+<p>
+    Tutti i grafici hanno bisogno di essere colorati, dalle fette di un grafico a torta/ciambella, 
+    alle barre di un istogramma, fino alle serie di un grafico a linee.
+    Le <b>Palette</b> di colori nascono come un modo comodo di assegnare un set di colori ai dati di un grafico,
+    in modo tale che essi siano ben distinguibili tra di loro e con tonalità coerente.   
+</p>
+<p>
+    Le palette disponibili sono di due tipi, quelle con un set di colori preimpostato, e quelle random:
+    <ul>
+        <li><span class="token class-name font-monospace">ColorPalette</span>: palette configurabile con un set di colori a scelta, da ciclare continuamente.</li>
+        <li><span class="token class-name font-monospace">RandomPalette</span>: palette di colori casuali configurabile con un seme (<span class="token property font-monospace">Int32</span>), che ne determina la sequenza.</li>
+    </ul>
+</p>
+<p>
+    Entrambe le tipologie di palette implementano la stessa interfaccia <span class="token class-name font-monospace">IColorStream</span>:
+    <div class="card overflow-hidden">
+        <div class="card-body overflow-auto">
+            <table class="table text-nowrap align-middle mb-0 border">
+                <tr>
+                    <th>Method</th>
+                    <th>Output</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Next</td>
+                    <td class="font-monospace"><span class="token keyword">Color</span></td>
+                    <td>Colore successivo preso dal set configurato nel costruttore</td>
+                </tr>
+                <tr>
+                    <td>Reset</td>
+                    <td class="font-monospace"><span class="token property">void</span></td>
+                    <td>Reimposta la palette all'inizio</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</p>
+<p>
+    Esistono già 4 palette preimpostate con i seguenti colori:
+</p>
+<div class="row row-cols-md-4 row-cols-2 g-4">
+    <div class="col">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center">Primary</h6>
+                <div class="border"><Palette Colors="ColorPalette.Primary" Size="8"></Palette></div>
+            </div>
+        </div>                  
+    </div>
+    <div class="col">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center">Pastel</h6>
+                <div class="border"><Palette Colors="ColorPalette.Pastel" Size="8"></Palette></div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center">Light</h6>
+                <div class="border"><Palette Colors="ColorPalette.Light" Size="8"></Palette></div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center">Dark</h6>
+                <div class="border"><Palette Colors="ColorPalette.Dark" Size="8"></Palette></div>
+            </div>
+        </div>
+    </div>
+</div>

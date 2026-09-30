@@ -19,6 +19,7 @@
         SemicircleGauge,
         Speedometer,
         LegendBar,
+        AspectRatio,
         Colors,
         Themes,
         Roadmap,

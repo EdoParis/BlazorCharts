@@ -1,0 +1,81 @@
+﻿@page "/aspectratio"
+
+<PageTitle>AspectRatio</PageTitle>
+
+<h3>Aspect ratio</h3>
+<p>
+    The AspectRatio is a <span class="token property">double</span> that defines the ratio between the width and height of the chart.
+    When this ratio is equal to <span class="font-monospace">1.0</span> the chart occupies a square area;
+    if it is lower, it is taller than it is wide, and if it is higher, it extends more horizontally.<br />
+    The permitted ratios are all those between
+    <span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Minimum))</span> (<span class="font-monospace">@AspectRatios.Minimum.ToString("0.0")</span>) and
+    <span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Maximum))</span> (<span class="font-monospace">@AspectRatios.Maximum.ToString("0.0")</span>).
+</p>
+<p>
+    <div class="card overflow-hidden">
+        <div class="card-body overflow-auto">
+            <table class="table text-nowrap align-middle mb-0 border">
+                <thead>
+                    <tr>
+                        <th>AspectRatio</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Square))</span></td>
+                        <td class="font-monospace">@AspectRatios.Square.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Higher))</span></td>
+                        <td class="font-monospace">@AspectRatios.Higher.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Vertical))</span></td>
+                        <td class="font-monospace">@AspectRatios.Vertical.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Portrait))</span></td>
+                        <td class="font-monospace">@AspectRatios.Portrait.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Standard))</span></td>
+                        <td class="font-monospace">@AspectRatios.Standard.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Photo))</span></td>
+                        <td class="font-monospace">@AspectRatios.Photo.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Widescreen))</span></td>
+                        <td class="font-monospace">@AspectRatios.Widescreen.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Panoramic))</span></td>
+                        <td class="font-monospace">@AspectRatios.Panoramic.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Ultrawide))</span></td>
+                        <td class="font-monospace">@AspectRatios.Ultrawide.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Extralarge))</span></td>
+                        <td class="font-monospace">@AspectRatios.Extralarge.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Minimum))</span></td>
+                        <td class="font-monospace">@AspectRatios.Minimum.ToString("0.0#")</td>
+                    </tr>
+                    <tr>
+                        <td><span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Maximum))</span></td>
+                        <td class="font-monospace">@AspectRatios.Maximum.ToString("0.0#")</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</p>
+<p>
+    <b>NB:</b> The aspect ratio can only be edited for <b>Cartesian</b> and <b>Barcharts</b>,
+    so it excludes circular charts and gauges, which already have their own specific geometry.
+</p>

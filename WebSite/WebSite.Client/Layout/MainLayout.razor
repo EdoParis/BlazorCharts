@@ -29,20 +29,20 @@
         <div class="col">
             <div class="d-flex flex-column justify-content-between h-100">
                 <div>
-                    <h5 class="bi-bar-chart text-truncate"> Bars</h5>
-                    <ul class="list-group list-group-flush border-top border-bottom mb-3">
-                        <a class="list-group-item @(CurrentPage == PageEnum.Histogram ? "disabled" : "list-group-item-action")" href="histogram">Histogram</a>
-                        <a class="list-group-item @(CurrentPage == PageEnum.VerticalBarChart ? "disabled" : "list-group-item-action")" href="verticalbarchart">Vertical barchart</a>
-                        <a class="list-group-item @(CurrentPage == PageEnum.HorizontalBarChart ? "disabled" : "list-group-item-action")" href="horizontalbarchart">Horizontal barchart</a>
-                    </ul>
-                </div>
-                <div>
                     <h5 class="bi-speedometer2 text-truncate"> Gauges</h5>
-                    <ul class="list-group list-group-flush border-top border-bottom">
+                    <ul class="list-group list-group-flush border-top border-bottom mb-3">
                         <a class="list-group-item @(CurrentPage == PageEnum.HorizontalGauge ? "disabled" : "list-group-item-action")" href="horizontalgauge">Horizontal</a>
                         <a class="list-group-item @(CurrentPage == PageEnum.VerticalGauge ? "disabled" : "list-group-item-action")" href="verticalgauge">Vertical</a>
                         <a class="list-group-item @(CurrentPage == PageEnum.SemicircleGauge ? "disabled" : "list-group-item-action")" href="semicirclegauge">Semicircle</a>
                         <a class="list-group-item @(CurrentPage == PageEnum.Speedometer ? "disabled" : "list-group-item-action")" href="speedometer">Speedometer</a>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="bi-bar-chart text-truncate"> Bars</h5>
+                    <ul class="list-group list-group-flush border-top border-bottom">
+                        <a class="list-group-item @(CurrentPage == PageEnum.Histogram ? "disabled" : "list-group-item-action")" href="histogram">Histogram</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.VerticalBarChart ? "disabled" : "list-group-item-action")" href="verticalbarchart">Vertical barchart</a>
+                        <a class="list-group-item @(CurrentPage == PageEnum.HorizontalBarChart ? "disabled" : "list-group-item-action")" href="horizontalbarchart">Horizontal barchart</a>
                     </ul>
                 </div>
             </div>

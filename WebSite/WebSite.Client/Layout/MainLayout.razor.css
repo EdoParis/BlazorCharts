@@ -11,7 +11,7 @@ nav {
     cursor: default;
     position: fixed;
     overflow: auto;
-    z-index: 1000;
+    z-index: 2000;
     top: 4rem;
     left: 0;
     max-height: calc(100dvh - 4rem);

@@ -14,8 +14,7 @@ namespace WebApp.Layout
         protected override void OnInitialized()
         {
             string current_url = NavManager?.ToBaseRelativePath(NavManager.Uri);
-            FindPage(current_url);
-
+            CurrentPage = FindPage(current_url);
             NavManager.LocationChanged += OnPage;
         }
 
@@ -31,7 +30,6 @@ namespace WebApp.Layout
                     return page;
                 }
             }
-
             return PageEnum.Home;
         }
 

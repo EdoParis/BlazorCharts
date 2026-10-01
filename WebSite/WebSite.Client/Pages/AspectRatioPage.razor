@@ -12,94 +12,96 @@
     <span class="token keyword font-monospace">@(nameof(AspectRatios))</span>.<span class="font-monospace">@(nameof(AspectRatios.Maximum))</span> (<span class="font-monospace">@AspectRatios.Maximum.ToString("0.0")</span>).
 </p>
 <p>
-    <div class="card">
-        <div class="card-body">
-            <div class="row row-cols-sm-2 row-cols-1 g-3">
-                <div class="col">
-                    <table class="table text-nowrap align-middle mb-0 border">
-                        <thead>
-                            <tr>
-                                <th class="w-100">AspectRatio</th>
-                                <th>Value</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>@nameof(AspectRatios.Square)</td>
-                                <td class="font-monospace">@AspectRatios.Square.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Square)" @onclick="() => aspectratio = AspectRatios.Square"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Higher)</td>
-                                <td class="font-monospace">@AspectRatios.Higher.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Higher)" @onclick="() => aspectratio = AspectRatios.Higher"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Vertical)</td>
-                                <td class="font-monospace">@AspectRatios.Vertical.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Vertical)" @onclick="() => aspectratio = AspectRatios.Vertical"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Portrait)</td>
-                                <td class="font-monospace">@AspectRatios.Portrait.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Portrait)" @onclick="() => aspectratio = AspectRatios.Portrait"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Standard)</td>
-                                <td class="font-monospace">@AspectRatios.Standard.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Standard)" @onclick="() => aspectratio = AspectRatios.Standard"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Photo)</td>
-                                <td class="font-monospace">@AspectRatios.Photo.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Photo)" @onclick="() => aspectratio = AspectRatios.Photo"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Widescreen)</td>
-                                <td class="font-monospace">@AspectRatios.Widescreen.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Widescreen)" @onclick="() => aspectratio = AspectRatios.Widescreen"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Panoramic)</td>
-                                <td class="font-monospace">@AspectRatios.Panoramic.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Panoramic)" @onclick="() => aspectratio = AspectRatios.Panoramic"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Ultrawide)</td>
-                                <td class="font-monospace">@AspectRatios.Ultrawide.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Ultrawide)" @onclick="() => aspectratio = AspectRatios.Ultrawide"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Extralarge)</td>
-                                <td class="font-monospace">@AspectRatios.Extralarge.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Extralarge)" @onclick="() => aspectratio = AspectRatios.Extralarge"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Minimum)</td>
-                                <td class="font-monospace">@AspectRatios.Minimum.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Minimum)" @onclick="() => aspectratio = AspectRatios.Minimum"></td>
-                            </tr>
-                            <tr>
-                                <td>@nameof(AspectRatios.Maximum)</td>
-                                <td class="font-monospace">@AspectRatios.Maximum.ToString("0.0#")</td>
-                                <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Maximum)" @onclick="() => aspectratio = AspectRatios.Maximum"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col">
-                    <label class="form-label text-center w-100">Aspect ratio: @(aspectratio.ToString("0.0#"))</label>
-                    <input type="range" class="form-range" min="@(10 * AspectRatios.Minimum)" max="@(10 * AspectRatios.Maximum)" value="@((int)(10 * aspectratio))" @onchange="OnRatioChange">
-                    <div class="overflow-auto" style="height: auto; max-height: 30em;">
-                        <BubbleChart Model="@bubble_model" AspectRatio="@aspectratio"></BubbleChart>
-                    </div>
-                </div>
+    <div class="card-group">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <table class="table text-nowrap align-middle mb-0 border">
+                    <thead>
+                        <tr>
+                            <th class="w-100">AspectRatio</th>
+                            <th>Value</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@nameof(AspectRatios.Square)</td>
+                            <td class="font-monospace">@AspectRatios.Square.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Square)" @onclick="() => aspectratio = AspectRatios.Square"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Higher)</td>
+                            <td class="font-monospace">@AspectRatios.Higher.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Higher)" @onclick="() => aspectratio = AspectRatios.Higher"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Vertical)</td>
+                            <td class="font-monospace">@AspectRatios.Vertical.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Vertical)" @onclick="() => aspectratio = AspectRatios.Vertical"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Portrait)</td>
+                            <td class="font-monospace">@AspectRatios.Portrait.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Portrait)" @onclick="() => aspectratio = AspectRatios.Portrait"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Standard)</td>
+                            <td class="font-monospace">@AspectRatios.Standard.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Standard)" @onclick="() => aspectratio = AspectRatios.Standard"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Photo)</td>
+                            <td class="font-monospace">@AspectRatios.Photo.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Photo)" @onclick="() => aspectratio = AspectRatios.Photo"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Widescreen)</td>
+                            <td class="font-monospace">@AspectRatios.Widescreen.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Widescreen)" @onclick="() => aspectratio = AspectRatios.Widescreen"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Panoramic)</td>
+                            <td class="font-monospace">@AspectRatios.Panoramic.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Panoramic)" @onclick="() => aspectratio = AspectRatios.Panoramic"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Ultrawide)</td>
+                            <td class="font-monospace">@AspectRatios.Ultrawide.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Ultrawide)" @onclick="() => aspectratio = AspectRatios.Ultrawide"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Extralarge)</td>
+                            <td class="font-monospace">@AspectRatios.Extralarge.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Extralarge)" @onclick="() => aspectratio = AspectRatios.Extralarge"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Minimum)</td>
+                            <td class="font-monospace">@AspectRatios.Minimum.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Minimum)" @onclick="() => aspectratio = AspectRatios.Minimum"></td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(AspectRatios.Maximum)</td>
+                            <td class="font-monospace">@AspectRatios.Maximum.ToString("0.0#")</td>
+                            <td><input class="form-check-input" type="checkbox" checked="@(aspectratio == AspectRatios.Maximum)" @onclick="() => aspectratio = AspectRatios.Maximum"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="card-footer">
-            <b>NB:</b> The aspect ratio can only be edited for <b>Cartesian</b> and <b>Barcharts</b>,
-            so it excludes circular charts and gauges, which already have their own specific geometry.
+        <div class="card overflow-hidden">
+            <div class="card-body pt-0 overflow-auto" style="height: auto; max-height: 36em;">
+                <div class="sticky-top bg-body pt-3">
+                    <label class="form-label text-center w-100">Aspect ratio: @(aspectratio.ToString("0.0#"))</label>
+                    <input type="range" class="form-range" min="@(10 * AspectRatios.Minimum)" max="@(10 * AspectRatios.Maximum)" value="@((int)(10 * aspectratio))" @onchange="OnRatioChange">
+                </div>
+                <BubbleChart Model="@bubble_model" AspectRatio="@aspectratio"></BubbleChart>
+            </div>
         </div>
+    </div>
+</p>
+<p>
+    <div class="alert alert-light">
+        <b>NB:</b> The aspect ratio can only be edited for <b>Cartesian</b> and <b>Barcharts</b>,
+        so it excludes circular charts and gauges, which already have their own specific geometry.
     </div>
 </p>

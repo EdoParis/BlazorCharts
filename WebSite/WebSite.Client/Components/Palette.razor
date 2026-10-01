@@ -1,16 +1,16 @@
 ﻿@if (Colors != null && Size > 0)
 {
-    <svg viewBox="0 0 @(Size * 5) @(Size * 10)" 
+    <svg viewBox="0 0 @(Size * 10) 10" 
          xmlns="http://www.w3.org/2000/svg">
 
         @for (int i=0; i<Size; i++)
         {
             Color current_color = Colors.Next();
 
-            <rect x="0"
-                  y="@(i * 10)"
-                  width="@(Size * 5)"
+            <rect y="0"
+                  x="@(i * 10)"
                   height="10"
+                  width="10"
                   fill-opacity="0.6"
                   fill="@current_color.ToHex()">
                 <title>@current_color.ToHex()</title>

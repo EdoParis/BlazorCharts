@@ -1,83 +1,111 @@
 ﻿@namespace BlazorGraphs.Components
 
-<svg viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
-    @if (Model is null || Model.IsEmpty)
-    {
-        <rect x="@LayoutView.Padding"
-              y="@LayoutView.Padding"
-              width="@LayoutView.InternalWidth"
-              height="@LayoutView.InternalHeight"
-              fill="@Theme.BackgroundString()" />
-    }
-    else
-    {
-        int originV = LayoutAxisY.StartingPoint.Y + (int)(Model.AxisY.Origin * LayoutAxisY.Amplitude);
+<div style="position: relative;" @onmousemove="OnMouseHover">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
+         viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
+         @key="@Model"
+         @onmouseleave="() => SelectedBin = null">
 
-        foreach(Bin bin in Model)
+        @if (Model is null || Model.IsEmpty)
         {
-            @if (bin.Value < 0)
-            {
-                <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.AxisX.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
-                      y="@originV"
-                      width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
-                      height="@((int)(bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
-                      fill="@(Model.SecondaryColor.ToHex())"
-                      stroke="@(Model.SecondaryColor.ToHex())"
-                      class="scale-down"
-                      fill-opacity="0.6"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      @key="@bin"
-                      @onclick="async () => await OnClick.InvokeAsync(bin)">
-                    <title>@bin.Value.ToString("0.##")</title>
-                </rect>
-            }
-            else
-            {
-                <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.AxisX.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
-                      y="@(originV + (int)(bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
-                      width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
-                      height="@((int)(-bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
-                      fill="@(Model.PrimaryColor.ToHex())"
-                      stroke="@(Model.PrimaryColor.ToHex())"
-                      class="scale-up"
-                      fill-opacity="0.6"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      @key="@bin"
-                      @onclick="async () => await OnClick.InvokeAsync(bin)">
-                    <title>@bin.Value.ToString("0.##")</title>
-                </rect>
-            }
-        }
-
-        if (originV == LayoutView.Padding)
-        {
-            @LayoutTitleY.At(LayoutView.Padding / 2, LayoutView.Height - LayoutView.Padding / 2).Render(Model.TitleY);
-            @LayoutTitleX.At(LayoutView.Width / 2, LayoutView.Padding / 4).Render(Model.TitleX);
-            @LayoutAxisX.FullInternal().At(originV).WithStartTick().Render(Model.AxisX);
-            @LayoutAxisY.Render(Model.AxisY);
-        }
-        else if (originV == LayoutView.Height - LayoutView.Padding)
-        {
-            @LayoutTitleY.At(LayoutView.Padding / 2, LayoutView.Padding / 2).Render(Model.TitleY);
-            @LayoutTitleX.At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 4).Render(Model.TitleX);
-            @LayoutAxisX.TicksInternal().At(originV).WithStartTick().Render(Model.AxisX);
-            @LayoutAxisY.Render(Model.AxisY);
-        }
-        else if (Model.AxisY.Size / 2 > -Model.AxisY.Min)
-        {
-            @LayoutTitleY.At(LayoutView.Padding / 2, LayoutView.Padding / 2).Render(Model.TitleY);
-            @LayoutTitleX.At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 2).Render(Model.TitleX);
-            @LayoutAxisX.TicksInternal().At(originV).WithoutStartTick().Render(Model.AxisX);
-            @LayoutAxisY.Render(Model.AxisY);
+            <rect x="@LayoutView.Padding"
+                  y="@LayoutView.Padding"
+                  width="@LayoutView.InternalWidth"
+                  height="@LayoutView.InternalHeight"
+                  fill="@Theme.BackgroundString()" />
         }
         else
         {
-            @LayoutTitleY.At(LayoutView.Padding / 2, LayoutView.Height - LayoutView.Padding / 2).Render(Model.TitleY);
-            @LayoutTitleX.At(LayoutView.Width / 2, LayoutView.Padding / 2).Render(Model.TitleX);
-            @LayoutAxisX.FullInternal().At(originV).WithoutStartTick().Render(Model.AxisX);
-            @LayoutAxisY.Render(Model.AxisY);
+            int originV = LayoutAxisY.StartingPoint.Y + (int)(Model.AxisY.Origin * LayoutAxisY.Amplitude);
+
+            foreach(Bin bin in Model)
+            {
+                @if (bin.Value < 0)
+                {
+                    <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.AxisX.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
+                          y="@originV"
+                          width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
+                          height="@((int)(bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
+                          fill="@(Model.SecondaryColor.ToHex())"
+                          stroke="@(Model.SecondaryColor.ToHex())"
+                          class="scale-down"
+                          fill-opacity="0.6"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          @key="@bin"
+                          @onclick="async () => await OnClick.InvokeAsync(bin)"
+                          @onmouseenter="() => SelectedBin = bin"
+                          @onmouseleave="() => SelectedBin = null">
+                    </rect>
+                }
+                else
+                {
+                    <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.AxisX.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
+                          y="@(originV + (int)(bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
+                          width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size))"
+                          height="@((int)(-bin.Value * LayoutAxisY.Amplitude / Model.AxisY.Size))"
+                          fill="@(Model.PrimaryColor.ToHex())"
+                          stroke="@(Model.PrimaryColor.ToHex())"
+                          class="scale-up"
+                          fill-opacity="0.6"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          @key="@bin"
+                          @onclick="async () => await OnClick.InvokeAsync(bin)"
+                          @onmouseenter="() => SelectedBin = bin"
+                          @onmouseleave="() => SelectedBin = null">
+                    </rect>
+                }
+            }
+
+            if (originV == LayoutView.Padding)
+            {
+                @LayoutTitleY.At(LayoutView.Padding / 2, LayoutView.Height - LayoutView.Padding / 2).Render(Model.TitleY);
+                @LayoutTitleX.At(LayoutView.Width / 2, LayoutView.Padding / 4).Render(Model.TitleX);
+                @LayoutAxisX.FullInternal().At(originV).WithStartTick().Render(Model.AxisX);
+                @LayoutAxisY.Render(Model.AxisY);
+            }
+            else if (originV == LayoutView.Height - LayoutView.Padding)
+            {
+                @LayoutTitleY.At(LayoutView.Padding / 2, LayoutView.Padding / 2).Render(Model.TitleY);
+                @LayoutTitleX.At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 4).Render(Model.TitleX);
+                @LayoutAxisX.TicksInternal().At(originV).WithStartTick().Render(Model.AxisX);
+                @LayoutAxisY.Render(Model.AxisY);
+            }
+            else if (Model.AxisY.Size / 2 > -Model.AxisY.Min)
+            {
+                @LayoutTitleY.At(LayoutView.Padding / 2, LayoutView.Padding / 2).Render(Model.TitleY);
+                @LayoutTitleX.At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 2).Render(Model.TitleX);
+                @LayoutAxisX.TicksInternal().At(originV).WithoutStartTick().Render(Model.AxisX);
+                @LayoutAxisY.Render(Model.AxisY);
+            }
+            else
+            {
+                @LayoutTitleY.At(LayoutView.Padding / 2, LayoutView.Height - LayoutView.Padding / 2).Render(Model.TitleY);
+                @LayoutTitleX.At(LayoutView.Width / 2, LayoutView.Padding / 2).Render(Model.TitleX);
+                @LayoutAxisX.FullInternal().At(originV).WithoutStartTick().Render(Model.AxisX);
+                @LayoutAxisY.Render(Model.AxisY);
+            }
         }
+    </svg>
+    @if (SelectedBin.HasValue)
+    {
+        <Tooltip Position="TooltipPosition" Theme="Theme">
+            <table>
+                <tr>
+                    <td>
+                        <svg width="1.5em" height="1em">
+                            <rect x="0.1em"
+                                  y="0.1em"
+                                  width="0.8em"
+                                  height="0.8em"
+                                  fill="@(SelectedBin.Value.Value < 0 ? Model.SecondaryColor.ToHex() : Model.PrimaryColor.ToHex())" />
+                        </svg>
+                    </td>
+                    <td>@SelectedBin.Value.Value.ToString("0.0#")</td>
+                </tr>
+            </table>
+        </Tooltip>
     }
-</svg>
+</div>

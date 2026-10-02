@@ -1,5 +1,7 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using System.Drawing;
 
 namespace BlazorGraphs.Components
 {
@@ -15,6 +17,8 @@ namespace BlazorGraphs.Components
         private TextLayout LayoutTitle;
         private TextLayout LayoutLabelsStart;
         private TextLayout LayoutLabelsEnd;
+        private Point TooltipPosition;
+        private Bar? SelectedBar;
 
         protected override void OnParametersSet()
         {
@@ -51,6 +55,18 @@ namespace BlazorGraphs.Components
             LayoutLabelsStart = TextLayout.StartLayout()
                                           .WithTheme(Theme)
                                           .Medium();
+        }
+
+        private void OnMouseHover(MouseEventArgs e)
+        {
+            if (e is null)
+                return;
+
+            TooltipPosition = new Point()
+            {
+                X = (int)e.OffsetX + 10,
+                Y = (int)e.OffsetY + 10
+            };
         }
     }
 }

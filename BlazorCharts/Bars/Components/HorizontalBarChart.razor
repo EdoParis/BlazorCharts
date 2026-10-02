@@ -1,66 +1,93 @@
 ﻿@namespace BlazorGraphs.Components
 
-<svg xmlns="http://www.w3.org/2000/svg" 
-     style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
-     viewBox="@(Model is null || Model.IsEmpty ? 0 : (Model.ValAxis.Origin < 1.0 / 4.0 ? -LayoutView.Padding / 2 : Model.ValAxis.Origin > 3.0 / 4.0 ? LayoutView.Padding / 2 : 0)) 0 @LayoutView.Width @LayoutView.Height"
-     @key="@Model">
+<div style="position: relative;" @onmousemove="OnMouseHover">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
+         viewBox="@(Model is null || Model.IsEmpty ? 0 : (Model.ValAxis.Origin < 1.0 / 4.0 ? -LayoutView.Padding / 2 : Model.ValAxis.Origin > 3.0 / 4.0 ? LayoutView.Padding / 2 : 0)) 0 @LayoutView.Width @LayoutView.Height"
+         @key="@Model"
+         @onmouseleave="() => SelectedBar = null">
 
-    @if (Model is null || Model.IsEmpty)
-    {
-        <rect x="@LayoutView.Padding"
-              y="@LayoutView.Padding"
-              width="@LayoutView.InternalWidth"
-              height="@LayoutView.InternalHeight"
-              fill="@Theme.BackgroundString()" />
-    }
-    else
-    {
-        int originH = LayoutAxisX.StartingPoint.X + (int)(Model.ValAxis.Origin * LayoutAxisX.Amplitude);
-
-        foreach(KeyValuePair<string, Bin> kvp in Model)
+        @if (Model is null || Model.IsEmpty)
         {
-            string label = kvp.Key;
-            Bin bin = kvp.Value;
-
-            @if (bin.Value >= 0)
-            {
-                <rect x="@originH"
-                      y="@(LayoutAxisY.EndingPoint.Y - (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
-                      height="@((int)(-(bin.Max - bin.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
-                      width="@((int)(bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
-                      fill="@(Model.PrimaryColor.ToHex())"
-                      stroke="@(Model.PrimaryColor.ToHex())"
-                      class="extend-right"
-                      fill-opacity="0.6"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      @key="@kvp"
-                      @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
-                    <title>@bin.Value.ToString("0.##")</title>
-                </rect>
-                @LayoutLabelsEnd.At(originH, (int)(LayoutAxisY.EndingPoint.Y - ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size)).Render(label);
-            }
-            else
-            {
-                <rect x="@(originH + (int)(bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
-                      y="@(LayoutAxisY.EndingPoint.Y - (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
-                      height="@((int)(-(bin.Max - bin.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
-                      width="@((int)(-bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
-                      fill="@(Model.SecondaryColor.ToHex())"
-                      stroke="@(Model.SecondaryColor.ToHex())"
-                      class="extend-left"
-                      fill-opacity="0.6"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      @key="@kvp"
-                      @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))">
-                    <title>@bin.Value.ToString("0.##")</title>
-                </rect>
-                @LayoutLabelsStart.At(originH, (int)(LayoutAxisY.EndingPoint.Y - ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size)).Render(label);
-            }
+            <rect x="@LayoutView.Padding"
+                  y="@LayoutView.Padding"
+                  width="@LayoutView.InternalWidth"
+                  height="@LayoutView.InternalHeight"
+                  fill="@Theme.BackgroundString()" />
         }
-        @LayoutTitle.Render(Model.Title);
-        @LayoutAxisX.Render(Model.ValAxis);
-        @LayoutAxisY.At(originH).Render(Model.BinAxis);
+        else
+        {
+            int originH = LayoutAxisX.StartingPoint.X + (int)(Model.ValAxis.Origin * LayoutAxisX.Amplitude);
+
+            foreach(KeyValuePair<string, Bin> kvp in Model)
+            {
+                string label = kvp.Key;
+                Bin bin = kvp.Value;
+
+                @if (bin.Value >= 0)
+                {
+                    <rect x="@originH"
+                          y="@(LayoutAxisY.EndingPoint.Y - (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
+                          height="@((int)(-(bin.Max - bin.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
+                          width="@((int)(bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
+                          fill="@(Model.PrimaryColor.ToHex())"
+                          stroke="@(Model.PrimaryColor.ToHex())"
+                          class="extend-right"
+                          fill-opacity="0.6"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          @key="@kvp"
+                          @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))"
+                          @onmouseenter="() => SelectedBar = new Bar(label, bin.Value)"
+                          @onmouseleave="() => SelectedBar = null">
+                    </rect>
+                    @LayoutLabelsEnd.At(originH, (int)(LayoutAxisY.EndingPoint.Y - ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size)).Render(label);
+                }
+                else
+                {
+                    <rect x="@(originH + (int)(bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
+                          y="@(LayoutAxisY.EndingPoint.Y - (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
+                          height="@((int)(-(bin.Max - bin.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
+                          width="@((int)(-bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
+                          fill="@(Model.SecondaryColor.ToHex())"
+                          stroke="@(Model.SecondaryColor.ToHex())"
+                          class="extend-left"
+                          fill-opacity="0.6"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          @key="@kvp"
+                          @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))"
+                          @onmouseenter="() => SelectedBar = new Bar(label, bin.Value)"
+                          @onmouseleave="() => SelectedBar = null">
+                    </rect>
+                    @LayoutLabelsStart.At(originH, (int)(LayoutAxisY.EndingPoint.Y - ((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size)).Render(label);
+                }
+            }
+            @LayoutTitle.Render(Model.Title);
+            @LayoutAxisX.Render(Model.ValAxis);
+            @LayoutAxisY.At(originH).Render(Model.BinAxis);
+        }
+    </svg>
+    @if (SelectedBar.HasValue)
+    {
+        <Tooltip Position="TooltipPosition" Theme="Theme">
+            <table>
+                <tr>
+                    <td colspan="2" style="text-align: center;">@SelectedBar.Value.Label</td>
+                </tr>
+                <tr>
+                    <td>
+                        <svg width="1.5em" height="1em">
+                            <rect x="0.1em"
+                                  y="0.1em"
+                                  width="0.8em"
+                                  height="0.8em"
+                                  fill="@(SelectedBar.Value.Value < 0 ? Model.SecondaryColor.ToHex() : Model.PrimaryColor.ToHex())" />
+                        </svg>
+                    </td>
+                    <td>@SelectedBar.Value.Value.ToString("0.0#")</td>
+                </tr>
+            </table>
+        </Tooltip>
     }
-</svg>
+</div>

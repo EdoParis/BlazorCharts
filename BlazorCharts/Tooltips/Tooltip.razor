@@ -1,0 +1,17 @@
+@namespace BlazorGraphs.Components
+
+<div style="top: @(Position.Y)px; 
+            left: @(Position.X)px; 
+            padding: 0.2em;
+            position: absolute;
+            border: 1px solid;
+            border-radius: 0.2em;
+            pointer-events: none;
+            backdrop-filter: blur(10px);
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: @Theme.TextColorString(); 
+            font-family: @Theme.FontString(); 
+            border-color: @Theme.AxisColorString(); 
+            background-color: @Theme.BackgroundString()">
+    @ChildContent
+</div>

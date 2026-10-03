@@ -7,11 +7,12 @@
             @foreach (LegendItem item in Model.ToLegend())
             {
                 <div class="legend-item">
-                    <svg width="1.5em" height="1em" style="min-width:1.5em;">
-                        <circle cx="0.5em"
-                                cy="0.5em"
-                                r="0.4em"
-                                fill="@item.Color.ToHex()" />
+                    <svg width="1.5em" height="1em" viewBox="0 0 15 10">
+                        <circle cx="5"
+                                cy="5"
+                                r="4"
+                                fill="@(item.Color.ToHex())">
+                        </circle>
                     </svg>
                     <div class="text-truncate">@item.Text</div>
                 </div>

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
-using BlazorGraphs.Core;
+﻿using BlazorGraphs.Core;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using System.Drawing;
 
 namespace BlazorGraphs.Components
 {
@@ -16,6 +18,8 @@ namespace BlazorGraphs.Components
         private int padding = PADDING;
         private TextLayout LayoutTitle;
         private TextLayout LayoutTicks;
+        private Point TooltipPosition;
+        private Slice? SelectedSlice;
 
         protected override void OnParametersSet()
         {
@@ -45,6 +49,18 @@ namespace BlazorGraphs.Components
                    $"A {(int)radius} {(int)radius} 0 0 1 {(int)(width / 2 + radius * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius * Math.Cos(theta / 2 + rotation))} " +
                    $"A {(int)radius} {(int)radius} 0 0 1 {(int)(width / 2 + radius * Math.Sin(theta + rotation))} {(int)(height / 2 - radius * Math.Cos(theta + rotation))} " +
                    "Z";
+        }
+
+        private void OnMouseHover(MouseEventArgs e)
+        {
+            if (e is null)
+                return;
+
+            TooltipPosition = new Point()
+            {
+                X = (int)e.OffsetX + 10,
+                Y = (int)e.OffsetY + 10
+            };
         }
     }
 }

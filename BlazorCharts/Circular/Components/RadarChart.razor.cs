@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
-using BlazorGraphs.Core;
+﻿using BlazorGraphs.Core;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using System.Drawing;
 using System.Text;
 
 namespace BlazorGraphs.Components
@@ -17,6 +19,8 @@ namespace BlazorGraphs.Components
         private int padding = PADDING;
         private TextLayout LayoutLabels;
         private TextLayout LayoutTicks;
+        private Point TooltipPosition;
+        private Rating? SelectedRating;
 
         protected override void OnParametersSet()
         {
@@ -64,6 +68,18 @@ namespace BlazorGraphs.Components
             }
             str_builder.Append("Z");
             return str_builder.ToString();
+        }
+
+        private void OnMouseHover(MouseEventArgs e)
+        {
+            if (e is null)
+                return;
+
+            TooltipPosition = new Point()
+            {
+                X = (int)e.OffsetX + 10,
+                Y = (int)e.OffsetY + 10
+            };
         }
     }
 }

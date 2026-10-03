@@ -7,11 +7,11 @@
             border: 1px solid;
             border-radius: 0.2em;
             pointer-events: none;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px) brightness(0.8) hue-rotate(15deg);
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             color: @Theme.TextColorString(); 
             font-family: @Theme.FontString(); 
             border-color: @Theme.AxisColorString(); 
-            background-color: @Theme.BackgroundString()">
+            background-color: @(Theme.BackgroundString())">
     @ChildContent
 </div>

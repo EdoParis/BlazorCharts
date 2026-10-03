@@ -1,78 +1,108 @@
 @namespace BlazorGraphs.Components
 
-<svg viewBox="0 0 @width @height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
-    @if (Model is null || Model.IsEmpty)
-    {
-        <circle fill="@Theme.BackgroundString()"
-                fill-opacity="1.0"
-                stroke="@Theme.AxisColorString()"
-                stroke-width="1px"
-                vector-effect="non-scaling-stroke"
-                cx="@((width / 2))"
-                cy="@((height / 2))"
-                r="@((Math.Min(width, height) - 2 * padding) / 2)"
-                style="pointer-events: none;" />
-    }
-    else
-    {
-        int tr = 0;
-        foreach (Tick tick in Model.AxisR.Ticks())
+<div style="position: relative;" @onmousemove="OnMouseHover">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         viewBox="0 0 @width @height" 
+         style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
+         @key="@Model"
+         @onmouseleave="() => SelectedSlice = null">
+
+        @if (Model is null || Model.IsEmpty)
         {
-            if (tick.IsMaster && tick.RelativePosition > 0)
-            {
-                <circle fill="transparent"
-                        stroke="@Theme.AxisColorString()"
-                        stroke-width="1px"
-                        stroke-opacity="0.3"
-                        vector-effect="non-scaling-stroke"
-                        cx="@((width / 2))"
-                        cy="@((height / 2))"
-                        r="@((int)(tick.RelativePosition * (Math.Min(width, height) / 2 - padding)))" />
-
-                @LayoutTicks.At(width / 2, (int)(height / 2 - (height / 2 - padding) * tick.RelativePosition)).Render(tick.Label)
-            }
-            tr++;
+            <circle fill="@Theme.BackgroundString()"
+                    fill-opacity="1.0"
+                    stroke="@Theme.AxisColorString()"
+                    stroke-width="1px"
+                    vector-effect="non-scaling-stroke"
+                    cx="@((width / 2))"
+                    cy="@((height / 2))"
+                    r="@((Math.Min(width, height) - 2 * padding) / 2)"
+                    style="pointer-events: none;" />
         }
-
-        double progress = 0;
-
-        foreach(Slice slice in Model)
+        else
         {
-            if (slice.Value <= 0)
-                continue;
+            int tr = 0;
+            foreach (Tick tick in Model.AxisR.Ticks())
+            {
+                if (tick.IsMaster && tick.RelativePosition > 0)
+                {
+                    <circle fill="transparent"
+                            stroke="@Theme.AxisColorString()"
+                            stroke-width="1px"
+                            stroke-opacity="0.3"
+                            vector-effect="non-scaling-stroke"
+                            cx="@((width / 2))"
+                            cy="@((height / 2))"
+                            r="@((int)(tick.RelativePosition * (Math.Min(width, height) / 2 - padding)))" />
 
-            if (slice.Value >= Model.Total)
-            {
-                <circle fill="@slice.Color.ToHex()"
-                        class="fade-in"
-                        stroke="@Theme.BackgroundString()"
-                        fill-opacity="0.6"
-                        stroke-width="1px"
-                        vector-effect="non-scaling-stroke"
-                        cx="@((width / 2))"
-                        cy="@((height / 2))"
-                        r="@((int)(slice.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2))"
-                        @key="@slice"
-                        @onclick="async () => await OnClick.InvokeAsync(slice)">
-                    <title>@slice.Value.ToString("0.##")</title>
-                </circle>
+                    @LayoutTicks.At(width / 2, (int)(height / 2 - (height / 2 - padding) * tick.RelativePosition)).Render(tick.Label)
+                }
+                tr++;
             }
-            else
+
+            double progress = 0;
+
+            foreach(Slice slice in Model)
             {
-                <path fill="@slice.Color.ToHex()"
-                      class="fade-in"
-                      stroke="@Theme.BackgroundString()"
-                      fill-opacity="0.6"
-                      stroke-width="1px"
-                      vector-effect="non-scaling-stroke"
-                      d="@SlicePath(slice, 2 * Math.PI * progress)"
-                      @key="@slice"
-                      @onclick="async () => await OnClick.InvokeAsync(slice)">
-                    <title>@slice.Value.ToString("0.##")</title>
-                </path>
+                if (slice.Value <= 0)
+                    continue;
+
+                if (slice.Value >= Model.Total)
+                {
+                    <circle fill="@slice.Color.ToHex()"
+                            class="fade-in"
+                            stroke="@Theme.BackgroundString()"
+                            fill-opacity="0.6"
+                            stroke-width="1px"
+                            vector-effect="non-scaling-stroke"
+                            cx="@((width / 2))"
+                            cy="@((height / 2))"
+                            r="@((int)(slice.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2))"
+                            @key="@slice"
+                            @onclick="async () => await OnClick.InvokeAsync(slice)"
+                            @onmouseenter="() => SelectedSlice = slice"
+                            @onmouseleave="() => SelectedSlice = null">
+                    </circle>
+                }
+                else
+                {
+                    <path fill="@slice.Color.ToHex()"
+                          class="fade-in"
+                          stroke="@Theme.BackgroundString()"
+                          fill-opacity="0.6"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          d="@SlicePath(slice, 2 * Math.PI * progress)"
+                          @key="@slice"
+                          @onclick="async () => await OnClick.InvokeAsync(slice)"
+                          @onmouseenter="() => SelectedSlice = slice"
+                          @onmouseleave="() => SelectedSlice = null">
+                    </path>
+                }
+                progress += 1d / Model.SlicesCount;
             }
-            progress += 1d / Model.SlicesCount;
+            @LayoutTitle.Render(Model?.Title);
         }
-        @LayoutTitle.Render(Model?.Title);
+    </svg>
+    @if (SelectedSlice.HasValue)
+    {
+        <Tooltip Position="TooltipPosition" Theme="Theme">
+            <table>
+                <tr>
+                    <td colspan="2" style="text-align: center;">@SelectedSlice.Value.Label</td>
+                </tr>
+                <tr>
+                    <td>
+                        <svg width="1.5em" height="1em" viewBox="0 0 15 10">
+                            <path d="M 1 9 L 1 1 A 8 8 0 0 1 9 9 Z"
+                                  fill="@(SelectedSlice.Value.Color.ToHex())" />
+                        </svg>
+                    </td>
+                    <td>
+                        <label>@(SelectedSlice.Value.Value.ToString("0.##"))</label>
+                    </td>
+                </tr>
+            </table>
+        </Tooltip>
     }
-</svg>
+</div>

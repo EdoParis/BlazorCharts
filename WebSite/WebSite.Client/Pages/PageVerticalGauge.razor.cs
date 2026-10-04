@@ -58,7 +58,7 @@ namespace WebApp.Pages
 
             model1.AddBreakpoint(new Breakpoint()
             {
-                Label = $"Level-{last_threshold}",
+                Label = $"Level-{model1.BreakPointsCount + 1}",
                 Value = last_threshold,
                 Color = Color.FromArgb((int)(50 + 200 * random.NextDouble()),
                                        (int)(50 + 200 * random.NextDouble()),

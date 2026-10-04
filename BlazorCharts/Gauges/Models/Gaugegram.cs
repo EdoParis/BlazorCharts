@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using BlazorGraphs.Core;
 using System.Collections;
-using BlazorGraphs.Core;
+using System.Drawing;
 
 namespace BlazorGraphs
 {
@@ -11,6 +11,7 @@ namespace BlazorGraphs
         public Color Color { get; set; }
         public string Title { get; set; }
         public double Value { get; set; }
+        public int BreakPointsCount { get => breakpoints?.Count ?? default; }
         public bool HasBreakPoints { get => breakpoints?.Count > 0; }
 
         public Gaugegram(double min, double max, string title, Color color)

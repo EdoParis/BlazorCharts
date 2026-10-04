@@ -68,6 +68,18 @@ namespace BlazorGraphs.Core
             return this;
         }
 
+        public TooltipLayout WithoutTitle()
+        {
+            Title = null;
+            return this;
+        }
+
+        public TooltipLayout WithoutLabel()
+        {
+            Label = null;
+            return this;
+        }
+
         public RenderFragment Render()
         {
             return builder =>
@@ -90,7 +102,7 @@ namespace BlazorGraphs.Core
                 builder.OpenElement(3, "tr");
                 builder.OpenElement(4, "td");
                 builder.AddAttribute(5, "colspan", 2);
-                builder.AddAttribute(6, "style", "text-align: center;");
+                builder.AddAttribute(6, "style", "text-align: center; white-space: nowrap;");
                 builder.AddContent(7, Title);
                 builder.CloseElement();
                 builder.CloseElement();
@@ -99,7 +111,8 @@ namespace BlazorGraphs.Core
                 builder.AddContent(10, Marker?.Render());
                 builder.CloseElement();
                 builder.OpenElement(11, "td");
-                builder.AddContent(12, Label);
+                builder.AddAttribute(12, "style", "white-space: nowrap;");
+                builder.AddContent(13, Label);
                 builder.CloseElement();
                 builder.CloseElement();
                 builder.CloseElement();

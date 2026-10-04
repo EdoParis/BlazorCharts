@@ -99,13 +99,16 @@ namespace BlazorGraphs.Core
                                                    border-color: {Theme.AxisColorString()}; 
                                                    background-color: {Theme.BackgroundString()}");
                 builder.OpenElement(2, "table");
-                builder.OpenElement(3, "tr");
-                builder.OpenElement(4, "td");
-                builder.AddAttribute(5, "colspan", 2);
-                builder.AddAttribute(6, "style", "text-align: center; white-space: nowrap;");
-                builder.AddContent(7, Title);
-                builder.CloseElement();
-                builder.CloseElement();
+                if (!string.IsNullOrWhiteSpace(Title))
+                {
+                    builder.OpenElement(3, "tr");
+                    builder.OpenElement(4, "td");
+                    builder.AddAttribute(5, "colspan", 2);
+                    builder.AddAttribute(6, "style", "text-align: center; white-space: nowrap;");
+                    builder.AddContent(7, Title);
+                    builder.CloseElement();
+                    builder.CloseElement();
+                }
                 builder.OpenElement(8, "tr");
                 builder.OpenElement(9, "td");
                 builder.AddContent(10, Marker?.Render());

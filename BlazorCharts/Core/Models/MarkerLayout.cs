@@ -18,6 +18,11 @@ namespace BlazorGraphs.Core
             return new Square();
         }
 
+        public static Segment SegmentLayout()
+        {
+            return new Segment();
+        }
+
         public static Circle CircleLayout()
         {
             return new Circle();
@@ -45,6 +50,28 @@ namespace BlazorGraphs.Core
                     builder.AddAttribute(6, "y", 1);
                     builder.AddAttribute(7, "width", 8);
                     builder.AddAttribute(8, "height", 8);
+                    builder.AddAttribute(9, "fill", Color.ToHex());
+                    builder.CloseElement();
+                    builder.CloseElement();
+                };
+            }
+        }
+
+        public class Segment : MarkerLayout
+        {
+            public override RenderFragment Render()
+            {
+                return builder =>
+                {
+                    builder.OpenElement(0, "svg");
+                    builder.AddAttribute(1, "width", "1.5em");
+                    builder.AddAttribute(2, "height", "1em");
+                    builder.AddAttribute(3, "viewBox", "0 0 15 10");
+                    builder.OpenElement(4, "rect");
+                    builder.AddAttribute(5, "x", 1);
+                    builder.AddAttribute(6, "y", 3);
+                    builder.AddAttribute(7, "width", 8);
+                    builder.AddAttribute(8, "height", 2);
                     builder.AddAttribute(9, "fill", Color.ToHex());
                     builder.CloseElement();
                     builder.CloseElement();

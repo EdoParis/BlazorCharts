@@ -1,5 +1,6 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Drawing;
 using System.Text;
 
@@ -16,6 +17,8 @@ namespace BlazorGraphs.Components
         private AxisLayout LayoutAxisX;
         private TextLayout LayoutTitleX;
         private TextLayout LayoutTitleY;
+        private TooltipLayout LayoutTooltipPoint;
+        private TooltipLayout LayoutTooltipSerie;
 
         protected override void OnParametersSet()
         {
@@ -24,6 +27,8 @@ namespace BlazorGraphs.Components
             LayoutAxisY.WithTheme(Theme).From(LayoutView.Height - LayoutView.Padding).To(LayoutView.Padding).At(LayoutView.Padding);
             LayoutTitleX.WithTheme(Theme).At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 4);
             LayoutTitleY.WithTheme(Theme).At(LayoutView.Padding / 2, LayoutView.Padding / 2);
+            LayoutTooltipPoint.WithTheme(Theme);
+            LayoutTooltipSerie.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
@@ -54,6 +59,12 @@ namespace BlazorGraphs.Components
                                      .WithTheme(Theme)
                                      .Medium()
                                      .At(LayoutView.Padding / 2, LayoutView.Padding / 2);
+
+            LayoutTooltipPoint = TooltipLayout.Default()
+                                              .WithMarker(MarkerLayout.CircleLayout());
+
+            LayoutTooltipSerie = TooltipLayout.Default()
+                                              .WithMarker(MarkerLayout.SegmentLayout());
         }
 
         private string LinePath(Serie<Datapoint> serie)
@@ -80,6 +91,58 @@ namespace BlazorGraphs.Components
                 previous_point = p;
             }
             return builder.ToString();
+        }
+
+        private void OnMouseHandler(MouseEventArgs e)
+        {
+            if (e is null)
+                return;
+
+            LayoutTooltipPoint.At(new Point()
+            {
+                X = (int)e.OffsetX + 10,
+                Y = (int)e.OffsetY + 10
+            });
+
+            LayoutTooltipSerie.At(new Point()
+            {
+                X = (int)e.OffsetX + 10,
+                Y = (int)e.OffsetY + 10
+            });
+        }
+
+        private void OnPointEnter(Datapoint point, Color color)
+        {
+            LayoutTooltipSerie.Hide();
+            LayoutTooltipPoint.Show()
+                              .WithLabel($"{point.X.ToString("0.##")} | {point.Y.ToString("0.##")}")
+                              .Marker.WithColor(color);
+        }
+
+        private void OnSerieEnter(Serie<Datapoint> serie)
+        {
+            LayoutTooltipPoint.Hide();
+            LayoutTooltipSerie.Show()
+                              .WithLabel(serie.Label)
+                              .Marker.WithColor(serie.Color);
+        }
+
+        private void OnPointLeave()
+        {
+            LayoutTooltipPoint.Hide();
+            LayoutTooltipSerie.Hide();
+        }
+
+        private void OnSerieLeave()
+        {
+            LayoutTooltipPoint.Hide();
+            LayoutTooltipSerie.Hide();
+        }
+
+        private void OnSvgLeave()
+        {
+            LayoutTooltipPoint.Hide();
+            LayoutTooltipSerie.Hide();
         }
     }
 }

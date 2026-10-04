@@ -1,40 +1,52 @@
 ﻿@namespace BlazorGraphs.Components
 
-<svg viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height" xmlns="http://www.w3.org/2000/svg" @key="@Model" style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()">
-    @if (Model is null || Model.IsEmpty)
-    {
-        <rect x="@LayoutView.Padding"
-              y="@LayoutView.Padding"
-              width="@LayoutView.InternalWidth"
-              height="@LayoutView.InternalHeight"
-              fill="@Theme.BackgroundString()" />
-    }
-    else
-    {
-        @LayoutAxisX.Render(Model.AxisX);
-        @LayoutAxisY.Render(Model.AxisY);
-        @LayoutTitleX.Render(Model.TitleX);
-        @LayoutTitleY.Render(Model.TitleY);
+<div style="position: relative;" @onmousemove="OnMouseHandler" @onmouseenter="OnMouseHandler">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
+         viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
+         @key="@Model"
+         @onmouseleave="OnSvgLeave">
 
-        foreach (Serie<Bubblepoint> serie in Model.Series)
+        @if (Model is null || Model.IsEmpty)
         {
-            foreach (Bubblepoint bubble in serie.Data)
-            {
-                double radius = 16 + (LayoutView.Padding / 2 - 16) * (bubble.Radius - Model.AxisB.Min) / Model.AxisB.Size;
+            <rect x="@LayoutView.Padding"
+                  y="@LayoutView.Padding"
+                  width="@LayoutView.InternalWidth"
+                  height="@LayoutView.InternalHeight"
+                  fill="@Theme.BackgroundString()" />
+        }
+        else
+        {
+            @LayoutAxisX.Render(Model.AxisX);
+            @LayoutAxisY.Render(Model.AxisY);
+            @LayoutTitleX.Render(Model.TitleX);
+            @LayoutTitleY.Render(Model.TitleY);
 
-                <circle fill="@serie.Color.ToHex()"
-                        stroke="@Theme.BackgroundString()"
-                        stroke-width="1px"
-                        fill-opacity="0.6"
-                        vector-effect="non-scaling-stroke"
-                        class="fade-in"
-                        cx="@(LayoutView.Padding + (int)((bubble.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
-                        cy="@(LayoutView.Height - LayoutView.Padding - (int)((bubble.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
-                        r="@((int)radius)px"
-                        @key="@bubble">
-                    <title>@bubble.Value.ToString("0.##")</title>
-                </circle>
+            foreach (Serie<Bubblepoint> serie in Model.Series)
+            {
+                foreach (Bubblepoint bubble in serie.Data)
+                {
+                    double radius = 16 + (LayoutView.Padding / 2 - 16) * (bubble.Radius - Model.AxisB.Min) / Model.AxisB.Size;
+
+                    <circle fill="@serie.Color.ToHex()"
+                            stroke="@Theme.BackgroundString()"
+                            stroke-width="1px"
+                            fill-opacity="0.6"
+                            vector-effect="non-scaling-stroke"
+                            class="fade-in"
+                            cx="@(LayoutView.Padding + (int)((bubble.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
+                            cy="@(LayoutView.Height - LayoutView.Padding - (int)((bubble.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
+                            r="@((int)radius)px"
+                            @key="@bubble"
+                            @onmouseenter="() => OnBubbleEnter(bubble, serie.Color)"
+                            @onmouseleave="OnBubbleLeave">
+                    </circle>
+                }
             }
         }
+    </svg>
+    @if (LayoutTooltip.Visible)
+    {
+        @LayoutTooltip.Render();
     }
-</svg>
+</div>

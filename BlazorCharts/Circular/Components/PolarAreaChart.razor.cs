@@ -18,13 +18,13 @@ namespace BlazorGraphs.Components
         private int padding = PADDING;
         private TextLayout LayoutTitle;
         private TextLayout LayoutTicks;
-        private Point TooltipPosition;
-        private Slice? SelectedSlice;
+        private TooltipLayout LayoutTooltip;
 
         protected override void OnParametersSet()
         {
             LayoutTitle.WithTheme(Theme);
             LayoutTicks.WithTheme(Theme);
+            LayoutTooltip.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
@@ -37,6 +37,9 @@ namespace BlazorGraphs.Components
             LayoutTicks = TextLayout.TopLayout()
                                     .WithTheme(Theme)
                                     .Medium();
+
+            LayoutTooltip = TooltipLayout.Default()
+                                         .WithMarker(MarkerLayout.SliceLayout());
         }
 
         private string SlicePath(Slice slice, double rotation = 0)
@@ -51,16 +54,34 @@ namespace BlazorGraphs.Components
                    "Z";
         }
 
-        private void OnMouseHover(MouseEventArgs e)
+        private void OnMouseHandler(MouseEventArgs e)
         {
             if (e is null)
                 return;
 
-            TooltipPosition = new Point()
+            LayoutTooltip.At(new Point()
             {
                 X = (int)e.OffsetX + 10,
                 Y = (int)e.OffsetY + 10
-            };
+            });
+        }
+
+        private void OnSliceEnter(Slice slice)
+        {
+            LayoutTooltip.Show()
+                         .WithTitle(slice.Label)
+                         .WithLabel(slice.Value.ToString("0.0#"))
+                         .Marker.WithColor(slice.Color);
+        }
+
+        private void OnSliceLeave()
+        {
+            LayoutTooltip.Hide();
+        }
+
+        private void OnSvgLeave()
+        {
+            LayoutTooltip.Hide();
         }
     }
 }

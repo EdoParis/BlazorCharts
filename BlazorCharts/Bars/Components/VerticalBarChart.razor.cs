@@ -17,8 +17,7 @@ namespace BlazorGraphs.Components
         private TextLayout LayoutTitle;
         private TextLayout LayoutLabelsTop;
         private TextLayout LayoutLabelsBottom;
-        private Point TooltipPosition;
-        private Bar? SelectedBar;
+        private TooltipLayout LayoutTooltip;
 
         protected override void OnParametersSet()
         {
@@ -26,6 +25,7 @@ namespace BlazorGraphs.Components
             LayoutAxisX.WithTheme(Theme).From(LayoutView.Padding).To(LayoutView.Width - LayoutView.Padding);
             LayoutAxisY.WithTheme(Theme).From(LayoutView.Height - LayoutView.Padding).To(LayoutView.Padding).At(LayoutView.Padding);
             LayoutTitle.WithTheme(Theme);
+            LayoutTooltip.WithTheme(Theme);
             LayoutLabelsTop.WithTheme(Theme);
             LayoutLabelsBottom.WithTheme(Theme);
         }
@@ -33,6 +33,9 @@ namespace BlazorGraphs.Components
         protected override void OnInitialized()
         {
             LayoutView = ViewLayout.Default();
+            LayoutTooltip = TooltipLayout.Default()
+                                         .WithMarker(MarkerLayout.SquareLayout());
+
             LayoutAxisY = AxisLayout.VerticalLayout()
                                     .TicksInternal()
                                     .WithTickSize(20)
@@ -54,16 +57,34 @@ namespace BlazorGraphs.Components
             LayoutLabelsBottom = TextLayout.VerticalBottomLayout().Medium().WithTheme(Theme);
         }
 
-        private void OnMouseHover(MouseEventArgs e)
+        private void OnMouseHandler(MouseEventArgs e)
         {
             if (e is null)
                 return;
 
-            TooltipPosition = new Point()
+            LayoutTooltip.At(new Point()
             {
                 X = (int)e.OffsetX + 10,
                 Y = (int)e.OffsetY + 10
-            };
+            });
+        }
+
+        private void OnBarEnter(Bar bar)
+        {
+            LayoutTooltip.Show()
+                         .WithTitle(bar.Label)
+                         .WithLabel(bar.Value.ToString("0.0#"))
+                         .Marker.WithColor(bar.Value < 0 ? Model.SecondaryColor : Model.PrimaryColor);
+        }
+
+        private void OnBarLeave()
+        {
+            LayoutTooltip.Hide();
+        }
+
+        private void OnSvgLeave()
+        {
+            LayoutTooltip.Hide();
         }
     }
 }

@@ -1,11 +1,11 @@
 @namespace BlazorGraphs.Components
 
-<div style="position: relative;" @onmousemove="OnMouseHover">
+<div style="position: relative;" @onmousemove="OnMouseHandler" @onmouseenter="OnMouseHandler">
     <svg xmlns="http://www.w3.org/2000/svg" 
          viewBox="0 0 @width @height"
          style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()" 
          @key="@Model"
-         @onmouseleave="() => SelectedSlice = null">
+         @onmouseleave="OnSvgLeave">
 
         @if (Model is null || Model.IsEmpty)
         {
@@ -37,8 +37,8 @@
                             r="@((Math.Min(width, height) - 2 * padding) / 2)"
                             @key="@slice"
                             @onclick="async () => await OnClick.InvokeAsync(slice)"
-                            @onmouseenter="() => SelectedSlice = slice"
-                            @onmouseleave="() => SelectedSlice = null">
+                            @onmouseenter="() => OnSliceEnter(slice)"
+                            @onmouseleave="OnSliceLeave">
                     </circle>
                 }
                 else
@@ -52,8 +52,8 @@
                           d="@SlicePath(slice, 2 * Math.PI * progress)"
                           @key="@slice"
                           @onclick="async () => await OnClick.InvokeAsync(slice)"
-                          @onmouseenter="() => SelectedSlice = slice"
-                          @onmouseleave="() => SelectedSlice = null">
+                          @onmouseenter="() => OnSliceEnter(slice)"
+                          @onmouseleave="OnSliceLeave">
                     </path>
                 }
 
@@ -73,32 +73,8 @@
             @LayoutTextTitle.Render(Model.Title)
         }
     </svg>
-    @if (SelectedSlice.HasValue)
+    @if (LayoutTooltip.Visible)
     {
-        <Tooltip Position="TooltipPosition" Theme="Theme">
-            <table>
-                <tr>
-                    <td colspan="2" style="text-align: center;">@SelectedSlice.Value.Label</td>
-                </tr>
-                <tr>
-                    <td>
-                        <svg width="1.5em" height="1em" viewBox="0 0 15 10">
-                            <path d="M 1 9 L 1 1 A 8 8 0 0 1 9 9 Z"
-                                  fill="@(SelectedSlice.Value.Color.ToHex())" />
-                        </svg>
-                    </td>
-                    <td>
-                        @if (Percentage)
-                        {
-                            <label>@((100 * SelectedSlice.Value.Value / Model.Total).ToString("0.#"))%</label>
-                        }
-                        else
-                        {
-                            <label>@(SelectedSlice.Value.Value.ToString("0.##"))</label>
-                        }
-                    </td>
-                </tr>
-            </table>
-        </Tooltip>
+        @LayoutTooltip.Render();
     }
 </div>

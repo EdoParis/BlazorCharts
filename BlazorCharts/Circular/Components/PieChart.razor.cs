@@ -19,13 +19,13 @@ namespace BlazorGraphs.Components
         private int padding = PADDING;
         private TextLayout LayoutTextSlice;
         private TextLayout LayoutTextTitle;
-        private Point TooltipPosition;
-        private Slice? SelectedSlice;
+        private TooltipLayout LayoutTooltip;
 
         protected override void OnParametersSet()
         {
             LayoutTextSlice.WithTheme(Theme);
             LayoutTextTitle.WithTheme(Theme);
+            LayoutTooltip.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
@@ -38,6 +38,9 @@ namespace BlazorGraphs.Components
                                         .Medium()
                                         .At(width / 2, padding / 5)
                                         .WithTheme(Theme);
+
+            LayoutTooltip = TooltipLayout.Default()
+                                         .WithMarker(MarkerLayout.SliceLayout());
         }
 
         private string SlicePath(Slice slice, double rotation = 0)
@@ -76,16 +79,34 @@ namespace BlazorGraphs.Components
             };
         }
 
-        private void OnMouseHover(MouseEventArgs e)
+        private void OnMouseHandler(MouseEventArgs e)
         {
             if (e is null)
                 return;
 
-            TooltipPosition = new Point()
+            LayoutTooltip.At(new Point()
             {
                 X = (int)e.OffsetX + 10,
                 Y = (int)e.OffsetY + 10
-            };
+            });
+        }
+
+        private void OnSliceEnter(Slice slice)
+        {
+            LayoutTooltip.Show()
+                         .WithTitle(slice.Label)
+                         .WithLabel(Percentage ? (slice.Value / Model.Total).ToString("0.0#%") : slice.Value.ToString("0.##"))
+                         .Marker.WithColor(slice.Color);
+        }
+
+        private void OnSliceLeave()
+        {
+            LayoutTooltip.Hide();
+        }
+
+        private void OnSvgLeave()
+        {
+            LayoutTooltip.Hide();
         }
     }
 }

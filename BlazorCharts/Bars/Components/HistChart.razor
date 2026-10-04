@@ -1,11 +1,11 @@
 ﻿@namespace BlazorGraphs.Components
 
-<div style="position: relative;" @onmousemove="OnMouseHover">
+<div style="position: relative;" @onmousemove="OnMouseHandler" @onmouseenter="OnMouseHandler">
     <svg xmlns="http://www.w3.org/2000/svg" 
          style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
          viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
          @key="@Model"
-         @onmouseleave="() => SelectedBin = null">
+         @onmouseleave="OnSvgLeave">
 
         @if (Model is null || Model.IsEmpty)
         {
@@ -35,8 +35,8 @@
                           vector-effect="non-scaling-stroke"
                           @key="@bin"
                           @onclick="async () => await OnClick.InvokeAsync(bin)"
-                          @onmouseenter="() => SelectedBin = bin"
-                          @onmouseleave="() => SelectedBin = null">
+                          @onmouseenter="() => OnBinEnter(bin)"
+                          @onmouseleave="OnBinLeave">
                     </rect>
                 }
                 else
@@ -53,8 +53,8 @@
                           vector-effect="non-scaling-stroke"
                           @key="@bin"
                           @onclick="async () => await OnClick.InvokeAsync(bin)"
-                          @onmouseenter="() => SelectedBin = bin"
-                          @onmouseleave="() => SelectedBin = null">
+                          @onmouseenter="() => OnBinEnter(bin)"
+                          @onmouseleave="OnBinLeave">
                     </rect>
                 }
             }
@@ -89,23 +89,8 @@
             }
         }
     </svg>
-    @if (SelectedBin.HasValue)
+    @if (LayoutTooltip.Visible)
     {
-        <Tooltip Position="TooltipPosition" Theme="Theme">
-            <table>
-                <tr>
-                    <td>
-                        <svg width="1.5em" height="1em" viewBox="0 0 15 10">
-                            <rect x="1"
-                                  y="1"
-                                  width="8"
-                                  height="8"
-                                  fill="@(SelectedBin.Value.Value < 0 ? Model.SecondaryColor.ToHex() : Model.PrimaryColor.ToHex())" />
-                        </svg>
-                    </td>
-                    <td>@SelectedBin.Value.Value.ToString("0.0#")</td>
-                </tr>
-            </table>
-        </Tooltip>
+        @LayoutTooltip.Render();
     }
 </div>

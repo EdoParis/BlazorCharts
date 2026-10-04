@@ -19,19 +19,21 @@ namespace BlazorGraphs.Components
         private int padding = PADDING;
         private TextLayout LayoutLabels;
         private TextLayout LayoutTicks;
-        private Point TooltipPosition;
-        private Rating? SelectedRating;
+        private TooltipLayout LayoutTooltip;
 
         protected override void OnParametersSet()
         {
             LayoutLabels.WithTheme(Theme);
             LayoutTicks.WithTheme(Theme);
+            LayoutTooltip.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
         {
             LayoutLabels = TextLayout.MiddleLayout().Medium().WithTheme(Theme);
             LayoutTicks = TextLayout.EndLayout().Medium().WithTheme(Theme);
+            LayoutTooltip = TooltipLayout.Default()
+                                         .WithMarker(MarkerLayout.CircleLayout());
         }
 
         private string Path()
@@ -70,16 +72,34 @@ namespace BlazorGraphs.Components
             return str_builder.ToString();
         }
 
-        private void OnMouseHover(MouseEventArgs e)
+        private void OnMouseHandler(MouseEventArgs e)
         {
             if (e is null)
                 return;
 
-            TooltipPosition = new Point()
+            LayoutTooltip.At(new Point()
             {
                 X = (int)e.OffsetX + 10,
                 Y = (int)e.OffsetY + 10
-            };
+            });
+        }
+
+        private void OnRatingEnter(Rating rating)
+        {
+            LayoutTooltip.Show()
+                         .WithTitle(rating.Label)
+                         .WithLabel(rating.Value.ToString("0.0#"))
+                         .Marker.WithColor(Model.Color);
+        }
+
+        private void OnRatingLeave()
+        {
+            LayoutTooltip.Hide();
+        }
+
+        private void OnSvgLeave()
+        {
+            LayoutTooltip.Hide();
         }
     }
 }

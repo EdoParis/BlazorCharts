@@ -1,11 +1,11 @@
 ﻿@namespace BlazorGraphs.Components
 
-<div style="position: relative;" @onmousemove="OnMouseHover">
+<div style="position: relative;" @onmousemove="OnMouseHandler" @onmouseenter="OnMouseHandler">
     <svg xmlns="http://www.w3.org/2000/svg" 
          style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
          viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
          @key="@Model"
-         @onmouseleave="() => SelectedBar = null">
+         @onmouseleave="OnSvgLeave">
 
         @if (Model is null || Model.IsEmpty)
         {
@@ -38,8 +38,8 @@
                           vector-effect="non-scaling-stroke"
                           @key="@bin"
                           @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))"
-                          @onmouseenter="() => SelectedBar = new Bar(label, bin.Value)"
-                          @onmouseleave="() => SelectedBar = null">
+                          @onmouseenter="() => OnBarEnter(new Bar(label, bin.Value))"
+                          @onmouseleave="OnBarLeave">
                     </rect>
                     @LayoutLabelsTop.At(LayoutAxisX.StartingPoint.X + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size), originV).Render(label);
                 }
@@ -57,8 +57,8 @@
                           vector-effect="non-scaling-stroke"
                           @key="@bin"
                           @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))"
-                          @onmouseenter="() => SelectedBar = new Bar(label, bin.Value)"
-                          @onmouseleave="() => SelectedBar = null">
+                          @onmouseenter="() => OnBarEnter(new Bar(label, bin.Value))"
+                          @onmouseleave="OnBarLeave">
                     </rect>
                     @LayoutLabelsBottom.At(LayoutAxisX.StartingPoint.X + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size), originV).Render(label);
                 }
@@ -68,26 +68,8 @@
             @LayoutTitle.At(LayoutView.Padding / 2, originV > LayoutView.Height / 2 ? LayoutView.Padding / 2 : LayoutView.Height - LayoutView.Padding / 2).Render(Model.Title);
         }
     </svg>
-    @if (SelectedBar.HasValue)
+    @if (LayoutTooltip.Visible)
     {
-        <Tooltip Position="TooltipPosition" Theme="Theme">
-            <table>
-                <tr>
-                    <td colspan="2" style="text-align: center;">@SelectedBar.Value.Label</td>
-                </tr>
-                <tr>
-                    <td>
-                        <svg width="1.5em" height="1em" viewBox="0 0 15 10">
-                            <rect x="1"
-                                  y="1"
-                                  width="8"
-                                  height="8"
-                                  fill="@(SelectedBar.Value.Value < 0 ? Model.SecondaryColor.ToHex() : Model.PrimaryColor.ToHex())" />
-                        </svg>
-                    </td>
-                    <td>@SelectedBar.Value.Value.ToString("0.0#")</td>
-                </tr>
-            </table>
-        </Tooltip>
+        @LayoutTooltip.Render();
     }
 </div>

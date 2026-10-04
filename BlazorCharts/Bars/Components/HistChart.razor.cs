@@ -16,8 +16,7 @@ namespace BlazorGraphs.Components
         private AxisLayout LayoutAxisX;
         private TextLayout LayoutTitleY;
         private TextLayout LayoutTitleX;
-        private Point TooltipPosition;
-        private Bin? SelectedBin;
+        private TooltipLayout LayoutTooltip;
 
         protected override void OnParametersSet()
         {
@@ -26,11 +25,15 @@ namespace BlazorGraphs.Components
             LayoutAxisY.WithTheme(Theme).From(LayoutView.Height - LayoutView.Padding).To(LayoutView.Padding).At(LayoutView.Padding);
             LayoutTitleX.WithTheme(Theme);
             LayoutTitleY.WithTheme(Theme);
+            LayoutTooltip.WithTheme(Theme);
         }
 
         protected override void OnInitialized()
         {
             LayoutView = ViewLayout.Default();
+            LayoutTooltip = TooltipLayout.Default()
+                                         .WithMarker(MarkerLayout.SquareLayout());
+
             LayoutAxisY = AxisLayout.VerticalLayout()
                                     .TicksInternal()
                                     .WithTickSize(20)
@@ -55,16 +58,33 @@ namespace BlazorGraphs.Components
                                      .At(LayoutView.Padding / 2, LayoutView.Padding / 2);
         }
 
-        private void OnMouseHover(MouseEventArgs e)
+        private void OnMouseHandler(MouseEventArgs e)
         {
             if (e is null)
                 return;
 
-            TooltipPosition = new Point()
+            LayoutTooltip.At(new Point()
             {
                 X = (int)e.OffsetX + 10,
                 Y = (int)e.OffsetY + 10
-            };
+            });
+        }
+
+        private void OnBinEnter(Bin bin)
+        {
+            LayoutTooltip.Show()
+                         .WithLabel(bin.Value.ToString("0.0#"))
+                         .Marker.WithColor(bin.Value < 0 ? Model.SecondaryColor : Model.PrimaryColor);
+        }
+
+        private void OnBinLeave()
+        {
+            LayoutTooltip.Hide();
+        }
+
+        private void OnSvgLeave()
+        {
+            LayoutTooltip.Hide();
         }
     }
 }

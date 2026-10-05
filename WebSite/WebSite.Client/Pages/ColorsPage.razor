@@ -7,8 +7,7 @@
     All charts need to be colored, from the slices of a pie or donut chart
     to the bars of a histogram, and even the series of a line chart.<br />
     <b>Color palettes</b> originated as a convenient way to assign a set of colors to chart data,
-    ensuring the colors are clearly distinguishable from one another while maintaining a consistent tone. <br />
-    There are two types of available palettes, those with a preset color set and those that are random.
+    ensuring the colors are clearly distinguishable from one another while maintaining a consistent tone.
     <div class="card overflow-hidden">
         <div class="card-body overflow-auto">
             <table class="table text-nowrap align-middle mb-0 border">
@@ -23,6 +22,11 @@
                     <td>Configurable palette with a selected set of colors that cycle continuously</td>
                 </tr>
                 <tr>
+                    <td><span class="token class-name font-monospace">MonotonePalette</span></td>
+                    <td class="font-monospace"><span class="token keyword">Color</span>, <span class="token property">Int32</span></td>
+                    <td>Monotone palette configurable with a base color, and a lenght </td>
+                </tr>
+                <tr>
                     <td><span class="token class-name font-monospace">RandomPalette</span></td>
                     <td class="font-monospace"><span class="token property">Int32</span></td>
                     <td>Random color palette configurable with a seed, that determines the sequence</td>
@@ -32,7 +36,7 @@
     </div>
 </p>
 <p>
-    Both types of palettes implement the same interface <span class="token keyword font-monospace">IColorStream</span>:
+    All types of palettes implement the same interface <span class="token keyword font-monospace">IColorStream</span>:
     <div class="card overflow-hidden">
         <div class="card-body overflow-auto">
             <table class="table text-nowrap align-middle mb-0 border">
@@ -56,31 +60,61 @@
     </div>
 </p>
 <p>
-    There are already four preset palettes with the following colors:
+    Predefined palettes with the following colors are already available:
 </p>
-<div class="card-group">
-    <div class="card overflow-hidden">
-        <div class="card-body">
-            <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Primary</h6>
-            <Palette Colors="Palettes.Primary" Size="8"></Palette>
+<p>
+    <div class="card-group">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Primary</h6>
+                <Palette Colors="Palettes.Primary" Size="8"></Palette>
+            </div>
         </div>
-    </div>                  
-    <div class="card overflow-hidden">
-        <div class="card-body">
-            <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Pastel</h6>
-            <Palette Colors="Palettes.Pastel" Size="8"></Palette>
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Pastel</h6>
+                <Palette Colors="Palettes.Pastel" Size="8"></Palette>
+            </div>
+        </div>
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Light</h6>
+                <Palette Colors="Palettes.Light" Size="8"></Palette>
+            </div>
+        </div>
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Dark</h6>
+                <Palette Colors="Palettes.Dark" Size="8"></Palette>
+            </div>
         </div>
     </div>
-    <div class="card overflow-hidden">
-        <div class="card-body">
-            <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Light</h6>
-            <Palette Colors="Palettes.Light" Size="8"></Palette>
+</p>
+<p>
+    <div class="card-group">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Red</h6>
+                <Palette Colors="Palettes.Red" Size="8"></Palette>
+            </div>
+        </div>
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Green</h6>
+                <Palette Colors="Palettes.Green" Size="8"></Palette>
+            </div>
+        </div>
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Blue</h6>
+                <Palette Colors="Palettes.Blue" Size="8"></Palette>
+            </div>
+        </div>
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Purple</h6>
+                <Palette Colors="Palettes.Purple" Size="8"></Palette>
+            </div>
         </div>
     </div>
-    <div class="card overflow-hidden">
-        <div class="card-body">
-            <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Dark</h6>
-            <Palette Colors="Palettes.Dark" Size="8"></Palette>
-        </div>
-    </div>
-</div>
+</p>

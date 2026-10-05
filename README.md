@@ -88,11 +88,12 @@ All charts need to be colored, from the slices of a pie or donut chart to the ba
 Color palettes originated as a convenient way to assign a set of colors to chart data,
 ensuring the colors are clearly distinguishable from one another while maintaining a consistent tone.
 
-There are two types of available palettes, those with a preset color set and those that are random.
+There are three types of available palettes:
 - `CyclicPalette`: configurable palette with a selected set of colors that cycle continuously.
-- `RandomPalette`: Random color palette configurable with a seed, that determines the sequence of colors.
+- `MonotonePalette`: monotone palette configurable with a base color, and a lenght.
+- `RandomPalette`: random color palette configurable with a seed, that determines the sequence of colors.
 
-Both types of palettes implement the same interface `IColorStream`:
+All types of palettes implement the same interface `IColorStream`:
 - `Next`: Next color taken from the set configured in the constructor.
 - `Reset`: Reset the palette to the beginning.
 

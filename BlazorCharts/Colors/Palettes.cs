@@ -51,5 +51,25 @@ namespace BlazorGraphs
                                      Color.SlateGray,
                                      Color.DarkSlateBlue);
         }
+
+        public static MonotonePalette Red
+        {
+            get => new MonotonePalette(Color.Red, 8);
+        }
+
+        public static MonotonePalette Green
+        {
+            get => new MonotonePalette(Color.Green, 8);
+        }
+
+        public static MonotonePalette Blue
+        {
+            get => new MonotonePalette(Color.Blue, 8);
+        }
+
+        public static MonotonePalette Purple
+        {
+            get => new MonotonePalette(Color.Purple, 8);
+        }
     }
 }

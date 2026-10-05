@@ -1,0 +1,108 @@
+﻿@page "/charts/histogram"
+
+<PageTitle>Histogram</PageTitle>
+
+<h3>Histogram</h3>
+<p>
+    A histogram is a chart that plots the distribution of a numeric variable’s values as a series of bars.
+    Each bar typically covers a range of numeric values called bin; a bar’s height indicates the frequency
+    of data points with a value within the corresponding bin.
+</p>
+<p>
+    <div class="card overflow-hidden">
+        <div class="card-body overflow-auto">
+            <table class="table text-nowrap align-middle mb-0 bg-white border">
+                <tr class="shadow-sm">
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Theme</td>
+                    <td class="font-monospace"><span class="token keyword">Theme</span><a class="bi-arrow-90deg-right px-2" href="themes"></a></td>
+                    <td>Chart customization colors</td>
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td class="font-monospace"><span class="token keyword">Histogram</span></td>
+                    <td>Data model</td>
+                </tr>
+                <tr>
+                    <td>OnClick</td>
+                    <td class="font-monospace"><span class="token keyword">EventCallback</span>&lt<span class="token keyword">Bin</span>&gt</td>
+                    <td>Bin click event</td>
+                </tr>
+                <tr>
+                    <td>AspectRatio</td>
+                    <td class="font-monospace"><span class="token property">Double</span></td>
+                    <td>Define the width/height ratio of the chart</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</p>
+<div class="card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col col-sm-6 col-lg-4 col-12">
+                <div class="row g-3">
+                    <div class="col-6 col-form-label">Primary color</div>
+                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.PrimaryColor.ToHex())" @onchange="@((e) => model1.PrimaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6 col-form-label">Secondary color</div>
+                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.SecondaryColor.ToHex())" @onchange="@((e) => model1.SecondaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6 col-form-label">Aspect ratio</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="@aspectratio">
+                            <option value="@AspectRatios.Square">@nameof(AspectRatios.Square)</option>
+                            <option value="@AspectRatios.Higher">@nameof(AspectRatios.Higher)</option>
+                            <option value="@AspectRatios.Vertical">@nameof(AspectRatios.Vertical)</option>
+                            <option value="@AspectRatios.Portrait">@nameof(AspectRatios.Portrait)</option>
+                            <option value="@AspectRatios.Standard">@nameof(AspectRatios.Standard)</option>
+                            <option value="@AspectRatios.Photo">@nameof(AspectRatios.Photo)</option>
+                            <option value="@AspectRatios.Widescreen">@nameof(AspectRatios.Widescreen)</option>
+                            <option value="@AspectRatios.Panoramic">@nameof(AspectRatios.Panoramic)</option>
+                            <option value="@AspectRatios.Ultrawide">@nameof(AspectRatios.Ultrawide)</option>
+                            <option value="@AspectRatios.Extralarge">@nameof(AspectRatios.Extralarge)</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <HistChart Model="@model1" AspectRatio="@aspectratio" OnClick="OnBinClick"></HistChart>
+                    </div>
+                    <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnBinAdd">Add Bin</button></div>
+                </div>
+            </div>
+            <div class="col col-sm-6 col-lg-8 col-12">
+                <div class="h-100 w-100 small border">
+                    <pre class="language-csharp m-0 h-100">
+                        <code>
+ &lt<span class="token tag bold">HistChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> 
+            <span class="token property bold">AspectRatio</span><span class="token string">="</span><span class="token class-name">AspectRatios</span>.Square<span class="token string">"</span>
+            <span class="token property bold">OnClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
+ 
+ @@{
+     <span class="token comment">//NB: secondary color is optional.</span>
+     <span class="token keyword">private</span> <span class="token property">Histogram</span> model = <span class="token keyword">new</span> <span class="token class-name">Histogram</span>(<span class="token string">"Asse-X"</span>, <span class="token string">"Asse-Y"</span>, <span class="token class-name">Color</span>.LightSteelBlue, <span class="token class-name">Color</span>.MediumPurple);
+ 
+     <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+     {
+         model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bin</span>()
+         {
+             Min = i,
+             Max = i + 1,
+             Value = 10 + 3 * i
+         });
+     }
+ 
+     <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnClickHandler</span>(<span class="token class-name">Bin</span> bin)
+     {
+         <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked bin with value:</span> {bin.Value}<span class="token string">"</span>);
+     }
+ }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

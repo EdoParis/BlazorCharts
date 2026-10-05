@@ -1,0 +1,107 @@
+﻿@page "/charts/linechart"
+
+<PageTitle>LineChart</PageTitle>
+
+<h3>Linechart</h3>
+<p>
+    A line chart or line graph, is type of chart displays information as a series of data points called 'markers'.
+    The measurement points are ordered (typically by their x-axis value) and joined with straight line segments.
+</p>
+<p>
+    <div class="card overflow-hidden">
+        <div class="card-body overflow-auto">
+            <table class="table text-nowrap align-middle mb-0 bg-white border">
+                <tr class="shadow-sm">
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Theme</td>
+                    <td class="font-monospace"><span class="token keyword">Theme</span><a class="bi-arrow-90deg-right px-2" href="themes"></a></td>
+                    <td>Chart customization colors</td>
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td class="font-monospace"><span class="token keyword">Cartesiangram</span></td>
+                    <td>Data model</td>
+                </tr>
+                <tr>
+                    <td>HidePoints</td>
+                    <td class="font-monospace"><span class="token property">Boolean</span></td>
+                    <td>Hide the line's datapoints</td>
+                </tr>
+                <tr>
+                    <td>AspectRatio</td>
+                    <td class="font-monospace"><span class="token property">Double</span></td>
+                    <td>Define the width/height ratio of the chart</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</p>
+<div class="card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col col-sm-6 col-lg-4 col-12">
+                <div class="row g-3">
+                    <div class="col-6 col-form-label">Title X</div>
+                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleX)" @onchange="@((e) => model.TitleX = e?.Value?.ToString())" /></div>
+                    <div class="col-6 col-form-label">Title Y</div>
+                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleY)" @onchange="@((e) => model.TitleY = e?.Value?.ToString())" /></div>
+                    <div class="col-6 col-form-label">Aspect ratio</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="@aspectratio">
+                            <option value="@AspectRatios.Square">@nameof(AspectRatios.Square)</option>
+                            <option value="@AspectRatios.Higher">@nameof(AspectRatios.Higher)</option>
+                            <option value="@AspectRatios.Vertical">@nameof(AspectRatios.Vertical)</option>
+                            <option value="@AspectRatios.Portrait">@nameof(AspectRatios.Portrait)</option>
+                            <option value="@AspectRatios.Standard">@nameof(AspectRatios.Standard)</option>
+                            <option value="@AspectRatios.Photo">@nameof(AspectRatios.Photo)</option>
+                            <option value="@AspectRatios.Widescreen">@nameof(AspectRatios.Widescreen)</option>
+                            <option value="@AspectRatios.Panoramic">@nameof(AspectRatios.Panoramic)</option>
+                            <option value="@AspectRatios.Ultrawide">@nameof(AspectRatios.Ultrawide)</option>
+                            <option value="@AspectRatios.Extralarge">@nameof(AspectRatios.Extralarge)</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-form-label">Next color</div>
+                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(line_color.ToHex())" @onchange="@((e) => line_color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6">Hide points</div>
+                    <div class="col-6"><div class="col-6 form-control-lg form-check form-switch form-check-reverse py-0 w-100"><input type="checkbox" class="form-check-input" @bind="@hidepoints" /></div></div>
+                    <div class="col-12">
+                        <LineChart Model="@model" HidePoints="@hidepoints" AspectRatio="@aspectratio"></LineChart>
+                    </div>
+                    <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
+                    <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnSeriesAdd">Add Serie</button></div>
+                </div>
+            </div>
+            <div class="col col-sm-6 col-lg-8 col-12">
+                <div class="h-100 w-100 small border">
+                    <pre class="language-csharp m-0 h-100">
+                        <code>
+ &lt<span class="token tag bold">LineChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> 
+        <span class="token property bold">AspectRatio</span><span class="token string">="</span><span class="token class-name">AspectRatios</span>.Square<span class="token string">"</span>
+        <span class="token property bold">HidePoints</span><span class="token string">="</span>false<span class="token string">"</span>/&gt
+ 
+ @@{
+     <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> model = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
+ 
+     <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points1 = <span class="token keyword">new</span>();
+     <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points2 = <span class="token keyword">new</span>();
+ 
+     <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+     {
+         points1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = i });
+         points2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = 2 * i});
+     }
+ 
+     model.<span class="token function">AddSerie</span>(<span class="token string">"Line1"</span>, <span class="token class-name">Color</span>.Red, points1);
+     model.<span class="token function">AddSerie</span>(<span class="token string">"Line2"</span>, <span class="token class-name">Color</span>.Blue, points2);
+ }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

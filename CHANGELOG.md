@@ -6,7 +6,11 @@ Legend symbols:
 * 🟨 **Change**
 * 🟥 **Bug**
 
-## Version 3.0.2
+## Version 3.1
+* 🟩 Added tooltips
+* 🟩 Added color palettes
+* 🟩 Added aspect-ratio parameter to cartesian and barcharts
+* 🟩 Added percentage parameter to PieChart and DonutChart
 * 🟦 Improved animations
 * 🟥 Fix single slice rendering for circular charts
 * 🟥 Fix ticks for negative intervals

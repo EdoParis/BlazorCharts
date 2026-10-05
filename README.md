@@ -17,8 +17,8 @@ This way, to change visualizations, you simply assign the model to the other com
 ## Links
 
 - 🔗 Repository: https://github.com/EdoParis/BlazorCharts
-- 🌐 Documentation: https://edoparis.github.io/BlazorCharts/
-- 📦 NuGet: https://www.BlazorGraphs.it
+- 🌐 WebSite: https://www.BlazorGraphs.it
+- 📦 NuGet: https://www.nuget.org/packages/BlazorGraphs
 
 ## Charts
 - Histogram
@@ -73,11 +73,34 @@ If you pass a partially empty theme, the library doesn't break. It delegates the
 - text and axis colors fallback to currentColor
 - font family defaults to Inherit
 
+**NB**: The theme customize also the tooltip associated with the chart or gauge;
+
+#### AspectRatio
+Barcharts and Cartesian charts accept the `AspectRatio` parameter. 
+This parameter is a `double` that defines the ratio between the width and height of the chart. 
+When this ratio is equal to 1.0 the chart occupies a square area; if it is lower, it is taller than it is wide, and if it is higher, it extends more horizontally.
+    
+The permitted ratios are all those between 0.2 and 5.0.
+
+#### Color palettes
+All charts need to be colored, from the slices of a pie or donut chart to the bars of a histogram, and even the series of a line chart.
+
+Color palettes originated as a convenient way to assign a set of colors to chart data,
+ensuring the colors are clearly distinguishable from one another while maintaining a consistent tone.
+
+There are two types of available palettes, those with a preset color set and those that are random.
+- `CyclicPalette`: configurable palette with a selected set of colors that cycle continuously.
+- `RandomPalette`: Random color palette configurable with a seed, that determines the sequence of colors.
+
+Both types of palettes implement the same interface `IColorStream`:
+- `Next`: Next color taken from the set configured in the constructor.
+- `Reset`: Reset the palette to the beginning.
+
 
 #### Histogram example
 This renders a fully interactive SVG histogram.
 ```
-<HistChart Model="@model"></HistChart>
+<HistChart Model="@model" AspectRatio="@AspectRatios.Square"/>
 
 @{
     Histogram model = new Histogram("asseX", "asseY", Color.CadetBlue);
@@ -96,7 +119,7 @@ This renders a fully interactive SVG histogram.
 #### Barchart example
 This renders a fully interactive SVG vertical barchart, with negative bars colored differently from positive ones.
 ```
-<VerticalBarChart Model="@model"/>
+<VerticalBarChart Model="@model" AspectRatio="@AspectRatios.Square"/>
 
 @{
     Bargram model = new Bargram("asseY", Color.RoyalBlue, Color.OrangeRed);
@@ -115,9 +138,9 @@ This renders a fully interactive SVG vertical barchart, with negative bars color
 #### Cartesian charts example
 This renders a fully interactive SVG linechart, scatterchart and stepchart, all using the same datamodel.
 ```
-<LineChart Theme="@Theme.Dark" Model="@model"/>
-<StepChart Theme="@Theme.Dark" Model="@model"/>
-<ScatterChart Theme="@Theme.Light" Model="@model"/>
+<LineChart Theme="@Theme.Dark" AspectRatio="@AspectRatios.Square" Model="@model"/>
+<StepChart Theme="@Theme.Dark" AspectRatio="@AspectRatios.Vertical" Model="@model"/>
+<ScatterChart Theme="@Theme.Light" AspectRatio="@AspectRatios.Widescreen" Model="@model"/>
 
 @{
     Cartesiangram model = new Cartesiangram("X1", "Y1");
@@ -148,24 +171,25 @@ This renders a fully interactive SVG horizontal gauge, the breakpoints are optio
 <HorizontalGauge Theme="@Theme.Arctic" Model="@model" Reverse="false"/>
 
 @{
+    IColorStream palette = Palettes.Primary;
     Gaugegram model = new Gaugegram(0, 500, "G1", Color.Navy);
     model.Value = 175;
     model.AddBreakpoint(new Breakpoint()
     {
         Value = 150,
-        Color = Color.Green,
+        Color = palette.Next(),
         Label = "LV-1"
     });
     model.AddBreakpoint(new Breakpoint()
     {
         Value = 250,
-        Color = Color.Gold,
+        Color = palette.Next(),
         Label = "LV-2"
     });
     model.AddBreakpoint(new Breakpoint()
     {
         Value = 500,
-        Color = Color.Red,
+        Color = palette.Next(),
         Label = "LV-3"
     });
 }

@@ -43,11 +43,12 @@
  &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
  
  @@{
-     <span class="token keyword">private</span> <span class="token property">Piegram</span> model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();
+     <span class="token keyword">private</span> <span class="token property">Circulargram</span> model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();
+     <span class="token keyword">private</span> <span class="token property">IColorStream</span> palette = <span class="token class-name">Palettes</span>.Primary;
 
      @foreach (Slice slice in model)
      {
- <text> model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"@slice.Label"</span>, @slice.Value, <span class="token class-name">Color</span>.<span class="token function">FromArgb</span>(@slice.Color.R, @slice.Color.G, @slice.Color.B));
+ <text> model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"@slice.Label"</span>, @slice.Value, palette.<span class="token function">Next</span>());
  </text>
      }
  }

@@ -7,19 +7,19 @@ namespace WebApp.Pages
     public partial class LegendPage : ComponentBase
     {
         private Circulargram model;
+        private IColorStream palette;
         private Random random;
-        private Color slice_color;
 
         protected override void OnInitialized()
         {
             random = new Random();
+            palette = Palettes.Primary;
             model = new Circulargram();
-            model.Add(new Slice("S1", 5, Color.Purple));
-            model.Add(new Slice("S2", 30, Color.OrangeRed));
-            model.Add(new Slice("S3", 5, Color.Gold));
-            model.Add(new Slice("S4", 40, Color.Aqua));
-            model.Add(new Slice("S5", 15, Color.DodgerBlue));
-            slice_color = Color.MediumOrchid;
+            model.Add(new Slice("S1", 5, palette.Next()));
+            model.Add(new Slice("S2", 30, palette.Next()));
+            model.Add(new Slice("S3", 5, palette.Next()));
+            model.Add(new Slice("S4", 40, palette.Next()));
+            model.Add(new Slice("S5", 15, palette.Next()));
         }
 
         private void OnChartClear()
@@ -33,11 +33,8 @@ namespace WebApp.Pages
             {
                 Label = $"S{model.SlicesCount + 1}",
                 Value = Math.Round(90 * random.NextDouble() + 10),
-                Color = slice_color
+                Color = palette.Next()
             });
-            slice_color = Color.FromArgb((int)(50 + 200 * random.NextDouble()),
-                                         (int)(50 + 200 * random.NextDouble()),
-                                         (int)(50 + 200 * random.NextDouble()));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Drawing;
 
 namespace BlazorGraphs.Core
@@ -32,9 +33,16 @@ namespace BlazorGraphs.Core
             return this;
         }
 
-        public TooltipLayout At(Point loc)
+        public TooltipLayout Move(MouseEventArgs e)
         {
-            Position = loc;
+            if (e is not null)
+            {
+                Position = new Point()
+                {
+                    X = (int)e.ClientX,
+                    Y = (int)e.ClientY
+                };
+            }
             return this;
         }
 
@@ -88,16 +96,18 @@ namespace BlazorGraphs.Core
                 builder.AddAttribute(1, "style", @$"top: {Position.Y}px; 
                                                    left: {Position.X}px; 
                                                    padding: 0.2em;
-                                                   position: absolute;
+                                                   position: fixed;
                                                    border: 1px solid;
                                                    border-radius: 0.2em;
                                                    pointer-events: none;
+                                                   transform: translate(-50%, -110%);
                                                    backdrop-filter: blur(5px) brightness(0.85) hue-rotate(15deg);
                                                    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
                                                    color: {Theme.TextColorString()}; 
                                                    font-family: {Theme.FontString()}; 
                                                    border-color: {Theme.AxisColorString()}; 
-                                                   background-color: {Theme.BackgroundString()}");
+                                                   background-color: {Theme.BackgroundString()};
+                                                   display: {(Visible ? "block" : "none")}");
                 builder.OpenElement(2, "table");
                 if (!string.IsNullOrWhiteSpace(Title))
                 {

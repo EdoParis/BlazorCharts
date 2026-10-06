@@ -1,6 +1,5 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using System.Drawing;
 
 namespace BlazorGraphs.Components
@@ -60,33 +59,11 @@ namespace BlazorGraphs.Components
                                          .WithMarker(MarkerLayout.CircleLayout());
         }
 
-        private void OnMouseHandler(MouseEventArgs e)
-        {
-            if (e is null)
-                return;
-
-            LayoutTooltip.At(new Point()
-            {
-                X = (int)e.OffsetX + 10,
-                Y = (int)e.OffsetY + 10
-            });
-        }
-
         private void OnBubbleEnter(Bubblepoint bubble, Color color)
         {
             LayoutTooltip.Show()
                          .WithLabel($"{bubble.X.ToString("0.##")} | {bubble.Y.ToString("0.##")} | {bubble.Value.ToString("0.##")}")
                          .Marker.WithColor(color);
-        }
-
-        private void OnBubbleLeave()
-        {
-            LayoutTooltip.Hide();
-        }
-
-        private void OnSvgLeave()
-        {
-            LayoutTooltip.Hide();
         }
     }
 }

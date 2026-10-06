@@ -1,90 +1,87 @@
 @namespace BlazorGraphs.Components
 
-<div style="position: relative;" @onmousemove="OnMouseHandler" @onmouseenter="OnMouseHandler">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         viewBox="0 0 @width @height"
-         style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
-         @key="@Model"
-         @onmouseleave="OnSvgLeave">
+<svg xmlns="http://www.w3.org/2000/svg" 
+     viewBox="0 0 @width @height"
+     style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
+     @key="@Model"
+     @onmouseleave="() => LayoutTooltip.Hide()"
+     @onmousemove="(e) => LayoutTooltip.Move(e)"
+     @onmouseenter="(e) => LayoutTooltip.Move(e)">
 
-        @if (Model is null)
+    @if (Model is null)
+    {
+        <path d="@ArcPath(-Math.PI / 4, 5 * Math.PI / 4)"
+              fill="none"
+              stroke="@Theme.AxisColorString()"
+              stroke-width="1px"
+              vector-effect="non-scaling-stroke" />
+
+        <circle cx="@(width / 2)"
+                cy="@(height / 2)"
+                r="@(padding / 2)"
+                fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
+                fill-opacity="1.0"
+                stroke-width="1px"
+                stroke="@Theme.AxisColorString()"
+                vector-effect="non-scaling-stroke" />
+    }
+    else
+    {
+        if (Model.HasBreakPoints)
         {
-            <path d="@ArcPath(-Math.PI / 4, 5 * Math.PI / 4)"
-                  fill="none"
-                  stroke="@Theme.AxisColorString()"
-                  stroke-width="1px"
-                  vector-effect="non-scaling-stroke" />
-
-            <circle cx="@(width / 2)"
-                    cy="@(height / 2)"
-                    r="@(padding / 2)"
-                    fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
-                    fill-opacity="1.0"
-                    stroke-width="1px"
-                    stroke="@Theme.AxisColorString()"
-                    vector-effect="non-scaling-stroke" />
-        }
-        else
-        {
-            if (Model.HasBreakPoints)
+            double start_degree = -Math.PI / 4;
+            foreach (Breakpoint breakpoint in Model)
             {
-                double start_degree = -Math.PI / 4;
-                foreach (Breakpoint breakpoint in Model)
-                {
-                    double degree = -Math.PI / 4 + 3 * Math.PI / 2 * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
-                    <path d="@ArcPath(start_degree, degree)"
-                          fill="none"
-                          stroke="@breakpoint.Color.ToHex()"
-                          stroke-width="@padding"
-                          stroke-opacity="0.6"
-                          @onmouseenter="() => OnBreakpointEnter(breakpoint)"
-                          @onmouseleave="OnBreakpointLeave">
-                    </path>
-                    start_degree = degree;
-                }            
-            }
-            else if (Model.Axis.Contains(Model.Value))
-            {
-                double degree = -Math.PI / 4 + 3 * Math.PI / 2 * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
-
-                <path d="@ArcPath(-Math.PI / 4, degree)"
+                double degree = -Math.PI / 4 + 3 * Math.PI / 2 * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
+                <path d="@ArcPath(start_degree, degree)"
                       fill="none"
-                      stroke="@Model.Color.ToHex()"
+                      stroke="@breakpoint.Color.ToHex()"
                       stroke-width="@padding"
                       stroke-opacity="0.6"
-                      @onmouseenter="OnGaugeEnter"
-                      @onmouseleave="OnGaugeLeave">
+                      @onmouseenter="() => OnBreakpointEnter(breakpoint)"
+                      @onmouseleave="() => LayoutTooltip.Hide()">
                 </path>
-            }
-            @((InnerAxis ? AxisInternalLayout : AxisExternalLayout).Render(Model.Axis));
-            @TitleLayout.Render(Model.Title);
-            @ValueLayout.Render(Model.Value);
-
-            if (Model.Axis.Contains(Model.Value))
-            {
-                double rot = - Math.PI / 4 + 3 * Math.PI / 2 * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
-                <path d="@BarPath(rot)"
-                      fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
-                      stroke="@Theme.AxisColorString()"
-                      stroke-width="1px"
-                      fill-opacity="1.0"
-                      vector-effect="non-scaling-stroke"
-                      @onmouseenter="OnGaugeEnter"
-                      @onmouseleave="OnGaugeLeave">
-                </path>
-            }
-            <circle cx="@(width / 2)"
-                    cy="@(height / 2)"
-                    r="@(padding / 2)"
-                    fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
-                    fill-opacity="1.0"
-                    stroke-width="1px"
-                    stroke="@Theme.AxisColorString()"
-                    vector-effect="non-scaling-stroke" />
+                start_degree = degree;
+            }            
         }
-    </svg>
-    @if (LayoutTooltip.Visible)
-    {
-        @LayoutTooltip.Render();
+        else if (Model.Axis.Contains(Model.Value))
+        {
+            double degree = -Math.PI / 4 + 3 * Math.PI / 2 * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
+
+            <path d="@ArcPath(-Math.PI / 4, degree)"
+                  fill="none"
+                  stroke="@Model.Color.ToHex()"
+                  stroke-width="@padding"
+                  stroke-opacity="0.6"
+                  @onmouseenter="OnGaugeEnter"
+                  @onmouseleave="() => LayoutTooltip.Hide()">
+            </path>
+        }
+        @((InnerAxis ? AxisInternalLayout : AxisExternalLayout).Render(Model.Axis));
+        @TitleLayout.Render(Model.Title);
+        @ValueLayout.Render(Model.Value);
+
+        if (Model.Axis.Contains(Model.Value))
+        {
+            double rot = - Math.PI / 4 + 3 * Math.PI / 2 * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
+            <path d="@BarPath(rot)"
+                  fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
+                  stroke="@Theme.AxisColorString()"
+                  stroke-width="1px"
+                  fill-opacity="1.0"
+                  vector-effect="non-scaling-stroke"
+                  @onmouseenter="OnGaugeEnter"
+                  @onmouseleave="() => LayoutTooltip.Hide()">
+            </path>
+        }
+        <circle cx="@(width / 2)"
+                cy="@(height / 2)"
+                r="@(padding / 2)"
+                fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
+                fill-opacity="1.0"
+                stroke-width="1px"
+                stroke="@Theme.AxisColorString()"
+                vector-effect="non-scaling-stroke" />
     }
-</div>
+</svg>
+@LayoutTooltip.Render()

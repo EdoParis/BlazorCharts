@@ -1,7 +1,5 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using System.Drawing;
 
 namespace BlazorGraphs.Components
 {
@@ -58,33 +56,11 @@ namespace BlazorGraphs.Components
                                      .At(LayoutView.Padding / 2, LayoutView.Padding / 2);
         }
 
-        private void OnMouseHandler(MouseEventArgs e)
-        {
-            if (e is null)
-                return;
-
-            LayoutTooltip.At(new Point()
-            {
-                X = (int)e.OffsetX + 10,
-                Y = (int)e.OffsetY + 10
-            });
-        }
-
         private void OnBinEnter(Bin bin)
         {
             LayoutTooltip.Show()
                          .WithLabel(bin.Value.ToString("0.0#"))
                          .Marker.WithColor(bin.Value < 0 ? Model.SecondaryColor : Model.PrimaryColor);
-        }
-
-        private void OnBinLeave()
-        {
-            LayoutTooltip.Hide();
-        }
-
-        private void OnSvgLeave()
-        {
-            LayoutTooltip.Hide();
         }
     }
 }

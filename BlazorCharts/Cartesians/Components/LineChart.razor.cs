@@ -1,6 +1,5 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using System.Drawing;
 using System.Text;
 
@@ -93,24 +92,6 @@ namespace BlazorGraphs.Components
             return builder.ToString();
         }
 
-        private void OnMouseHandler(MouseEventArgs e)
-        {
-            if (e is null)
-                return;
-
-            LayoutTooltipPoint.At(new Point()
-            {
-                X = (int)e.OffsetX + 10,
-                Y = (int)e.OffsetY + 10
-            });
-
-            LayoutTooltipSerie.At(new Point()
-            {
-                X = (int)e.OffsetX + 10,
-                Y = (int)e.OffsetY + 10
-            });
-        }
-
         private void OnPointEnter(Datapoint point, Color color)
         {
             LayoutTooltipSerie.Hide();
@@ -125,24 +106,6 @@ namespace BlazorGraphs.Components
             LayoutTooltipSerie.Show()
                               .WithLabel(serie.Label)
                               .Marker.WithColor(serie.Color);
-        }
-
-        private void OnPointLeave()
-        {
-            LayoutTooltipPoint.Hide();
-            LayoutTooltipSerie.Hide();
-        }
-
-        private void OnSerieLeave()
-        {
-            LayoutTooltipPoint.Hide();
-            LayoutTooltipSerie.Hide();
-        }
-
-        private void OnSvgLeave()
-        {
-            LayoutTooltipPoint.Hide();
-            LayoutTooltipSerie.Hide();
         }
     }
 }

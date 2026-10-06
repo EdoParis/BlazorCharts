@@ -1,7 +1,5 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using System.Drawing;
 
 namespace BlazorGraphs.Components
 {
@@ -54,34 +52,12 @@ namespace BlazorGraphs.Components
                    "Z";
         }
 
-        private void OnMouseHandler(MouseEventArgs e)
-        {
-            if (e is null)
-                return;
-
-            LayoutTooltip.At(new Point()
-            {
-                X = (int)e.OffsetX + 10,
-                Y = (int)e.OffsetY + 10
-            });
-        }
-
         private void OnSliceEnter(Slice slice)
         {
             LayoutTooltip.Show()
                          .WithTitle(slice.Label)
                          .WithLabel(slice.Value.ToString("0.0#"))
                          .Marker.WithColor(slice.Color);
-        }
-
-        private void OnSliceLeave()
-        {
-            LayoutTooltip.Hide();
-        }
-
-        private void OnSvgLeave()
-        {
-            LayoutTooltip.Hide();
         }
     }
 }

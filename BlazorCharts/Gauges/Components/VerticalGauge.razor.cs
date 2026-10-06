@@ -1,6 +1,5 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using System.Drawing;
 
 namespace BlazorGraphs.Components
@@ -48,18 +47,6 @@ namespace BlazorGraphs.Components
                                          .WithMarker(MarkerLayout.SquareLayout());
         }
 
-        private void OnMouseHandler(MouseEventArgs e)
-        {
-            if (e is null)
-                return;
-
-            LayoutTooltip.At(new Point()
-            {
-                X = (int)e.OffsetX + 10,
-                Y = (int)e.OffsetY + 10
-            });
-        }
-
         private void OnGaugeEnter()
         {
             LayoutTooltip.Show()
@@ -68,27 +55,12 @@ namespace BlazorGraphs.Components
                          .Marker.WithColor(Model.HasBreakPoints ? Color.White : Model.Color);
         }
 
-        private void OnGaugeLeave()
-        {
-            LayoutTooltip.Hide();
-        }
-
         private void OnBreakpointEnter(Breakpoint breakpoint)
         {
             LayoutTooltip.Show()
                          .WithTitle(breakpoint.Label)
                          .WithLabel($"< {breakpoint.Value.ToString("0.##")}")
                          .Marker.WithColor(breakpoint.Color);
-        }
-
-        private void OnBreakpointLeave()
-        {
-            LayoutTooltip.Hide();
-        }
-
-        private void OnSvgLeave()
-        {
-            LayoutTooltip.Hide();
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using System.Drawing;
 using System.Text;
 
 namespace BlazorGraphs.Components
@@ -72,34 +70,12 @@ namespace BlazorGraphs.Components
             return str_builder.ToString();
         }
 
-        private void OnMouseHandler(MouseEventArgs e)
-        {
-            if (e is null)
-                return;
-
-            LayoutTooltip.At(new Point()
-            {
-                X = (int)e.OffsetX + 10,
-                Y = (int)e.OffsetY + 10
-            });
-        }
-
         private void OnRatingEnter(Rating rating)
         {
             LayoutTooltip.Show()
                          .WithTitle(rating.Label)
                          .WithLabel(rating.Value.ToString("0.0#"))
                          .Marker.WithColor(Model.Color);
-        }
-
-        private void OnRatingLeave()
-        {
-            LayoutTooltip.Hide();
-        }
-
-        private void OnSvgLeave()
-        {
-            LayoutTooltip.Hide();
         }
     }
 }

@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>3.0.2</Version>
+    <Version>3.1.0</Version>
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,10 +16,10 @@
 	  <RepositoryType>git</RepositoryType>
     <Description>Lightweight library to draw .svg charts and gauges for Blazor (No Javascript)</Description>
     <PackageReleaseNotes>
-		- Fix zero size axis-interval
-		- Fix ticks for negative intervals
-		- Fix single slice rendering for circular charts
-		- Improved animations
+		- Added tooltips
+		- Added color palettes
+		- Added aspect-ratio parameter to cartesian and barcharts
+		- Added percentage parameter to PieChart and DonutChart
 	</PackageReleaseNotes>
   </PropertyGroup>
 

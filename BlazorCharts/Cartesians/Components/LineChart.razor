@@ -4,9 +4,9 @@
      style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
      viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
      @key="@Model"
-     @onmouseleave="() => { LayoutTooltipPoint.Hide(); LayoutTooltipSerie.Hide(); }"
-     @onmousemove="(e) => { LayoutTooltipPoint.Move(e); LayoutTooltipSerie.Move(e); }"
-     @onmouseenter="(e) => { LayoutTooltipPoint.Move(e); LayoutTooltipSerie.Move(e); }">
+     @onpointerleave="() => { LayoutTooltipPoint.Hide(); LayoutTooltipSerie.Hide(); }"
+     @onpointermove="(e) => { LayoutTooltipPoint.Move(e); LayoutTooltipSerie.Move(e); }"
+     @onpointerenter="(e) => { LayoutTooltipPoint.Move(e); LayoutTooltipSerie.Move(e); }">
 
     @if (Model is null || Model.IsEmpty)
     {
@@ -39,8 +39,8 @@
                           stroke-linecap="round"
                           vector-effect="non-scaling-stroke"
                           @key="@serie"
-                          @onmouseenter="() => OnSerieEnter(serie)"
-                          @onmouseleave="() => LayoutTooltipSerie.Hide()">
+                          @onpointerenter="() => OnSerieEnter(serie)"
+                          @onpointerleave="() => LayoutTooltipSerie.Hide()">
                     </path>
 
                     @if (!HidePoints)
@@ -56,8 +56,8 @@
                                     cy="@(LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
                                     r="8px"
                                     @key="@point"
-                                    @onmouseenter="() => OnPointEnter(point, serie.Color)"
-                                    @onmouseleave="() => LayoutTooltipPoint.Hide()">
+                                    @onpointerenter="() => OnPointEnter(point, serie.Color)"
+                                    @onpointerleave="() => LayoutTooltipPoint.Hide()">
                             </circle>
                         }
                     }

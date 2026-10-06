@@ -4,9 +4,9 @@
      viewBox="0 0 @width @height"
      style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
      @key="@Model"
-     @onmouseleave="() => LayoutTooltip.Hide()"
-     @onmousemove="(e) => LayoutTooltip.Move(e)"
-     @onmouseenter="(e) => LayoutTooltip.Move(e)">
+     @onpointerleave="() => LayoutTooltip.Hide()"
+     @onpointermove="(e) => LayoutTooltip.Move(e)"
+     @onpointerenter="(e) => LayoutTooltip.Move(e)">
 
     @if (Model is null)
     {
@@ -29,8 +29,8 @@
                       stroke="@breakpoint.Color.ToHex()"
                       stroke-width="@padding"
                       stroke-opacity="0.6"
-                      @onmouseenter="() => OnBreakpointEnter(breakpoint)"
-                      @onmouseleave="() => LayoutTooltip.Hide()">
+                      @onpointerenter="() => OnBreakpointEnter(breakpoint)"
+                      @onpointerleave="() => LayoutTooltip.Hide()">
                 </path>
                 start_degree = degree;
             }            
@@ -44,8 +44,8 @@
                   stroke="@Model.Color.ToHex()"
                   stroke-width="@padding"
                   stroke-opacity="0.6"
-                  @onmouseenter="OnGaugeEnter"
-                  @onmouseleave="() => LayoutTooltip.Hide()">
+                  @onpointerenter="OnGaugeEnter"
+                  @onpointerleave="() => LayoutTooltip.Hide()">
             </path>
         }
         @AxisLayout.Render(Model.Axis);
@@ -61,8 +61,8 @@
                   stroke-width="1px"
                   fill-opacity="1.0"
                   vector-effect="non-scaling-stroke"
-                  @onmouseenter="OnGaugeEnter"
-                  @onmouseleave="() => LayoutTooltip.Hide()">
+                  @onpointerenter="OnGaugeEnter"
+                  @onpointerleave="() => LayoutTooltip.Hide()">
             </path>
         }
     }

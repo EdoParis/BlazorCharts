@@ -4,9 +4,9 @@
      style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
      viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
      @key="@Model"
-     @onmouseleave="() => LayoutTooltip.Hide()"
-     @onmousemove="(e) => LayoutTooltip.Move(e)"
-     @onmouseenter="(e) => LayoutTooltip.Move(e)">
+     @onpointerleave="() => LayoutTooltip.Hide()"
+     @onpointermove="(e) => LayoutTooltip.Move(e)"
+     @onpointerenter="(e) => LayoutTooltip.Move(e)">
 
     @if (Model is null || Model.IsEmpty)
     {
@@ -39,8 +39,8 @@
                       vector-effect="non-scaling-stroke"
                       @key="@bin"
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))"
-                      @onmouseenter="() => OnBarEnter(new Bar(label, bin.Value))"
-                      @onmouseleave="() => LayoutTooltip.Hide()">
+                      @onpointerenter="() => OnBarEnter(new Bar(label, bin.Value))"
+                      @onpointerleave="() => LayoutTooltip.Hide()">
                 </rect>
                 @LayoutLabelsTop.At(LayoutAxisX.StartingPoint.X + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size), originV).Render(label);
             }
@@ -58,8 +58,8 @@
                       vector-effect="non-scaling-stroke"
                       @key="@bin"
                       @onclick="async () => await OnClick.InvokeAsync(new Bar(label, bin.Value))"
-                      @onmouseenter="() => OnBarEnter(new Bar(label, bin.Value))"
-                      @onmouseleave="() => LayoutTooltip.Hide()">
+                      @onpointerenter="() => OnBarEnter(new Bar(label, bin.Value))"
+                      @onpointerleave="() => LayoutTooltip.Hide()">
                 </rect>
                 @LayoutLabelsBottom.At(LayoutAxisX.StartingPoint.X + (int)(((bin.Max + bin.Min) / 2 - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size), originV).Render(label);
             }

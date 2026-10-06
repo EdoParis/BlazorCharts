@@ -4,9 +4,9 @@
      style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
      viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
      @key="@Model"
-     @onmouseleave="() => LayoutTooltip.Hide()"
-     @onmousemove="(e) => LayoutTooltip.Move(e)"
-     @onmouseenter="(e) => LayoutTooltip.Move(e)">
+     @onpointerleave="() => LayoutTooltip.Hide()"
+     @onpointermove="(e) => LayoutTooltip.Move(e)"
+     @onpointerenter="(e) => LayoutTooltip.Move(e)">
 
     @if (Model is null || Model.IsEmpty)
     {
@@ -39,8 +39,8 @@
                         cy="@(LayoutView.Height - LayoutView.Padding - (int)((bubble.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
                         r="@((int)radius)px"
                         @key="@bubble"
-                        @onmouseenter="() => OnBubbleEnter(bubble, serie.Color)"
-                        @onmouseleave="() => LayoutTooltip.Hide()">
+                        @onpointerenter="() => OnBubbleEnter(bubble, serie.Color)"
+                        @onpointerleave="() => LayoutTooltip.Hide()">
                 </circle>
             }
         }

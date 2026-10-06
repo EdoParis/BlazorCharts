@@ -4,9 +4,9 @@
      viewBox="0 0 @width @height" 
      style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
      @key="@Model"
-     @onmouseleave="() => LayoutTooltip.Hide()"
-     @onmousemove="(e) => LayoutTooltip.Move(e)"
-     @onmouseenter="(e) => LayoutTooltip.Move(e)">
+     @onpointerleave="() => LayoutTooltip.Hide()"
+     @onpointermove="(e) => LayoutTooltip.Move(e)"
+     @onpointerenter="(e) => LayoutTooltip.Move(e)">
 
     @if (Model is null || Model.IsEmpty)
     {
@@ -100,8 +100,8 @@
                             cy="@((int)y)"
                             r="8px"
                             @key="@rating"
-                            @onmouseenter="() => OnRatingEnter(rating)"
-                            @onmouseleave="() => LayoutTooltip.Hide()">
+                            @onpointerenter="() => OnRatingEnter(rating)"
+                            @onpointerleave="() => LayoutTooltip.Hide()">
                     </circle>
                 }
             }

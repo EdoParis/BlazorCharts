@@ -22,7 +22,7 @@
                             </tr>
                             <tr>
                                 <td class="w-100">
-                                    <PieChart Model="@model"></PieChart>
+                                    <PolarAreaChart Model="@model"></PolarAreaChart>
                                 </td>
                                 <td>
                                     <LegendVertical Model="@model"></LegendVertical>
@@ -38,13 +38,13 @@
                 <div class="h-100 w-100 small border">
                     <pre class="language-csharp m-0 h-100">
                         <code>
- &lt<span class="token tag bold">PieChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">PolarAreaChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
  &lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
  &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
  
  @@{
      <span class="token keyword">private</span> <span class="token property">Circulargram</span> model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();
-     <span class="token keyword">private</span> <span class="token property">IColorStream</span> palette = <span class="token class-name">Palettes</span>.Primary;
+     <span class="token keyword">private</span> <span class="token property">IColorStream</span> palette = <span class="token keyword">new</span> <span class="token class-name">RandomPalette</span>();
 
      @foreach (Slice slice in model)
      {

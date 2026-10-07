@@ -8,18 +8,16 @@ namespace WebApp.Pages.Layout
     {
         private Circulargram model;
         private IColorStream palette;
-        private Random random;
 
         protected override void OnInitialized()
         {
-            random = new Random();
-            palette = Palettes.Primary;
+            palette = new RandomPalette(10);
             model = new Circulargram();
-            model.Add(new Slice("S1", 5, palette.Next()));
-            model.Add(new Slice("S2", 30, palette.Next()));
-            model.Add(new Slice("S3", 5, palette.Next()));
-            model.Add(new Slice("S4", 40, palette.Next()));
-            model.Add(new Slice("S5", 15, palette.Next()));
+
+            for (int i = 0; i < 5; i++)
+            {
+                OnSliceAdd();
+            }
         }
 
         private void OnChartClear()
@@ -29,11 +27,12 @@ namespace WebApp.Pages.Layout
 
         private void OnSliceAdd()
         {
+            Color next_color = palette.Next();
             model.Add(new Slice()
             {
                 Label = $"S{model.SlicesCount + 1}",
-                Value = Math.Round(90 * random.NextDouble() + 10),
-                Color = palette.Next()
+                Value = Math.Round(255 * next_color.GetBrightness()),
+                Color = next_color
             });
         }
     }

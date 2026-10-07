@@ -6,16 +6,16 @@ namespace WebApp.Pages.Layout
     public partial class ColorsPage : ComponentBase
     {
         private static Dictionary<int, (string Name, IColorStream Palette)> available_palettes = new()
-        {
-            {0, ("Random", new RandomPalette())},
-            {1, (nameof(Palettes.Primary), Palettes.Primary)},
-            {2, (nameof(Palettes.Light), Palettes.Light) },
-            {3, (nameof(Palettes.Pastel), Palettes.Pastel) },
-            {4, (nameof(Palettes.Dark), Palettes.Dark) },
-            {5, (nameof(Palettes.Red), Palettes.Red) },
-            {6, (nameof(Palettes.Green), Palettes.Green) },
-            {7, (nameof(Palettes.Blue), Palettes.Blue) },
-            {8, (nameof(Palettes.Purple), Palettes.Purple) },
+        {            
+            {0, (nameof(Palettes.Primary), Palettes.Primary)},
+            {1, (nameof(Palettes.Light), Palettes.Light) },
+            {2, (nameof(Palettes.Pastel), Palettes.Pastel) },
+            {3, (nameof(Palettes.Dark), Palettes.Dark) },
+            {4, (nameof(Palettes.Red), Palettes.Red) },
+            {5, (nameof(Palettes.Green), Palettes.Green) },
+            {6, (nameof(Palettes.Blue), Palettes.Blue) },
+            {7, (nameof(Palettes.Purple), Palettes.Purple) },
+            {8, ("Random", new RandomPalette())},
         };
         private Circulargram model;
         private IColorStream palette;

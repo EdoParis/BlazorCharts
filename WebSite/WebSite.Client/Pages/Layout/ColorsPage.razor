@@ -60,60 +60,55 @@
     </div>
 </p>
 <p>
-    Predefined palettes with the following colors are already available:
-</p>
-<p>
-    <div class="card-group">
-        <div class="card overflow-hidden">
-            <div class="card-body">
-                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Primary</h6>
-                <Palette Colors="Palettes.Primary" Size="8"></Palette>
-            </div>
-        </div>
-        <div class="card overflow-hidden">
-            <div class="card-body">
-                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Pastel</h6>
-                <Palette Colors="Palettes.Pastel" Size="8"></Palette>
-            </div>
-        </div>
-        <div class="card overflow-hidden">
-            <div class="card-body">
-                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Light</h6>
-                <Palette Colors="Palettes.Light" Size="8"></Palette>
-            </div>
-        </div>
-        <div class="card overflow-hidden">
-            <div class="card-body">
-                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Dark</h6>
-                <Palette Colors="Palettes.Dark" Size="8"></Palette>
-            </div>
-        </div>
-    </div>
-</p>
-<p>
-    <div class="card-group">
-        <div class="card overflow-hidden">
-            <div class="card-body">
-                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Red</h6>
-                <Palette Colors="Palettes.Red" Size="8"></Palette>
-            </div>
-        </div>
-        <div class="card overflow-hidden">
-            <div class="card-body">
-                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Green</h6>
-                <Palette Colors="Palettes.Green" Size="8"></Palette>
-            </div>
-        </div>
-        <div class="card overflow-hidden">
-            <div class="card-body">
-                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Blue</h6>
-                <Palette Colors="Palettes.Blue" Size="8"></Palette>
-            </div>
-        </div>
-        <div class="card overflow-hidden">
-            <div class="card-body">
-                <h6 class="text-center font-monospace text-truncate"><span class="token keyword">Palettes</span>.Purple</h6>
-                <Palette Colors="Palettes.Purple" Size="8"></Palette>
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col col-sm-6 col-lg-4 col-12">
+                    <div class="row g-3">
+                        <div class="col-6 col-form-label">Palette</div>
+                        <div class="col-6">
+                            <select class="form-select" @onchange="@(e => OnPaletteSelect(int.Parse(e?.Value.ToString())))" @key="@palette_index">
+                                @foreach (var kvp in available_palettes)
+                                {
+                                    <option value="@kvp.Key" selected="@(kvp.Key == palette_index)">@kvp.Value.Name</option>
+                                }
+                            </select>
+                        </div>                    
+                        <div class="col-12">
+                            <PieChart Model="@model" Percentage></PieChart>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-sm-6 col-lg-8 col-12">
+                    <div class="h-100 w-100 small border">
+                        <pre class="language-csharp m-0 h-100">
+                        <code>
+ &lt<span class="token tag bold">PieChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
+ 
+ @@{
+     <span class="token keyword">private</span> <span class="token property">Circulargram</span> model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();
+
+     @if (palette_index == 0)
+     {
+ <text><span class="token keyword">private</span> <span class="token property">IColorStream</span> palette = <span class="token keyword">new</span> <span class="token class-name">RandomPalette</span>();
+ </text>
+     }
+     else
+     {
+ <text><span class="token keyword">private</span> <span class="token property">IColorStream</span> palette = <span class="token class-name">Palettes</span>.@(available_palettes[palette_index].Name);
+ </text>
+     }
+
+     @foreach (Slice slice in model)
+     {
+ <text> model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Slice</span>(<span class="token string">"@slice.Label"</span>, @slice.Value, palette.<span class="token function">Next</span>());
+ </text>
+     }
+ }
+                        </code>
+                        </pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

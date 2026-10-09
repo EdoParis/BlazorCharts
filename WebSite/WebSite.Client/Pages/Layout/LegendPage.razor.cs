@@ -8,6 +8,7 @@ namespace WebApp.Pages.Layout
     {
         private Circulargram model;
         private IColorStream palette;
+        private MarkerShapes marker; 
 
         protected override void OnInitialized()
         {

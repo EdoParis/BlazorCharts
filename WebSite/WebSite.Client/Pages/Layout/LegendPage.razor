@@ -8,16 +8,53 @@
     There are two different components, one for the horizontal legend and the other for the vertical one.
     Add the component to the page and assign it the data model of the chart you want.
 </p>
+<p>
+    <div class="card overflow-hidden">
+        <div class="card-body overflow-auto">
+            <table class="table text-nowrap align-middle mb-0 border">
+                <tr class="shadow-sm">
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td class="font-monospace"><span class="token keyword">ILegend</span></td>
+                    <td>Interface implemented by all data model</td>
+                </tr>
+                <tr>
+                    <td>Marker</td>
+                    <td class="font-monospace"><span class="token keyword">MarkerShapes</span></td>
+                    <td>Enumeration of available marker shapes</td>
+                </tr>
+                <tr>
+                    <td>Theme</td>
+                    <td class="font-monospace"><span class="token keyword">Theme</span><a class="bi-arrow-90deg-right px-2" href="layout/themes"></a></td>
+                    <td>Chart customization colors</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</p>
 <div class="card">
     <div class="card-body">
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
+                    <div class="col-6 col-form-label">Marker</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="@marker">
+                            <option value="@MarkerShapes.Circle">@nameof(MarkerShapes.Circle)</option>
+                            <option value="@MarkerShapes.Square">@nameof(MarkerShapes.Square)</option>
+                            <option value="@MarkerShapes.Segment">@nameof(MarkerShapes.Segment)</option>
+                            <option value="@MarkerShapes.Slice">@nameof(MarkerShapes.Slice)</option>
+                        </select>
+                    </div>
                     <div class="col-12">
                         <table>
                             <tr>
                                 <td colspan="2">
-                                    <LegendHorizontal Model="@model"></LegendHorizontal>
+                                    <LegendHorizontal Model="@model" Marker="@marker"></LegendHorizontal>
                                 </td>
                             </tr>
                             <tr>
@@ -25,7 +62,7 @@
                                     <PolarAreaChart Model="@model"></PolarAreaChart>
                                 </td>
                                 <td>
-                                    <LegendVertical Model="@model"></LegendVertical>
+                                    <LegendVertical Model="@model" Marker="@marker"></LegendVertical>
                                 </td>
                             </tr>
                         </table>
@@ -39,8 +76,8 @@
                     <pre class="language-csharp m-0 h-100">
                         <code>
  &lt<span class="token tag bold">PolarAreaChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
- &lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
- &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">Marker</span><span class="token string">="</span>@@<span class="token class-name">MarkerShapes</span>.Circle<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">Marker</span><span class="token string">="</span>@@<span class="token class-name">MarkerShapes</span>.Circle<span class="token string">"</span>/&gt
  
  @@{
      <span class="token keyword">private</span> <span class="token property">Circulargram</span> model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();

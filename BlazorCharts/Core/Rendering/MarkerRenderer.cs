@@ -5,21 +5,23 @@ namespace BlazorGraphs.Core
 {
     internal class MarkerRenderer
     {
-        public RenderFragment Render(Marker marker)
+        public RenderFragment Render(Marker marker) => Render(marker.Shape, marker.Color);
+
+        public RenderFragment Render(MarkerShapes shape, Color color)
         {
-            switch (marker.Shape)
+            switch (shape)
             {
                 case MarkerShapes.Circle:
-                    return RenderCircle(marker.Color);
+                    return RenderCircle(color);
 
                 case MarkerShapes.Square:
-                    return RenderSquare(marker.Color);
+                    return RenderSquare(color);
 
                 case MarkerShapes.Slice:
-                    return RenderSlice(marker.Color);
+                    return RenderSlice(color);
 
                 case MarkerShapes.Segment:
-                    return RenderSegment(marker.Color);
+                    return RenderSegment(color);
 
                 default:
                     throw new NotImplementedException();

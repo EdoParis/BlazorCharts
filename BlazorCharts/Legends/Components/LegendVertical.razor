@@ -6,13 +6,7 @@
         foreach (LegendItem item in Model.ToLegend())
         {
             <div class="legend-item">
-                <svg width="1.5em" height="1em" viewBox="0 0 15 10">
-                    <circle cx="5"
-                            cy="5"
-                            r="4"
-                            fill="@(item.Color.ToHex())">
-                    </circle>
-                </svg>
+                @marker_renderer.Render(Marker, item.Color)
                 <div class="text-truncate">@item.Text</div>
             </div>
         }

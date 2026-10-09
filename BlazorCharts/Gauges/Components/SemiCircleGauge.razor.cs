@@ -49,8 +49,7 @@ namespace BlazorGraphs.Components
                                     .Medium()
                                     .At(width / 2, height - padding / 2);
 
-            LayoutTooltip = TooltipLayout.Default()
-                                         .WithMarker(MarkerLayout.SquareLayout());
+            LayoutTooltip = TooltipLayout.Default();
         }
 
         private string ArcPath(double start, double end)
@@ -101,18 +100,22 @@ namespace BlazorGraphs.Components
 
         private void OnGaugeEnter()
         {
-            LayoutTooltip.Show()
+            LayoutTooltip.WithoutMarker()
                          .WithoutTitle()
                          .WithLabel(Model.Value.ToString("0.0#"))
-                         .Marker.WithColor(Model.HasBreakPoints ? Color.White : Model.Color);
+                         .Show();
         }
 
         private void OnBreakpointEnter(Breakpoint breakpoint)
         {
-            LayoutTooltip.Show()
-                         .WithTitle(breakpoint.Label)
-                         .WithLabel($"< {breakpoint.Value.ToString("0.##")}")
-                         .Marker.WithColor(breakpoint.Color);
+            LayoutTooltip.WithMarker(new Marker()
+            {
+                Shape = MarkerShapes.Square,
+                Color = breakpoint.Color
+            })
+            .WithTitle(breakpoint.Label)
+            .WithLabel($"< {breakpoint.Value.ToString("0.##")}")
+            .Show();
         }
     }
 }

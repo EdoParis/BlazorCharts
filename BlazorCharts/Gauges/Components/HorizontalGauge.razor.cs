@@ -37,26 +37,28 @@ namespace BlazorGraphs.Components
                                    .From(padding)
                                    .To(width - padding);
 
-            LayoutTooltip = TooltipLayout.Default()
-                                         .WithMarker(MarkerLayout.SquareLayout());
-
+            LayoutTooltip = TooltipLayout.Default();
             TitleLayout = TextLayout.MiddleLayout().Medium().WithTheme(Theme);
         }
 
         private void OnGaugeEnter()
         {
-            LayoutTooltip.Show()
+            LayoutTooltip.WithoutMarker()
                          .WithoutTitle()
                          .WithLabel(Model.Value.ToString("0.0#"))
-                         .Marker.WithColor(Model.HasBreakPoints ? Color.White : Model.Color);
+                         .Show();
         }
 
         private void OnBreakpointEnter(Breakpoint breakpoint)
         {
-            LayoutTooltip.Show()
-                         .WithTitle(breakpoint.Label)
-                         .WithLabel($"< {breakpoint.Value.ToString("0.##")}")
-                         .Marker.WithColor(breakpoint.Color);
+            LayoutTooltip.WithMarker(new Marker()
+            {
+                Shape = MarkerShapes.Square,
+                Color = breakpoint.Color
+            })
+            .WithTitle(breakpoint.Label)
+            .WithLabel($"< {breakpoint.Value.ToString("0.##")}")
+            .Show();
         }
     }
 }

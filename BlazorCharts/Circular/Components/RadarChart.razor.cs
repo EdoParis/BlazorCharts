@@ -30,8 +30,7 @@ namespace BlazorGraphs.Components
         {
             LayoutLabels = TextLayout.MiddleLayout().Medium().WithTheme(Theme);
             LayoutTicks = TextLayout.EndLayout().Medium().WithTheme(Theme);
-            LayoutTooltip = TooltipLayout.Default()
-                                         .WithMarker(MarkerLayout.CircleLayout());
+            LayoutTooltip = TooltipLayout.Default();
         }
 
         private string Path()
@@ -72,10 +71,14 @@ namespace BlazorGraphs.Components
 
         private void OnRatingEnter(Rating rating)
         {
-            LayoutTooltip.Show()
-                         .WithTitle(rating.Label)
-                         .WithLabel(rating.Value.ToString("0.0#"))
-                         .Marker.WithColor(Model.Color);
+            LayoutTooltip.WithMarker(new Marker()
+            {
+                Shape = MarkerShapes.Circle,
+                Color = Model.Color
+            })
+            .WithTitle(rating.Label)
+            .WithLabel(rating.Value.ToString("0.##"))
+            .Show();
         }
     }
 }

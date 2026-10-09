@@ -6,15 +6,19 @@ namespace BlazorGraphs.Core
 {
     internal class TooltipLayout
     {
-        public MarkerLayout Marker { get; private set; }
+        public Marker? Marker { get; private set; }
         public Point Position { get; private set; }
         public Theme Theme { get; private set; }
         public String Label { get; private set; }
         public String Title { get; private set; }
         public Boolean Visible { get; private set; }
+        public Boolean HasMarker { get => Marker.HasValue; }
+        private MarkerRenderer marker_renderer;
 
         private TooltipLayout() 
-        { }
+        {
+            marker_renderer = new MarkerRenderer();
+        }
 
         public static TooltipLayout Default()
         {
@@ -64,7 +68,7 @@ namespace BlazorGraphs.Core
             return this;
         }
 
-        public TooltipLayout WithMarker(MarkerLayout marker)
+        public TooltipLayout WithMarker(Marker marker)
         {
             Marker = marker;
             return this;
@@ -113,16 +117,19 @@ namespace BlazorGraphs.Core
                 {
                     builder.OpenElement(3, "tr");
                     builder.OpenElement(4, "td");
-                    builder.AddAttribute(5, "colspan", 2);
+                    builder.AddAttribute(5, "colspan", HasMarker ? 2 : 1);
                     builder.AddAttribute(6, "style", "text-align: center; white-space: nowrap;");
                     builder.AddContent(7, Title);
                     builder.CloseElement();
                     builder.CloseElement();
                 }
                 builder.OpenElement(8, "tr");
-                builder.OpenElement(9, "td");
-                builder.AddContent(10, Marker?.Render());
-                builder.CloseElement();
+                if (HasMarker)
+                {
+                    builder.OpenElement(9, "td");
+                    builder.AddContent(10, marker_renderer.Render(Marker.Value));
+                    builder.CloseElement();
+                }
                 builder.OpenElement(11, "td");
                 builder.AddAttribute(12, "style", "white-space: nowrap;");
                 builder.AddContent(13, Label);

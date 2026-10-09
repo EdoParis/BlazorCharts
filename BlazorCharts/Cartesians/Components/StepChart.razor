@@ -4,9 +4,9 @@
      style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString()"
      viewBox="@(-LayoutView.Padding / 2) 0 @LayoutView.Width @LayoutView.Height"
      @key="@Model"
-     @onpointerleave="() => { LayoutTooltipPoint.Hide(); LayoutTooltipSerie.Hide(); }"
-     @onpointermove="(e) => { LayoutTooltipPoint.Move(e); LayoutTooltipSerie.Move(e); }"
-     @onpointerenter="(e) => { LayoutTooltipPoint.Move(e); LayoutTooltipSerie.Move(e); }">
+     @onpointerleave="() => LayoutTooltip.Hide()"
+     @onpointermove="(e) => LayoutTooltip.Move(e)"
+     @onpointerenter="(e) => LayoutTooltip.Move(e)">
 
     @if (Model is null || Model.IsEmpty)
     {
@@ -40,7 +40,7 @@
                           vector-effect="non-scaling-stroke"
                           @key="@serie"
                           @onpointerenter="() => OnSerieEnter(serie)"
-                          @onpointerleave="() => LayoutTooltipSerie.Hide()">
+                          @onpointerleave="() => LayoutTooltip.Hide()">
                     </path>
 
                     @if (!HidePoints)
@@ -57,7 +57,7 @@
                                     r="8px"
                                     @key="@point"
                                     @onpointerenter="() => OnPointEnter(point, serie.Color)"
-                                    @onpointerleave="() => LayoutTooltipPoint.Hide()">
+                                    @onpointerleave="() => LayoutTooltip.Hide()">
                             </circle>
                         }
                     }
@@ -66,5 +66,4 @@
         }
     }
 </svg>
-@LayoutTooltipPoint.Render()
-@LayoutTooltipSerie.Render()
+@LayoutTooltip.Render()

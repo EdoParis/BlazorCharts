@@ -29,8 +29,7 @@ namespace BlazorGraphs.Components
         protected override void OnInitialized()
         {
             LayoutView = ViewLayout.Default();
-            LayoutTooltip = TooltipLayout.Default()
-                                         .WithMarker(MarkerLayout.SquareLayout());
+            LayoutTooltip = TooltipLayout.Default();
 
             LayoutAxisY = AxisLayout.VerticalLayout()
                                     .TicksInternal()
@@ -58,9 +57,13 @@ namespace BlazorGraphs.Components
 
         private void OnBinEnter(Bin bin)
         {
-            LayoutTooltip.Show()
-                         .WithLabel(bin.Value.ToString("0.0#"))
-                         .Marker.WithColor(bin.Value < 0 ? Model.SecondaryColor : Model.PrimaryColor);
+            LayoutTooltip.WithMarker(new Marker()
+            {
+                Shape = MarkerShapes.Square, 
+                Color = bin.Value < 0 ? Model.SecondaryColor : Model.PrimaryColor 
+            })
+            .WithLabel(bin.Value.ToString("0.0#"))
+            .Show();
         }
     }
 }

@@ -36,8 +36,7 @@ namespace BlazorGraphs.Components
                                     .WithTheme(Theme)
                                     .Medium();
 
-            LayoutTooltip = TooltipLayout.Default()
-                                         .WithMarker(MarkerLayout.SliceLayout());
+            LayoutTooltip = TooltipLayout.Default();
         }
 
         private string SlicePath(Slice slice, double rotation = 0)
@@ -54,10 +53,14 @@ namespace BlazorGraphs.Components
 
         private void OnSliceEnter(Slice slice)
         {
-            LayoutTooltip.Show()
-                         .WithTitle(slice.Label)
-                         .WithLabel(slice.Value.ToString("0.0#"))
-                         .Marker.WithColor(slice.Color);
+            LayoutTooltip.WithMarker(new Marker()
+            {
+                Shape = MarkerShapes.Slice,
+                Color = slice.Color
+            })
+            .WithTitle(slice.Label)
+            .WithLabel(slice.Value.ToString("0.##"))
+            .Show();
         }
     }
 }

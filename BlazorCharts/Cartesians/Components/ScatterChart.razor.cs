@@ -29,6 +29,7 @@ namespace BlazorGraphs.Components
         protected override void OnInitialized()
         {
             LayoutView = ViewLayout.Default();
+            LayoutTooltip = TooltipLayout.Default();
             LayoutAxisX = AxisLayout.HorizontalLayout()
                                     .TicksInternal()
                                     .WithTickSize(20)
@@ -54,16 +55,17 @@ namespace BlazorGraphs.Components
                                      .WithTheme(Theme)
                                      .Medium()
                                      .At(LayoutView.Padding / 2, LayoutView.Padding / 2);
-
-            LayoutTooltip = TooltipLayout.Default()
-                                         .WithMarker(MarkerLayout.CircleLayout());
         }
 
         private void OnPointEnter(Datapoint point, Color color)
         {
-            LayoutTooltip.Show()
-                         .WithLabel($"{point.X.ToString("0.##")} | {point.Y.ToString("0.##")}")
-                         .Marker.WithColor(color);
+            LayoutTooltip.WithMarker(new Marker()
+            {
+                Shape = MarkerShapes.Circle,
+                Color = color
+            })
+            .WithLabel($"{point.X.ToString("0.##")} | {point.Y.ToString("0.##")}")
+            .Show();
         }
     }
 }

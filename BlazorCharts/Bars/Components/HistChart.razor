@@ -34,7 +34,6 @@
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
-                      @key="@bin"
                       @onclick="async () => await OnClick.InvokeAsync(bin)"
                       @onpointerenter="() => OnBinEnter(bin)"
                       @onpointerleave="() => LayoutTooltip.Hide()">
@@ -52,7 +51,6 @@
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
-                      @key="@bin"
                       @onclick="async () => await OnClick.InvokeAsync(bin)"
                       @onpointerenter="() => OnBinEnter(bin)"
                       @onpointerleave="() => LayoutTooltip.Hide()">

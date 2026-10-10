@@ -32,11 +32,10 @@
                   stroke="@Theme.AxisColorString()"
                   stroke-width="1px"
                   stroke-opacity="0.3"
-                  vector-effect="non-scaling-stroke"
-                  @key="@rating"/>
+                  vector-effect="non-scaling-stroke"/>
 
             @LayoutLabels.At((int)((width / 2 + (width / 2 - padding / 2) * Math.Sin(2 * Math.PI / Model.Categories * c))),
-                                (int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c)))).Render(rating.Label)
+                             (int)((height / 2 - (height / 2 - padding / 2) * Math.Cos(2 * Math.PI / Model.Categories * c)))).Render(rating.Label)
             c++;
         }
 
@@ -99,7 +98,6 @@
                             cx="@((int)x)"
                             cy="@((int)y)"
                             r="8px"
-                            @key="@rating"
                             @onpointerenter="() => OnRatingEnter(rating)"
                             @onpointerleave="() => LayoutTooltip.Hide()">
                     </circle>

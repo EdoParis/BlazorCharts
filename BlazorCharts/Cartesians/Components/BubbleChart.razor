@@ -38,7 +38,6 @@
                         cx="@(LayoutView.Padding + (int)((bubble.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
                         cy="@(LayoutView.Height - LayoutView.Padding - (int)((bubble.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
                         r="@((int)radius)px"
-                        @key="@bubble"
                         @onpointerenter="() => OnBubbleEnter(bubble, serie.Color)"
                         @onpointerleave="() => LayoutTooltip.Hide()">
                 </circle>

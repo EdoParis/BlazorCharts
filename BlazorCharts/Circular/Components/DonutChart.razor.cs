@@ -38,7 +38,7 @@ namespace BlazorGraphs.Components
             LayoutTotalValue = TextLayout.MiddleLayout()
                                          .WithTheme(Theme)
                                          .Large()
-                                         .At(height / 2, width / 2);
+                                         .At(width / 2, height / 2);
 
             LayoutTextTitle = TextLayout.MiddleLayout()
                                         .Medium()

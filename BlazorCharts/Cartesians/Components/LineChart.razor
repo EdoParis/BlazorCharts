@@ -38,7 +38,6 @@
                           stroke-linejoin="round"
                           stroke-linecap="round"
                           vector-effect="non-scaling-stroke"
-                          @key="@serie"
                           @onpointerenter="() => OnSerieEnter(serie)"
                           @onpointerleave="() => LayoutTooltip.Hide()">
                     </path>
@@ -55,7 +54,6 @@
                                     cx="@(LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
                                     cy="@(LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
                                     r="8px"
-                                    @key="@point"
                                     @onpointerenter="() => OnPointEnter(point, serie.Color)"
                                     @onpointerleave="() => LayoutTooltip.Hide()">
                             </circle>

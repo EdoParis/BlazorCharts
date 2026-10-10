@@ -12,7 +12,7 @@ namespace BlazorGraphs
         public LegendItem(Slice slice)
         {
             Color = slice.Color;
-            Text = slice.Label;
+            Text = string.IsNullOrWhiteSpace(slice.Label) ? "-" : slice.Label;
         }
 
         public LegendItem(Breakpoint threshold)

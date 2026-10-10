@@ -15,7 +15,9 @@ namespace BlazorGraphs
 
         public bool IsValid()
         {
-            return Value >= 0 && !string.IsNullOrWhiteSpace(Label);
+            return Value >= 0 && 
+                   !double.IsNaN(Value) &&
+                   !double.IsInfinity(Value);
         }
     }
 }

@@ -9,6 +9,13 @@ namespace BlazorGraphs
         public double Value { get; set; }
         public double Radius { get => Math.Sqrt(Value); }
 
+        public Bubblepoint(double x, double y, double value)
+        {
+            X = x;
+            Y = y;
+            Value = value;
+        }
+
         public bool IsValid()
         {
             return Value >= 0 &&

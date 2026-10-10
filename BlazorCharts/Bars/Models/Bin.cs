@@ -17,8 +17,10 @@ namespace BlazorGraphs
 
         public bool IsValid()
         {
-            return !double.IsInfinity(Max) &&
+            return !double.IsInfinity(Value) &&
+                   !double.IsInfinity(Max) &&
                    !double.IsInfinity(Min) &&
+                   !double.IsNaN(Value) &&
                    !double.IsNaN(Max) &&
                    !double.IsNaN(Min) &&
                    Max > Min;

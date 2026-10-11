@@ -4,7 +4,9 @@
     {
         Circle,
         Square,
-        Slice,
-        Segment
+        Triangle,
+        Segment,
+        Diamond,
+        Slice
     }
 }

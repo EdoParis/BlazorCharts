@@ -17,11 +17,17 @@ namespace BlazorGraphs.Core
                 case MarkerShapes.Square:
                     return RenderSquare(color);
 
-                case MarkerShapes.Slice:
-                    return RenderSlice(color);
+                case MarkerShapes.Triangle:
+                    return RenderTriangle(color);
 
                 case MarkerShapes.Segment:
                     return RenderSegment(color);
+
+                case MarkerShapes.Diamond:
+                    return RenderDiamond(color);
+
+                case MarkerShapes.Slice:
+                    return RenderSlice(color);
 
                 default:
                     throw new NotImplementedException();
@@ -38,7 +44,7 @@ namespace BlazorGraphs.Core
                 builder.AddAttribute(3, "viewBox", "0 0 15 10");
                 builder.OpenElement(4, "circle");
                 builder.AddAttribute(5, "cx", 5);
-                builder.AddAttribute(6, "cy", 4);
+                builder.AddAttribute(6, "cy", 5);
                 builder.AddAttribute(7, "r", 4);
                 builder.AddAttribute(9, "fill", color.ToHex());
                 builder.CloseElement();
@@ -91,10 +97,42 @@ namespace BlazorGraphs.Core
                 builder.AddAttribute(3, "viewBox", "0 0 15 10");
                 builder.OpenElement(4, "rect");
                 builder.AddAttribute(5, "x", 1);
-                builder.AddAttribute(6, "y", 3);
+                builder.AddAttribute(6, "y", 4);
                 builder.AddAttribute(7, "width", 8);
                 builder.AddAttribute(8, "height", 2);
                 builder.AddAttribute(9, "fill", color.ToHex());
+                builder.CloseElement();
+                builder.CloseElement();
+            };
+        }
+
+        public RenderFragment RenderTriangle(Color color)
+        {
+            return builder =>
+            {
+                builder.OpenElement(0, "svg");
+                builder.AddAttribute(1, "width", "1.5em");
+                builder.AddAttribute(2, "height", "1em");
+                builder.AddAttribute(3, "viewBox", "0 0 15 10");
+                builder.OpenElement(4, "path");
+                builder.AddAttribute(5, "d", "M 0 9 L 4.5 1 L 9 9 Z");
+                builder.AddAttribute(6, "fill", color.ToHex());
+                builder.CloseElement();
+                builder.CloseElement();
+            };
+        }
+
+        public RenderFragment RenderDiamond(Color color)
+        {
+            return builder =>
+            {
+                builder.OpenElement(0, "svg");
+                builder.AddAttribute(1, "width", "1.5em");
+                builder.AddAttribute(2, "height", "1em");
+                builder.AddAttribute(3, "viewBox", "0 0 15 10");
+                builder.OpenElement(4, "path");
+                builder.AddAttribute(5, "d", "M 0.5 5 L 5 0.5 L 9.5 5 L 5 9.5 Z");
+                builder.AddAttribute(6, "fill", color.ToHex());
                 builder.CloseElement();
                 builder.CloseElement();
             };

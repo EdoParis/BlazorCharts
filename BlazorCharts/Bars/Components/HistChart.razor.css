@@ -1,3 +1,12 @@
+svg {
+    touch-action: none;
+    user-select: none;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+    width: auto;
+}
+
 rect {
     cursor: pointer;
     transition-duration: 0.25s;
@@ -5,13 +14,6 @@ rect {
     rect:hover {
         fill-opacity: 1.0;
     }
-
-svg {
-    max-height: 100%;
-    width: auto;
-    margin: auto;
-    display: block;
-}
 
 .scale-up {
     animation: scale-y 0.5s linear;

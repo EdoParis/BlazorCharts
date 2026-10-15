@@ -24,24 +24,30 @@
 
         public static Interval From(IEnumerable<double> values)
         {
-            double min = values.FirstOrDefault();
-            double max = values.FirstOrDefault();
+            double? min = null;
+            double? max = null;
 
             foreach (double val in values)
             {
-                if (val < min)
+                if (!min.HasValue || val < min)
                     min = val;
 
-                if (val > max)
+                if (!max.HasValue || val > max)
                     max = val;
             }
 
-            if (min == max)
+            if (!min.HasValue || !max.HasValue)
             {
-                min -= 1;
-                max += 1;
+                return new Interval();
             }
-            return new Interval(min, max);
+            else if (min == max)
+            {
+                return new Interval(min.Value - 1, max.Value + 1);
+            }
+            else
+            {
+                return new Interval(min.Value, max.Value);
+            }
         }
 
         public bool Contains(double value)

@@ -31,12 +31,13 @@ namespace BlazorGraphs.Core
         public void AddRange(IEnumerable<T> values)
         {
             ArgumentNullException.ThrowIfNull(values);
+            List<T> list_values = values.ToList();
 
-            foreach (T value in values)
+            foreach (T value in list_values)
             {
                 ExceptionUtils.ThrowIfInvalid(value);
             }
-            data.AddRange(values);
+            data.AddRange(list_values);
         }
     }
 }

@@ -41,10 +41,13 @@ namespace BlazorGraphs
                 Color = color
             };
             serie.AddRange(points);
+            if (!serie.IsEmpty)
+            {
+                AxisX.Include(Interval.From(serie.Data.Select(p => p.X)));
+                AxisY.Include(Interval.From(serie.Data.Select(p => p.Y)));
+                IsEmpty = false;
+            }
             series.Add(serie);
-            AxisX.Include(Interval.From(points.Select(p => p.X)));
-            AxisY.Include(Interval.From(points.Select(p => p.Y)));
-            IsEmpty = IsEmpty && serie.IsEmpty;
         }
 
         public IEnumerable<LegendItem> ToLegend()

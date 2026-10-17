@@ -1,5 +1,5 @@
-﻿using BlazorGraphs.Core;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
+using BlazorGraphs.Core;
 using System.Drawing;
 using System.Text;
 
@@ -11,6 +11,8 @@ namespace BlazorGraphs.Components
         [Parameter] public Double AspectRatio { get; set; } = AspectRatios.Square;
         [Parameter] public Boolean HidePoints { get; set; }
         [Parameter] public Cartesiangram Model { get; set; }
+        [Parameter] public EventCallback<SerieEventArgs> OnSerieClick { get; set; }
+        [Parameter] public EventCallback<PointEventArgs> OnPointClick { get; set; }
         private ViewLayout LayoutView;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;

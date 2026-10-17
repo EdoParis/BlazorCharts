@@ -2,12 +2,15 @@
 
 namespace BlazorGraphs.Core
 {
-    internal sealed class Serie<T> where T : IValidable
+    internal class Serie
     {
-        private List<T> data;
-
-        public string Label { get; set; }
+        public String Label { get; set; }
         public Color Color { get; set; }
+    }
+
+    internal sealed class Serie<T> : Serie where T : IValidable
+    {
+        private List<T> data;        
         public IEnumerable<T> Data { get => data.AsReadOnly(); }
         public int Length { get => data.Count; }
         public bool IsEmpty { get => data.Count == 0; }

@@ -9,6 +9,7 @@ namespace BlazorGraphs.Components
         [Parameter] public Theme Theme { get; set; }
         [Parameter] public Double AspectRatio { get; set; } = AspectRatios.Square;
         [Parameter] public Cartesiangram Model { get; set; }
+        [Parameter] public EventCallback<PointEventArgs> OnPointClick { get; set; }
         private ViewLayout LayoutView;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;

@@ -9,6 +9,7 @@ namespace BlazorGraphs.Components
         [Parameter] public Theme Theme { get; set; }
         [Parameter] public Double AspectRatio { get; set; } = AspectRatios.Square;
         [Parameter] public Bubblegram Model { get; set; }
+        [Parameter] public EventCallback<BubbleEventArgs> OnBubbleClick { get; set; }
         private ViewLayout LayoutView;
         private AxisLayout LayoutAxisY;
         private AxisLayout LayoutAxisX;

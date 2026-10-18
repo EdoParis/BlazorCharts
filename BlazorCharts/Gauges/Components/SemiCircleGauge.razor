@@ -24,7 +24,8 @@
             foreach (Breakpoint breakpoint in Model)
             {
                 double degree = Math.PI * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
-                <path d="@ArcPath(start_degree, degree)"
+                <path class="fade-in" 
+                      d="@ArcPath(start_degree, degree)"
                       fill="none"
                       stroke="@breakpoint.Color.ToHex()"
                       stroke-width="@padding"
@@ -37,12 +38,13 @@
         }
         else if (Model.Axis.Contains(Model.Value))
         {
-            double degree = Math.PI * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
-
-            <path d="@ArcPath(0, degree)"
+            <path class="fade-in" 
+                  d="@ArcPath(0, Math.PI)"
                   fill="none"
                   stroke="@Model.Color.ToHex()"
                   stroke-width="@padding"
+                  stroke-dasharray="@((int)(radius * Math.PI))"
+                  stroke-dashoffset="@((int)((Model.Axis.Max - Model.Value) / Model.Axis.Size * radius * Math.PI))"
                   stroke-opacity="0.6"
                   @onpointerenter="OnGaugeEnter"
                   @onpointerleave="() => LayoutTooltip.Hide()">
@@ -54,13 +56,14 @@
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {
-            double rot = Math.PI * (Model.Value - Model.Axis.Min) / Model.Axis.Size;
-            <path d="@BarPath(rot)"
+            <path class="fade-in" 
+                  d="@BarPath()"
                   fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
                   stroke="@Theme.AxisColorString()"
                   stroke-width="1px"
                   fill-opacity="1.0"
                   vector-effect="non-scaling-stroke"
+                  transform="rotate(@((int)(180 * Model.Percentage)), @(width / 2), @(height - padding))"
                   @onpointerenter="OnGaugeEnter"
                   @onpointerleave="() => LayoutTooltip.Hide()">
             </path>

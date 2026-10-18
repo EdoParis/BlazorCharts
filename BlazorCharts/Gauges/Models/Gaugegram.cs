@@ -11,8 +11,11 @@ namespace BlazorGraphs
         public Color Color { get; set; }
         public string Title { get; set; }
         public double Value { get; set; }
-        public int BreakPointsCount { get => breakpoints?.Count ?? default; }
+        public double Minimum { get => Axis.Min; }
+        public double Maximum { get => Axis.Max; }
+        public double Percentage { get => (Value - Axis.Min) / Axis.Size; }
         public bool HasBreakPoints { get => breakpoints?.Count > 0; }
+        public int BreakPointsCount { get => breakpoints?.Count ?? default; }
 
         public Gaugegram(double min, double max, string title, Color color)
         {

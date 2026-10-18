@@ -25,7 +25,8 @@
             double start_value = Model.Axis.Min;
             foreach (Breakpoint breakpoint in Model)
             {
-                <rect y="@((int)(offsetV - (breakpoint.Value - Model.Axis.Min) * scaleV))"
+                <rect class="fade-in" 
+                      y="@((int)(offsetV - (breakpoint.Value - Model.Axis.Min) * scaleV))"
                       x="@(Reverse ? padding / 2 : width / 2)"
                       height="@((int)((breakpoint.Value - start_value) * scaleV))"
                       width="@padding"
@@ -41,7 +42,8 @@
         }
         else if (Model.Axis.Contains(Model.Value))
         {
-            <rect y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV))"
+            <rect class="fade-in" 
+                  y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV))"
                   x="@(Reverse? padding / 2 : width / 2)"
                   height="@((int)((Model.Value - Model.Axis.Min) * scaleV))"
                   width="@padding"
@@ -65,7 +67,8 @@
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {
-            <rect y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV - padding / 10))"
+            <rect class="fade-in" 
+                  y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV - padding / 10))"
                   x="@((Reverse ? padding / 2 : width / 2) - padding / 10)"
                   height="@(padding / 5)"
                   width="@(width - 9 * padding / 5)"

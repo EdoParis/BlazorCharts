@@ -1,6 +1,5 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
-using System.Drawing;
 
 namespace BlazorGraphs.Components
 {

@@ -8,9 +8,24 @@ svg {
 }
 
 path {
-    transition-duration: 0.25s;
+    transition-duration: 0.5s;
 }
 
     path:hover {
         stroke-opacity: 1.0;
     }
+
+.fade-in {
+    animation: fadein 0.5s ease-in;
+}
+
+@keyframes fadein {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

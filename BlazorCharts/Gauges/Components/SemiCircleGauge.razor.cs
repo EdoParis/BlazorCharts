@@ -66,36 +66,15 @@ namespace BlazorGraphs.Components
                    $"A {radius} {radius} 0 0 1 {endpoint_x} {endpoint_y}";
         }
 
-        private string BarPath(double degree)
+        private string BarPath()
         {
             double bar_width = padding / 5;
             double bar_height = 6 * padding / 5;
 
-            Point P1 = new Point()
-            {
-                X = (int)(width / 2 - (radius + bar_height / 2) * Math.Cos(degree) - bar_width / 2 * Math.Sin(degree)),
-                Y = (int)(height - padding - (radius + bar_height / 2) * Math.Sin(degree) + bar_width / 2 * Math.Cos(degree))
-            };
-            Point P2 = new Point()
-            {
-                X = (int)(width / 2 - (radius + bar_height / 2) * Math.Cos(degree) + bar_width / 2 * Math.Sin(degree)),
-                Y = (int)(height - padding - (radius + bar_height / 2) * Math.Sin(degree) - bar_width / 2 * Math.Cos(degree))
-            };
-            Point P3 = new Point()
-            {
-                X = (int)(width / 2 - (radius - bar_height / 2) * Math.Cos(degree) + bar_width / 2 * Math.Sin(degree)),
-                Y = (int)(height - padding - (radius - bar_height / 2) * Math.Sin(degree) - bar_width / 2 * Math.Cos(degree))
-            };
-            Point P4 = new Point()
-            {
-                X = (int)(width / 2 - (radius - bar_height / 2) * Math.Cos(degree) - bar_width / 2 * Math.Sin(degree)),
-                Y = (int)(height - padding - (radius - bar_height / 2) * Math.Sin(degree) + bar_width / 2 * Math.Cos(degree))
-            };
-
-            return $"M {P1.X} {P1.Y}" +
-                   $"L {P2.X} {P2.Y}" +
-                   $"L {P3.X} {P3.Y}" +
-                   $"L {P4.X} {P4.Y}Z";
+            return $"M {width / 2 - (radius + bar_height / 2)} {height - padding + bar_width / 2}" +
+                   $"L {width / 2 - (radius + bar_height / 2)} {height - padding - bar_width / 2}" +
+                   $"L {width / 2 - (radius - bar_height / 2)} {height - padding - bar_width / 2}" +
+                   $"L {width / 2 - (radius - bar_height / 2)} {height - padding + bar_width / 2}Z";
         }
 
         private void OnGaugeEnter()

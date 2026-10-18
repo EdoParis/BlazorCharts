@@ -28,6 +28,11 @@
                     <td>Data model</td>
                 </tr>
                 <tr>
+                    <td>OnPointClick</td>
+                    <td class="font-monospace"><span class="token keyword">EventCallback</span>&lt<span class="token keyword">PointEventArgs</span>&gt</td>
+                    <td>Point click event</td>
+                </tr>
+                <tr>
                     <td>AspectRatio</td>
                     <td class="font-monospace"><span class="token property">Double</span></td>
                     <td>Define the width/height ratio of the chart</td>
@@ -63,7 +68,7 @@
                     <div class="col-6 col-form-label">Next color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(line_color.ToHex())" @onchange="@((e) => line_color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-12">
-                        <ScatterChart Model="@model" AspectRatio="@aspectratio"></ScatterChart>
+                        <ScatterChart Model="@model" AspectRatio="@aspectratio" OnPointClick="OnPointClick"></ScatterChart>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnSeriesAdd">Add Serie</button></div>
@@ -74,7 +79,8 @@
                     <pre class="language-csharp m-0 h-100">
                         <code>
  &lt<span class="token tag bold">ScatterChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>
-        <span class="token property bold">AspectRatio</span><span class="token string">="</span><span class="token class-name">AspectRatios</span>.Square<span class="token string">"</span>/&gt
+        <span class="token property bold">AspectRatio</span><span class="token string">="</span><span class="token class-name">AspectRatios</span>.Square<span class="token string">"</span>
+        <span class="token property bold">OnPointClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
  
  @@{
      <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> model = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
@@ -88,8 +94,13 @@
          points2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = 2 * i});
      }
  
-     model.<span class="token function">AddSerie</span>(<span class="token string">"Line1"</span>, <span class="token class-name">Color</span>.Red, points1);
-     model.<span class="token function">AddSerie</span>(<span class="token string">"Line2"</span>, <span class="token class-name">Color</span>.Blue, points2);
+     model.<span class="token function">AddSerie</span>(<span class="token string">"Fn-1"</span>, <span class="token class-name">Color</span>.Red, points1);
+     model.<span class="token function">AddSerie</span>(<span class="token string">"Fn-2"</span>, <span class="token class-name">Color</span>.Blue, points2);
+
+     <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnClickHandler</span>(<span class="token class-name">PointEventArgs</span> args)
+     {
+        <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked point of serie</span> {args.Serie} <span class="token string">with coordinates</span> ({args.Point.X} | {args.Point.Y})<span class="token string">"</span>);
+     }
  }
                         </code>
                     </pre>

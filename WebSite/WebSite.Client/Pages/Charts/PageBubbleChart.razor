@@ -27,6 +27,11 @@
                     <td>Data model</td>
                 </tr>
                 <tr>
+                    <td>OnBubbleClick</td>
+                    <td class="font-monospace"><span class="token keyword">EventCallback</span>&lt<span class="token keyword">BubbleEventArgs</span>&gt</td>
+                    <td>Bubble click event</td>
+                </tr>
+                <tr>
                     <td>AspectRatio</td>
                     <td class="font-monospace"><span class="token property">Double</span></td>
                     <td>Define the width/height ratio of the chart</td>
@@ -62,7 +67,7 @@
                     <div class="col-6 col-form-label">Next color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(serie_color.ToHex())" @onchange="@((e) => serie_color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-12">
-                        <BubbleChart Model="@model" AspectRatio="@aspectratio"></BubbleChart>
+                        <BubbleChart Model="@model" OnBubbleClick="OnBubbleClick" AspectRatio="@aspectratio"></BubbleChart>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnSeriesAdd">Add Serie</button></div>
@@ -73,7 +78,8 @@
                     <pre class="language-csharp m-0 h-100">
                         <code>
  &lt<span class="token tag bold">BubbleChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>
-        <span class="token property bold">AspectRatio</span><span class="token string">="</span><span class="token class-name">AspectRatios</span>.Square<span class="token string">"</span>/&gt
+        <span class="token property bold">AspectRatio</span><span class="token string">="</span><span class="token class-name">AspectRatios</span>.Square<span class="token string">"</span>
+        <span class="token property bold">OnBubbleClick</span><span class="token string">="</span><span class="token function">OnClickHandler</span><span class="token string">"</span>/&gt
  
  @@{
      <span class="token keyword">private</span> <span class="token property">Bubblegram</span> model = <span class="token keyword">new</span> <span class="token class-name">Bubblegram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
@@ -89,6 +95,11 @@
  
      model.<span class="token function">AddSerie</span>(<span class="token string">"Bubbles1"</span>, <span class="token class-name">Color</span>.MediumPurple, bubbles1);
      model.<span class="token function">AddSerie</span>(<span class="token string">"Bubbles2"</span>, <span class="token class-name">Color</span>.OrangeRed, bubbles2);
+
+     <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnClickHandler</span>(<span class="token class-name">BubbleEventArgs</span> args)
+     {
+         <span class="token class-name">Console</span>.<span>WriteLine</span>(<span class="token string">$"clicked bubble of serie</span> {args.Serie} <span class="token string">with value:</span> {args.Bubble.Value}<span class="token string">"</span>);
+     }
  }
                         </code>
                     </pre>

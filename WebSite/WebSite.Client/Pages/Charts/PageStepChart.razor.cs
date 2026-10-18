@@ -62,5 +62,15 @@ namespace WebApp.Pages.Charts
                                         (int)(50 + 200 * random.NextDouble()),
                                         (int)(50 + 200 * random.NextDouble()));
         }
+
+        private void OnPointClick(PointEventArgs args)
+        {
+            Console.WriteLine($"Clicked point of serie {args.Serie} with coordinates ({args.Point.X} | {args.Point.Y})");
+        }
+
+        private void OnSerieClick(SerieEventArgs args)
+        {
+            Console.WriteLine($"Clicked line {args.Serie}");
+        }
     }
 }

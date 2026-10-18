@@ -65,5 +65,10 @@ namespace WebApp.Pages.Charts
             model.AddSerie($"Fn-{model.SeriesCount + 1}", serie_color, bubbles);
             serie_color = colorstream.Next();
         }
+
+        private void OnBubbleClick(BubbleEventArgs args)
+        {
+            Console.WriteLine($"Clicked bubble of serie {args.Serie} with value {args.Bubble.Value}");
+        }
     }
 }

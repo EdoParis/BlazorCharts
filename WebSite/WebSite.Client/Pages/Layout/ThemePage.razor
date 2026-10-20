@@ -15,36 +15,44 @@
     <div class="card overflow-hidden">
         <div class="card-body overflow-auto">
             <table class="table text-nowrap align-middle mb-0 border">
-                <tr class="shadow-sm">
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                    <th>Default behaviour</th>
-                </tr>
-                <tr>
-                    <td>BackGroundColor</td>
-                    <td class="font-monospace"><span class="token property">Color</span>?</td>
-                    <td>Chart area color</td>
-                    <td class="font-monospace"><span class="token string">transparent</span></td>
-                </tr>
-                <tr>
-                    <td>AxisColor</td>
-                    <td class="font-monospace"><span class="token property">Color</span>?</td>
-                    <td>Color of the chart axes</td>
-                    <td class="font-monospace"><span class="token string">currentColor</span></td>
-                </tr>
-                <tr>
-                    <td>TextColor</td>
-                    <td class="font-monospace"><span class="token property">Color</span>?</td>
-                    <td>Color of the text and tick labels of the chart</td>
-                    <td class="font-monospace"><span class="token string">currentColor</span></td>
-                </tr>
-                <tr>
-                    <td>FontFamily</td>
-                    <td class="font-monospace"><span class="token keyword">string</span></td>
-                    <td>Chart text font-family </td>
-                    <td class="font-monospace"><span class="token string">inherit</span></td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default behaviour</th>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(Theme.BackgroundColor))</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Chart area color</td>
+                        <td class="font-monospace"><span class="token string">transparent</span></td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(Theme.AxisColor))</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Color of the chart axes</td>
+                        <td class="font-monospace"><span class="token string">currentColor</span></td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(Theme.TextColor))</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Color of the text and tick labels of the chart</td>
+                        <td class="font-monospace"><span class="token string">currentColor</span></td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(Theme.FontFamily))</td>
+                        <td class="font-monospace"><span class="token keyword">string</span></td>
+                        <td>Chart text font-family </td>
+                        <td class="font-monospace"><span class="token string">inherit</span></td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(Theme.MarkerShape))</td>
+                        <td class="font-monospace"><span class="token keyword">MarkerShapes</span></td>
+                        <td>Enum of available marker shapes for tooltips and legend</td>
+                        <td class="font-monospace"><span class="token keyword">MarkerShapes</span>.Circle</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -95,9 +103,18 @@
                                value="@FontTheme" 
                                @onchange="@(e => FontTheme = e?.Value?.ToString())" />
                     </div>
+                    <div class="col-6 col-form-label">Marker</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="MarkerTheme">
+                            @foreach(MarkerShapes marker in Enum.GetValues<MarkerShapes>())
+                            {
+                                <option value="@marker">@marker</option>
+                            }
+                        </select>
+                    </div>
                     <div class="col-12">
                         <HistChart Model="@model" Theme="@theme"></HistChart>
-                        <LegendHorizontal Model="@model" Theme="@theme" Marker="@MarkerShapes.Square"></LegendHorizontal>
+                        <LegendHorizontal Model="@model" Theme="@theme"></LegendHorizontal>
                     </div>
                 </div>
             </div>

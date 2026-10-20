@@ -7,7 +7,7 @@
             @foreach (LegendItem item in Model.ToLegend())
             {
                 <div class="legend-item">
-                    @marker_renderer.Render(Marker, item.Color)
+                    @marker_renderer.Render(Theme.MarkerShape, item.Color)
                     <div class="text-truncate">@item.Text</div>
                 </div>
             }

@@ -4,9 +4,11 @@
     {
         Circle,
         Square,
-        Triangle,
-        Segment,
         Diamond,
-        Slice
+        Triangle,
+        Slice,
+        Dashed,
+        Segment,
+        Droplet
     }
 }

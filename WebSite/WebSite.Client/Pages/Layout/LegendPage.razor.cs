@@ -7,8 +7,7 @@ namespace WebApp.Pages.Layout
     public partial class LegendPage : ComponentBase
     {
         private Circulargram model;
-        private IColorStream palette;
-        private MarkerShapes marker; 
+        private IColorStream palette; 
 
         protected override void OnInitialized()
         {

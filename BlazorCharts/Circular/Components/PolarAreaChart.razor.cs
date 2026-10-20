@@ -55,7 +55,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Shape = MarkerShapes.Slice,
+                Shape = Theme.MarkerShape,
                 Color = slice.Color
             })
             .WithTitle(slice.Label)

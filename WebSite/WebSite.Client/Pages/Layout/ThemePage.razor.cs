@@ -60,6 +60,16 @@ namespace WebApp.Pages.Layout
             }
         }
 
+        private MarkerShapes MarkerTheme
+        {
+            get => theme.MarkerShape;
+            set
+            {
+                theme.MarkerShape = value;
+                theme_index = null;
+            }
+        }
+
         protected override void OnInitialized()
         {
             model = new Histogram("Axis-X", "Axis-Y", Color.RoyalBlue, Color.MediumOrchid);

@@ -5,7 +5,6 @@ namespace BlazorGraphs.Components
 {
     public partial class LegendHorizontal
     {
-        [Parameter] public MarkerShapes Marker { get; set; }
         [Parameter] public ILegend Model { get; set; }
         [Parameter] public Theme Theme { get; set; }
         private MarkerRenderer marker_renderer;

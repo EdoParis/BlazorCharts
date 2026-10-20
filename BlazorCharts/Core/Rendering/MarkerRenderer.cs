@@ -20,11 +20,17 @@ namespace BlazorGraphs.Core
                 case MarkerShapes.Triangle:
                     return RenderTriangle(color);
 
+                case MarkerShapes.Dashed:
+                    return RenderDashed(color);
+
                 case MarkerShapes.Segment:
                     return RenderSegment(color);
 
                 case MarkerShapes.Diamond:
                     return RenderDiamond(color);
+
+                case MarkerShapes.Droplet:
+                    return RenderDroplet(color);
 
                 case MarkerShapes.Slice:
                     return RenderSlice(color);
@@ -95,12 +101,25 @@ namespace BlazorGraphs.Core
                 builder.AddAttribute(1, "width", "1.5em");
                 builder.AddAttribute(2, "height", "1em");
                 builder.AddAttribute(3, "viewBox", "0 0 15 10");
-                builder.OpenElement(4, "rect");
-                builder.AddAttribute(5, "x", 1);
-                builder.AddAttribute(6, "y", 4);
-                builder.AddAttribute(7, "width", 8);
-                builder.AddAttribute(8, "height", 2);
-                builder.AddAttribute(9, "fill", color.ToHex());
+                builder.OpenElement(4, "path");
+                builder.AddAttribute(5, "d", "M 0 4 L 9 4 L 9 6 L 0 6 Z");
+                builder.AddAttribute(6, "fill", color.ToHex());
+                builder.CloseElement();
+                builder.CloseElement();
+            };
+        }
+
+        public RenderFragment RenderDashed(Color color)
+        {
+            return builder =>
+            {
+                builder.OpenElement(0, "svg");
+                builder.AddAttribute(1, "width", "1.5em");
+                builder.AddAttribute(2, "height", "1em");
+                builder.AddAttribute(3, "viewBox", "0 0 15 10");
+                builder.OpenElement(4, "path");
+                builder.AddAttribute(5, "d", "M 0 4 L 4 4 L 4 6 L 0 6 L 0 4 M 5 4 L 9 4 L 9 6 L 5 6 L 5 4");
+                builder.AddAttribute(6, "fill", color.ToHex());
                 builder.CloseElement();
                 builder.CloseElement();
             };
@@ -132,6 +151,22 @@ namespace BlazorGraphs.Core
                 builder.AddAttribute(3, "viewBox", "0 0 15 10");
                 builder.OpenElement(4, "path");
                 builder.AddAttribute(5, "d", "M 0.5 5 L 5 0.5 L 9.5 5 L 5 9.5 Z");
+                builder.AddAttribute(6, "fill", color.ToHex());
+                builder.CloseElement();
+                builder.CloseElement();
+            };
+        }
+
+        public RenderFragment RenderDroplet(Color color)
+        {
+            return builder =>
+            {
+                builder.OpenElement(0, "svg");
+                builder.AddAttribute(1, "width", "1.5em");
+                builder.AddAttribute(2, "height", "1em");
+                builder.AddAttribute(3, "viewBox", "0 0 15 10");
+                builder.OpenElement(4, "path");
+                builder.AddAttribute(5, "d", "M 2 5 L 5 0 L 8 5 A 3 3 0 0 1 5 9 A 3 3 0 0 1 2 5 ");
                 builder.AddAttribute(6, "fill", color.ToHex());
                 builder.CloseElement();
                 builder.CloseElement();

@@ -23,11 +23,6 @@
                     <td>Interface implemented by all data model</td>
                 </tr>
                 <tr>
-                    <td>Marker</td>
-                    <td class="font-monospace"><span class="token keyword">MarkerShapes</span></td>
-                    <td>Enumeration of available marker shapes</td>
-                </tr>
-                <tr>
                     <td>Theme</td>
                     <td class="font-monospace"><span class="token keyword">Theme</span><a class="bi-arrow-90deg-right px-2" href="layout/themes"></a></td>
                     <td>Chart customization colors</td>
@@ -41,22 +36,11 @@
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
-                    <div class="col-6 col-form-label">Marker</div>
-                    <div class="col-6">
-                        <select class="form-select" @bind="@marker">
-                            <option value="@MarkerShapes.Circle">@nameof(MarkerShapes.Circle)</option>
-                            <option value="@MarkerShapes.Square">@nameof(MarkerShapes.Square)</option>
-                            <option value="@MarkerShapes.Triangle">@nameof(MarkerShapes.Triangle)</option>
-                            <option value="@MarkerShapes.Segment">@nameof(MarkerShapes.Segment)</option>
-                            <option value="@MarkerShapes.Diamond">@nameof(MarkerShapes.Diamond)</option>
-                            <option value="@MarkerShapes.Slice">@nameof(MarkerShapes.Slice)</option>
-                        </select>
-                    </div>
                     <div class="col-12">
                         <table>
                             <tr>
                                 <td colspan="2">
-                                    <LegendHorizontal Model="@model" Marker="@marker"></LegendHorizontal>
+                                    <LegendHorizontal Model="@model"></LegendHorizontal>
                                 </td>
                             </tr>
                             <tr>
@@ -64,7 +48,7 @@
                                     <PolarAreaChart Model="@model"></PolarAreaChart>
                                 </td>
                                 <td>
-                                    <LegendVertical Model="@model" Marker="@marker"></LegendVertical>
+                                    <LegendVertical Model="@model"></LegendVertical>
                                 </td>
                             </tr>
                         </table>

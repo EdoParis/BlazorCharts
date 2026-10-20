@@ -9,6 +9,7 @@ namespace BlazorGraphs
         public Color? AxisColor { get; set; }
         public Color? TextColor { get; set; }
         public String FontFamily { get; set; }
+        public MarkerShapes MarkerShape { get; set; }
 
         public static Theme FromColor(Color color)
         {

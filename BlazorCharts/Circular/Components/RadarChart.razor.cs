@@ -73,7 +73,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Shape = MarkerShapes.Circle,
+                Shape = Theme.MarkerShape,
                 Color = Model.Color
             })
             .WithTitle(rating.Label)

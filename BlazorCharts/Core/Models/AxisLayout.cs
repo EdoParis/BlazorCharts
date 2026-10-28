@@ -152,21 +152,21 @@ namespace BlazorGraphs.Core
 
             public override RenderFragment Render(NumericAxis axis)
             {
+                int sequence = 0;
                 return builder =>
                 {
-                    builder.OpenElement(0, "line");
-                    builder.AddAttribute(1, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
-                    builder.AddAttribute(2, "stroke-width", "1px");
-                    builder.AddAttribute(3, "vector-effect", "non-scaling-stroke");
-                    builder.AddAttribute(4, "x1", StartingPoint.X);
-                    builder.AddAttribute(5, "y1", StartingPoint.Y);
-                    builder.AddAttribute(6, "x2", EndingPoint.X);
-                    builder.AddAttribute(7, "y2", EndingPoint.Y);
+                    builder.OpenElement(sequence++, "line");
+                    builder.AddAttribute(sequence++, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
+                    builder.AddAttribute(sequence++, "stroke-width", "1px");
+                    builder.AddAttribute(sequence++, "vector-effect", "non-scaling-stroke");
+                    builder.AddAttribute(sequence++, "x1", StartingPoint.X);
+                    builder.AddAttribute(sequence++, "y1", StartingPoint.Y);
+                    builder.AddAttribute(sequence++, "x2", EndingPoint.X);
+                    builder.AddAttribute(sequence++, "y2", EndingPoint.Y);
                     builder.CloseElement();
 
                     if (ShowTicks)
                     {
-                        int t = 1;
                         foreach (Tick tick in axis.Ticks())
                         {
                             if (tick.IsStartTick && !ShowStartTick)
@@ -175,27 +175,26 @@ namespace BlazorGraphs.Core
                             if (tick.IsEndTick && !ShowEndTick)
                                 continue;
 
-                            builder.OpenElement(2 * t, "line");
-                            builder.AddAttribute(1, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
-                            builder.AddAttribute(2, "stroke-width", "1px");
-                            builder.AddAttribute(3, "vector-effect", "non-scaling-stroke");
-                            builder.AddAttribute(4, "x1", (int)(StartingPoint.X + tick.RelativePosition * Amplitude));
-                            builder.AddAttribute(5, "x2", (int)(StartingPoint.X + tick.RelativePosition * Amplitude));
-                            builder.AddAttribute(6, "y1", IsTickInternal ? StartingPoint.Y - (tick.IsMaster ? TickSize : TickSize / 2) : StartingPoint.Y);
-                            builder.AddAttribute(7, "y2", IsTickInternal ? StartingPoint.Y : StartingPoint.Y + (tick.IsMaster ? TickSize : TickSize / 2));
+                            builder.OpenElement(sequence++, "line");
+                            builder.AddAttribute(sequence++, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
+                            builder.AddAttribute(sequence++, "stroke-width", "1px");
+                            builder.AddAttribute(sequence++, "vector-effect", "non-scaling-stroke");
+                            builder.AddAttribute(sequence++, "x1", (int)(StartingPoint.X + tick.RelativePosition * Amplitude));
+                            builder.AddAttribute(sequence++, "x2", (int)(StartingPoint.X + tick.RelativePosition * Amplitude));
+                            builder.AddAttribute(sequence++, "y1", IsTickInternal ? StartingPoint.Y - (tick.IsMaster ? TickSize : TickSize / 2) : StartingPoint.Y);
+                            builder.AddAttribute(sequence++, "y2", IsTickInternal ? StartingPoint.Y : StartingPoint.Y + (tick.IsMaster ? TickSize : TickSize / 2));
                             builder.CloseElement();
 
                             if (tick.IsMaster)
                             {
-                                builder.OpenElement(2 * t + 1, "text");
-                                builder.AddAttribute(1, "x", (int)(StartingPoint.X + tick.RelativePosition * Amplitude));
-                                builder.AddAttribute(2, "y", StartingPoint.Y);
-                                builder.AddAttribute(3, "dy", IsLabelInternal ? "-1em" : "1em");
-                                builder.AddAttribute(4, "style", $"font-size: {2 * TickSize}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                                builder.AddContent(5, tick.Label);
+                                builder.OpenElement(sequence++, "text");
+                                builder.AddAttribute(sequence++, "x", (int)(StartingPoint.X + tick.RelativePosition * Amplitude));
+                                builder.AddAttribute(sequence++, "y", StartingPoint.Y);
+                                builder.AddAttribute(sequence++, "dy", IsLabelInternal ? "-1em" : "1em");
+                                builder.AddAttribute(sequence++, "style", $"font-size: {2 * TickSize}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                                builder.AddContent(sequence++, tick.Label);
                                 builder.CloseElement();
                             }
-                            t++;
                         }
                     }
                 };
@@ -243,21 +242,21 @@ namespace BlazorGraphs.Core
 
             public override RenderFragment Render(NumericAxis axis)
             {
+                int sequence = 0;
                 return builder =>
                 {
-                    builder.OpenElement(0, "line");
-                    builder.AddAttribute(1, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
-                    builder.AddAttribute(2, "stroke-width", "1px");
-                    builder.AddAttribute(3, "vector-effect", "non-scaling-stroke");
-                    builder.AddAttribute(4, "x1", StartingPoint.X);
-                    builder.AddAttribute(5, "y1", StartingPoint.Y);
-                    builder.AddAttribute(6, "x2", EndingPoint.X);
-                    builder.AddAttribute(7, "y2", EndingPoint.Y);
+                    builder.OpenElement(sequence++, "line");
+                    builder.AddAttribute(sequence++, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
+                    builder.AddAttribute(sequence++, "stroke-width", "1px");
+                    builder.AddAttribute(sequence++, "vector-effect", "non-scaling-stroke");
+                    builder.AddAttribute(sequence++, "x1", StartingPoint.X);
+                    builder.AddAttribute(sequence++, "y1", StartingPoint.Y);
+                    builder.AddAttribute(sequence++, "x2", EndingPoint.X);
+                    builder.AddAttribute(sequence++, "y2", EndingPoint.Y);
                     builder.CloseElement();
 
                     if (ShowTicks)
                     {
-                        int t = 1;
                         foreach (Tick tick in axis.Ticks())
                         {
                             if (tick.IsStartTick && !ShowStartTick)
@@ -266,27 +265,26 @@ namespace BlazorGraphs.Core
                             if (tick.IsEndTick && !ShowEndTick)
                                 continue;
 
-                            builder.OpenElement(2 * t, "line");
-                            builder.AddAttribute(1, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
-                            builder.AddAttribute(2, "stroke-width", "1px");
-                            builder.AddAttribute(3, "vector-effect", "non-scaling-stroke");
-                            builder.AddAttribute(4, "y1", (int)(StartingPoint.Y + tick.RelativePosition * Amplitude));
-                            builder.AddAttribute(5, "y2", (int)(StartingPoint.Y + tick.RelativePosition * Amplitude));
-                            builder.AddAttribute(6, "x1", IsTickInternal ? StartingPoint.X : StartingPoint.X - (tick.IsMaster ? TickSize : TickSize / 2));
-                            builder.AddAttribute(7, "x2", IsTickInternal ? StartingPoint.X + (tick.IsMaster ? TickSize : TickSize / 2) : StartingPoint.X);
+                            builder.OpenElement(sequence++, "line");
+                            builder.AddAttribute(sequence++, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
+                            builder.AddAttribute(sequence++, "stroke-width", "1px");
+                            builder.AddAttribute(sequence++, "vector-effect", "non-scaling-stroke");
+                            builder.AddAttribute(sequence++, "y1", (int)(StartingPoint.Y + tick.RelativePosition * Amplitude));
+                            builder.AddAttribute(sequence++, "y2", (int)(StartingPoint.Y + tick.RelativePosition * Amplitude));
+                            builder.AddAttribute(sequence++, "x1", IsTickInternal ? StartingPoint.X : StartingPoint.X - (tick.IsMaster ? TickSize : TickSize / 2));
+                            builder.AddAttribute(sequence++, "x2", IsTickInternal ? StartingPoint.X + (tick.IsMaster ? TickSize : TickSize / 2) : StartingPoint.X);
                             builder.CloseElement();
 
                             if (tick.IsMaster)
                             {
-                                builder.OpenElement(2 * t + 1, "text");
-                                builder.AddAttribute(1, "x", StartingPoint.X);
-                                builder.AddAttribute(2, "y", (int)(StartingPoint.Y + tick.RelativePosition * Amplitude));
-                                builder.AddAttribute(3, "dx", IsLabelInternal ? IsTickInternal ? "1em" : "0.5em" : IsTickInternal ? "-0.5em" : "-1em");
-                                builder.AddAttribute(4, "style", $"font-size: {2 * TickSize}px; pointer-events: none; dominant-baseline: central; text-anchor: {(IsLabelInternal ? "start" : "end")}; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                                builder.AddContent(5, tick.Label);
+                                builder.OpenElement(sequence++, "text");
+                                builder.AddAttribute(sequence++, "x", StartingPoint.X);
+                                builder.AddAttribute(sequence++, "y", (int)(StartingPoint.Y + tick.RelativePosition * Amplitude));
+                                builder.AddAttribute(sequence++, "dx", IsLabelInternal ? IsTickInternal ? "1em" : "0.5em" : IsTickInternal ? "-0.5em" : "-1em");
+                                builder.AddAttribute(sequence++, "style", $"font-size: {2 * TickSize}px; pointer-events: none; dominant-baseline: central; text-anchor: {(IsLabelInternal ? "start" : "end")}; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                                builder.AddContent(sequence++, tick.Label);
                                 builder.CloseElement();
                             }
-                            t++;
                         }
                     }
                 };
@@ -364,19 +362,19 @@ namespace BlazorGraphs.Core
 
             public override RenderFragment Render(NumericAxis axis)
             {
+                int sequence = 0;
                 return builder =>
                 {
-                    builder.OpenElement(0, "path");
-                    builder.AddAttribute(1, "fill", "none");
-                    builder.AddAttribute(2, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
-                    builder.AddAttribute(3, "stroke-width", "1px");
-                    builder.AddAttribute(4, "vector-effect", "non-scaling-stroke");
-                    builder.AddAttribute(5, "d", $"M {StartingPoint.X} {StartingPoint.Y} A {Radius} {Radius} 0 {(IsLargeAngle ? 1 : 0)} 1 {EndingPoint.X} {EndingPoint.Y}");
+                    builder.OpenElement(sequence++, "path");
+                    builder.AddAttribute(sequence++, "fill", "none");
+                    builder.AddAttribute(sequence++, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
+                    builder.AddAttribute(sequence++, "stroke-width", "1px");
+                    builder.AddAttribute(sequence++, "vector-effect", "non-scaling-stroke");
+                    builder.AddAttribute(sequence++, "d", $"M {StartingPoint.X} {StartingPoint.Y} A {Radius} {Radius} 0 {(IsLargeAngle ? 1 : 0)} 1 {EndingPoint.X} {EndingPoint.Y}");
                     builder.CloseElement();
 
                     if (ShowTicks)
                     {
-                        int t = 1;
                         foreach (Tick tick in axis.Ticks())
                         {
                             if (tick.IsStartTick && !ShowStartTick)
@@ -385,26 +383,25 @@ namespace BlazorGraphs.Core
                             if (tick.IsEndTick && !ShowEndTick)
                                 continue;
 
-                            builder.OpenElement(2 * t, "line");
-                            builder.AddAttribute(1, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
-                            builder.AddAttribute(2, "stroke-width", "1px");
-                            builder.AddAttribute(3, "vector-effect", "non-scaling-stroke");
-                            builder.AddAttribute(4, "x1", (int)(Center.X - (IsTickInternal ? Radius - (tick.IsMaster ? TickSize : TickSize / 2) : Radius) * Math.Cos((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
-                            builder.AddAttribute(5, "y1", (int)(Center.Y - (IsTickInternal ? Radius - (tick.IsMaster ? TickSize : TickSize / 2) : Radius) * Math.Sin((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
-                            builder.AddAttribute(6, "x2", (int)(Center.X - (IsTickInternal ? Radius : Radius + (tick.IsMaster ? TickSize : TickSize / 2)) * Math.Cos((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
-                            builder.AddAttribute(7, "y2", (int)(Center.Y - (IsTickInternal ? Radius : Radius + (tick.IsMaster ? TickSize : TickSize / 2)) * Math.Sin((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
+                            builder.OpenElement(sequence++, "line");
+                            builder.AddAttribute(sequence++, "stroke", Theme.AxisColor?.ToHex() ?? CURRENT);
+                            builder.AddAttribute(sequence++, "stroke-width", "1px");
+                            builder.AddAttribute(sequence++, "vector-effect", "non-scaling-stroke");
+                            builder.AddAttribute(sequence++, "x1", (int)(Center.X - (IsTickInternal ? Radius - (tick.IsMaster ? TickSize : TickSize / 2) : Radius) * Math.Cos((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
+                            builder.AddAttribute(sequence++, "y1", (int)(Center.Y - (IsTickInternal ? Radius - (tick.IsMaster ? TickSize : TickSize / 2) : Radius) * Math.Sin((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
+                            builder.AddAttribute(sequence++, "x2", (int)(Center.X - (IsTickInternal ? Radius : Radius + (tick.IsMaster ? TickSize : TickSize / 2)) * Math.Cos((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
+                            builder.AddAttribute(sequence++, "y2", (int)(Center.Y - (IsTickInternal ? Radius : Radius + (tick.IsMaster ? TickSize : TickSize / 2)) * Math.Sin((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
                             builder.CloseElement();
 
                             if (tick.IsMaster)
                             {
-                                builder.OpenElement(2 * t + 1, "text");
-                                builder.AddAttribute(1, "x", (int)(Center.X - (IsLabelInternal ? Radius - 3 * TickSize : Radius + 3 * TickSize) * Math.Cos((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
-                                builder.AddAttribute(2, "y", (int)(Center.Y - (IsLabelInternal ? Radius - 3 * TickSize : Radius + 3 * TickSize) * Math.Sin((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
-                                builder.AddAttribute(3, "style", $"font-size: {2 * TickSize}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                                builder.AddContent(4, tick.Label);
+                                builder.OpenElement(sequence++, "text");
+                                builder.AddAttribute(sequence++, "x", (int)(Center.X - (IsLabelInternal ? Radius - 3 * TickSize : Radius + 3 * TickSize) * Math.Cos((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
+                                builder.AddAttribute(sequence++, "y", (int)(Center.Y - (IsLabelInternal ? Radius - 3 * TickSize : Radius + 3 * TickSize) * Math.Sin((StartingAngle + tick.RelativePosition * Amplitude) / 180 * Math.PI)));
+                                builder.AddAttribute(sequence++, "style", $"font-size: {2 * TickSize}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                                builder.AddContent(sequence++, tick.Label);
                                 builder.CloseElement();
                             }
-                            t++;
                         }
                     }
                 };

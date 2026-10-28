@@ -16,7 +16,7 @@ namespace WebApp.Pages.Charts
         {
             random = new Random();
             offset = Math.Round(50 * (2 * random.NextDouble() + 1));
-            model1 = new Radargram("Ratings", Color.Purple);
+            model1 = new Radargram("Ratings", Color.Goldenrod);
             model1.Add(new Rating("R1", Math.Round(offset * (0.5 + random.NextDouble()))));
             model1.Add(new Rating("R2", Math.Round(offset * (0.5 + random.NextDouble()))));
             model1.Add(new Rating("R3", Math.Round(offset * (0.5 + random.NextDouble()))));

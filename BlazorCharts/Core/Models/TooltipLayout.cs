@@ -94,45 +94,46 @@ namespace BlazorGraphs.Core
 
         public RenderFragment Render()
         {
+            int sequence = 0;
             return builder =>
             {
-                builder.OpenElement(0, "div");
-                builder.AddAttribute(1, "style", @$"top: {Position.Y}px; 
-                                                   left: {Position.X}px; 
-                                                   padding: 0.2em;
-                                                   position: fixed;
-                                                   border: 1px solid;
-                                                   border-radius: 0.2em;
-                                                   pointer-events: none;
-                                                   transform: translate(-50%, -110%);
-                                                   backdrop-filter: blur(5px) brightness(0.85) hue-rotate(15deg);
-                                                   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-                                                   color: {Theme.TextColorString()}; 
-                                                   font-family: {Theme.FontString()}; 
-                                                   border-color: {Theme.AxisColorString()}; 
-                                                   background-color: {Theme.BackgroundString()};
-                                                   display: {(Visible ? "block" : "none")}");
-                builder.OpenElement(2, "table");
+                builder.OpenElement(sequence++, "div");
+                builder.AddAttribute(sequence++, "style", @$"top: {Position.Y}px; 
+                                                             left: {Position.X}px; 
+                                                             padding: 0.2em;
+                                                             position: fixed;
+                                                             border: 1px solid;
+                                                             border-radius: 0.2em;
+                                                             pointer-events: none;
+                                                             transform: translate(-50%, -110%);
+                                                             backdrop-filter: blur(5px) brightness(0.85) hue-rotate(15deg);
+                                                             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                                                             color: {Theme.TextColorString()}; 
+                                                             font-family: {Theme.FontString()}; 
+                                                             border-color: {Theme.AxisColorString()}; 
+                                                             background-color: {Theme.BackgroundString()};
+                                                             display: {(Visible ? "block" : "none")}");
+                builder.OpenElement(sequence++, "table");
                 if (!string.IsNullOrWhiteSpace(Title))
                 {
-                    builder.OpenElement(3, "tr");
-                    builder.OpenElement(4, "td");
-                    builder.AddAttribute(5, "colspan", HasMarker ? 2 : 1);
-                    builder.AddAttribute(6, "style", "text-align: center; white-space: nowrap;");
-                    builder.AddContent(7, Title);
+                    builder.OpenElement(sequence++, "tr");
+                    builder.OpenElement(sequence++, "td");
+                    builder.AddAttribute(sequence++, "colspan", HasMarker ? 2 : 1);
+                    builder.AddAttribute(sequence++, "style", "text-align: center; white-space: nowrap;");
+                    builder.AddContent(sequence++, Title);
                     builder.CloseElement();
                     builder.CloseElement();
                 }
-                builder.OpenElement(8, "tr");
+                builder.OpenElement(sequence++, "tr");
                 if (HasMarker)
                 {
-                    builder.OpenElement(9, "td");
-                    builder.AddContent(10, marker_renderer.Render(Marker.Value));
+                    builder.OpenElement(sequence++, "td");
+                    builder.AddContent(sequence++, marker_renderer.Render(Marker.Value));
                     builder.CloseElement();
                 }
-                builder.OpenElement(11, "td");
-                builder.AddAttribute(12, "style", "white-space: nowrap;");
-                builder.AddContent(13, Label);
+                builder.OpenElement(sequence++, "td");
+                builder.AddAttribute(sequence++, "style", "white-space: nowrap;");
+                builder.AddContent(sequence++, Label);
                 builder.CloseElement();
                 builder.CloseElement();
                 builder.CloseElement();

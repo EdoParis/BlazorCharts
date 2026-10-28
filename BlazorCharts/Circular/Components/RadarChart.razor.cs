@@ -80,5 +80,20 @@ namespace BlazorGraphs.Components
             .WithLabel(rating.Value.ToString("0.##"))
             .Show();
         }
+
+        private void OnPathEnter()
+        {
+            if (string.IsNullOrWhiteSpace(Model.Title))
+                return;
+
+            LayoutTooltip.WithMarker(new Marker()
+            {
+                Shape = Theme.MarkerShape,
+                Color = Model.Color
+            })
+            .WithLabel(Model.Title)
+            .WithoutTitle()
+            .Show();
+        }
     }
 }

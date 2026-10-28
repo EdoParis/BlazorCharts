@@ -48,16 +48,17 @@ namespace BlazorGraphs.Core
         {
             public override RenderFragment Render(string text)
             {
+                int sequence = 0;
                 return builder =>
                 {
                     if (string.IsNullOrWhiteSpace(text))
                         return;
 
-                    builder.OpenElement(0, "text");
-                    builder.AddAttribute(1, "x", Location.X);
-                    builder.AddAttribute(2, "y", Location.Y);
-                    builder.AddAttribute(3, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                    builder.AddContent(4, text);
+                    builder.OpenElement(sequence++, "text");
+                    builder.AddAttribute(sequence++, "x", Location.X);
+                    builder.AddAttribute(sequence++, "y", Location.Y);
+                    builder.AddAttribute(sequence++, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                    builder.AddContent(sequence++, text);
                     builder.CloseElement();
                 };
             }
@@ -67,17 +68,18 @@ namespace BlazorGraphs.Core
         {
             public override RenderFragment Render(string text)
             {
+                int sequence = 0;
                 return builder =>
                 {
                     if (string.IsNullOrWhiteSpace(text))
                         return;
 
-                    builder.OpenElement(0, "text");
-                    builder.AddAttribute(1, "x", Location.X);
-                    builder.AddAttribute(2, "y", Location.Y);
-                    builder.AddAttribute(3, "dx", "0.5em");
-                    builder.AddAttribute(4, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: start; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                    builder.AddContent(5, text);
+                    builder.OpenElement(sequence++, "text");
+                    builder.AddAttribute(sequence++, "x", Location.X);
+                    builder.AddAttribute(sequence++, "y", Location.Y);
+                    builder.AddAttribute(sequence++, "dx", "0.5em");
+                    builder.AddAttribute(sequence++, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: start; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                    builder.AddContent(sequence++, text);
                     builder.CloseElement();
                 };
             }
@@ -87,17 +89,18 @@ namespace BlazorGraphs.Core
         {
             public override RenderFragment Render(string text)
             {
+                int sequence = 0;
                 return builder =>
                 {
                     if (string.IsNullOrWhiteSpace(text))
                         return;
 
-                    builder.OpenElement(0, "text");
-                    builder.AddAttribute(1, "x", Location.X);
-                    builder.AddAttribute(2, "y", Location.Y);
-                    builder.AddAttribute(3, "dx", "-0.5em");
-                    builder.AddAttribute(4, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: end; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                    builder.AddContent(5, text);
+                    builder.OpenElement(sequence++, "text");
+                    builder.AddAttribute(sequence++, "x", Location.X);
+                    builder.AddAttribute(sequence++, "y", Location.Y);
+                    builder.AddAttribute(sequence++, "dx", "-0.5em");
+                    builder.AddAttribute(sequence++, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: end; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                    builder.AddContent(sequence++, text);
                     builder.CloseElement();
                 };
             }
@@ -107,17 +110,18 @@ namespace BlazorGraphs.Core
         {
             public override RenderFragment Render(string text)
             {
+                int sequence = 0;
                 return builder =>
                 {
                     if (string.IsNullOrWhiteSpace(text))
                         return;
 
-                    builder.OpenElement(0, "text");
-                    builder.AddAttribute(1, "x", Location.X);
-                    builder.AddAttribute(2, "y", Location.Y);
-                    builder.AddAttribute(3, "dy", "-1em");
-                    builder.AddAttribute(4, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                    builder.AddContent(5, text);
+                    builder.OpenElement(sequence++, "text");
+                    builder.AddAttribute(sequence++, "x", Location.X);
+                    builder.AddAttribute(sequence++, "y", Location.Y);
+                    builder.AddAttribute(sequence++, "dy", "-1em");
+                    builder.AddAttribute(sequence++, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                    builder.AddContent(sequence++, text);
                     builder.CloseElement();
                 };
             }
@@ -127,17 +131,18 @@ namespace BlazorGraphs.Core
         {
             public override RenderFragment Render(string text)
             {
+                int sequence = 0;
                 return builder =>
                 {
                     if (string.IsNullOrWhiteSpace(text))
                         return;
 
-                    builder.OpenElement(0, "text");
-                    builder.AddAttribute(1, "x", Location.X);
-                    builder.AddAttribute(2, "y", Location.Y);
-                    builder.AddAttribute(3, "dy", "1em");
-                    builder.AddAttribute(4, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                    builder.AddContent(5, text);
+                    builder.OpenElement(sequence++, "text");
+                    builder.AddAttribute(sequence++, "x", Location.X);
+                    builder.AddAttribute(sequence++, "y", Location.Y);
+                    builder.AddAttribute(sequence++, "dy", "1em");
+                    builder.AddAttribute(sequence++, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: middle; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                    builder.AddContent(sequence++, text);
                     builder.CloseElement();
                 };
             }
@@ -147,18 +152,19 @@ namespace BlazorGraphs.Core
         {
             public override RenderFragment Render(string text)
             {
+                int sequence = 0;
                 return builder =>
                 {
                     if (string.IsNullOrWhiteSpace(text))
                         return;
 
-                    builder.OpenElement(0, "text");
-                    builder.AddAttribute(1, "x", Location.X);
-                    builder.AddAttribute(2, "y", Location.Y);
-                    builder.AddAttribute(3, "dx", "0.5em");
-                    builder.AddAttribute(4, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: start; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                    builder.AddAttribute(5, "transform", $"rotate(270, {Location.X}, {Location.Y})");
-                    builder.AddContent(6, text);
+                    builder.OpenElement(sequence++, "text");
+                    builder.AddAttribute(sequence++, "x", Location.X);
+                    builder.AddAttribute(sequence++, "y", Location.Y);
+                    builder.AddAttribute(sequence++, "dx", "0.5em");
+                    builder.AddAttribute(sequence++, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: start; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                    builder.AddAttribute(sequence++, "transform", $"rotate(270, {Location.X}, {Location.Y})");
+                    builder.AddContent(sequence++, text);
                     builder.CloseElement();
                 };
             }
@@ -168,18 +174,19 @@ namespace BlazorGraphs.Core
         {
             public override RenderFragment Render(string text)
             {
+                int sequence = 0;
                 return builder =>
                 {
                     if (string.IsNullOrWhiteSpace(text))
                         return;
 
-                    builder.OpenElement(0, "text");
-                    builder.AddAttribute(1, "x", Location.X);
-                    builder.AddAttribute(2, "y", Location.Y);
-                    builder.AddAttribute(3, "dx", "-0.5em");
-                    builder.AddAttribute(4, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: end; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
-                    builder.AddAttribute(5, "transform", $"rotate(-90, {Location.X}, {Location.Y})");
-                    builder.AddContent(6, text);
+                    builder.OpenElement(sequence++, "text");
+                    builder.AddAttribute(sequence++, "x", Location.X);
+                    builder.AddAttribute(sequence++, "y", Location.Y);
+                    builder.AddAttribute(sequence++, "dx", "-0.5em");
+                    builder.AddAttribute(sequence++, "style", $"font-size: {Size}px; pointer-events: none; dominant-baseline: central; text-anchor: end; fill: {Theme.TextColor?.ToHex() ?? CURRENT};");
+                    builder.AddAttribute(sequence++, "transform", $"rotate(-90, {Location.X}, {Location.Y})");
+                    builder.AddContent(sequence++, text);
                     builder.CloseElement();
                 };
             }

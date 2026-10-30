@@ -60,12 +60,22 @@ namespace WebApp.Pages.Layout
             }
         }
 
-        private MarkerShapes MarkerTheme
+        private MarkerSymbol SymbolTheme
         {
-            get => theme.MarkerShape;
+            get => theme.SeriesMarker;
             set
             {
-                theme.MarkerShape = value;
+                theme.SeriesMarker = value;
+                theme_index = null;
+            }
+        }
+
+        private MarkerShape ShapeTheme
+        {
+            get => theme.DataMarker;
+            set
+            {
+                theme.DataMarker = value;
                 theme_index = null;
             }
         }

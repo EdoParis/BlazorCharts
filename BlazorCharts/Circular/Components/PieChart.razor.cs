@@ -81,7 +81,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Shape = Theme.MarkerShape,
+                Symbol = Theme.SeriesMarker,
                 Color = slice.Color
             })
             .WithTitle(slice.Label)

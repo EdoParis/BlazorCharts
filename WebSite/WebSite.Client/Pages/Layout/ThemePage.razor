@@ -8,8 +8,8 @@
 </p>
 <h6>Properties</h6>
 <p>
-    The theme provides four properties for customization, each of which has a default behavior that is activated when this is <span class="token keyword font-monospace">null</span>,
-    so you only need to set the value for the ones you need.
+    The theme provides six properties for customization, four of which has a default behavior that is activated when this is <span class="token keyword font-monospace">null</span>,
+    while the other two are enum with a default value, so you only need to set the value for the ones you need.
 </p>
 <p>
     <div class="card overflow-hidden">
@@ -47,10 +47,16 @@
                         <td class="font-monospace"><span class="token string">inherit</span></td>
                     </tr>
                     <tr>
-                        <td>@(nameof(Theme.MarkerShape))</td>
-                        <td class="font-monospace"><span class="token keyword">MarkerShapes</span></td>
-                        <td>Enum of available marker shapes for tooltips and legend</td>
-                        <td class="font-monospace"><span class="token keyword">MarkerShapes</span>.Circle</td>
+                        <td>@(nameof(Theme.DataMarker))</td>
+                        <td class="font-monospace"><span class="token keyword">@(nameof(MarkerShape))</span></td>
+                        <td>Enum of available shapes for datapoints</td>
+                        <td class="font-monospace"><span class="token keyword">MarkerShape</span>.Circle</td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(Theme.SeriesMarker))</td>
+                        <td class="font-monospace"><span class="token keyword">@(nameof(MarkerSymbol))</span></td>
+                        <td>Enum of available symbols for tooltips and legend</td>
+                        <td class="font-monospace"><span class="token keyword">MarkerSymbol</span>.Circle</td>
                     </tr>
                 </tbody>
             </table>
@@ -103,12 +109,21 @@
                                value="@FontTheme" 
                                @onchange="@(e => FontTheme = e?.Value?.ToString())" />
                     </div>
-                    <div class="col-6 col-form-label">Marker</div>
+                    <div class="col-6 col-form-label">DataMarker</div>
                     <div class="col-6">
-                        <select class="form-select" @bind="MarkerTheme">
-                            @foreach(MarkerShapes marker in Enum.GetValues<MarkerShapes>())
+                        <select class="form-select" @bind="ShapeTheme">
+                            @foreach (MarkerShape shape in Enum.GetValues<MarkerShape>())
                             {
-                                <option value="@marker">@marker</option>
+                                <option value="@shape">@shape</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-6 col-form-label">SeriesMarker</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="SymbolTheme">
+                            @foreach (MarkerSymbol symbol in Enum.GetValues<MarkerSymbol>())
+                            {
+                                <option value="@symbol">@symbol</option>
                             }
                         </select>
                     </div>

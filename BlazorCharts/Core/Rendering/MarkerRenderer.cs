@@ -5,34 +5,34 @@ namespace BlazorGraphs.Core
 {
     internal class MarkerRenderer
     {
-        public RenderFragment Render(Marker marker) => Render(marker.Shape, marker.Color);
+        public RenderFragment Render(Marker marker) => Render(marker.Symbol, marker.Color);
 
-        public RenderFragment Render(MarkerShapes shape, Color color)
+        public RenderFragment Render(MarkerSymbol symbol, Color color)
         {
-            switch (shape)
+            switch (symbol)
             {
-                case MarkerShapes.Circle:
+                case MarkerSymbol.Circle:
                     return RenderCircle(color);
 
-                case MarkerShapes.Square:
+                case MarkerSymbol.Square:
                     return RenderSquare(color);
 
-                case MarkerShapes.Triangle:
+                case MarkerSymbol.Triangle:
                     return RenderTriangle(color);
 
-                case MarkerShapes.Dashed:
+                case MarkerSymbol.Dashedline:
                     return RenderDashed(color);
 
-                case MarkerShapes.Segment:
+                case MarkerSymbol.Solidline:
                     return RenderSegment(color);
 
-                case MarkerShapes.Diamond:
+                case MarkerSymbol.Diamond:
                     return RenderDiamond(color);
 
-                case MarkerShapes.Droplet:
+                case MarkerSymbol.Droplet:
                     return RenderDroplet(color);
 
-                case MarkerShapes.Slice:
+                case MarkerSymbol.Slice:
                     return RenderSlice(color);
 
                 default:

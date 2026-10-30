@@ -62,7 +62,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Shape = Theme.MarkerShape,
+                Symbol = (MarkerSymbol)Theme.DataMarker,
                 Color = color
             })
             .WithLabel($"{bubble.X.ToString("0.##")} | {bubble.Y.ToString("0.##")} | {bubble.Value.ToString("0.##")}")

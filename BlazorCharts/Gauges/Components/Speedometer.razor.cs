@@ -101,7 +101,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Shape = Theme.MarkerShape,
+                Symbol = Theme.SeriesMarker,
                 Color = breakpoint.Color
             })
             .WithTitle(breakpoint.Label)

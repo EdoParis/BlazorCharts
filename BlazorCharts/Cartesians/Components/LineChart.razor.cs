@@ -91,7 +91,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Shape = Theme.MarkerShape,
+                Symbol = (MarkerSymbol)Theme.DataMarker,
                 Color = color
             })
             .WithLabel($"{point.X.ToString("0.##")} | {point.Y.ToString("0.##")}")
@@ -102,7 +102,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Shape = Theme.MarkerShape,
+                Symbol = Theme.SeriesMarker,
                 Color = serie.Color
             })
             .WithLabel(serie.Label)

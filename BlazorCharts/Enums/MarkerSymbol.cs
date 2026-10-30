@@ -1,14 +1,14 @@
 ﻿namespace BlazorGraphs
 {
-    public enum MarkerShapes
+    public enum MarkerSymbol
     {
         Circle,
         Square,
         Diamond,
         Triangle,
         Slice,
-        Dashed,
-        Segment,
+        Dashedline,
+        Solidline,
         Droplet
     }
 }

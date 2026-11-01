@@ -27,7 +27,6 @@ namespace BlazorGraphs.Components
             LayoutAxisY.WithTheme(Theme).From(LayoutView.Height - LayoutView.Padding).To(LayoutView.Padding).At(LayoutView.Padding);
             LayoutTitleX.WithTheme(Theme).At(LayoutView.Width / 2, LayoutView.Height - LayoutView.Padding / 4);
             LayoutTitleY.WithTheme(Theme).At(LayoutView.Padding / 2, LayoutView.Padding / 2);
-            LayoutTooltip.WithTheme(Theme);
         }
 
         protected override void OnInitialized()

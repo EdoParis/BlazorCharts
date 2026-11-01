@@ -26,7 +26,6 @@ namespace BlazorGraphs.Components
             LayoutSliceValue.WithTheme(Theme);
             LayoutTotalValue.WithTheme(Theme);
             LayoutTextTitle.WithTheme(Theme);
-            LayoutTooltip.WithTheme(Theme);
         }
 
         protected override void OnInitialized()

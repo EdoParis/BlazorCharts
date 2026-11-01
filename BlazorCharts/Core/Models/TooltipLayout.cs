@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+﻿using Microsoft.AspNetCore.Components.Web;
 using System.Drawing;
 
 namespace BlazorGraphs.Core
@@ -8,7 +7,6 @@ namespace BlazorGraphs.Core
     {
         public Marker? Marker { get; private set; }
         public Point Position { get; private set; }
-        public Theme Theme { get; private set; }
         public String Label { get; private set; }
         public String Title { get; private set; }
         public Boolean Visible { get; private set; }
@@ -60,12 +58,6 @@ namespace BlazorGraphs.Core
             return this;
         }
 
-        public TooltipLayout WithTheme(Theme theme)
-        {
-            Theme = theme;
-            return this;
-        }
-
         public TooltipLayout WithMarker(Marker marker)
         {
             Marker = marker;
@@ -88,55 +80,6 @@ namespace BlazorGraphs.Core
         {
             Label = null;
             return this;
-        }
-
-        public RenderFragment Render()
-        {
-            int sequence = 0;
-            return builder =>
-            {
-                builder.OpenElement(sequence++, "div");
-                builder.AddAttribute(sequence++, "style", @$"top: {Position.Y}px; 
-                                                             left: {Position.X}px; 
-                                                             padding: 0.2em;
-                                                             position: fixed;
-                                                             border: 1px solid;
-                                                             border-radius: 0.2em;
-                                                             pointer-events: none;
-                                                             transform: translate(-50%, -110%);
-                                                             backdrop-filter: blur(5px) brightness(0.85) hue-rotate(15deg);
-                                                             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-                                                             color: {Theme.TextColorString()}; 
-                                                             font-family: {Theme.FontString()}; 
-                                                             border-color: {Theme.AxisColorString()}; 
-                                                             background-color: {Theme.BackgroundString()};
-                                                             display: {(Visible ? "block" : "none")}");
-                builder.OpenElement(sequence++, "table");
-                if (!string.IsNullOrWhiteSpace(Title))
-                {
-                    builder.OpenElement(sequence++, "tr");
-                    builder.OpenElement(sequence++, "td");
-                    builder.AddAttribute(sequence++, "colspan", HasMarker ? 2 : 1);
-                    builder.AddAttribute(sequence++, "style", "text-align: center; white-space: nowrap;");
-                    builder.AddContent(sequence++, Title);
-                    builder.CloseElement();
-                    builder.CloseElement();
-                }
-                builder.OpenElement(sequence++, "tr");
-                if (HasMarker)
-                {
-                    builder.OpenElement(sequence++, "td");
-                    builder.AddContent(sequence++, Marker.Value.Render());
-                    builder.CloseElement();
-                }
-                builder.OpenElement(sequence++, "td");
-                builder.AddAttribute(sequence++, "style", "white-space: nowrap;");
-                builder.AddContent(sequence++, Label);
-                builder.CloseElement();
-                builder.CloseElement();
-                builder.CloseElement();
-                builder.CloseElement();
-            };
         }
     }
 }

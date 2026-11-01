@@ -23,7 +23,6 @@ namespace BlazorGraphs.Components
         {
             LayoutLabels.WithTheme(Theme);
             LayoutTicks.WithTheme(Theme);
-            LayoutTooltip.WithTheme(Theme);
         }
 
         protected override void OnInitialized()

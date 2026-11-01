@@ -25,7 +25,6 @@ namespace BlazorGraphs.Components
             AxisLayout.WithTheme(Theme);
             TitleLayout.WithTheme(Theme);
             ValueLayout.WithTheme(Theme);
-            LayoutTooltip.WithTheme(Theme);
         }
 
         protected override void OnInitialized()

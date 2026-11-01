@@ -13,11 +13,9 @@ namespace BlazorGraphs.Core
         public String Title { get; private set; }
         public Boolean Visible { get; private set; }
         public Boolean HasMarker { get => Marker.HasValue; }
-        private MarkerRenderer marker_renderer;
 
         private TooltipLayout() 
         {
-            marker_renderer = new MarkerRenderer();
         }
 
         public static TooltipLayout Default()
@@ -128,7 +126,7 @@ namespace BlazorGraphs.Core
                 if (HasMarker)
                 {
                     builder.OpenElement(sequence++, "td");
-                    builder.AddContent(sequence++, marker_renderer.Render(Marker.Value));
+                    builder.AddContent(sequence++, Marker.Value.Render());
                     builder.CloseElement();
                 }
                 builder.OpenElement(sequence++, "td");

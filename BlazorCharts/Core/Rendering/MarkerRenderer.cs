@@ -3,11 +3,11 @@ using System.Drawing;
 
 namespace BlazorGraphs.Core
 {
-    internal class MarkerRenderer
+    internal static class MarkerRenderer
     {
-        public RenderFragment Render(Marker marker) => Render(marker.Symbol, marker.Color);
+        public static RenderFragment Render(this Marker marker) => Render(marker.Symbol, marker.Color);
 
-        public RenderFragment Render(MarkerSymbol symbol, Color color)
+        public static RenderFragment Render(this MarkerSymbol symbol, Color color)
         {
             switch (symbol)
             {
@@ -40,7 +40,7 @@ namespace BlazorGraphs.Core
             }
         }
 
-        public RenderFragment RenderCircle(Color color)
+        public static RenderFragment RenderCircle(Color color)
         {
             int sequence = 0;
             return builder =>
@@ -59,7 +59,7 @@ namespace BlazorGraphs.Core
             };
         }
 
-        public RenderFragment RenderSquare(Color color)
+        public static RenderFragment RenderSquare(Color color)
         {
             int sequence = 0;
             return builder =>
@@ -79,7 +79,7 @@ namespace BlazorGraphs.Core
             };
         }
 
-        public RenderFragment RenderSlice(Color color)
+        public static RenderFragment RenderSlice(Color color)
         {
             int sequence = 0;
             return builder =>
@@ -96,7 +96,7 @@ namespace BlazorGraphs.Core
             };
         }
 
-        public RenderFragment RenderSegment(Color color)
+        public static RenderFragment RenderSegment(Color color)
         {
             int sequence = 0;
             return builder =>
@@ -113,7 +113,7 @@ namespace BlazorGraphs.Core
             };
         }
 
-        public RenderFragment RenderDashed(Color color)
+        public static RenderFragment RenderDashed(Color color)
         {
             int sequence = 0;
             return builder =>
@@ -130,7 +130,7 @@ namespace BlazorGraphs.Core
             };
         }
 
-        public RenderFragment RenderTriangle(Color color)
+        public static RenderFragment RenderTriangle(Color color)
         {
             int sequence = 0;
             return builder =>
@@ -147,7 +147,7 @@ namespace BlazorGraphs.Core
             };
         }
 
-        public RenderFragment RenderDiamond(Color color)
+        public static RenderFragment RenderDiamond(Color color)
         {
             int sequence = 0;
             return builder =>
@@ -164,7 +164,7 @@ namespace BlazorGraphs.Core
             };
         }
 
-        public RenderFragment RenderDroplet(Color color)
+        public static RenderFragment RenderDroplet(Color color)
         {
             int sequence = 0;
             return builder =>

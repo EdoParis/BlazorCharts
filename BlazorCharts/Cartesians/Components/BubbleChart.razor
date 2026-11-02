@@ -27,21 +27,21 @@
         {
             foreach (Bubblepoint bubble in serie.Data)
             {
-                double radius = 16 + (LayoutView.Padding / 2 - 16) * (bubble.Radius - Model.AxisB.Min) / Model.AxisB.Size;
+                int x = LayoutView.Padding + (int)((bubble.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size);
+                int y = LayoutView.Height - LayoutView.Padding - (int)((bubble.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size);
+                int size = (int)(14 + (LayoutView.Padding - 14) * (bubble.Radius - Model.AxisB.Min) / Model.AxisB.Size);
 
-                <circle fill="@serie.Color.ToHex()"
-                        stroke="@Theme.BackgroundString()"
-                        stroke-width="1px"
-                        fill-opacity="0.6"
-                        vector-effect="non-scaling-stroke"
-                        class="fade-in"
-                        cx="@(LayoutView.Padding + (int)((bubble.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
-                        cy="@(LayoutView.Height - LayoutView.Padding - (int)((bubble.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
-                        r="@((int)radius)px"
-                        @onclick="async () => await OnBubbleClick.InvokeAsync(new BubbleEventArgs(serie, bubble))"
-                        @onpointerenter="() => OnBubbleEnter(bubble, serie.Color)"
-                        @onpointerleave="() => LayoutTooltip.Hide()">
-                </circle>
+                <path d="@PathRenderer.RenderShape(Theme.DataMarker, x, y, size)"
+                      fill="@serie.Color.ToHex()"
+                      stroke="@serie.Color.ToHex()"
+                      stroke-width="1px"
+                      fill-opacity="0.6"
+                      vector-effect="non-scaling-stroke"
+                      class="marker fade-in"
+                      @onclick="async () => await OnBubbleClick.InvokeAsync(new BubbleEventArgs(serie, bubble))"
+                      @onpointerenter="() => OnBubbleEnter(bubble, serie.Color)"
+                      @onpointerleave="() => LayoutTooltip.Hide()">
+                </path>
             }
         }
     }

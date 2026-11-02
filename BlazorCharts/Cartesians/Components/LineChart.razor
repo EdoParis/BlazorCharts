@@ -32,7 +32,7 @@
                 <g>
                     <path d="@path"
                           fill="none"
-                          class="fade-in"
+                          class="serie fade-in"
                           stroke="@serie.Color.ToHex()"
                           stroke-width="1px"
                           stroke-linejoin="round"
@@ -47,18 +47,18 @@
                     {
                         foreach (Datapoint point in serie.Data)
                         {
-                            <circle fill="@(Theme.BackgroundColor.HasValue ? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
-                                    stroke="@serie.Color.ToHex()"
-                                    stroke-width="1px"
-                                    vector-effect="non-scaling-stroke"
-                                    class="fade-in"
-                                    cx="@(LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
-                                    cy="@(LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
-                                    r="8px"
-                                    @onclick="async () => await OnPointClick.InvokeAsync(new PointEventArgs(serie, point))"
-                                    @onpointerenter="() => OnPointEnter(point, serie.Color)"
-                                    @onpointerleave="() => LayoutTooltip.Hide()">
-                            </circle>
+                            int x = LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size);
+                            int y = LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size);
+                            <path d="@PathRenderer.RenderShape(Theme.DataMarker, x, y, 14)"
+                                  fill="@(Theme.BackgroundColor.HasValue ? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
+                                  stroke="@serie.Color.ToHex()"
+                                  stroke-width="1px"
+                                  vector-effect="non-scaling-stroke"
+                                  class="marker fade-in"
+                                  @onclick="async () => await OnPointClick.InvokeAsync(new PointEventArgs(serie, point))"
+                                  @onpointerenter="() => OnPointEnter(point, serie.Color)"
+                                  @onpointerleave="() => LayoutTooltip.Hide()">
+                            </path>
                         }
                     }
                 </g>

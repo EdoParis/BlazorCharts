@@ -27,19 +27,19 @@
         {
             foreach (Datapoint point in serie.Data)
             {
-                <circle fill="@serie.Color.ToHex()"
-                        stroke="@Theme.BackgroundString()"
-                        stroke-width="2px"
-                        vector-effect="non-scaling-stroke"
-                        cx="@(LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size))"
-                        cy="@(LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size))"
-                        r="8px"
-                        class="fade-in"
-                        style="paint-order: stroke fill;"
-                        @onclick="async () => await OnPointClick.InvokeAsync(new PointEventArgs(serie, point))"
-                        @onpointerenter="() => OnPointEnter(point, serie.Color)"
-                        @onpointerleave="() => LayoutTooltip.Hide()">
-                </circle>
+                int x = LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size);
+                int y = LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size);
+                <path d="@PathRenderer.RenderShape(Theme.DataMarker, x, y, 14)"
+                      fill ="@serie.Color.ToHex()"
+                      stroke="@Theme.BackgroundString()"
+                      stroke-width="2px"
+                      vector-effect="non-scaling-stroke"
+                      class="marker fade-in"
+                      style="paint-order: stroke fill;"
+                      @onclick="async () => await OnPointClick.InvokeAsync(new PointEventArgs(serie, point))"
+                      @onpointerenter="() => OnPointEnter(point, serie.Color)"
+                      @onpointerleave="() => LayoutTooltip.Hide()">
+                </path>
             }
         }
     }

@@ -12,21 +12,23 @@ g, path {
     transition-duration: 0.25s;
 }
 
-    path:hover {
+    .serie:hover {
         stroke-width: 2px;
     }
 
-    path:hover ~ circle {
+    .serie:hover ~ .marker {
         display: none;
     }
 
-circle {
+.marker {
     cursor: pointer;
+    transform-box: fill-box;
+    transform-origin: center;
     transition-duration: 0.25s;
 }
 
-    circle:hover {
-        r: 15px;
+    .marker:hover {
+        scale: 200%;
     }
 
 .fade-in {

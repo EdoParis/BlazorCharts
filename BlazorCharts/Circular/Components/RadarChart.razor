@@ -75,7 +75,7 @@
                   fill-opacity="0.25"
                   stroke-width="1px"
                   vector-effect="non-scaling-stroke"
-                  class="fade-in"
+                  class="serie fade-in"
                   d="@Path()"
                   @key="@Model.Categories"
                   @onpointerenter="() => OnPathEnter()"
@@ -87,20 +87,19 @@
                 foreach (Rating rating in Model)
                 {
                     double r = rating.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
-                    double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
-                    double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
+                    int x = width / 2 + (int)(r * Math.Sin(2 * Math.PI / Model.Categories * i));
+                    int y = height / 2 - (int)(r * Math.Cos(2 * Math.PI / Model.Categories * i));
+                    <path d="@PathRenderer.RenderShape(Theme.DataMarker, x, y, 14)"
+                          fill="@(Theme.BackgroundColor.HasValue? Theme.BackgroundColor.Value.ToHex() : Model.Color.ToHex())"
+                          stroke="@Model.Color.ToHex()"
+                          stroke-width="1px"
+                          vector-effect="non-scaling-stroke"
+                          class="marker fade-in"
+                          @onclick="async () => await OnClick.InvokeAsync(rating)"
+                          @onpointerenter="() => OnRatingEnter(rating)"
+                          @onpointerleave="() => LayoutTooltip.Hide()">
+                    </path>
                     i++;
-
-                    <circle fill="@(Theme.BackgroundColor.HasValue? Theme.BackgroundColor.Value.ToHex() : Model.Color.ToHex())"
-                            stroke="@Model.Color.ToHex()"
-                            stroke-width="1px"
-                            vector-effect="non-scaling-stroke"
-                            cx="@((int)x)"
-                            cy="@((int)y)"
-                            r="8px"
-                            @onpointerenter="() => OnRatingEnter(rating)"
-                            @onpointerleave="() => LayoutTooltip.Hide()">
-                    </circle>
                 }
             }
         </g>

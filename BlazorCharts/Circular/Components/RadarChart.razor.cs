@@ -12,6 +12,7 @@ namespace BlazorGraphs.Components
         [Parameter] public Theme Theme { get; set; }
         [Parameter] public Boolean Circular { get; set; }
         [Parameter] public Radargram Model { get; set; }
+        [Parameter] public EventCallback<Rating> OnClick { get; set; }
         private int width = VIEW;
         private int height = VIEW;
         private int padding = PADDING;

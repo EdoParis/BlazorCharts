@@ -41,5 +41,10 @@ namespace WebApp.Pages.Charts
                 Label = $"R{model1.Categories + 1}"
             });
         }
+
+        private void OnRatingClick(Rating rating)
+        {
+            Console.WriteLine($"Clicked rating {rating.Label} with value: {rating.Value}");
+        }
     }
 }

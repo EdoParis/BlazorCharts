@@ -36,6 +36,24 @@
         </div>
     </div>
 </p>
+<p>
+    <div class="card overflow-hidden">
+        <div class="card-body overflow-auto">
+            <table class="table text-nowrap align-middle mb-0 bg-white border">
+                <tr>
+                    <th>Event</th>
+                    <th>Args</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>OnClick</td>
+                    <td class="font-monospace"><span class="token keyword">Rating</span></td>
+                    <td>Rating click event</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</p>
 <div class="card">
     <div class="card-body">
         <div class="row g-3">
@@ -46,7 +64,7 @@
                     <div class="col-6">Circular</div>
                     <div class="col-6"><div class="col-6 form-control-lg form-check form-switch form-check-reverse py-0 w-100"><input type="checkbox" class="form-check-input" @bind="@circular" /></div></div>
                     <div class="col-12">
-                        <RadarChart Model="@model1" Circular="@circular"></RadarChart>
+                        <RadarChart Model="@model1" Circular="@circular" OnClick="OnRatingClick"></RadarChart>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnRatingAdd">Add Rating</button></div>

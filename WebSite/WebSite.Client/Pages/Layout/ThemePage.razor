@@ -47,16 +47,16 @@
                         <td class="font-monospace"><span class="token string">inherit</span></td>
                     </tr>
                     <tr>
-                        <td>@(nameof(Theme.DataMarker))</td>
-                        <td class="font-monospace"><span class="token keyword">@(nameof(MarkerShape))</span></td>
-                        <td>Enum of available shapes for datapoints</td>
-                        <td class="font-monospace"><span class="token keyword">MarkerShape</span>.Circle</td>
-                    </tr>
-                    <tr>
                         <td>@(nameof(Theme.SeriesMarker))</td>
                         <td class="font-monospace"><span class="token keyword">@(nameof(MarkerSymbol))</span></td>
                         <td>Enum of available symbols for tooltips and legend</td>
                         <td class="font-monospace"><span class="token keyword">MarkerSymbol</span>.Circle</td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(Theme.DataMarker))</td>
+                        <td class="font-monospace"><span class="token keyword">@(nameof(MarkerShape))</span></td>
+                        <td>Enum of available shapes for datapoints</td>
+                        <td class="font-monospace"><span class="token keyword">MarkerShape</span>.Circle</td>
                     </tr>
                 </tbody>
             </table>
@@ -109,15 +109,6 @@
                                value="@FontTheme" 
                                @onchange="@(e => FontTheme = e?.Value?.ToString())" />
                     </div>
-                    <div class="col-6 col-form-label">DataMarker</div>
-                    <div class="col-6">
-                        <select class="form-select" @bind="ShapeTheme">
-                            @foreach (MarkerShape shape in Enum.GetValues<MarkerShape>())
-                            {
-                                <option value="@shape">@shape</option>
-                            }
-                        </select>
-                    </div>
                     <div class="col-6 col-form-label">SeriesMarker</div>
                     <div class="col-6">
                         <select class="form-select" @bind="SymbolTheme">
@@ -127,9 +118,56 @@
                             }
                         </select>
                     </div>
+                    <div class="col-6 col-form-label">DataMarker</div>
+                    <div class="col-6">
+                        <select class="form-select" @bind="ShapeTheme">
+                            @foreach (MarkerShape shape in Enum.GetValues<MarkerShape>())
+                            {
+                                <option value="@shape">@shape</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-12 d-flex flex-wrap justify-content-center">
+                        @foreach (chart_options chart_option in Enum.GetValues<chart_options>())
+                        {
+                            <div class="form-check form-check-inline">
+                                <input id="radio-@(chart_option)"
+                                       type="radio"  
+                                       value="@((int)chart_option)"
+                                       class="form-check-input"
+                                       checked="@(chart_option == selected_chart)" 
+                                       @onclick="() => selected_chart = chart_option">
+                                <label class="form-check-label" 
+                                       for="radio-@(chart_option)">
+                                       @chart_option
+                                </label>
+                            </div>
+                        }
+                    </div>
                     <div class="col-12">
-                        <HistChart Model="@model" Theme="@theme"></HistChart>
-                        <LegendHorizontal Model="@model" Theme="@theme"></LegendHorizontal>
+                        @switch (selected_chart)
+                        {
+                            case chart_options.Linechart:
+                            {
+                                <LineChart Model="@cartesiangram" Theme="@theme"></LineChart>
+                                <LegendHorizontal Model="@cartesiangram" Theme="@theme"></LegendHorizontal>
+                                break;
+                            }
+
+                            case chart_options.Scatterchart:
+                            {
+                                <ScatterChart Model="@cartesiangram" Theme="@theme"></ScatterChart>
+                                <LegendHorizontal Model="@cartesiangram" Theme="@theme"></LegendHorizontal>
+                                break;
+                            }
+
+                            case chart_options.Bubblechart:
+                            {
+                                <BubbleChart Model="bubblegram" Theme="@theme"></BubbleChart>
+                                <LegendHorizontal Model="bubblegram" Theme="@theme"></LegendHorizontal>
+                                break;
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -138,15 +176,15 @@
                     <pre class="language-csharp m-0 h-100">
                         <code>
  <span class="token comment">//Render chart and legend using a custom theme</span>
- &lt<span class="token tag bold">HistChart</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@hist_model<span class="token string">"</span>/&gt
- &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@hist_model<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">LineChart</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
  
  <span class="token comment">//Or using a built-in static theme for both</span>
- &lt<span class="token tag bold">HistChart</span> <span class="token property bold">Theme</span><span class="token string">="</span><span class="token property">Theme</span>.Dark<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@hist_model<span class="token string">"</span>/&gt
- &lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Theme</span><span class="token string">="</span><span class="token property">Theme</span>.Dark<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@hist_model<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">ScatterChart</span> <span class="token property bold">Theme</span><span class="token string">="</span><span class="token property">Theme</span>.Dark<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Theme</span><span class="token string">="</span><span class="token property">Theme</span>.Dark<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
  
  @@{
-     <span class="token comment">//Define you theme.</span>
+     <span class="token comment">//Define your theme.</span>
      <span class="token keyword">private</span> <span class="token property">Theme</span> custom_theme = <span class="token keyword">new</span> <span class="token class-name">Theme</span>()
      {
          BackgroundColor = <span class="token property">Color</span>.Snow,
@@ -156,16 +194,17 @@
      };
  
      <span class="token comment">//Fill model with data.</span>
-     <span class="token keyword">private</span> <span class="token property">Histogram</span> hist_model = <span class="token keyword">new</span> <span class="token class-name">Histogram</span>(<span class="token string">"Asse-X"</span>, <span class="token string">"Asse-Y"</span>, <span class="token class-name">Color</span>.LightSteelBlue, <span class="token class-name">Color</span>.MediumPurple);
+     <span class="token keyword">private</span> <span class="token property">IColorStream</span> palette = <span class="token class-name">Palettes</span>.@(nameof(Palettes.Primary));
+     <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> cartesiangram = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"Asse-X"</span>, <span class="token string">"Asse-Y"</span>);
  
-     <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+     <span class="token keyword">for</span> (<span class="token variable">int</span> f = 0; f &lt 4; f++)
      {
-         hist_model.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bin</span>()
+         <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points = <span class="token keyword">new</span>();
+         <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
          {
-             Min = i,
-             Max = i + 1,
-             Value = 10 + 3 * i
-         });
+             points.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = f + i * i });
+         }
+         model.<span class="token function">AddSerie</span>(<span class="token string">$"Fn-{f}"</span>, palette.<span class="token function">Next</span>(), points);
      }
  }
                         </code>

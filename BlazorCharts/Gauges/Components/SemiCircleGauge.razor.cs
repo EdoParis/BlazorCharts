@@ -91,8 +91,8 @@ namespace BlazorGraphs.Components
                 Symbol = Theme.SeriesMarker,
                 Color = breakpoint.Color
             })
-            .WithTitle(breakpoint.Label)
-            .WithLabel($"< {breakpoint.Value.ToString("0.##")}")
+            .WithoutTitle()
+            .WithLabel(string.IsNullOrWhiteSpace(breakpoint.Label) ? $"< {breakpoint.Value.ToString("0.##")}" : breakpoint.Label)
             .Show();
         }
     }

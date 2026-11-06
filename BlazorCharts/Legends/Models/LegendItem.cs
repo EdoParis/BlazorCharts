@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using BlazorGraphs.Core;
+using System.Drawing;
 
 namespace BlazorGraphs
 {
@@ -19,6 +20,12 @@ namespace BlazorGraphs
         {
             Color = threshold.Color;
             Text = string.IsNullOrWhiteSpace(threshold.Label) ? $"< {threshold.Value.ToString("0.##")}" : threshold.Label;
+        }
+
+        internal LegendItem(Serie serie)
+        {
+            Color = serie.Color;
+            Text = string.IsNullOrWhiteSpace(serie.Label) ? "-" : serie.Label;
         }
     }
 }

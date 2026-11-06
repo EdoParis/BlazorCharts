@@ -56,11 +56,7 @@ namespace BlazorGraphs
 
         public IEnumerable<LegendItem> ToLegend()
         {
-            return series.Select(s => new LegendItem()
-            {
-                Color = s.Color,
-                Text = s.Label
-            });
+            return series.Select(s => new LegendItem(s));
         }
     }
 }

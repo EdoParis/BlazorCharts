@@ -63,6 +63,53 @@ namespace BlazorGraphs.Components
                    "Z";
         }
 
+        private string RoundedSlicePath(Slice slice, double rotation = 0)
+        {
+            double radius_out = Math.Min(width, height) / 2 - padding;
+            double radius_in = 2 * radius_out / 3;
+            double theta = 2 * Math.PI * slice.Value / Model.Total;
+            double roundness = 10;
+
+            if (radius_in * theta > 2 * roundness)
+            {
+                return $"M {(int)(width / 2 + (radius_out - roundness) * Math.Sin(rotation))} {(int)(height / 2 - (radius_out - roundness) * Math.Cos(rotation))} " +
+                       $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(rotation + roundness / radius_out))} {(int)(height / 2 - radius_out * Math.Cos(rotation + roundness / radius_out))} " +
+                       $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius_out * Math.Cos(theta / 2 + rotation))} " +
+                       $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta + rotation - roundness / radius_out))} {(int)(height / 2 - radius_out * Math.Cos(theta + rotation - roundness / radius_out))} " +
+                       $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + (radius_out - roundness) * Math.Sin(theta + rotation))} {(int)(height / 2 - (radius_out - roundness) * Math.Cos(theta + rotation))} " +
+                       $"L {(int)(width / 2 + (radius_in + roundness) * Math.Sin(theta + rotation))} {(int)(height / 2 - (radius_in + roundness) * Math.Cos(theta + rotation))} " +
+                       $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + radius_in * Math.Sin(theta + rotation - roundness / radius_in))} {(int)(height / 2 - radius_in * Math.Cos(theta + rotation - roundness / radius_in))} " +
+                       $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius_in * Math.Cos(theta / 2 + rotation))} " +
+                       $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin(rotation + roundness / radius_in))} {(int)(height / 2 - radius_in * Math.Cos(rotation + roundness / radius_in))} " +
+                       $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + (radius_in + roundness) * Math.Sin(rotation))} {(int)(height / 2 - (radius_in + roundness) * Math.Cos(rotation))} " +
+                       "Z";
+            }
+            else if (radius_out * theta > 2 * roundness)
+            {
+                double roundness_in = (radius_in - roundness) * theta / 2;
+                double degree_rot = (rotation + theta / 2) / Math.PI * 180;
+                return $"M {(int)(width / 2 + (radius_out - roundness) * Math.Sin(rotation))} {(int)(height / 2 - (radius_out - roundness) * Math.Cos(rotation))} " +
+                       $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(rotation + roundness / radius_out))} {(int)(height / 2 - radius_out * Math.Cos(rotation + roundness / radius_out))} " +
+                       $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius_out * Math.Cos(theta / 2 + rotation))} " +
+                       $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta + rotation - roundness / radius_out))} {(int)(height / 2 - radius_out * Math.Cos(theta + rotation - roundness / radius_out))} " +
+                       $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + (radius_out - roundness) * Math.Sin(theta + rotation))} {(int)(height / 2 - (radius_out - roundness) * Math.Cos(theta + rotation))} " +
+                       $"L {(int)(width / 2 + (radius_in + roundness) * Math.Sin(theta + rotation))} {(int)(height / 2 - (radius_in + roundness) * Math.Cos(theta + rotation))} " +
+                       $"A {(int)roundness_in} {(int)roundness} {(int)degree_rot} 0 1 {(int)(width / 2 + (radius_in + roundness) * Math.Sin(rotation))} {(int)(height / 2 - (radius_in + roundness) * Math.Cos(rotation))} " +
+                       "Z";
+            }
+            else
+            {
+                double roundness_in = (radius_in - roundness) * theta / 2;
+                double roundness_out = (radius_out - roundness) * theta / 2;
+                double degree_rot = (rotation + theta / 2) / Math.PI * 180;
+                return $"M {(int)(width / 2 + (radius_out - roundness) * Math.Sin(rotation))} {(int)(height / 2 - (radius_out - roundness) * Math.Cos(rotation))} " +
+                       $"A {(int)roundness_out} {(int)roundness} {(int)degree_rot} 0 1 {(int)(width / 2 + (radius_out - roundness) * Math.Sin(theta + rotation))} {(int)(height / 2 - (radius_out - roundness) * Math.Cos(theta + rotation))} " +
+                       $"L {(int)(width / 2 + (radius_in + roundness) * Math.Sin(theta + rotation))} {(int)(height / 2 - (radius_in + roundness) * Math.Cos(theta + rotation))} " +
+                       $"A {(int)roundness_in} {(int)roundness} {(int)degree_rot} 0 1 {(int)(width / 2 + (radius_in + roundness) * Math.Sin(rotation))} {(int)(height / 2 - (radius_in + roundness) * Math.Cos(rotation))} " +
+                       "Z";
+            }
+        }
+
         private Point SliceMidPoint(Slice slice, double rotation = 0)
         {
             double radius = (Math.Min(width, height) / 2 - padding) * 5 / 6;

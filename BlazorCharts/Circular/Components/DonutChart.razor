@@ -41,7 +41,7 @@
                   fill-opacity="0.6"
                   stroke-width="1px"
                   vector-effect="non-scaling-stroke"
-                  d="@SlicePath(slice, 2 * Math.PI * progress)"
+                  d="@(Theme.Rounded ? RoundedSlicePath(slice, 2 * Math.PI* progress) : SlicePath(slice, 2 * Math.PI * progress))"
                   @onclick="async () => await OnClick.InvokeAsync(slice)"
                   @onpointerenter="() => OnSliceEnter(slice)"
                   @onpointerleave="() => LayoutTooltip.Hide()">

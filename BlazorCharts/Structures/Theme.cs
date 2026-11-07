@@ -9,7 +9,7 @@ namespace BlazorGraphs
         public Color? AxisColor { get; set; }
         public Color? TextColor { get; set; }
         public String FontFamily { get; set; }
-        public Boolean Rounded { get; set; }
+        public Boolean RoundedEdges { get; set; }
         public MarkerShape DataMarker { get; set; }
         public MarkerSymbol SeriesMarker { get; set; }
 
@@ -22,6 +22,14 @@ namespace BlazorGraphs
                 BackgroundColor = color,
                 AxisColor = opposite_color,
                 TextColor = opposite_color
+            };
+        }
+
+        public static Theme Rounded
+        {
+            get => new Theme()
+            {
+                RoundedEdges = true
             };
         }
 

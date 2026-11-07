@@ -27,10 +27,8 @@
         {
             if (!serie.IsEmpty)
             {
-                string path = LinePath(serie);
-
                 <g>
-                    <path d="@path"
+                    <path d="@(Theme.Rounded ? RoundedLinePath(serie) : LinePath(serie))"
                           fill="none"
                           class="serie fade-in"
                           stroke="@serie.Color.ToHex()"

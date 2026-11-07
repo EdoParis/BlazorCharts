@@ -93,6 +93,44 @@ namespace BlazorGraphs.Components
             return builder.ToString();
         }
 
+        private string RoundedLinePath(Serie<Datapoint> serie)
+        {
+            StringBuilder builder = new StringBuilder();
+            Point? previous_point = null;
+
+            foreach (Datapoint point in serie.Data)
+            {
+                Point p = new Point()
+                {
+                    X = LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size),
+                    Y = LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size)
+                };
+
+                if (previous_point.HasValue)
+                {
+                    if (point.Y == previous_point.Value.Y)
+                        builder.Append($"L {p.X} {p.Y} ");
+                    else
+                    {
+                        int ry = Math.Sign(p.Y - previous_point.Value.Y) * Math.Min(Math.Abs(p.Y - previous_point.Value.Y) / 2, 10);
+                        int rx = Math.Sign(p.X - previous_point.Value.X) * Math.Min(Math.Abs(p.X - previous_point.Value.X) / 2, 10);
+
+                        builder.Append($"H {(p.X + previous_point.Value.X) / 2 - rx} ");
+                        builder.Append($"a {Math.Abs(rx)} {Math.Abs(ry)} 0 0 {(rx * ry > 0 ? 1 : 0)} {rx} {ry} ");
+                        builder.Append($"V {p.Y - ry}");
+                        builder.Append($"a {Math.Abs(rx)} {Math.Abs(ry)} 0 0 {(rx * ry > 0 ? 0 : 1)} {rx} {ry} ");
+                        builder.Append($"L {p.X} {p.Y} ");
+                    }
+                }
+                else
+                {
+                    builder.Append($"M {p.X} {p.Y} ");
+                }
+                previous_point = p;
+            }
+            return builder.ToString();
+        }
+
         private void OnPointEnter(Datapoint point, Color color)
         {
             LayoutTooltip.WithMarker(new Marker()

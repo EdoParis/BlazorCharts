@@ -29,6 +29,8 @@
             {
                 <rect x="@originH"
                       y="@(LayoutAxisY.EndingPoint.Y - (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
+                      rx="@(Theme.Rounded ? LayoutView.Padding / 10 : 0)"
+                      ry="@(Theme.Rounded ? LayoutView.Padding / 10 : 0)"
                       height="@((int)(-(bin.Max - bin.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
                       width="@((int)(bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
                       fill="@(Model.PrimaryColor.ToHex())"
@@ -47,6 +49,8 @@
             {
                 <rect x="@(originH + (int)(bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
                       y="@(LayoutAxisY.EndingPoint.Y - (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
+                      rx="@(Theme.Rounded ? LayoutView.Padding / 10 : 0)"
+                      ry="@(Theme.Rounded ? LayoutView.Padding / 10 : 0)"
                       height="@((int)(-(bin.Max - bin.Min) * LayoutAxisY.Amplitude / Model.BinAxis.Size))"
                       width="@((int)(-bin.Value * LayoutAxisX.Amplitude / Model.ValAxis.Size))"
                       fill="@(Model.SecondaryColor.ToHex())"

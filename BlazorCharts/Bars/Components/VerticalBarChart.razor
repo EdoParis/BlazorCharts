@@ -29,8 +29,8 @@
             {
                 <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size))"
                       y="@originV"
-                      rx="@(Theme.RoundedEdges ? LayoutView.Padding / 10 : 0)"
-                      ry="@(Theme.RoundedEdges ? LayoutView.Padding / 10 : 0)"
+                      rx="@(Theme.RoundedShapes ? LayoutView.Padding / 10 : 0)"
+                      ry="@(Theme.RoundedShapes ? LayoutView.Padding / 10 : 0)"
                       width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size))"
                       height="@((int)(bin.Value * LayoutAxisY.Amplitude / Model.ValAxis.Size))"
                       fill="@(Model.SecondaryColor.ToHex())"
@@ -49,8 +49,8 @@
             {
                 <rect x="@(LayoutAxisX.StartingPoint.X + (int)((bin.Min - Model.BinAxis.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size))"
                       y="@(originV + (int)(bin.Value * LayoutAxisY.Amplitude / Model.ValAxis.Size))"
-                      rx="@(Theme.RoundedEdges ? LayoutView.Padding / 10 : 0)"
-                      ry="@(Theme.RoundedEdges ? LayoutView.Padding / 10 : 0)"
+                      rx="@(Theme.RoundedShapes ? LayoutView.Padding / 10 : 0)"
+                      ry="@(Theme.RoundedShapes ? LayoutView.Padding / 10 : 0)"
                       width="@((int)((bin.Max - bin.Min) * LayoutAxisX.Amplitude / Model.BinAxis.Size))"
                       height="@((int)(-bin.Value * LayoutAxisY.Amplitude / Model.ValAxis.Size))"
                       fill="@(Model.PrimaryColor.ToHex())"

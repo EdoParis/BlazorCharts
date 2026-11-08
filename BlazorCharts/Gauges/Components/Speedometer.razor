@@ -27,7 +27,7 @@
     }
     else
     {
-        string gauge_path = Theme.RoundedEdges ? RoundedGaugePath(-3 * Math.PI / 4, 3 * Math.PI / 4) : GaugePath(-3 * Math.PI / 4, 3 * Math.PI / 4);
+        string gauge_path = Theme.RoundedShapes ? RoundedGaugePath(-3 * Math.PI / 4, 3 * Math.PI / 4) : GaugePath(-3 * Math.PI / 4, 3 * Math.PI / 4);
 
         <clipPath id="gauge_clip">
             <path d="@gauge_path">
@@ -87,8 +87,8 @@
                   y="@(height / 2 - bar_width / 2)"
                   width="@bar_height"
                   height="@bar_width"
-                  rx="@(Theme.RoundedEdges ? 10 : 0)"
-                  ry="@(Theme.RoundedEdges ? 10 : 0)"
+                  rx="@(Theme.RoundedShapes ? 10 : 0)"
+                  ry="@(Theme.RoundedShapes ? 10 : 0)"
                   class="needle fade-in" 
                   fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
                   stroke="@Theme.AxisColorString()"

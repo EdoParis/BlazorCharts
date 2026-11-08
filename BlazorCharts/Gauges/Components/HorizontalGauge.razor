@@ -25,8 +25,8 @@
             <clipPath id="breakpoints_clip">
                 <rect x="@offsetH"
                       y="@padding"
-                      rx="@(Theme.RoundedEdges ? 10 : 0)"
-                      ry="@(Theme.RoundedEdges ? 10 : 0)"
+                      rx="@(Theme.RoundedShapes ? 10 : 0)"
+                      ry="@(Theme.RoundedShapes ? 10 : 0)"
                       width="@((int)((Model.LastBreakpointValue.Value - Model.Axis.Min) * scaleH))"
                       height="@(height - 2 * padding)">
                 </rect>
@@ -56,8 +56,8 @@
             <rect class="fade-in" 
                   x="@offsetH"
                   y="@padding"
-                  rx="@(Theme.RoundedEdges ? 10 : 0)"
-                  ry="@(Theme.RoundedEdges ? 10 : 0)"
+                  rx="@(Theme.RoundedShapes ? 10 : 0)"
+                  ry="@(Theme.RoundedShapes ? 10 : 0)"
                   width="@((int)((Model.Value - Model.Axis.Min) * scaleH))"
                   height="@(height - 2 * padding)"
                   fill="@Model.Color.ToHex()"
@@ -83,8 +83,8 @@
             <rect class="fade-in" 
                   x="@((int)(offsetH + (Model.Value - Model.Axis.Min) * scaleH - padding / 10))"
                   y="@(9 * padding / 10)"
-                  rx="@(Theme.RoundedEdges ? 10 : 0)"
-                  ry="@(Theme.RoundedEdges ? 10 : 0)"
+                  rx="@(Theme.RoundedShapes ? 10 : 0)"
+                  ry="@(Theme.RoundedShapes ? 10 : 0)"
                   width="@(padding / 5)"
                   height="@(height - 9 * padding / 5)"
                   fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"

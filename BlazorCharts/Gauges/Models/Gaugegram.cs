@@ -16,6 +16,7 @@ namespace BlazorGraphs
         public double Percentage { get => (Value - Axis.Min) / Axis.Size; }
         public bool HasBreakPoints { get => breakpoints?.Count > 0; }
         public int BreakPointsCount { get => breakpoints?.Count ?? default; }
+        public double? LastBreakpointValue { get => breakpoints?.Count > 0 ? breakpoints[breakpoints.Count - 1].Value : null; }
 
         public Gaugegram(double min, double max, string title, Color color)
         {

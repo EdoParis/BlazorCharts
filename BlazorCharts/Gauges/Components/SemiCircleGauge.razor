@@ -18,55 +18,75 @@
     }
     else
     {
-        if (Model.HasBreakPoints)
-        {
-            double start_degree = 0;
-            foreach (Breakpoint breakpoint in Model)
+        string gauge_path = Theme.RoundedEdges ? RoundedGaugePath(-Math.PI / 2, Math.PI / 2) : GaugePath(-Math.PI / 2, Math.PI / 2);
+
+        <clipPath id="gauge_clip">
+            <path d="@gauge_path">
+            </path>
+        </clipPath>
+
+        <g clip-path="url(#gauge_clip)">
+            @if (Model.HasBreakPoints)
             {
-                double degree = Math.PI * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
-                <path class="fade-in" 
-                      d="@ArcPath(start_degree, degree)"
-                      fill="none"
-                      stroke="@breakpoint.Color.ToHex()"
-                      stroke-width="@padding"
-                      stroke-opacity="0.6"
-                      @onpointerenter="() => OnBreakpointEnter(breakpoint)"
+                <clipPath id="breakpoints_clip">
+                    <path d="@gauge_path"
+                          transform="rotate(@((180 * ((Model.LastBreakpointValue.Value - Model.Axis.Min) / Model.Axis.Size - 1)).ToString("#.0", CultureInfo.InvariantCulture)), @(width / 2), @(height - padding))">
+                    </path>
+                </clipPath>
+
+                double start_degree = 0;
+                foreach (Breakpoint breakpoint in Model)
+                {
+                    double degree = Math.PI * (breakpoint.Value - Model.Axis.Min) / Model.Axis.Size;
+                    <path class="fade-in" 
+                          d="@ArcPath(start_degree, degree)"
+                          fill="none"
+                          stroke="@breakpoint.Color.ToHex()"
+                          stroke-width="@padding"
+                          stroke-opacity="0.6"
+                          clip-path="url(#breakpoints_clip)"
+                          @onpointerenter="() => OnBreakpointEnter(breakpoint)"
+                          @onpointerleave="() => LayoutTooltip.Hide()">
+                    </path>
+                    start_degree = degree;
+                }            
+            }
+            else if (Model.Axis.Contains(Model.Value))
+            {
+                <path class="fade-in"
+                      d="@(gauge_path)"
+                      fill="@Model.Color.ToHex()"
+                      fill-opacity="0.6"
+                      transform="rotate(@((180 * (Model.Percentage - 1)).ToString("#.0", CultureInfo.InvariantCulture)), @(width / 2), @(height - padding))"
+                      @onpointerenter="OnGaugeEnter"
                       @onpointerleave="() => LayoutTooltip.Hide()">
                 </path>
-                start_degree = degree;
-            }            
-        }
-        else if (Model.Axis.Contains(Model.Value))
-        {
-            <path class="fade-in" 
-                  d="@ArcPath(0, Math.PI)"
-                  fill="none"
-                  stroke="@Model.Color.ToHex()"
-                  stroke-width="@padding"
-                  stroke-dasharray="@((int)(radius * Math.PI))"
-                  stroke-dashoffset="@((int)((Model.Axis.Max - Model.Value) / Model.Axis.Size * radius * Math.PI))"
-                  stroke-opacity="0.6"
-                  @onpointerenter="OnGaugeEnter"
-                  @onpointerleave="() => LayoutTooltip.Hide()">
-            </path>
-        }
+            }
+        </g>
         @AxisLayout.Render(Model.Axis);
         @TitleLayout.Render(Model.Title);
         @ValueLayout.Render(Model.Value);
 
         if (Model.HasBreakPoints && Model.Axis.Contains(Model.Value))
         {
-            <path class="fade-in" 
-                  d="@BarPath()"
+            int bar_width = padding / 5;
+            int bar_height = 6 * padding / 5;
+            <rect x="@(width / 2 - (radius + bar_height / 2))"
+                  y="@(height - padding - bar_width / 2)"
+                  width="@bar_height"
+                  height="@bar_width"
+                  rx="@(Theme.RoundedEdges ? 10 : 0)"
+                  ry="@(Theme.RoundedEdges ? 10 : 0)"
+                  class="needle fade-in" 
                   fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"
                   stroke="@Theme.AxisColorString()"
                   stroke-width="1px"
                   fill-opacity="1.0"
                   vector-effect="non-scaling-stroke"
-                  transform="rotate(@((int)(180 * Model.Percentage)), @(width / 2), @(height - padding))"
+                  transform="rotate(@((180 * Model.Percentage).ToString("#.0", CultureInfo.InvariantCulture)), @(width / 2), @(height - padding))"
                   @onpointerenter="OnGaugeEnter"
                   @onpointerleave="() => LayoutTooltip.Hide()">
-            </path>
+            </rect>
         }
     }
 </svg>

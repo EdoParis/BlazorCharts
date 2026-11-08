@@ -22,6 +22,16 @@
     {
         if (Model.HasBreakPoints)
         {
+            <clipPath id="breakpoints_clip">
+                <rect x="@(Reverse? padding / 2 : width / 2)"
+                      y="@((int)(offsetV - (Model.LastBreakpointValue.Value - Model.Axis.Min) * scaleV))"
+                      rx="@(Theme.RoundedEdges ? 10 : 0)"
+                      ry="@(Theme.RoundedEdges ? 10 : 0)"
+                      height="@((int)((Model.LastBreakpointValue.Value - Model.Axis.Min) * scaleV))"
+                      width="@(padding)">
+                </rect>
+            </clipPath>
+
             double start_value = Model.Axis.Min;
             foreach (Breakpoint breakpoint in Model)
             {
@@ -34,6 +44,7 @@
                       fill-opacity="0.6"
                       stroke-width="1px"
                       vector-effect="non-scaling-stroke"
+                      clip-path="url(#breakpoints_clip)"
                       @onpointerenter="() => OnBreakpointEnter(breakpoint)"
                       @onpointerleave="() => LayoutTooltip.Hide()">
                 </rect>
@@ -45,6 +56,8 @@
             <rect class="fade-in" 
                   y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV))"
                   x="@(Reverse? padding / 2 : width / 2)"
+                  rx="@(Theme.RoundedEdges ? 10 : 0)"
+                  ry="@(Theme.RoundedEdges ? 10 : 0)"
                   height="@((int)((Model.Value - Model.Axis.Min) * scaleV))"
                   width="@padding"
                   fill="@Model.Color.ToHex()"
@@ -70,6 +83,8 @@
             <rect class="fade-in" 
                   y="@((int)(offsetV - (Model.Value - Model.Axis.Min) * scaleV - padding / 10))"
                   x="@((Reverse ? padding / 2 : width / 2) - padding / 10)"
+                  rx="@(Theme.RoundedEdges ? 10 : 0)"
+                  ry="@(Theme.RoundedEdges ? 10 : 0)"
                   height="@(padding / 5)"
                   width="@(width - 9 * padding / 5)"
                   fill="@((Theme.BackgroundColor ?? Color.White).ToHex())"

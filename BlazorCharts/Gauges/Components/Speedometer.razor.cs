@@ -77,15 +77,39 @@ namespace BlazorGraphs.Components
                    $"A {radius} {radius} 0 0 1 {endpoint_x} {endpoint_y}";
         }
 
-        private string BarPath()
+        private string RoundedGaugePath(double start, double end)
         {
-            int bar_width = padding / 5;
-            int bar_height = radius + 3 * padding / 5;
+            double radius_out = radius + padding / 2;
+            double radius_in = radius - padding / 2;
+            double theta = end - start;
+            double roundness = 10;
 
-            return $"M {width / 2 - bar_height} {height / 2 + bar_width / 2}" +
-                   $"L {width / 2 - bar_height} {height / 2 - bar_width / 2}" +
-                   $"L {width / 2} {height / 2 - bar_width / 2}" +
-                   $"L {width / 2} {height / 2 + bar_width / 2}Z";
+            return $"M {(int)(width / 2 + (radius_out - roundness) * Math.Sin(start))} {(int)(height  / 2 - (radius_out - roundness) * Math.Cos(start))} " +
+                    $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(start + roundness / radius_out))} {(int)(height / 2 - radius_out * Math.Cos(start + roundness / radius_out))} " +
+                    $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta / 2 + start))} {(int)(height / 2 - radius_out * Math.Cos(theta / 2 + start))} " +
+                    $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(end - roundness / radius_out))} {(int)(height / 2 - radius_out * Math.Cos(end - roundness / radius_out))} " +
+                    $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + (radius_out - roundness) * Math.Sin(end))} {(int)(height / 2 - (radius_out - roundness) * Math.Cos(end))} " +
+                    $"L {(int)(width / 2 + (radius_in + roundness) * Math.Sin(end))} {(int)(height / 2 - (radius_in + roundness) * Math.Cos(end))} " +
+                    $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + radius_in * Math.Sin(end - roundness / radius_in))} {(int)(height / 2 - radius_in * Math.Cos(end - roundness / radius_in))} " +
+                    $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin((start + end) / 2))} {(int)(height / 2 - radius_in * Math.Cos((start + end) / 2))} " +
+                    $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin(start + roundness / radius_in))} {(int)(height / 2 - radius_in * Math.Cos(start + roundness / radius_in))} " +
+                    $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + (radius_in + roundness) * Math.Sin(start))} {(int)(height / 2 - (radius_in + roundness) * Math.Cos(start))} " +
+                    "Z";
+        }
+
+        private string GaugePath(double start, double end)
+        {
+            double radius_out = radius + padding / 2;
+            double radius_in = radius - padding / 2;
+            double theta = end - start;
+
+            return $"M {(int)(width / 2 + radius_out * Math.Sin(start))} {(int)(height / 2 - radius_out * Math.Cos(start))} " +
+                    $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta / 2 + start))} {(int)(height / 2 - radius_out * Math.Cos(theta / 2 + start))} " +
+                    $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(end))} {(int)(height / 2 - radius_out * Math.Cos(end))} " +
+                    $"L {(int)(width / 2 + radius_in * Math.Sin(end))} {(int)(height / 2 - radius_in * Math.Cos(end))} " +
+                    $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin((start + end) / 2))} {(int)(height / 2 - radius_in * Math.Cos((start + end) / 2))} " +
+                    $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin(start))} {(int)(height / 2 - radius_in * Math.Cos(start))} " +
+                    "Z";
         }
 
         private void OnGaugeEnter()

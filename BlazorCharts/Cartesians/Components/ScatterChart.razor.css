@@ -16,6 +16,7 @@ svg {
 
     .marker:hover {
         scale: 200%;
+        fill-opacity: 1.0;
     }
 
 .fade-in {

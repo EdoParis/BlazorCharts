@@ -2,27 +2,6 @@
 {
     internal static class PathRenderer
     {
-        public static string RenderShape(MarkerShape shape, int x, int y, int size)
-        {
-            switch (shape)
-            {
-                case MarkerShape.Circle:
-                    return RenderCircle(x, y, size);
-
-                case MarkerShape.Square:
-                    return RenderSquare(x, y, size);
-
-                case MarkerShape.Diamond:
-                    return RenderDiamond(x, y, size);
-
-                case MarkerShape.Triangle:
-                    return RenderTriangle(x, y, size);
-
-                default:
-                    throw new NotImplementedException();
-            }
-        }
-
         public static string RenderCircle(int x, int y, int size)
         {
             int r = (int)(size / Math.Sqrt(Math.PI));
@@ -42,9 +21,24 @@
 
         public static string RenderTriangle(int x, int y, int size)
         {
-            int b = (int)(2 * size / Math.Pow(3, 1 / 4.0));
-            int h = (int)(size * Math.Pow(3, 1 / 4.0));
+            int b = 4 * size / 3;
+            int h = (int)(b * Math.Sqrt(3) / 2);
             return $"M {x - b / 2} {y + h / 2} h {b} L {x} {y - h / 2} Z";
+        }
+
+        public static string RenderSlice(int x, int y, int size)
+        {
+            return $"M {x - size / 2} {y - size / 2} a {size} {size} 0 0 1 {size} {size} h {-size}Z";
+        }
+
+        public static string RenderSolidLine(int x, int y, int size)
+        {
+            return $"M {x - size / 2} {y - size / 6} h {size} v {size / 3} h {-size} Z";
+        }
+
+        public static string RenderDashedLine(int x, int y, int size)
+        {
+            return $"M {x - size / 2} {y - size / 6} h {2 * size / 5} v {size / 3} h {-2 * size / 5} Z M {x + size / 2} {y - size / 6} h {-2 * size / 5} v {size / 3} h {2 * size / 5} Z";
         }
     }
 }

@@ -49,7 +49,7 @@
                         {
                             int x = LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size);
                             int y = LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size);
-                            <path d="@PathRenderer.RenderShape(Theme.DataMarker, x, y, 14)"
+                            <path d="@(Theme.DataMarker.Render(x, y, 14, Theme.RoundedMarkers))"
                                   fill="@(Theme.BackgroundColor.HasValue ? Theme.BackgroundColor.Value.ToHex() : serie.Color.ToHex())"
                                   stroke="@serie.Color.ToHex()"
                                   stroke-width="1px"

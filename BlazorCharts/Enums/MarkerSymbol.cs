@@ -8,7 +8,6 @@
         Triangle,
         Slice,
         Dashedline,
-        Solidline,
-        Droplet
+        Solidline
     }
 }

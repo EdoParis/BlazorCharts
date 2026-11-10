@@ -89,7 +89,7 @@
                     double r = rating.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
                     int x = width / 2 + (int)(r * Math.Sin(2 * Math.PI / Model.Categories * i));
                     int y = height / 2 - (int)(r * Math.Cos(2 * Math.PI / Model.Categories * i));
-                    <path d="@PathRenderer.RenderShape(Theme.DataMarker, x, y, 14)"
+                    <path d="@(Theme.DataMarker.Render(x, y, 14, Theme.RoundedMarkers))"
                           fill="@(Theme.BackgroundColor.HasValue? Theme.BackgroundColor.Value.ToHex() : Model.Color.ToHex())"
                           stroke="@Model.Color.ToHex()"
                           stroke-width="1px"

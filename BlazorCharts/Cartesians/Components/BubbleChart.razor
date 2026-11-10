@@ -31,7 +31,7 @@
                 int y = LayoutView.Height - LayoutView.Padding - (int)((bubble.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size);
                 int size = (int)(14 + (LayoutView.Padding - 14) * (bubble.Radius - Model.AxisB.Min) / Model.AxisB.Size);
 
-                <path d="@PathRenderer.RenderShape(Theme.DataMarker, x, y, size)"
+                <path d="@(Theme.DataMarker.Render(x, y, size, Theme.RoundedMarkers))"
                       fill="@serie.Color.ToHex()"
                       stroke="@serie.Color.ToHex()"
                       stroke-width="1px"

@@ -40,7 +40,15 @@ namespace BlazorGraphs.Core
                 if (layout.HasMarker)
                 {
                     builder.OpenElement(sequence++, "td");
-                    builder.AddContent(sequence++, layout.Marker.Value.Render());
+                    builder.OpenElement(sequence++, "svg");
+                    builder.AddAttribute(sequence++, "width", "1.5em");
+                    builder.AddAttribute(sequence++, "height", "1em");
+                    builder.AddAttribute(sequence++, "viewBox", "0 0 75 50");
+                    builder.OpenElement(sequence++, "path");
+                    builder.AddAttribute(sequence++, "d", layout.Marker.Value.Symbol.Render(25, 25, 35, theme.RoundedMarkers));
+                    builder.AddAttribute(sequence++, "fill", layout.Marker.Value.Color.ToHex());
+                    builder.CloseElement();
+                    builder.CloseElement();
                     builder.CloseElement();
                 }
                 builder.OpenElement(sequence++, "td");

@@ -9,6 +9,7 @@ namespace WebApp.Pages.Charts
         private Circulargram model;
         private IColorStream colorstream;
         private Random random;
+        private Theme theme;
         private Color next_color;
 
         protected override void OnInitialized()

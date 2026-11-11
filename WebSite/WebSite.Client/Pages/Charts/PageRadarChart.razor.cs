@@ -8,6 +8,7 @@ namespace WebApp.Pages.Charts
     public partial class PageRadarChart : ComponentBase
     {
         private Radargram model1;
+        private Theme theme;
         private Random random;
         private Double offset;
         private Boolean circular;

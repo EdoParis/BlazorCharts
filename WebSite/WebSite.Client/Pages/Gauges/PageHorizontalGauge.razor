@@ -41,6 +41,8 @@
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
+                    <div class="col-6 col-form-label">Theme</div>
+                    <div class="col-6"><ThemeSelect @bind-Value="@theme" /></div>
                     <div class="col-6 col-form-label">Color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.Color.ToHex())" @onchange="OnColorChanged" /></div>
                     <div class="col-6 col-form-label">Value</div>
@@ -48,7 +50,9 @@
                     <div class="col-6">Reverse</div>
                     <div class="col-6"><div class="col-6 form-control-lg form-check form-switch form-check-reverse py-0 w-100"><input type="checkbox" class="form-check-input" @bind="@reverse" /></div></div>
                     <div class="col-12">
-                        <HorizontalGauge Model="@model1" Reverse="@reverse"></HorizontalGauge>
+                        <HorizontalGauge Model="@model1"
+                                         Theme="@theme" 
+                                         Reverse="@reverse"/>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger text-truncate w-100 text-truncate" @onclick="OnGaugeClear">Clear Breakpoints</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary text-truncate w-100 text-truncate" @onclick="OnBreakPointAdd">Add Breakpoint</button></div>

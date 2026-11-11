@@ -42,9 +42,15 @@
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
                     <div class="col-6">
-                        <VerticalGauge Model="@model1" Reverse="@reverse"></VerticalGauge>
+                        <VerticalGauge Model="@model1"
+                                       Theme="@theme" 
+                                       Reverse="@reverse"/>
                     </div>
                     <div class="col-6">
+                        <p>
+                            <label>Theme</label>
+                            <ThemeSelect @bind-Value="@theme" />
+                        </p>
                         <p>
                             <label>Color</label>
                             <input type="color" class="form-control form-control-color w-100" value="@(model1.Color.ToHex())" @onchange="OnColorChanged" />

@@ -6,9 +6,10 @@ namespace WebApp.Pages.Gauges
 {
     public partial class PageSemicircleGauge : ComponentBase
     {
-        Random random;
-        Double last_threshold;
-        Gaugegram model1;
+        private Theme theme;
+        private Random random;
+        private Double last_threshold;
+        private Gaugegram model1;
 
         protected override void OnInitialized()
         {

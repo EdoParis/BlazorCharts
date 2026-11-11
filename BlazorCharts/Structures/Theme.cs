@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace BlazorGraphs
 {
-    public struct Theme
+    public struct Theme : IEquatable<Theme>
     {
         public Color? BackgroundColor { get; set; }
         public Color? AxisColor { get; set; }
@@ -94,5 +94,41 @@ namespace BlazorGraphs
                 AxisColor = Color.FromArgb(80, 80, 100)
             };
         }
+
+        #region EQUALITY
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(BackgroundColor, 
+                                    AxisColor,
+                                    TextColor,
+                                    FontFamily,
+                                    RoundedShapes,
+                                    RoundedMarkers,
+                                    DataMarker,
+                                    SeriesMarker);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Theme other && Equals(other);
+        }
+
+        public bool Equals(Theme other)
+        {
+            return BackgroundColor == other.BackgroundColor &&
+                   AxisColor == other.AxisColor &&
+                   TextColor == other.TextColor &&
+                   FontFamily == other.FontFamily &&
+                   RoundedShapes == other.RoundedShapes &&
+                   RoundedMarkers == other.RoundedMarkers &&
+                   DataMarker == other.DataMarker &&
+                   SeriesMarker == other.SeriesMarker;
+        }
+
+        public static bool operator ==(Theme left, Theme right) => left.Equals(right);
+        public static bool operator !=(Theme left, Theme right) => !left.Equals(right);
+
+        #endregion
     }
 }

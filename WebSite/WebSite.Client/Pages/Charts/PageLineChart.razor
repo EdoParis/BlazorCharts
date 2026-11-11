@@ -68,10 +68,8 @@
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
-                    <div class="col-6 col-form-label">Title X</div>
-                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleX)" @onchange="@((e) => model.TitleX = e?.Value?.ToString())" /></div>
-                    <div class="col-6 col-form-label">Title Y</div>
-                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleY)" @onchange="@((e) => model.TitleY = e?.Value?.ToString())" /></div>
+                    <div class="col-6 col-form-label">Theme</div>
+                    <div class="col-6"><ThemeSelect @bind-Value="@theme" /></div>
                     <div class="col-6 col-form-label">Aspect ratio</div>
                     <div class="col-6">
                         <select class="form-select" @bind="@aspectratio">
@@ -87,12 +85,17 @@
                             <option value="@AspectRatios.Extralarge">@nameof(AspectRatios.Extralarge)</option>
                         </select>
                     </div>
+                    <div class="col-6 col-form-label">Title X</div>
+                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleX)" @onchange="@((e) => model.TitleX = e?.Value?.ToString())" /></div>
+                    <div class="col-6 col-form-label">Title Y</div>
+                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleY)" @onchange="@((e) => model.TitleY = e?.Value?.ToString())" /></div>
                     <div class="col-6 col-form-label">Next color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(line_color.ToHex())" @onchange="@((e) => line_color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-6">Hide points</div>
                     <div class="col-6"><div class="col-6 form-control-lg form-check form-switch form-check-reverse py-0 w-100"><input type="checkbox" class="form-check-input" @bind="@hidepoints" /></div></div>
                     <div class="col-12">
-                        <LineChart Model="@model" 
+                        <LineChart Model="@model"
+                                   Theme="@theme"
                                    HidePoints="@hidepoints" 
                                    AspectRatio="@aspectratio" 
                                    OnPointClick="OnPointClick" 

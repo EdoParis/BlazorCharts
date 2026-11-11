@@ -8,6 +8,7 @@ namespace WebApp.Pages.Charts
     {
         private Histogram model1;
         private Random random;
+        private Theme theme;
         private double offset;
         private double aspectratio;
 

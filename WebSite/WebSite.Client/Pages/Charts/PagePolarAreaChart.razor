@@ -53,12 +53,16 @@
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
+                    <div class="col-6 col-form-label">Theme</div>
+                    <div class="col-6"><ThemeSelect @bind-Value="@theme" /></div>
                     <div class="col-6 col-form-label">Title</div>
                     <div class="col-6"><input type="text" class="form-control" value="@(model?.Title)" @onchange="@((e) => model.Title = e?.Value?.ToString())" /></div>
                     <div class="col-6 col-form-label">Next color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(next_color.ToHex())" @onchange="@((e) => next_color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-12">
-                        <PolarAreaChart Model="@model" OnClick="OnSliceClick"></PolarAreaChart>
+                        <PolarAreaChart Model="@model"
+                                        Theme="@theme" 
+                                        OnClick="OnSliceClick"/>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnSliceAdd">Add Slice</button></div>

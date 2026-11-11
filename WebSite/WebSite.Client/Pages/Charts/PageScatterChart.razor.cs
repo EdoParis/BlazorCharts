@@ -7,6 +7,7 @@ namespace WebApp.Pages.Charts
     public partial class PageScatterChart : ComponentBase
     {
         private Cartesiangram model;
+        private Theme theme;
         private Random random;
         private Color line_color;
         private Double aspectratio;

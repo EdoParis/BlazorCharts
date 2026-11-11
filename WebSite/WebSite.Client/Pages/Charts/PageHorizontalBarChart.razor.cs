@@ -8,6 +8,7 @@ namespace WebApp.Pages.Charts
     {
         private Bargram model1;
         private Random random;
+        private Theme theme;
         private double offset;
         private double aspectratio;
 

@@ -59,12 +59,17 @@
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
+                    <div class="col-6 col-form-label">Theme</div>
+                    <div class="col-6"><ThemeSelect @bind-Value="@theme" /></div>
                     <div class="col-6 col-form-label">Color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.Color.ToHex())" @onchange="@((e) => model1.Color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-6">Circular</div>
                     <div class="col-6"><div class="col-6 form-control-lg form-check form-switch form-check-reverse py-0 w-100"><input type="checkbox" class="form-check-input" @bind="@circular" /></div></div>
                     <div class="col-12">
-                        <RadarChart Model="@model1" Circular="@circular" OnClick="OnRatingClick"></RadarChart>
+                        <RadarChart Model="@model1"
+                                    Theme="@theme" 
+                                    Circular="@circular" 
+                                    OnClick="OnRatingClick"/>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnRatingAdd">Add Rating</button></div>

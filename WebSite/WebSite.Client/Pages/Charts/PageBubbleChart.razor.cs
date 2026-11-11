@@ -9,6 +9,7 @@ namespace WebApp.Pages.Charts
         private Bubblegram model;
         private IColorStream colorstream;
         private Random random;
+        private Theme theme;
         private Color serie_color;
         private Double aspectratio;
 

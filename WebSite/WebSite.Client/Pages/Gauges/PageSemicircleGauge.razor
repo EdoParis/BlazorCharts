@@ -36,12 +36,15 @@
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
+                    <div class="col-6 col-form-label">Theme</div>
+                    <div class="col-6"><ThemeSelect @bind-Value="@theme" /></div>
                     <div class="col-6 col-form-label">Color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.Color.ToHex())" @onchange="OnColorChanged" /></div>
                     <div class="col-6 col-form-label">Value</div>
                     <div class="col-6"><input type="number" class="form-control form-control-color w-100" value="@(model1.Value)" @onchange="OnValueChanged" /></div>
                     <div class="col-12">
-                        <SemiCircleGauge Model="@model1"></SemiCircleGauge>
+                        <SemiCircleGauge Model="@model1"
+                                         Theme="@theme"/>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger text-truncate w-100" @onclick="OnGaugeClear">Clear Breakpoints</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary text-truncate w-100" @onclick="OnBreakPointAdd">Add Breakpoint</button></div>

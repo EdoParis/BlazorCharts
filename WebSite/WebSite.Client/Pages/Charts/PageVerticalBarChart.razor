@@ -59,10 +59,8 @@
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
-                    <div class="col-6 col-form-label">Primary color</div>
-                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.PrimaryColor.ToHex())" @onchange="@((e) => model1.PrimaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
-                    <div class="col-6 col-form-label">Secondary color</div>
-                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.SecondaryColor.ToHex())" @onchange="@((e) => model1.SecondaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6 col-form-label">Theme</div>
+                    <div class="col-6"><ThemeSelect @bind-Value="@theme" /></div>
                     <div class="col-6 col-form-label">Aspect ratio</div>
                     <div class="col-6">
                         <select class="form-select" @bind="@aspectratio">
@@ -78,8 +76,15 @@
                             <option value="@AspectRatios.Extralarge">@nameof(AspectRatios.Extralarge)</option>
                         </select>
                     </div>
+                    <div class="col-6 col-form-label">Primary color</div>
+                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.PrimaryColor.ToHex())" @onchange="@((e) => model1.PrimaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
+                    <div class="col-6 col-form-label">Secondary color</div>
+                    <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(model1.SecondaryColor.ToHex())" @onchange="@((e) => model1.SecondaryColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-12">
-                        <VerticalBarChart Model="@model1" OnClick="OnBarClick" AspectRatio="@aspectratio"></VerticalBarChart>
+                        <VerticalBarChart Model="@model1"
+                                          Theme="@theme" 
+                                          OnClick="OnBarClick" 
+                                          AspectRatio="@aspectratio"/>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnBarAdd">Add Bar</button></div>

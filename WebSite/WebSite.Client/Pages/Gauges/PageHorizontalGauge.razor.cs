@@ -6,10 +6,11 @@ namespace WebApp.Pages.Gauges
 {
     public partial class PageHorizontalGauge : ComponentBase
     {
-        Random random;
-        double last_threshold;
-        bool reverse;
-        Gaugegram model1;
+        private Random random;
+        private Theme theme;
+        private Double last_threshold;
+        private Boolean reverse;
+        private Gaugegram model1;
 
         protected override void OnInitialized()
         {

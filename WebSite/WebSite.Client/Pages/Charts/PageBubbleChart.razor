@@ -58,10 +58,8 @@
         <div class="row g-3">
             <div class="col col-sm-6 col-lg-4 col-12">
                 <div class="row g-3">
-                    <div class="col-6 col-form-label">Title X</div>
-                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleX)" @onchange="@((e) => model.TitleX = e?.Value?.ToString())" /></div>
-                    <div class="col-6 col-form-label">Title Y</div>
-                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleY)" @onchange="@((e) => model.TitleY = e?.Value?.ToString())" /></div>
+                    <div class="col-6 col-form-label">Theme</div>
+                    <div class="col-6"><ThemeSelect @bind-Value="@theme" /></div>
                     <div class="col-6 col-form-label">Aspect ratio</div>
                     <div class="col-6">
                         <select class="form-select" @bind="@aspectratio">
@@ -77,10 +75,17 @@
                             <option value="@AspectRatios.Extralarge">@nameof(AspectRatios.Extralarge)</option>
                         </select>
                     </div>
+                    <div class="col-6 col-form-label">Title X</div>
+                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleX)" @onchange="@((e) => model.TitleX = e?.Value?.ToString())" /></div>
+                    <div class="col-6 col-form-label">Title Y</div>
+                    <div class="col-6"><input type="text" class="form-control" value="@(model?.TitleY)" @onchange="@((e) => model.TitleY = e?.Value?.ToString())" /></div>
                     <div class="col-6 col-form-label">Next color</div>
                     <div class="col-6"><input type="color" class="form-control form-control-color w-100" value="@(serie_color.ToHex())" @onchange="@((e) => serie_color = ColorTranslator.FromHtml(e?.Value?.ToString()))" /></div>
                     <div class="col-12">
-                        <BubbleChart Model="@model" OnBubbleClick="OnBubbleClick" AspectRatio="@aspectratio"></BubbleChart>
+                        <BubbleChart Model="@model" 
+                                     Theme="@theme"
+                                     OnBubbleClick="OnBubbleClick" 
+                                     AspectRatio="@aspectratio"/>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
                     <div class="col-6"><button type="button" class="btn btn-primary w-100 text-truncate" @onclick="OnSeriesAdd">Add Serie</button></div>

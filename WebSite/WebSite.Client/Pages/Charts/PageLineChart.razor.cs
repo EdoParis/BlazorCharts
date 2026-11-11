@@ -8,6 +8,7 @@ namespace WebApp.Pages.Charts
     {
         private Cartesiangram model;
         private Random random;
+        private Theme theme;
         private Color line_color;
         private bool hidepoints;
         private double aspectratio;

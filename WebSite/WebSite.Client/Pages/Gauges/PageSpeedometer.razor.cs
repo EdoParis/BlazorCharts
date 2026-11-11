@@ -6,10 +6,11 @@ namespace WebApp.Pages.Gauges
 {
     public partial class PageSpeedometer : ComponentBase
     {
-        Random random;
-        double last_threshold;
-        bool inner_axis;
-        Gaugegram model1;
+        private Theme theme;
+        private Random random;
+        private Double last_threshold;
+        private Boolean inner_axis;
+        private Gaugegram model1;
 
         protected override void OnInitialized()
         {

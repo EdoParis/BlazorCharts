@@ -4,7 +4,7 @@ namespace BlazorGraphs.Core
 {
     internal struct Marker
     {
-        public MarkerSymbol Symbol { get; set; }
+        public SeriesMarker Symbol { get; set; }
         public Color Color { get; set; }
     }
 }

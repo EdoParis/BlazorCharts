@@ -60,7 +60,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Symbol = Theme.SeriesMarker,
+                Symbol = Theme.Markers.Series,
                 Color = bar.Value < 0 ? Model.SecondaryColor : Model.PrimaryColor
             })
             .WithTitle(bar.Label)

@@ -2,22 +2,22 @@
 {
     internal static class MarkerExtensions
     {
-        public static string Render(this MarkerShape shape, int x, int y, int size, bool rounded)
+        public static string Render(this DataMarker shape, int x, int y, int size, bool rounded)
         {
             switch (shape)
             {
-                case MarkerShape.Circle:
+                case DataMarker.Circle:
                     return PathRenderer.RenderCircle(x, y, size);
 
-                case MarkerShape.Square:
+                case DataMarker.Square:
                     return rounded ? RoundedPathRenderer.RenderSquare(x, y, size) :
                                      PathRenderer.RenderSquare(x, y, size);
 
-                case MarkerShape.Diamond:
+                case DataMarker.Diamond:
                     return rounded ? RoundedPathRenderer.RenderDiamond(x, y, size) :
                                      PathRenderer.RenderDiamond(x, y, size);
 
-                case MarkerShape.Triangle:
+                case DataMarker.Triangle:
                     return rounded ? RoundedPathRenderer.RenderTriangle(x, y, size) :
                                      PathRenderer.RenderTriangle(x, y, size);
 
@@ -26,34 +26,34 @@
             }
         }
 
-        public static string Render(this MarkerSymbol symbol, int x, int y, int size, bool rounded)
+        public static string Render(this SeriesMarker symbol, int x, int y, int size, bool rounded)
         {
             switch (symbol)
             {
-                case MarkerSymbol.Circle:
+                case SeriesMarker.Circle:
                     return PathRenderer.RenderCircle(x, y, size);
 
-                case MarkerSymbol.Square:
+                case SeriesMarker.Square:
                     return rounded ? RoundedPathRenderer.RenderSquare(x, y, size) :
                                      PathRenderer.RenderSquare(x, y, size);
 
-                case MarkerSymbol.Diamond:
+                case SeriesMarker.Diamond:
                     return rounded ? RoundedPathRenderer.RenderDiamond(x, y, size) :
                                      PathRenderer.RenderDiamond(x, y, size);
 
-                case MarkerSymbol.Triangle:
+                case SeriesMarker.Triangle:
                     return rounded ? RoundedPathRenderer.RenderTriangle(x, y, size) :
                                      PathRenderer.RenderTriangle(x, y, size);
 
-                case MarkerSymbol.Slice:
+                case SeriesMarker.Slice:
                     return rounded ? RoundedPathRenderer.RenderSlice(x, y, size) :
                                      PathRenderer.RenderSlice(x, y, size);
 
-                case MarkerSymbol.Solidline:
+                case SeriesMarker.Solidline:
                     return rounded ? RoundedPathRenderer.RenderSolidLine(x, y, size) :
                                      PathRenderer.RenderSolidLine(x, y, size);
 
-                case MarkerSymbol.Dashedline:
+                case SeriesMarker.Dashedline:
                     return rounded ? RoundedPathRenderer.RenderDashedLine(x, y, size) :
                                      PathRenderer.RenderDashedLine(x, y, size);
 

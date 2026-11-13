@@ -73,7 +73,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Symbol = Theme.SeriesMarker,
+                Symbol = Theme.Markers.Series,
                 Color = Model.Color
             })
             .WithTitle(rating.Label)
@@ -88,7 +88,7 @@ namespace BlazorGraphs.Components
 
             LayoutTooltip.WithMarker(new Marker()
             {
-                Symbol = Theme.SeriesMarker,
+                Symbol = Theme.Markers.Series,
                 Color = Model.Color
             })
             .WithLabel(Model.Title)

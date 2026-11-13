@@ -58,7 +58,7 @@ namespace BlazorGraphs.Components
         {
             LayoutTooltip.WithMarker(new Marker()
             {
-                Symbol = Theme.SeriesMarker, 
+                Symbol = Theme.Markers.Series, 
                 Color = bin.Value < 0 ? Model.SecondaryColor : Model.PrimaryColor 
             })
             .WithLabel(bin.Value.ToString("0.0#"))

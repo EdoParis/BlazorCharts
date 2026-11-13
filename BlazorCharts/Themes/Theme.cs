@@ -10,8 +10,7 @@ namespace BlazorGraphs
         public Color? TextColor { get; set; }
         public String FontFamily { get; set; }
         public Boolean RoundedShapes { get; set; }
-        public MarkerShape DataMarker { get; set; }
-        public MarkerSymbol SeriesMarker { get; set; }
+        public MarkerSettings Markers { get; set; }
         public TooltipStyle Tooltip { get; set; }
 
         public static Theme FromColor(Color color)
@@ -109,6 +108,7 @@ namespace BlazorGraphs
                                     TextColor,
                                     FontFamily,
                                     RoundedShapes,
+                                    Markers,
                                     Tooltip);
         }
 
@@ -124,6 +124,7 @@ namespace BlazorGraphs
                    TextColor == other.TextColor &&
                    FontFamily == other.FontFamily &&
                    RoundedShapes == other.RoundedShapes &&
+                   Markers == other.Markers &&
                    Tooltip == other.Tooltip;
         }
 

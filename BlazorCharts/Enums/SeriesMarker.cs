@@ -1,6 +1,6 @@
 ﻿namespace BlazorGraphs
 {
-    public enum MarkerSymbol
+    public enum SeriesMarker
     {
         Circle,
         Square,

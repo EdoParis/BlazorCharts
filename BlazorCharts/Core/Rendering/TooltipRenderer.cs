@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.Globalization;
 
 namespace BlazorGraphs.Core
 {
@@ -20,10 +21,10 @@ namespace BlazorGraphs.Core
                                                              transform: translate(-50%, -110%);
                                                              backdrop-filter: blur(5px) brightness(0.85) hue-rotate(15deg);
                                                              box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-                                                             color: {theme.TextColorString()}; 
+                                                             color: {theme.TooltipTextColorString()}; 
                                                              font-family: {theme.FontString()}; 
-                                                             border-color: {theme.AxisColorString()}; 
-                                                             background-color: {theme.BackgroundString()};
+                                                             border-color: {theme.TooltipBorderColorString()}; 
+                                                             background-color: {theme.TooltipBackgroundString()};
                                                              display: {(layout.Visible ? "block" : "none")}");
                 builder.OpenElement(sequence++, "table");
                 if (!string.IsNullOrWhiteSpace(layout.Title))

@@ -26,15 +26,19 @@
             return theme.FontFamily ?? INHERIT;
         }
 
-        public static Theme Merge(this Theme first, Theme second)
+        public static string TooltipBackgroundString(this Theme theme)
         {
-            return new Theme()
-            {
-                BackgroundColor = first.BackgroundColor ?? second.BackgroundColor,
-                TextColor = first.TextColor ?? second.TextColor,
-                AxisColor = first.AxisColor ?? second.AxisColor,
-                FontFamily = first.FontFamily ?? second.FontFamily
-            };
+            return theme.Tooltip.BackgroundColor?.ToHex() ?? TRANSPARENT;
+        }
+
+        public static string TooltipBorderColorString(this Theme theme)
+        {
+            return theme.Tooltip.BorderColor?.ToHex() ?? CURRENT;
+        }
+
+        public static string TooltipTextColorString(this Theme theme)
+        {
+            return theme.Tooltip.TextColor?.ToHex() ?? CURRENT;
         }
     }
 }

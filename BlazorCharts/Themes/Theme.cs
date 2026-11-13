@@ -12,6 +12,7 @@ namespace BlazorGraphs
         public Boolean RoundedShapes { get; set; }
         public MarkerShape DataMarker { get; set; }
         public MarkerSymbol SeriesMarker { get; set; }
+        public TooltipStyle Tooltip { get; set; }
 
         public static Theme FromColor(Color color)
         {
@@ -40,6 +41,7 @@ namespace BlazorGraphs
                 BackgroundColor = Color.FromArgb(33, 37, 41),
                 TextColor = Color.FromArgb(255, 255, 255),
                 AxisColor = Color.FromArgb(255, 255, 255),
+                Tooltip = TooltipStyle.Dark
             };
         }
 
@@ -50,6 +52,7 @@ namespace BlazorGraphs
                 BackgroundColor = Color.FromArgb(255, 255, 255),
                 TextColor = Color.FromArgb(33, 37, 41),
                 AxisColor = Color.FromArgb(33, 37, 41),
+                Tooltip = TooltipStyle.Light
             };
         }
 
@@ -60,6 +63,7 @@ namespace BlazorGraphs
                 BackgroundColor = Color.FromArgb(240, 244, 248),
                 TextColor = Color.FromArgb(71, 85, 105),
                 AxisColor = Color.FromArgb(148, 163, 184),
+                Tooltip = TooltipStyle.Arctic
             };
         }
 
@@ -70,6 +74,7 @@ namespace BlazorGraphs
                 BackgroundColor = Color.FromArgb(243, 239, 224),
                 TextColor = Color.FromArgb(42, 68, 94),
                 AxisColor = Color.FromArgb(190, 190, 160),
+                Tooltip = TooltipStyle.Beach
             };
         }
 
@@ -80,6 +85,7 @@ namespace BlazorGraphs
                 BackgroundColor = Color.FromArgb(33, 37, 41),
                 TextColor = Color.FromArgb(0, 240, 255),
                 AxisColor = Color.FromArgb(0, 200, 230),
+                Tooltip = TooltipStyle.Neon
             };
         }
 
@@ -90,6 +96,7 @@ namespace BlazorGraphs
                 BackgroundColor = Color.FromArgb(45, 45, 68),
                 TextColor = Color.FromArgb(160, 160, 160),
                 AxisColor = Color.FromArgb(80, 80, 100),
+                Tooltip = TooltipStyle.Night
             };
         }
 
@@ -101,7 +108,8 @@ namespace BlazorGraphs
                                     AxisColor,
                                     TextColor,
                                     FontFamily,
-                                    RoundedShapes);
+                                    RoundedShapes,
+                                    Tooltip);
         }
 
         public override bool Equals(object obj)
@@ -115,7 +123,8 @@ namespace BlazorGraphs
                    AxisColor == other.AxisColor &&
                    TextColor == other.TextColor &&
                    FontFamily == other.FontFamily &&
-                   RoundedShapes == other.RoundedShapes;
+                   RoundedShapes == other.RoundedShapes &&
+                   Tooltip == other.Tooltip;
         }
 
         public static bool operator ==(Theme left, Theme right) => left.Equals(right);

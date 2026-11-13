@@ -45,7 +45,7 @@ namespace BlazorGraphs.Core
                     builder.AddAttribute(sequence++, "height", "1em");
                     builder.AddAttribute(sequence++, "viewBox", "0 0 75 50");
                     builder.OpenElement(sequence++, "path");
-                    builder.AddAttribute(sequence++, "d", layout.Marker.Value.Symbol.Render(25, 25, 35, theme.RoundedMarkers));
+                    builder.AddAttribute(sequence++, "d", layout.Marker.Value.Symbol.Render(25, 25, 35, theme.RoundedShapes));
                     builder.AddAttribute(sequence++, "fill", layout.Marker.Value.Color.ToHex());
                     builder.CloseElement();
                     builder.CloseElement();

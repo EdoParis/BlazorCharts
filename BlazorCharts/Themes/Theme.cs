@@ -10,7 +10,6 @@ namespace BlazorGraphs
         public Color? TextColor { get; set; }
         public String FontFamily { get; set; }
         public Boolean RoundedShapes { get; set; }
-        public Boolean RoundedMarkers { get; set; }
         public MarkerShape DataMarker { get; set; }
         public MarkerSymbol SeriesMarker { get; set; }
 
@@ -30,8 +29,7 @@ namespace BlazorGraphs
         {
             get => new Theme()
             {
-                RoundedShapes = true,
-                RoundedMarkers = true
+                RoundedShapes = true
             };
         }
 
@@ -41,7 +39,7 @@ namespace BlazorGraphs
             {
                 BackgroundColor = Color.FromArgb(33, 37, 41),
                 TextColor = Color.FromArgb(255, 255, 255),
-                AxisColor = Color.FromArgb(255, 255, 255)
+                AxisColor = Color.FromArgb(255, 255, 255),
             };
         }
 
@@ -51,7 +49,7 @@ namespace BlazorGraphs
             {
                 BackgroundColor = Color.FromArgb(255, 255, 255),
                 TextColor = Color.FromArgb(33, 37, 41),
-                AxisColor = Color.FromArgb(33, 37, 41)
+                AxisColor = Color.FromArgb(33, 37, 41),
             };
         }
 
@@ -61,7 +59,7 @@ namespace BlazorGraphs
             {
                 BackgroundColor = Color.FromArgb(240, 244, 248),
                 TextColor = Color.FromArgb(71, 85, 105),
-                AxisColor = Color.FromArgb(148, 163, 184)
+                AxisColor = Color.FromArgb(148, 163, 184),
             };
         }
 
@@ -71,7 +69,7 @@ namespace BlazorGraphs
             {
                 BackgroundColor = Color.FromArgb(243, 239, 224),
                 TextColor = Color.FromArgb(42, 68, 94),
-                AxisColor = Color.FromArgb(190, 190, 160)
+                AxisColor = Color.FromArgb(190, 190, 160),
             };
         }
 
@@ -81,7 +79,7 @@ namespace BlazorGraphs
             {
                 BackgroundColor = Color.FromArgb(33, 37, 41),
                 TextColor = Color.FromArgb(0, 240, 255),
-                AxisColor = Color.FromArgb(0, 200, 230)
+                AxisColor = Color.FromArgb(0, 200, 230),
             };
         }
 
@@ -91,7 +89,7 @@ namespace BlazorGraphs
             {
                 BackgroundColor = Color.FromArgb(45, 45, 68),
                 TextColor = Color.FromArgb(160, 160, 160),
-                AxisColor = Color.FromArgb(80, 80, 100)
+                AxisColor = Color.FromArgb(80, 80, 100),
             };
         }
 
@@ -103,10 +101,7 @@ namespace BlazorGraphs
                                     AxisColor,
                                     TextColor,
                                     FontFamily,
-                                    RoundedShapes,
-                                    RoundedMarkers,
-                                    DataMarker,
-                                    SeriesMarker);
+                                    RoundedShapes);
         }
 
         public override bool Equals(object obj)
@@ -120,10 +115,7 @@ namespace BlazorGraphs
                    AxisColor == other.AxisColor &&
                    TextColor == other.TextColor &&
                    FontFamily == other.FontFamily &&
-                   RoundedShapes == other.RoundedShapes &&
-                   RoundedMarkers == other.RoundedMarkers &&
-                   DataMarker == other.DataMarker &&
-                   SeriesMarker == other.SeriesMarker;
+                   RoundedShapes == other.RoundedShapes;
         }
 
         public static bool operator ==(Theme left, Theme right) => left.Equals(right);

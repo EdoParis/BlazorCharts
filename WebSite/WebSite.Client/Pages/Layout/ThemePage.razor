@@ -8,8 +8,8 @@
 </p>
 <h6>Properties</h6>
 <p>
-    The theme provides six properties for customization, four of which has a default behavior that is activated when this is <span class="token keyword font-monospace">null</span>,
-    while the other two are enum with a default value, so you only need to set the value for the ones you need.
+    The theme provides eight properties for customization, four of which has a default behavior that is activated when this is <span class="token keyword font-monospace">null</span>,
+    while the other four are enums or booleans with a default value, so you only need to set the value for the ones you need.
 </p>
 <p>
     <div class="card overflow-hidden">
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <td>@(nameof(Theme.FontFamily))</td>
-                        <td class="font-monospace"><span class="token keyword">string</span></td>
+                        <td class="font-monospace"><span class="token keyword">String</span></td>
                         <td>Chart text font-family </td>
                         <td class="font-monospace"><span class="token string">inherit</span></td>
                     </tr>
@@ -58,123 +58,94 @@
                         <td>Enum of available shapes for datapoints</td>
                         <td class="font-monospace"><span class="token keyword">MarkerShape</span>.Circle</td>
                     </tr>
+                    <tr>
+                        <td>@(nameof(Theme.RoundedShapes))</td>
+                        <td class="font-monospace"><span class="token property">Boolean</span></td>
+                        <td>Round the shapes in the chart (bars, slices, markers...)</td>
+                        <td class="font-monospace"><span class="token property">False</span></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </p>
-<div class="card">
-    <div class="card-body">
-        <div class="row g-3">
-            <div class="col col-sm-6 col-lg-4 col-12">
-                <div class="row g-3">
-                    <div class="col-6 col-form-label">Theme</div>
-                    <div class="col-6">
-                        <select class="form-select" @onchange="@(e => OnThemeSelect(int.Parse(e?.Value.ToString())))" @key="@theme_index">
-                            @foreach(var kvp in available_themes)
-                            {
-                                <option value="@kvp.Key" selected="@(kvp.Key == theme_index)">@kvp.Value.Name</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-6 col-form-label">Background</div>
-                    <div class="col-6">
-                        <input type="color" 
-                               class="form-control form-control-color w-100"
-                               value="@((BackgroundTheme ?? Color.Black).ToHex())"
-                               title="@(BackgroundTheme.HasValue ? $"RGB: ({BackgroundTheme.Value.R}, {BackgroundTheme.Value.G}, {BackgroundTheme.Value.B})" : "transparent")" 
-                               @onchange="@(e => BackgroundTheme = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
-                    </div>
-                    <div class="col-6 col-form-label">Axis</div>
-                    <div class="col-6">
-                        <input type="color" 
-                               class="form-control form-control-color w-100" 
-                               value="@((AxisTheme ?? Color.Black).ToHex())"
-                               title="@(AxisTheme.HasValue ? $"RGB: ({AxisTheme.Value.R}, {AxisTheme.Value.G}, {AxisTheme.Value.B})" : "currentColor")"
-                               @onchange="@(e => AxisTheme = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
-                    </div>
-                    <div class="col-6 col-form-label">Text</div>
-                    <div class="col-6">
-                        <input type="color"
-                               class="form-control form-control-color w-100"
-                               value="@((TextTheme ?? Color.Black).ToHex())"
-                               title="@(TextTheme.HasValue ? $"RGB: ({TextTheme.Value.R}, {TextTheme.Value.G}, {TextTheme.Value.B})" : "currentColor")"
-                               @onchange="@(e => TextTheme = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
-                    </div>
-                    <div class="col-6 col-form-label">Font</div>
-                    <div class="col-6">
-                        <input type="text" 
-                               class="form-control" 
-                               placeholder="inherit" 
-                               value="@FontTheme" 
-                               @onchange="@(e => FontTheme = e?.Value?.ToString())" />
-                    </div>
-                    <div class="col-6 col-form-label">SeriesMarker</div>
-                    <div class="col-6">
-                        <select class="form-select" @bind="SymbolTheme">
-                            @foreach (MarkerSymbol symbol in Enum.GetValues<MarkerSymbol>())
-                            {
-                                <option value="@symbol">@symbol</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-6 col-form-label">DataMarker</div>
-                    <div class="col-6">
-                        <select class="form-select" @bind="ShapeTheme">
-                            @foreach (MarkerShape shape in Enum.GetValues<MarkerShape>())
-                            {
-                                <option value="@shape">@shape</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-12 d-flex flex-wrap justify-content-center">
-                        @foreach (chart_options chart_option in Enum.GetValues<chart_options>())
+<div class="card-group">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-6 col-form-label">Theme</div>
+                <div class="col-6">
+                    <ThemeSelect @bind-Value="@theme" />
+                </div>
+                <div class="col-6 col-form-label">Background</div>
+                <div class="col-6">
+                    <input type="color"
+                           class="form-control form-control-color w-100"
+                           value="@((theme.BackgroundColor ?? Color.Black).ToHex())"
+                           title="@(theme.BackgroundColor.HasValue ? $"RGB: ({theme.BackgroundColor.Value.R}, {theme.BackgroundColor.Value.G}, {theme.BackgroundColor.Value.B})" : "transparent")"
+                           @onchange="@(e => theme.BackgroundColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
+                </div>
+                <div class="col-6 col-form-label">Axis</div>
+                <div class="col-6">
+                    <input type="color"
+                           class="form-control form-control-color w-100"
+                           value="@((theme.AxisColor ?? Color.Black).ToHex())"
+                           title="@(theme.AxisColor.HasValue ? $"RGB: ({theme.AxisColor.Value.R}, {theme.AxisColor.Value.G}, {theme.AxisColor.Value.B})" : "currentColor")"
+                           @onchange="@(e => theme.AxisColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
+                </div>
+                <div class="col-6 col-form-label">Text</div>
+                <div class="col-6">
+                    <input type="color"
+                           class="form-control form-control-color w-100"
+                           value="@((theme.TextColor ?? Color.Black).ToHex())"
+                           title="@(theme.TextColor.HasValue ? $"RGB: ({theme.TextColor.Value.R}, {theme.TextColor.Value.G}, {theme.TextColor.Value.B})" : "currentColor")"
+                           @onchange="@(e => theme.TextColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
+                </div>
+                <div class="col-6 col-form-label">Font</div>
+                <div class="col-6">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="inherit"
+                           value="@theme.FontFamily"
+                           @onchange="@(e => theme.FontFamily = e?.Value?.ToString())" />
+                </div>
+                <div class="col-6 col-form-label">SeriesMarker</div>
+                <div class="col-6">
+                    <select class="form-select" @bind="@theme.SeriesMarker">
+                        @foreach (MarkerSymbol symbol in Enum.GetValues<MarkerSymbol>())
                         {
-                            <div class="form-check form-check-inline">
-                                <input id="radio-@(chart_option)"
-                                       type="radio"  
-                                       value="@((int)chart_option)"
-                                       class="form-check-input"
-                                       checked="@(chart_option == selected_chart)" 
-                                       @onclick="() => selected_chart = chart_option">
-                                <label class="form-check-label" 
-                                       for="radio-@(chart_option)">
-                                       @chart_option
-                                </label>
-                            </div>
+                            <option value="@symbol">@symbol</option>
                         }
-                    </div>
-                    <div class="col-12">
-                        @switch (selected_chart)
+                    </select>
+                </div>
+                <div class="col-6 col-form-label">DataMarker</div>
+                <div class="col-6">
+                    <select class="form-select" @bind="@theme.DataMarker">
+                        @foreach (MarkerShape shape in Enum.GetValues<MarkerShape>())
                         {
-                            case chart_options.Linechart:
-                            {
-                                <LineChart Model="@cartesiangram" Theme="@theme"></LineChart>
-                                <LegendHorizontal Model="@cartesiangram" Theme="@theme"></LegendHorizontal>
-                                break;
-                            }
-
-                            case chart_options.Scatterchart:
-                            {
-                                <ScatterChart Model="@cartesiangram" Theme="@theme"></ScatterChart>
-                                <LegendHorizontal Model="@cartesiangram" Theme="@theme"></LegendHorizontal>
-                                break;
-                            }
-
-                            case chart_options.Bubblechart:
-                            {
-                                <BubbleChart Model="bubblegram" Theme="@theme"></BubbleChart>
-                                <LegendHorizontal Model="bubblegram" Theme="@theme"></LegendHorizontal>
-                                break;
-                            }
+                            <option value="@shape">@shape</option>
                         }
+                    </select>
+                </div>
+                <div class="col-6 col-form-label">RoundedShapes</div>
+                <div class="col-6">
+                    <div class="form-control-lg form-check form-switch form-check-reverse py-0 w-100">
+                        <input type="checkbox" class="form-check-input" @bind="@theme.RoundedShapes" />
                     </div>
                 </div>
             </div>
-            <div class="col col-sm-6 col-lg-8 col-12">
-                <div class="h-100 w-100 small border">
-                    <pre class="language-csharp m-0 h-100">
-                        <code>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <BubbleChart Model="bubblegram" Theme="@theme"></BubbleChart>
+            <LegendHorizontal Model="bubblegram" Theme="@theme"></LegendHorizontal>
+        </div>
+    </div>
+</div>
+<div class="h-100 w-100 small border">
+    <pre class="language-csharp m-0 h-100">
+        <code>
  <span class="token comment">//Render chart and legend using a custom theme</span>
  &lt<span class="token tag bold">LineChart</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
  &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
@@ -207,10 +178,6 @@
          model.<span class="token function">AddSerie</span>(<span class="token string">$"Fn-{f}"</span>, palette.<span class="token function">Next</span>(), points);
      }
  }
-                        </code>
-                    </pre>
-                </div>
-            </div>
-        </div>
-    </div>
+        </code>
+    </pre>
 </div>

@@ -6,17 +6,6 @@ namespace WebApp.Pages.Layout
 {
     public partial class ThemePage : ComponentBase
     {
-        private static Dictionary<int, (string Name, Theme Theme)> available_themes = new()
-        {
-            {0, ("-", default)},
-            {1, (nameof(Theme.Light), Theme.Light)},
-            {2, (nameof(Theme.Dark), Theme.Dark) },
-            {3, (nameof(Theme.Arctic), Theme.Arctic) },
-            {4, (nameof(Theme.Beach), Theme.Beach) },
-            {5, (nameof(Theme.Neon), Theme.Neon) },
-            {6, (nameof(Theme.Night), Theme.Night) },
-        };
-
         private enum chart_options
         {
             Linechart,
@@ -27,68 +16,7 @@ namespace WebApp.Pages.Layout
         private Cartesiangram cartesiangram;
         private Bubblegram bubblegram;
         private Theme theme;
-        private Int32? theme_index;
         private chart_options selected_chart;
-
-        private Color? BackgroundTheme
-        {
-            get => theme.BackgroundColor;
-            set
-            {
-                theme.BackgroundColor = value;
-                theme_index = null;
-            }
-        }
-
-        private Color? AxisTheme
-        {
-            get => theme.AxisColor;
-            set
-            {
-                theme.AxisColor = value;
-                theme_index = null;
-            }
-        }
-
-        private Color? TextTheme
-        {
-            get => theme.TextColor;
-            set
-            {
-                theme.TextColor = value;
-                theme_index = null;
-            }
-        }
-
-        private String FontTheme
-        {
-            get => theme.FontFamily;
-            set
-            {
-                theme.FontFamily = value;
-                theme_index = null;
-            }
-        }
-
-        private MarkerSymbol SymbolTheme
-        {
-            get => theme.SeriesMarker;
-            set
-            {
-                theme.SeriesMarker = value;
-                theme_index = null;
-            }
-        }
-
-        private MarkerShape ShapeTheme
-        {
-            get => theme.DataMarker;
-            set
-            {
-                theme.DataMarker = value;
-                theme_index = null;
-            }
-        }
 
         protected override void OnInitialized()
         {
@@ -121,15 +49,6 @@ namespace WebApp.Pages.Layout
             bubblegram.AddSerie("Bubbles-1", Color.Red, bubbles1);
             bubblegram.AddSerie("Bubbles-2", Color.Gold, bubbles2);
             bubblegram.AddSerie("Bubbles-3", Color.Purple, bubbles3);
-        }
-
-        private void OnThemeSelect(int index)
-        {
-            if (available_themes.TryGetValue(index, out var selected))
-            {
-                theme = selected.Theme;
-                theme_index = index;
-            }
         }
     }
 }

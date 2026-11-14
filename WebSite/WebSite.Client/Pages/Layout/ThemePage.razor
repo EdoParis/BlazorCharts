@@ -4,12 +4,13 @@
 
 <h3>Themes</h3>
 <p>
-    All charts, gauges, and legends — as well as their associated tooltips — can be customized with a theme to define their style.
+    All charts, gauges, and legends — as well as their associated tooltips — can be customized with a theme to define their style. <br />
 </p>
 <h6>Properties</h6>
 <p>
-    The theme provides eight properties for customization, four of which has a default behavior that is activated when this is <span class="token keyword font-monospace">null</span>,
-    while the other four are enums or booleans with a default value, so you only need to set the value for the ones you need.
+    The <span class="token keyword font-monospace">Theme</span> data structure contains some general properties,
+    plus two subgroups to define the marker shapes and the tooltip style.<br />
+    All the properties have a default behaviour, so you only need to set the value for the ones you need.
 </p>
 <p>
     <div class="card overflow-hidden">
@@ -43,20 +44,8 @@
                     <tr>
                         <td>@(nameof(Theme.FontFamily))</td>
                         <td class="font-monospace"><span class="token keyword">String</span></td>
-                        <td>Chart text font-family </td>
+                        <td>Text font-family </td>
                         <td class="font-monospace"><span class="token string">inherit</span></td>
-                    </tr>
-                    <tr>
-                        <td>@(nameof(Theme.SeriesMarker))</td>
-                        <td class="font-monospace"><span class="token keyword">@(nameof(MarkerSymbol))</span></td>
-                        <td>Enum of available symbols for tooltips and legend</td>
-                        <td class="font-monospace"><span class="token keyword">MarkerSymbol</span>.Circle</td>
-                    </tr>
-                    <tr>
-                        <td>@(nameof(Theme.DataMarker))</td>
-                        <td class="font-monospace"><span class="token keyword">@(nameof(MarkerShape))</span></td>
-                        <td>Enum of available shapes for datapoints</td>
-                        <td class="font-monospace"><span class="token keyword">MarkerShape</span>.Circle</td>
                     </tr>
                     <tr>
                         <td>@(nameof(Theme.RoundedShapes))</td>
@@ -64,88 +53,205 @@
                         <td>Round the shapes in the chart (bars, slices, markers...)</td>
                         <td class="font-monospace"><span class="token property">False</span></td>
                     </tr>
+                    <tr role="button" @onclick="() => show_markers_settings = !show_markers_settings">
+                        <td>@(nameof(Theme.Markers))</td>
+                        <td class="font-monospace"><span class="token keyword">@(nameof(MarkerSettings))</span></td>
+                        <td>Data structure for all marker settings</td>
+                        <td class="@(show_markers_settings ? "bi-chevron-up" : "bi-chevron-down") text-end px-3"></td>
+                    </tr>
+                    @if (show_markers_settings)
+                    {
+                        <tr class="fadein-animation">
+                            <td class="bi-dash border-0">@(nameof(MarkerSettings.Series))</td>
+                            <td class="font-monospace border-0"><span class="token keyword">@(nameof(SeriesMarker))</span></td>
+                            <td class="border-0">Enum of available markers for data series</td>
+                            <td class="font-monospace border-0"><span class="token keyword">SeriesMarker</span>.Circle</td>
+                        </tr>
+                        <tr class="fadein-animation">
+                            <td class="bi-dash">@(nameof(MarkerSettings.Data))</td>
+                            <td class="font-monospace"><span class="token keyword">@(nameof(DataMarker))</span></td>
+                            <td>Enum of available markers for datapoints</td>
+                            <td class="font-monospace"><span class="token keyword">DataMarker</span>.Circle</td>
+                        </tr>
+                    }
+                    <tr role="button" @onclick="() => show_tooltip_settings = !show_tooltip_settings">
+                        <td>@(nameof(Theme.Tooltip))</td>
+                        <td class="font-monospace"><span class="token keyword">@(nameof(TooltipStyle))</span></td>
+                        <td>Data structure for all tooltip settings</td>
+                        <td class="@(show_tooltip_settings ? "bi-chevron-up" : "bi-chevron-down") text-end px-3"></td>
+                    </tr>
+                    @if (show_tooltip_settings)
+                    {
+                        <tr class="fadein-animation">
+                            <td class="bi-dash border-0">@(nameof(TooltipStyle.BackgroundColor))</td>
+                            <td class="font-monospace border-0"><span class="token property">Color</span>?</td>
+                            <td class="border-0">Color of tooltips' background</td>
+                            <td class="font-monospace border-0"><span class="token string">transparent</span></td>
+                        </tr>
+                        <tr class="fadein-animation">
+                            <td class="bi-dash border-0">@(nameof(TooltipStyle.BorderColor))</td>
+                            <td class="font-monospace border-0"><span class="token property">Color</span>?</td>
+                            <td class="border-0">Color of tooltips' border</td>
+                            <td class="font-monospace border-0"><span class="token string">currentColor</span></td>
+                        </tr>
+                        <tr class="fadein-animation">
+                            <td class="bi-dash">@(nameof(TooltipStyle.TextColor))</td>
+                            <td class="font-monospace"><span class="token property">Color</span>?</td>
+                            <td>Color of tooltips' text</td>
+                            <td class="font-monospace"><span class="token string">currentColor</span></td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
 </p>
-<div class="card-group">
-    <div class="card">
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-6 col-form-label">Theme</div>
-                <div class="col-6">
-                    <ThemeSelect @bind-Value="@theme" />
+<p>
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <div class="row g-3 row-cols-md-4 row-cols-2">
+                    <div class="col-form-label">Theme</div>
+                    <div class="col">
+                        <ThemeSelect @bind-Value="@theme" />
+                    </div>
                 </div>
-                <div class="col-6 col-form-label">Background</div>
-                <div class="col-6">
-                    <input type="color"
-                           class="form-control form-control-color w-100"
-                           value="@((theme.BackgroundColor ?? Color.Black).ToHex())"
-                           title="@(theme.BackgroundColor.HasValue ? $"RGB: ({theme.BackgroundColor.Value.R}, {theme.BackgroundColor.Value.G}, {theme.BackgroundColor.Value.B})" : "transparent")"
-                           @onchange="@(e => theme.BackgroundColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
-                </div>
-                <div class="col-6 col-form-label">Axis</div>
-                <div class="col-6">
-                    <input type="color"
-                           class="form-control form-control-color w-100"
-                           value="@((theme.AxisColor ?? Color.Black).ToHex())"
-                           title="@(theme.AxisColor.HasValue ? $"RGB: ({theme.AxisColor.Value.R}, {theme.AxisColor.Value.G}, {theme.AxisColor.Value.B})" : "currentColor")"
-                           @onchange="@(e => theme.AxisColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
-                </div>
-                <div class="col-6 col-form-label">Text</div>
-                <div class="col-6">
-                    <input type="color"
-                           class="form-control form-control-color w-100"
-                           value="@((theme.TextColor ?? Color.Black).ToHex())"
-                           title="@(theme.TextColor.HasValue ? $"RGB: ({theme.TextColor.Value.R}, {theme.TextColor.Value.G}, {theme.TextColor.Value.B})" : "currentColor")"
-                           @onchange="@(e => theme.TextColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
-                </div>
-                <div class="col-6 col-form-label">Font</div>
-                <div class="col-6">
-                    <input type="text"
-                           class="form-control"
-                           placeholder="inherit"
-                           value="@theme.FontFamily"
-                           @onchange="@(e => theme.FontFamily = e?.Value?.ToString())" />
-                </div>
-                <div class="col-6 col-form-label">SeriesMarker</div>
-                <div class="col-6">
-                    <select class="form-select" @bind="@theme.SeriesMarker">
-                        @foreach (MarkerSymbol symbol in Enum.GetValues<MarkerSymbol>())
-                        {
-                            <option value="@symbol">@symbol</option>
-                        }
-                    </select>
-                </div>
-                <div class="col-6 col-form-label">DataMarker</div>
-                <div class="col-6">
-                    <select class="form-select" @bind="@theme.DataMarker">
-                        @foreach (MarkerShape shape in Enum.GetValues<MarkerShape>())
-                        {
-                            <option value="@shape">@shape</option>
-                        }
-                    </select>
-                </div>
-                <div class="col-6 col-form-label">RoundedShapes</div>
-                <div class="col-6">
-                    <div class="form-control-lg form-check form-switch form-check-reverse py-0 w-100">
-                        <input type="checkbox" class="form-check-input" @bind="@theme.RoundedShapes" />
+                <div class="row g-4 row-cols-md-2 row-cols-1">
+                    <div>
+                        <hr />
+                        <h5>General</h5>
+                        <div class="row g-3">
+                            <div class="col-6 col-form-label text-truncate">Background</div>
+                            <div class="col-6">
+                                <input type="color"
+                                       class="form-control form-control-color w-100"
+                                       value="@((theme.BackgroundColor ?? Color.Black).ToHex())"
+                                       title="@(theme.BackgroundColor.HasValue ? $"RGB: ({theme.BackgroundColor.Value.R}, {theme.BackgroundColor.Value.G}, {theme.BackgroundColor.Value.B})" : "transparent")"
+                                       @onchange="@(e => theme.BackgroundColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
+                            </div>
+                            <div class="col-6 col-form-label">Axis</div>
+                            <div class="col-6">
+                                <input type="color"
+                                       class="form-control form-control-color w-100"
+                                       value="@((theme.AxisColor ?? Color.Black).ToHex())"
+                                       title="@(theme.AxisColor.HasValue ? $"RGB: ({theme.AxisColor.Value.R}, {theme.AxisColor.Value.G}, {theme.AxisColor.Value.B})" : "currentColor")"
+                                       @onchange="@(e => theme.AxisColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
+                            </div>
+                            <div class="col-6 col-form-label">Text</div>
+                            <div class="col-6">
+                                <input type="color"
+                                       class="form-control form-control-color w-100"
+                                       value="@((theme.TextColor ?? Color.Black).ToHex())"
+                                       title="@(theme.TextColor.HasValue ? $"RGB: ({theme.TextColor.Value.R}, {theme.TextColor.Value.G}, {theme.TextColor.Value.B})" : "currentColor")"
+                                       @onchange="@(e => theme.TextColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
+                            </div>
+                            <div class="col-6 col-form-label">Font</div>
+                            <div class="col-6">
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="inherit"
+                                       value="@theme.FontFamily"
+                                       @onchange="@(e => theme.FontFamily = e?.Value?.ToString())" />
+                            </div>
+                            <div class="col-6 col-form-label text-truncate">RoundedShapes</div>
+                            <div class="col-6">
+                                <div class="form-control-lg form-check form-switch form-check-reverse py-0 w-100">
+                                    <input type="checkbox" class="form-check-input" @bind="@theme.RoundedShapes" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <hr />
+                        <h5>Markers</h5>
+                        <div class="row g-3">
+                            <div class="col-6 col-form-label">Series</div>
+                            <div class="col-6">
+                                <select class="form-select" 
+                                        value="@theme.Markers.Series"
+                                        @onchange="@(e => { var markers = theme.Markers;
+                                                            if(Enum.TryParse<SeriesMarker>(e?.Value?.ToString(), out var new_marker))
+                                                                markers.Series = new_marker;
+                                                            theme.Markers = markers;
+                                                          })">
+                                    @foreach (SeriesMarker symbol in Enum.GetValues<SeriesMarker>())
+                                    {
+                                        <option value="@symbol">@symbol</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-6 col-form-label">Data</div>
+                            <div class="col-6">
+                                <select class="form-select" 
+                                        value="@theme.Markers.Data"
+                                        @onchange="@(e => { var markers = theme.Markers;
+                                                            if(Enum.TryParse<DataMarker>(e?.Value?.ToString(), out var new_marker))
+                                                                markers.Data = new_marker;
+                                                            theme.Markers = markers;
+                                                          })">
+                                    @foreach (DataMarker shape in Enum.GetValues<DataMarker>())
+                                    {
+                                        <option value="@shape">@shape</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <hr />
+                        <h5>Tooltip</h5>
+                        <div class="row g-3">
+                            <div class="col-6 col-form-label text-truncate">Background</div>
+                            <div class="col-6">
+                                <input type="color"
+                                       class="form-control form-control-color w-100"
+                                       value="@((theme.Tooltip.BackgroundColor ?? Color.Black).ToHex())"
+                                       title="@(theme.Tooltip.BackgroundColor.HasValue ? $"RGB: ({theme.Tooltip.BackgroundColor.Value.R}, {theme.Tooltip.BackgroundColor.Value.G}, {theme.Tooltip.BackgroundColor.Value.B})" : "transparent")"
+                                       @onchange="@(e => { var tooltip = theme.Tooltip; 
+                                                           tooltip.BackgroundColor = ColorTranslator.FromHtml(e?.Value?.ToString());
+                                                           theme.Tooltip = tooltip;
+                                                         })" />
+                            </div>
+                            <div class="col-6 col-form-label">Border</div>
+                            <div class="col-6">
+                                <input type="color"
+                                       class="form-control form-control-color w-100"
+                                       value="@((theme.Tooltip.BorderColor ?? Color.Black).ToHex())"
+                                       title="@(theme.Tooltip.BorderColor.HasValue ? $"RGB: ({theme.Tooltip.BorderColor.Value.R}, {theme.Tooltip.BorderColor.Value.G}, {theme.Tooltip.BorderColor.Value.B})" : "currentColor")"
+                                       @onchange="@(e => { var tooltip = theme.Tooltip; 
+                                                           tooltip.BorderColor = ColorTranslator.FromHtml(e?.Value?.ToString());
+                                                           theme.Tooltip = tooltip;
+                                                         })" />
+                            </div>
+                            <div class="col-6 col-form-label">Text</div>
+                            <div class="col-6">
+                                <input type="color"
+                                       class="form-control form-control-color w-100"
+                                       value="@((theme.Tooltip.TextColor ?? Color.Black).ToHex())"
+                                       title="@(theme.Tooltip.TextColor.HasValue ? $"RGB: ({theme.Tooltip.TextColor.Value.R}, {theme.Tooltip.TextColor.Value.G}, {theme.Tooltip.TextColor.Value.B})" : "currentColor")" 
+                                       @onchange="@(e => { var tooltip = theme.Tooltip; 
+                                                           tooltip.TextColor = ColorTranslator.FromHtml(e?.Value?.ToString());
+                                                           theme.Tooltip = tooltip;
+                                                         })" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <BubbleChart Model="bubblegram" Theme="@theme"></BubbleChart>
-            <LegendHorizontal Model="bubblegram" Theme="@theme"></LegendHorizontal>
-        </div>
-    </div>
-</div>
-<div class="h-100 w-100 small border">
-    <pre class="language-csharp m-0 h-100">
-        <code>
+</p>
+<div class="card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col col-sm-6 col-lg-4 col-12">
+                <BubbleChart Model="@bubblegram" Theme="@theme"></BubbleChart>
+                <LegendHorizontal Model="@bubblegram" Theme="@theme"></LegendHorizontal>
+                <ScatterChart Model="@cartesiangram" Theme="@theme"></ScatterChart>
+                <LegendHorizontal Model="@cartesiangram" Theme="@theme"></LegendHorizontal>
+            </div>
+            <div class="col col-sm-6 col-lg-8 col-12">
+                <div class="h-100 w-100 small border">
+                    <pre class="language-csharp m-0 h-100">
+                        <code>
  <span class="token comment">//Render chart and legend using a custom theme</span>
  &lt<span class="token tag bold">LineChart</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
  &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
@@ -178,6 +284,10 @@
          model.<span class="token function">AddSerie</span>(<span class="token string">$"Fn-{f}"</span>, palette.<span class="token function">Next</span>(), points);
      }
  }
-        </code>
-    </pre>
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

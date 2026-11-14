@@ -21,7 +21,13 @@ namespace BlazorGraphs
             {
                 BackgroundColor = color,
                 AxisColor = opposite_color,
-                TextColor = opposite_color
+                TextColor = opposite_color,
+                Tooltip = new TooltipStyle()
+                {
+                    BackgroundColor = color,
+                    BorderColor = opposite_color,
+                    TextColor = opposite_color
+                }
             };
         }
 

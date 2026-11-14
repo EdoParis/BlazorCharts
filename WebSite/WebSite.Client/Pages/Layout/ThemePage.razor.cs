@@ -6,17 +6,11 @@ namespace WebApp.Pages.Layout
 {
     public partial class ThemePage : ComponentBase
     {
-        private enum chart_options
-        {
-            Linechart,
-            Scatterchart,
-            Bubblechart
-        }
-
         private Cartesiangram cartesiangram;
         private Bubblegram bubblegram;
         private Theme theme;
-        private chart_options selected_chart;
+        private bool show_markers_settings;
+        private bool show_tooltip_settings;
 
         protected override void OnInitialized()
         {

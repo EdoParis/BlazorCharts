@@ -40,5 +40,17 @@
         {
             return $"M {x - size / 2} {y - size / 6} h {2 * size / 5} v {size / 3} h {-2 * size / 5} Z M {x + size / 2} {y - size / 6} h {-2 * size / 5} v {size / 3} h {2 * size / 5} Z";
         }
+
+        public static string RenderPlus(int x, int y, int size)
+        {
+            int s = (int)(size / Math.Sqrt(5));
+            return $"M {x + s / 2} {y +  3 * s / 2} v {-s} h {s} v {-s} h {-s} v {-s} h {-s} v {s} h {-s} v {s} h {s} v {s} Z";
+        }
+
+        public static string RenderCross(int x, int y, int size)
+        {
+            int s = (int)(size / Math.Sqrt(10));
+            return $"M {x + s} {y} l {s} {-s} l {-s} {-s} l {-s} {s} l {-s} {-s} l {-s} {s} l {s} {s} l {-s} {s} l {s} {s} l {s} {-s} l {s} {s} l {s} {-s} Z";
+        }
     }
 }

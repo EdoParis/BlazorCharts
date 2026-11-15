@@ -21,6 +21,14 @@
                     return rounded ? RoundedPathRenderer.RenderTriangle(x, y, size) :
                                      PathRenderer.RenderTriangle(x, y, size);
 
+                case DataMarker.Plus:
+                    return rounded ? RoundedPathRenderer.RenderPlus(x, y, size) :
+                                     PathRenderer.RenderPlus(x, y, size);
+
+                case DataMarker.Cross:
+                    return rounded ? RoundedPathRenderer.RenderCross(x, y, size) :
+                                     PathRenderer.RenderCross(x, y, size);
+
                 default:
                     throw new NotImplementedException();
             }
@@ -44,6 +52,14 @@
                 case SeriesMarker.Triangle:
                     return rounded ? RoundedPathRenderer.RenderTriangle(x, y, size) :
                                      PathRenderer.RenderTriangle(x, y, size);
+
+                case SeriesMarker.Plus:
+                    return rounded ? RoundedPathRenderer.RenderPlus(x, y, size) :
+                                     PathRenderer.RenderPlus(x, y, size);
+
+                case SeriesMarker.Cross:
+                    return rounded ? RoundedPathRenderer.RenderCross(x, y, size) : 
+                                     PathRenderer.RenderCross(x, y, size);
 
                 case SeriesMarker.Slice:
                     return rounded ? RoundedPathRenderer.RenderSlice(x, y, size) :

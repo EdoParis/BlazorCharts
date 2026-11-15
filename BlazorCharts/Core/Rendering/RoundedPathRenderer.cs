@@ -84,5 +84,66 @@
                    $"H {x + size / 10 + roundness} " +
                    $"A {roundness} {roundness} 0 0 1 {x + size / 10 + roundness} {y - roundness} Z";
         }
+
+        public static string RenderPlus(int x, int y, int size)
+        {
+            int s = (int)(size / Math.Sqrt(5));
+            int roundness = s > 4 * ROUNDING ? ROUNDING : s / 4;
+            return $"M {x + s / 2} {y + s / 2 + roundness} " +
+                   $"a {roundness} {roundness} 0 0 1 {roundness} {-roundness} " +
+                   $"h {s - 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 0 {roundness} {-roundness} " +
+                   $"v {-s + 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 0 {-roundness} {-roundness} " +
+                   $"h {-s + 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 1 {-roundness} {-roundness} " +
+                   $"v {-s + 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 0 {-roundness} {-roundness} " +
+                   $"h {-s + 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 0 {-roundness} {roundness} " +
+                   $"v {s - 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 1 {-roundness} {roundness} " +
+                   $"h {-s + 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 0 {-roundness} {roundness} " +
+                   $"v {s - 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 0 {roundness} {roundness} " +
+                   $"h {s - 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 1 {roundness} {roundness} " +
+                   $"v {s - 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 0 {roundness} {roundness} " +
+                   $"h {s - 2 * roundness} " +
+                   $"a {roundness} {roundness} 0 0 0 {roundness} {-roundness} Z";
+        }
+
+        public static string RenderCross(int x, int y, int size)
+        {
+            int s = (int)(size / Math.Sqrt(10));
+            int roundness = s > 4 * ROUNDING ? ROUNDING : s / 4;
+            int w = (int)(roundness * Math.Sqrt(2));
+            return $"M {x + s + w / 2} {y + w / 2} " +
+                   $"a {roundness} {roundness} 0 0 1 {0} {-w} " +
+                   $"l {s - w} {-s + w} " +
+                   $"a {roundness} {roundness} 0 0 0 {0} {-w} " +
+                   $"l {-s + w} {-s + w} " +
+                   $"a {roundness} {roundness} 0 0 0 {-w} {0} " +
+                   $"l {-s + w} {s - w} " +
+                   $"a {roundness} {roundness} 0 0 1 {-w} {0} " +
+                   $"l {-s + w} {-s + w}" +
+                   $"a {roundness} {roundness} 0 0 0 {-w} {0} " +
+                   $"l {-s + w} {s - w}" +
+                   $"a {roundness} {roundness} 0 0 0 {0} {w} " +
+                   $"l {s - w} {s - w} " +
+                   $"a {roundness} {roundness} 0 0 1 {0} {w} " +
+                   $"l {-s + w} {s - w} " +
+                   $"a {roundness} {roundness} 0 0 0 {0} {w} " +
+                   $"l {s - w} {s - w} " +
+                   $"a {roundness} {roundness} 0 0 0 {w} {0} " +
+                   $"l {s - w} {-s + w} " +
+                   $"a {roundness} {roundness} 0 0 1 {w} {0} " +
+                   $"l {s - w} {s - w}" +
+                   $"a {roundness} {roundness} 0 0 0 {w} {0} " +
+                   $"l {s - w} {-s + w}" +
+                   $"a {roundness} {roundness} 0 0 0 {0} {-w} Z";
+        }
     }
 }

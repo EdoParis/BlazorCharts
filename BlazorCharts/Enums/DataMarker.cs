@@ -5,6 +5,8 @@
         Circle = SeriesMarker.Circle,
         Square = SeriesMarker.Square,
         Diamond = SeriesMarker.Diamond,
-        Triangle = SeriesMarker.Triangle
+        Triangle = SeriesMarker.Triangle,
+        Cross = SeriesMarker.Cross,
+        Plus = SeriesMarker.Plus
     }
 }

@@ -7,6 +7,8 @@
         Diamond,
         Triangle,
         Slice,
+        Cross,
+        Plus,
         Dashedline,
         Solidline
     }

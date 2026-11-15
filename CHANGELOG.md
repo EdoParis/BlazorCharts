@@ -6,6 +6,16 @@ Legend symbols:
 * 🟨 **Change**
 * 🟥 **Bug**
 
+## Version 3.2
+* 🟩 Added rounded theme
+* 🟩 Added tooltip color customization
+* 🟩 Added click events to cartesian charts
+* 🟩 Added marker shape customization to datapoints and series
+* 🟦 Improved tooltip touch interaction
+* 🟦 Improved gauge animations
+* 🟥 Fix data validation
+* 🟥 Fix add empty serie to model
+
 ## Version 3.1
 * 🟩 Added tooltips
 * 🟩 Added color palettes

@@ -67,6 +67,9 @@ It allows you to customize:
 - axis color
 - text color
 - font family
+- apply rounding to shapes and markers
+- marker shapes (datapoints and series)
+- tooltip colors (background, border and text)
 
 If you pass a partially empty theme, the library doesn't break. It delegates the fallback to the browser engine using native properties:
 - background color defaults to Transparent

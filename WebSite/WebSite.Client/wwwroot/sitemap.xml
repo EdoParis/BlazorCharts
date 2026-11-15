@@ -6,16 +6,6 @@
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://blazorgraphs.it/roadmap</loc>
-		<lastmod>2026-10-06T12:00:00+01:00</lastmod>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://blazorgraphs.it/changelog</loc>
-		<lastmod>2026-10-06T12:00:00+01:00</lastmod>
-		<priority>0.8</priority>
-	</url>
-	<url>
 		<loc>https://blazorgraphs.it/charts/histogram</loc>
 		<lastmod>2026-10-06T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
@@ -87,26 +77,6 @@
 	</url>
 	<url>
 		<loc>https://blazorgraphs.it/gauges/speedometer</loc>
-		<lastmod>2026-10-06T12:00:00+01:00</lastmod>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://blazorgraphs.it/layout/aspectratio</loc>
-		<lastmod>2026-10-06T12:00:00+01:00</lastmod>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://blazorgraphs.it/layout/legendbar</loc>
-		<lastmod>2026-10-06T12:00:00+01:00</lastmod>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://blazorgraphs.it/layout/themes</loc>
-		<lastmod>2026-10-06T12:00:00+01:00</lastmod>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://blazorgraphs.it/layout/colors</loc>
 		<lastmod>2026-10-06T12:00:00+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>

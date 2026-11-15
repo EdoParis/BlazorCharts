@@ -1,4 +1,4 @@
-﻿<select class="form-select" @onchange="@(e => OnThemeSelect(int.Parse(e?.Value.ToString())))" @key="@theme_index">
+﻿<select class="form-select" @onchange="@(OnThemeChange)" @key="@theme_index">
     @foreach (var kvp in available_themes)
     {
         <option value="@kvp.Key" selected="@(kvp.Key == theme_index)">@kvp.Value.Name</option>

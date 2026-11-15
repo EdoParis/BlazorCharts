@@ -6,23 +6,7 @@ namespace WebApp.Components
     public partial class ThemeSelect : ComponentBase
     {
         [Parameter] public EventCallback<Theme> ValueChanged { get; set; }
-        [Parameter] public Theme Value 
-        { 
-            get => theme; 
-            set 
-            {
-                theme = value;
-                theme_index = null;
-                foreach(var kvp in available_themes)
-                {
-                    if (kvp.Value.Theme == value)
-                    {
-                        theme_index = kvp.Key;
-                        break;
-                    }
-                }
-            } 
-        }
+        [Parameter] public Theme Value { get; set; }
 
         private Dictionary<int, (string Name, Theme Theme)> available_themes;
         private Int32? theme_index;
@@ -43,13 +27,30 @@ namespace WebApp.Components
             };
         }
 
-        private async Task OnThemeSelect(int index)
+        protected override void OnParametersSet()
         {
-            if (available_themes.TryGetValue(index, out var selected))
+            theme = Value;
+            theme_index = null;
+            foreach (var kvp in available_themes)
             {
-                theme = selected.Theme;
-                theme_index = index;
-                await ValueChanged.InvokeAsync(selected.Theme);
+                if (kvp.Value.Theme == Value)
+                {
+                    theme_index = kvp.Key;
+                    break;
+                }
+            }
+        }
+
+        private async Task OnThemeChange(ChangeEventArgs e)
+        {
+            if (int.TryParse(e?.Value?.ToString(), out int parsed_index))
+            {
+                if (available_themes.TryGetValue(parsed_index, out var selected))
+                {
+                    theme = selected.Theme;
+                    theme_index = parsed_index;
+                    await ValueChanged.InvokeAsync(selected.Theme);
+                }
             }
         }
     }

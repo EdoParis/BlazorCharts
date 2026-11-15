@@ -16,25 +16,28 @@ namespace WebApp.Pages.Charts
         {
             random = new Random();
             aspectratio = AspectRatios.Square;
-            line_color = Color.MediumOrchid;
+            line_color = Color.MediumVioletRed;
             model = new Cartesiangram("AxisX", "AxisY");
             List<Datapoint> points1 = new();
             List<Datapoint> points2 = new();
             List<Datapoint> points3 = new();
             List<Datapoint> points4 = new();
+            List<Datapoint> points5 = new();
 
             for (int i = 0; i <= 10; i++)
             {
-                points1.Add(new Datapoint() { X = 10 * random.NextDouble(), Y = 10 * random.NextDouble() });
-                points2.Add(new Datapoint() { X = 5 + 10 * random.NextDouble(), Y = 5 + 10 * random.NextDouble() });
-                points3.Add(new Datapoint() { X = 10 + 10 * random.NextDouble(), Y = 10 + 10 * random.NextDouble() });
-                points4.Add(new Datapoint() { X = 25 + 10 * random.NextDouble(), Y = 25 + 10 * random.NextDouble() });
+                points1.Add(new Datapoint() { X = 2 * i, Y = 50 + i * i });
+                points2.Add(new Datapoint() { X = 2 * i, Y = (i + 2) * (i + 2) });
+                points3.Add(new Datapoint() { X = 2 * i, Y = (i + 4) * (i + 4) });
+                points4.Add(new Datapoint() { X = 2 * i, Y = (i + 6) * (i + 6) });
+                points5.Add(new Datapoint() { X = 10 + 2 * i, Y = (i + 5) * (i + 5) });
             }
 
             model.AddSerie("Fn-1", Color.LimeGreen, points1);
             model.AddSerie("Fn-2", Color.OrangeRed, points2);
             model.AddSerie("Fn-3", Color.CadetBlue, points3);
             model.AddSerie("Fn-4", Color.DodgerBlue, points4);
+            model.AddSerie("Fn-5", Color.MediumOrchid, points5);
         }
 
         private void OnChartClear()
@@ -49,15 +52,15 @@ namespace WebApp.Pages.Charts
 
             List<Datapoint> points = new();
             int n_points = (int)(10 + 10 * random.NextDouble());
-            int offset_x = (int)(50 * random.NextDouble() - 25);
-            int offset_y = (int)(50 * random.NextDouble() - 25);
+            int offset_x = (int)(100 * random.NextDouble() - 50);
+            int offset_y = (int)(100 * random.NextDouble() - 50);
 
             for (int i = 0; i < n_points; i++)
             {
                 points.Add(new Datapoint() 
                 { 
-                    X = offset_x + 10 * random.NextDouble(), 
-                    Y = offset_y + 10 * random.NextDouble() 
+                    X = offset_x + 25 * random.NextDouble(), 
+                    Y = offset_y + 25 * random.NextDouble() 
                 });
             }
             model.AddSerie($"Fn-{model.SeriesCount + 1}", line_color, points);

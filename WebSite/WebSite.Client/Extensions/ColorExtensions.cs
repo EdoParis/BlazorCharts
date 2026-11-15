@@ -9,11 +9,6 @@ namespace WebApp.Extensions
             return "#" + (color.ToArgb() & 0x00FFFFFF).ToString("X6");
         }
 
-        public static string ToHex(this KnownColor color)
-        {
-            return Color.FromKnownColor(color).ToHex();
-        }
-
         public static Color Invert(this Color color)
         {
             return Color.FromArgb(

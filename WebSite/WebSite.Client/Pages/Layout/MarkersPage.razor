@@ -1,0 +1,133 @@
+﻿@page "/layout/markers"
+
+<PageTitle>Markers</PageTitle>
+
+<h3>Markers</h3>
+<p>
+    Markers are symbols used to show data points in charts, series in the legend, and represent information in tooltips.
+    You can choose the marker shape by simply fullfilling the <span class="token keyword font-monospace">@nameof(MarkerSettings)</span> data structure 
+    and associating it with the chart <span class="token keyword font-monospace">@nameof(Theme)</span>.
+</p>
+<h6>Properties</h6>
+<p>
+    The <span class="token keyword font-monospace">@nameof(MarkerSettings)</span> data structure contains two properties:
+    one for the shape of the data points, and the other for the shape of the series symbols. <br>
+    Each has its own enumeration, and the data point enumeration is a subset of the series enumeration; 
+    since not all series symbols are suitable for representing data points.
+</p>
+<p>
+    <div class="card overflow-hidden">
+        <div class="card-body overflow-auto">
+            <table class="table text-nowrap align-middle mb-0 border">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(MarkerSettings.Series))</td>
+                        <td class="font-monospace"><span class="token keyword">@(nameof(SeriesMarker))</span></td>
+                        <td>Enum of available markers for data series</td>
+                        <td class="font-monospace"><span class="token keyword">SeriesMarker</span>.Circle</td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(MarkerSettings.Data))</td>
+                        <td class="font-monospace"><span class="token keyword">@(nameof(DataMarker))</span></td>
+                        <td>Enum of available markers for datapoints</td>
+                        <td class="font-monospace"><span class="token keyword">DataMarker</span>.Circle</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</p>
+<p>
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col col-sm-6 col-lg-4 col-12">
+                    <div class="row g-3">
+                        <div class="col-6 col-form-label text-truncate">RoundedShapes</div>
+                        <div class="col-6">
+                            <div class="form-control-lg form-check form-switch form-check-reverse py-0 w-100">
+                                <input type="checkbox" class="form-check-input" @bind="@theme.RoundedShapes" />
+                            </div>
+                        </div>
+                        <div class="col-6 col-form-label">Series</div>
+                        <div class="col-6">
+                            <select class="form-select"
+                                    value="@theme.Markers.Series"
+                                    @onchange="OnChangeSeriesMarkers">
+                                @foreach (SeriesMarker symbol in Enum.GetValues<SeriesMarker>())
+                                {
+                                    <option value="@symbol">@symbol</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-6 col-form-label">Data</div>
+                        <div class="col-6">
+                            <select class="form-select"
+                                    value="@theme.Markers.Data"
+                                    @onchange="OnChangeDataMarkers">
+                                @foreach (DataMarker shape in Enum.GetValues<DataMarker>())
+                                {
+                                    <option value="@shape">@shape</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <BubbleChart Model="@bubblegram" Theme="@theme"></BubbleChart>
+                            <LegendHorizontal Model="@bubblegram" Theme="@theme"></LegendHorizontal>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-sm-6 col-lg-8 col-12">
+                    <div class="h-100 w-100 small border">
+                        <pre class="language-csharp m-0 h-100">
+                            <code>
+ &lt<span class="token tag bold">BubbleChart</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@bubblegram<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@bubblegram<span class="token string">"</span>/&gt
+
+ 
+ @@{
+     <span class="token comment">//Define your theme.</span>
+     <span class="token keyword">private</span> <span class="token property">Theme</span> custom_theme = <span class="token keyword">new</span> <span class="token class-name">Theme</span>()
+     {
+         RoundedShapes = <span class="token property">true</span>,
+         Markers = new <span class="token class-name">@nameof(MarkerSettings)</span>{
+                        Series = <span class="token keyword">@(nameof(SeriesMarker))</span>.Triangle,
+                        Data = <span class="token keyword">@(nameof(DataMarker))</span>.Square
+                        }
+     };
+ 
+     <span class="token comment">//Fill model with data.</span>
+     <span class="token keyword">private</span> <span class="token property">IColorStream</span> palette = <span class="token class-name">Palettes</span>.@(nameof(Palettes.Primary));
+     <span class="token keyword">private</span> <span class="token property">Bubblegram</span> bubblegram = <span class="token keyword">new</span> <span class="token class-name">Bubblegram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
+ 
+     <span class="token class-name">List</span>&lt<span class="token class-name">Bubblepoint</span>&gt bubbles1 = <span class="token keyword">new</span>();
+     <span class="token class-name">List</span>&lt<span class="token class-name">Bubblepoint</span>&gt bubbles2 = <span class="token keyword">new</span>();
+ 
+     <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+     {
+         bubbles1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bubblepoint</span>(){ X = i, Y = i, Value = 25 + i });
+         bubbles2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Bubblepoint</span>(){ X = i, Y = 2 * i, Value = 10 + i});
+     }
+ 
+     bubblegram.<span class="token function">AddSerie</span>(<span class="token string">"Bubbles1"</span>, palette.<span class="token function">Next</span>(), bubbles1);
+     bubblegram.<span class="token function">AddSerie</span>(<span class="token string">"Bubbles2"</span>, palette.<span class="token function">Next</span>(), bubbles2);
+ }
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</p>
+<p>
+    <div class="alert alert-light">
+        <b>NB:</b> Symbols rounding is enabled by the theme property <b>@nameof(Theme.RoundedShapes)</b>.
+    </div>
+</p>

@@ -22,6 +22,7 @@
         AspectRatio,
         Colors,
         Themes,
+        Markers,
         Roadmap,
         Changelog
     }

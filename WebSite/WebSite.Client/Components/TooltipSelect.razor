@@ -1,0 +1,6 @@
+﻿<select class="form-select" @onchange="@(OnStyleChange)" @key="@style_index">
+    @foreach (var kvp in available_styles)
+    {
+        <option value="@kvp.Key" selected="@(kvp.Key == style_index)">@kvp.Value.Name</option>
+    }
+</select>

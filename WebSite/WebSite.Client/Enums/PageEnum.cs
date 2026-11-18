@@ -20,6 +20,7 @@
         Speedometer,
         LegendBar,
         AspectRatio,
+        Tooltips,
         Colors,
         Themes,
         Markers,

@@ -1,0 +1,138 @@
+﻿@page "/layout/tooltips"
+
+<PageTitle>Tooltips</PageTitle>
+
+<h3>Tooltips</h3>
+<p>
+    Tooltips are required to explore data values and series inside charts.
+    You can modify the tooltip style by editing the  <span class="token keyword font-monospace">@nameof(TooltipStyle)</span> data structure 
+    and associating it with the chart <span class="token keyword font-monospace">@nameof(Theme)</span>.
+</p>
+<h6>Properties</h6>
+<p>
+    The <span class="token keyword font-monospace">@nameof(TooltipStyle)</span> data structure contains the following set of color properties.
+    All the properties have a default behaviour, so you only need to set the value for the ones you need.
+</p>
+<p>
+    <div class="card overflow-hidden">
+        <div class="card-body overflow-auto">
+            <table class="table text-nowrap align-middle mb-0 border">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default behaviour</th>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(TooltipStyle.BackgroundColor))</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Color of tooltips' background</td>
+                        <td class="font-monospace"><span class="token string">transparent</span></td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(TooltipStyle.BorderColor))</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Color of tooltips' border</td>
+                        <td class="font-monospace"><span class="token string">currentColor</span></td>
+                    </tr>
+                    <tr>
+                        <td>@(nameof(TooltipStyle.TextColor))</td>
+                        <td class="font-monospace"><span class="token property">Color</span>?</td>
+                        <td>Color of tooltips' text</td>
+                        <td class="font-monospace"><span class="token string">currentColor</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</p>
+<p>
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col col-sm-6 col-lg-4 col-12">
+                    <div class="row g-3">
+                        <div class="col-6 col-form-label">Style</div>
+                        <div class="col-6">
+                            <TooltipSelect @bind-Value="@theme.Tooltip" />
+                        </div>
+                        <div class="col-6 col-form-label text-truncate">Background</div>
+                        <div class="col-6">
+                            <input type="color"
+                                   class="form-control form-control-color w-100"
+                                   value="@((theme.Tooltip.BackgroundColor ?? Color.Black).ToHex())"
+                                   title="@(theme.Tooltip.BackgroundColor.HasValue ? $"RGB: ({theme.Tooltip.BackgroundColor.Value.R}, {theme.Tooltip.BackgroundColor.Value.G}, {theme.Tooltip.BackgroundColor.Value.B})" : "transparent")"
+                                   @onchange="OnChangeTooltipBackground" />
+                        </div>
+                        <div class="col-6 col-form-label">Border</div>
+                        <div class="col-6">
+                            <input type="color"
+                                   class="form-control form-control-color w-100"
+                                   value="@((theme.Tooltip.BorderColor ?? Color.Black).ToHex())"
+                                   title="@(theme.Tooltip.BorderColor.HasValue ? $"RGB: ({theme.Tooltip.BorderColor.Value.R}, {theme.Tooltip.BorderColor.Value.G}, {theme.Tooltip.BorderColor.Value.B})" : "currentColor")"
+                                   @onchange="OnChangeTooltipBorder" />
+                        </div>
+                        <div class="col-6 col-form-label">Text</div>
+                        <div class="col-6">
+                            <input type="color"
+                                   class="form-control form-control-color w-100"
+                                   value="@((theme.Tooltip.TextColor ?? Color.Black).ToHex())"
+                                   title="@(theme.Tooltip.TextColor.HasValue ? $"RGB: ({theme.Tooltip.TextColor.Value.R}, {theme.Tooltip.TextColor.Value.G}, {theme.Tooltip.TextColor.Value.B})" : "currentColor")"
+                                   @onchange="OnChangeTooltipTextColor" />
+                        </div>
+                        <div class="col-12">
+                            <LineChart Model="@cartesiangram" Theme="@theme"></LineChart>
+                            <LegendHorizontal Model="@cartesiangram" Theme="@theme"></LegendHorizontal>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-sm-6 col-lg-8 col-12">
+                    <div class="h-100 w-100 small border">
+                        <pre class="language-csharp m-0 h-100">
+                            <code>
+ &lt<span class="token tag bold">LineChart</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
+ &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Theme</span><span class="token string">="</span>@@custom_theme<span class="token string">"</span> <span class="token property bold">Model</span><span class="token string">="</span>@@cartesiangram<span class="token string">"</span>/&gt
+
+ 
+ @@{
+     <span class="token comment">//Define your theme.</span>
+     <span class="token keyword">private</span> <span class="token property">Theme</span> custom_theme = <span class="token keyword">new</span> <span class="token class-name">Theme</span>()
+     {
+         Tooltip = new <span class="token class-name">@nameof(TooltipStyle)</span>{
+                        BackgroundColor = <span class="token keyword">@(nameof(Color))</span>.White,
+                        BorderColor = <span class="token keyword">@(nameof(Color))</span>.Black,
+                        TextColor = <span class="token keyword">@(nameof(Color))</span>.Black,
+                        }
+     };
+ 
+     <span class="token comment">//Fill model with data.</span>
+     <span class="token keyword">private</span> <span class="token property">IColorStream</span> palette = <span class="token class-name">Palettes</span>.@(nameof(Palettes.Primary));
+     <span class="token keyword">private</span> <span class="token property">Cartesiangram</span> cartesiangram = <span class="token keyword">new</span> <span class="token class-name">Cartesiangram</span>(<span class="token string">"X1"</span>, <span class="token string">"Y1"</span>);
+ 
+     <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points1 = <span class="token keyword">new</span>();
+     <span class="token class-name">List</span>&lt<span class="token class-name">Datapoint</span>&gt points2 = <span class="token keyword">new</span>();
+ 
+     <span class="token keyword">for</span> (<span class="token variable">int</span> i = 0; i &lt 10; i++)
+     {
+         points1.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = i });
+         points2.<span class="token function">Add</span>(<span class="token keyword">new</span> <span class="token class-name">Datapoint</span>(){ X = i, Y = 2 * i});
+     }
+ 
+     cartesiangram.<span class="token function">AddSerie</span>(<span class="token string">"Line1"</span>, palette.<span class="token function">Next</span>(), points1);
+     cartesiangram.<span class="token function">AddSerie</span>(<span class="token string">"Line2"</span>, palette.<span class="token function">Next</span>(), points2);
+ }
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</p>
+<p>
+    <div class="alert alert-light">
+        <b>NB:</b> The font of tooltip text is defined by the theme property <b>@nameof(Theme.FontFamily)</b>.
+    </div>
+</p>
+

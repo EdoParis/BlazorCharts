@@ -53,6 +53,14 @@
             <div class="row g-3">
                 <div class="col col-sm-6 col-lg-4 col-12">
                     <div class="row g-3">
+                        <div class="col-6 col-form-label text-truncate">FontFamily <sub class="text-muted">theme property</sub></div>
+                        <div class="col-6">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="inherit"
+                                   value="@theme.FontFamily"
+                                   @onchange="@(e => theme.FontFamily = e?.Value?.ToString())" />
+                        </div>
                         <div class="col-6 col-form-label">Style</div>
                         <div class="col-6">
                             <TooltipSelect @bind-Value="@theme.Tooltip" />
@@ -128,11 +136,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</p>
-<p>
-    <div class="alert alert-light">
-        <b>NB:</b> The font of tooltip text is defined by the theme property <b>@nameof(Theme.FontFamily)</b>.
     </div>
 </p>
 

@@ -9,7 +9,7 @@
 <h6>Properties</h6>
 <p>
     The <span class="token keyword font-monospace">Theme</span> data structure contains some general properties,
-    plus two subgroups to define the marker shapes and the tooltip style.<br />
+    and two nested structures to define the marker shapes and the tooltip style.<br />
     All the properties have a default behaviour, so you only need to set the value for the ones you need.
 </p>
 <p>
@@ -80,7 +80,7 @@
                         <div class="col-6">
                             <ThemeSelect @bind-Value="@theme" />
                         </div>
-                        <div class="col-6 col-form-label text-truncate">Background</div>
+                        <div class="col-6 col-form-label text-truncate">BackgroundColor</div>
                         <div class="col-6">
                             <input type="color"
                                     class="form-control form-control-color w-100"
@@ -88,7 +88,7 @@
                                     title="@(theme.BackgroundColor.HasValue ? $"RGB: ({theme.BackgroundColor.Value.R}, {theme.BackgroundColor.Value.G}, {theme.BackgroundColor.Value.B})" : "transparent")"
                                     @onchange="@(e => theme.BackgroundColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
                         </div>
-                        <div class="col-6 col-form-label">Axis</div>
+                        <div class="col-6 col-form-label">AxisColor</div>
                         <div class="col-6">
                             <input type="color"
                                     class="form-control form-control-color w-100"
@@ -96,7 +96,7 @@
                                     title="@(theme.AxisColor.HasValue ? $"RGB: ({theme.AxisColor.Value.R}, {theme.AxisColor.Value.G}, {theme.AxisColor.Value.B})" : "currentColor")"
                                     @onchange="@(e => theme.AxisColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
                         </div>
-                        <div class="col-6 col-form-label">Text</div>
+                        <div class="col-6 col-form-label">TextColor</div>
                         <div class="col-6">
                             <input type="color"
                                     class="form-control form-control-color w-100"
@@ -104,7 +104,7 @@
                                     title="@(theme.TextColor.HasValue ? $"RGB: ({theme.TextColor.Value.R}, {theme.TextColor.Value.G}, {theme.TextColor.Value.B})" : "currentColor")"
                                     @onchange="@(e => theme.TextColor = ColorTranslator.FromHtml(e?.Value?.ToString()))" />
                         </div>
-                        <div class="col-6 col-form-label">Font</div>
+                        <div class="col-6 col-form-label">FontFamily</div>
                         <div class="col-6">
                             <input type="text"
                                     class="form-control"

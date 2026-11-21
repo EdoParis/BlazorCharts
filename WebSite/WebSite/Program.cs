@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using WebServer.Components;
 
 namespace WebServer
@@ -8,6 +9,7 @@ namespace WebServer
 
         public static void Main(string[] args)
         {
+            Console.WriteLine($"Running framework: {RuntimeInformation.FrameworkDescription}");
             ReadParameters(args);
 
             WebApplicationBuilder builder = WebApplication.CreateBuilder();
@@ -18,6 +20,11 @@ namespace WebServer
             builder.Services.AddRazorComponents().AddInteractiveWebAssemblyComponents();
 
             WebApplication app = builder.Build();
+            app.UseWebAssemblyDebugging();
+
+#if NET9_0_OR_GREATER
+            app.MapStaticAssets();
+#endif
             app.MapControllers();
             app.UseStaticFiles();
             app.UseAntiforgery();

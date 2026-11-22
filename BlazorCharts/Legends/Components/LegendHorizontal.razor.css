@@ -4,11 +4,10 @@
     text-overflow: ellipsis;
 }
 
-.legend-item{
+.legend-item {
     display: flex;
     align-items: center;
     margin-right: 1em;
-    margin-bottom: 1em;
 }
 
 .legend-bar {

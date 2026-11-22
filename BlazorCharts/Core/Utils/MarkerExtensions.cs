@@ -7,27 +7,27 @@
             switch (shape)
             {
                 case DataMarker.Circle:
-                    return PathRenderer.RenderCircle(x, y, size);
+                    return ShapeRenderer.RenderCircle(x, y, size);
 
                 case DataMarker.Square:
-                    return rounded ? RoundedPathRenderer.RenderSquare(x, y, size) :
-                                     PathRenderer.RenderSquare(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderSquare(x, y, size) :
+                                     ShapeRenderer.RenderSquare(x, y, size);
 
                 case DataMarker.Diamond:
-                    return rounded ? RoundedPathRenderer.RenderDiamond(x, y, size) :
-                                     PathRenderer.RenderDiamond(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderDiamond(x, y, size) :
+                                     ShapeRenderer.RenderDiamond(x, y, size);
 
                 case DataMarker.Triangle:
-                    return rounded ? RoundedPathRenderer.RenderTriangle(x, y, size) :
-                                     PathRenderer.RenderTriangle(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderTriangle(x, y, size) :
+                                     ShapeRenderer.RenderTriangle(x, y, size);
 
                 case DataMarker.Plus:
-                    return rounded ? RoundedPathRenderer.RenderPlus(x, y, size) :
-                                     PathRenderer.RenderPlus(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderPlus(x, y, size) :
+                                     ShapeRenderer.RenderPlus(x, y, size);
 
                 case DataMarker.Cross:
-                    return rounded ? RoundedPathRenderer.RenderCross(x, y, size) :
-                                     PathRenderer.RenderCross(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderCross(x, y, size) :
+                                     ShapeRenderer.RenderCross(x, y, size);
 
                 default:
                     throw new NotImplementedException();
@@ -39,39 +39,39 @@
             switch (symbol)
             {
                 case SeriesMarker.Circle:
-                    return PathRenderer.RenderCircle(x, y, size);
+                    return ShapeRenderer.RenderCircle(x, y, size);
 
                 case SeriesMarker.Square:
-                    return rounded ? RoundedPathRenderer.RenderSquare(x, y, size) :
-                                     PathRenderer.RenderSquare(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderSquare(x, y, size) :
+                                     ShapeRenderer.RenderSquare(x, y, size);
 
                 case SeriesMarker.Diamond:
-                    return rounded ? RoundedPathRenderer.RenderDiamond(x, y, size) :
-                                     PathRenderer.RenderDiamond(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderDiamond(x, y, size) :
+                                     ShapeRenderer.RenderDiamond(x, y, size);
 
                 case SeriesMarker.Triangle:
-                    return rounded ? RoundedPathRenderer.RenderTriangle(x, y, size) :
-                                     PathRenderer.RenderTriangle(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderTriangle(x, y, size) :
+                                     ShapeRenderer.RenderTriangle(x, y, size);
 
                 case SeriesMarker.Plus:
-                    return rounded ? RoundedPathRenderer.RenderPlus(x, y, size) :
-                                     PathRenderer.RenderPlus(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderPlus(x, y, size) :
+                                     ShapeRenderer.RenderPlus(x, y, size);
 
                 case SeriesMarker.Cross:
-                    return rounded ? RoundedPathRenderer.RenderCross(x, y, size) : 
-                                     PathRenderer.RenderCross(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderCross(x, y, size) : 
+                                     ShapeRenderer.RenderCross(x, y, size);
 
                 case SeriesMarker.Slice:
-                    return rounded ? RoundedPathRenderer.RenderSlice(x, y, size) :
-                                     PathRenderer.RenderSlice(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderSlice(x, y, size) :
+                                     ShapeRenderer.RenderSlice(x, y, size);
 
                 case SeriesMarker.Solidline:
-                    return rounded ? RoundedPathRenderer.RenderSolidLine(x, y, size) :
-                                     PathRenderer.RenderSolidLine(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderSolidLine(x, y, size) :
+                                     ShapeRenderer.RenderSolidLine(x, y, size);
 
                 case SeriesMarker.Dashedline:
-                    return rounded ? RoundedPathRenderer.RenderDashedLine(x, y, size) :
-                                     PathRenderer.RenderDashedLine(x, y, size);
+                    return rounded ? RoundedShapeRenderer.RenderDashedLine(x, y, size) :
+                                     ShapeRenderer.RenderDashedLine(x, y, size);
 
                 default:
                     throw new NotImplementedException();

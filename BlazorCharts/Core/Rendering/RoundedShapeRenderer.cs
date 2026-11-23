@@ -62,7 +62,7 @@
 
         public static string RenderSlice(int x, int y, int size)
         {
-            int s = size / 2;
+            int s = (int)(size / Math.Sqrt(Math.PI));
             int roundness = s > 2 * ROUNDING ? ROUNDING : s / 2;
 
             return PathBuilder.CreateBuilder()

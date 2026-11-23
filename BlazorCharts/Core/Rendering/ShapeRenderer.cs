@@ -53,10 +53,11 @@
 
         public static string RenderSlice(int x, int y, int size)
         {
+            int r = (int)(2 * size / Math.Sqrt(Math.PI));
             return PathBuilder.CreateBuilder()
-                              .MoveTo(x - size / 2, y - size / 2)
-                              .SmallRelativeArcClockwise(size, size, size, size)
-                              .RelativeHorizontal(-size)
+                              .MoveTo(x - r / 2, y - r / 2)
+                              .SmallRelativeArcClockwise(r, r, r, r)
+                              .RelativeHorizontal(-r)
                               .Close()
                               .Build();
         }

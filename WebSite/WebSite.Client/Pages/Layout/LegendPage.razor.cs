@@ -6,8 +6,10 @@ namespace WebApp.Pages.Layout
 {
     public partial class LegendPage : ComponentBase
     {
+        private Theme theme;
         private Circulargram model;
-        private IColorStream palette; 
+        private IColorStream palette;
+        private Boolean flip_items;
 
         protected override void OnInitialized()
         {

@@ -6,5 +6,6 @@ namespace BlazorGraphs.Components
     {
         [Parameter] public ILegend Model { get; set; }
         [Parameter] public Theme Theme { get; set; }
+        [Parameter] public Boolean FlipItems { get; set; }
     }
 }

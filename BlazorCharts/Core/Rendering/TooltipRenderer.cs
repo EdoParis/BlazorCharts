@@ -43,9 +43,10 @@ namespace BlazorGraphs.Core
                     builder.OpenElement(sequence++, "svg");
                     builder.AddAttribute(sequence++, "width", "1.5em");
                     builder.AddAttribute(sequence++, "height", "1em");
-                    builder.AddAttribute(sequence++, "viewBox", "0 0 75 50");
+                    builder.AddAttribute(sequence++, "viewBox", "0 0 150 100");
+                    builder.AddAttribute(sequence++, "style", "margin: auto;");
                     builder.OpenElement(sequence++, "path");
-                    builder.AddAttribute(sequence++, "d", layout.Marker.Value.Symbol.Render(25, 25, 35, theme.RoundedShapes));
+                    builder.AddAttribute(sequence++, "d", layout.Marker.Value.Symbol.Render(75, 50, 70, theme.RoundedShapes));
                     builder.AddAttribute(sequence++, "fill", layout.Marker.Value.Color.ToHex());
                     builder.CloseElement();
                     builder.CloseElement();

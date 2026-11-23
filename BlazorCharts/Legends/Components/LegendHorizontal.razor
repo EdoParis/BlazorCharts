@@ -7,12 +7,28 @@
             @foreach (LegendItem item in Model.ToLegend())
             {
                 <div class="legend-item">
-                    <svg width="1.5em" height="1em" viewBox="0 0 75 50">
-                        <path d="@Theme.Markers.Series.Render(25, 25, 35, Theme.RoundedShapes)"
-                              fill="@item.Color.ToHex()">
-                        </path>
-                    </svg>
-                    <div class="text-truncate">@item.Text</div>
+                    @if (FlipItems)
+                    {
+                        <div class="text-truncate">@item.Text</div>
+                        <svg width="1.5em" 
+                             height="1em" 
+                             viewBox="0 0 150 100">
+                            <path d="@Theme.Markers.Series.Render(75, 50, 70, Theme.RoundedShapes)"
+                                  fill="@item.Color.ToHex()">
+                            </path>
+                        </svg>
+                    }
+                    else
+                    {
+                        <svg width="1.5em"
+                             height="1em"
+                             viewBox="0 0 150 100">
+                            <path d="@Theme.Markers.Series.Render(75, 50, 70, Theme.RoundedShapes)"
+                                  fill="@item.Color.ToHex()">
+                            </path>
+                        </svg>
+                        <div class="text-truncate">@item.Text</div>
+                    }
                 </div>
             }
         </div>

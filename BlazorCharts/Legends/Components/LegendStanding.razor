@@ -1,0 +1,38 @@
+@namespace BlazorGraphs.Components
+
+<div style="background-color: @Theme.BackgroundString(); font-family: @Theme.FontString(); color: @Theme.TextColorString();">
+    @if (Model != null)
+    {
+        <div class="legend-bar">
+            @foreach (LegendItem item in Model.ToLegend())
+            {
+                <div class="legend-item">
+                    @if (FlipItems)
+                    {
+                        <svg width="1.5em"
+                             height="1em"
+                             viewBox="0 0 150 100"
+                             class="align-bottom">
+                            <path d="@Theme.Markers.Series.Render(75, 50, 70, Theme.RoundedShapes)"
+                                  fill="@item.Color.ToHex()">
+                            </path>
+                        </svg>
+                        <div class="text-truncate">@item.Text</div>
+                    }
+                    else
+                    {
+                        <div class="text-truncate">@item.Text</div>
+                        <svg width="1.5em"
+                             height="1em"
+                             viewBox="0 0 150 100"
+                             class="align-top">
+                            <path d="@Theme.Markers.Series.Render(75, 50, 70, Theme.RoundedShapes)"
+                                  fill="@item.Color.ToHex()">
+                            </path>
+                        </svg>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>

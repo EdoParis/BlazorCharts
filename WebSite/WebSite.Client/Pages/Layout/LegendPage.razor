@@ -5,7 +5,12 @@
 <h3>LegendBar</h3>
 <p>
     The legend displays descriptive information about the data that are appearing on the chart. 
-    There are two different components, one for the horizontal legend and the other for the vertical one.
+    There are three different components, each for one of the following layouts:
+    <ul>
+        <li><b>Horizontal:</b> items are placed horizontally with marker next to the text</li>
+        <li><b>Standing:</b> items are placed horizontally with text on top of the marker</li>
+        <li><b>Vertical:</b> items are places vertically with marker next to the text</li>
+    </ul>
     Add the component to the page and assign it the data model of the chart you want.
 </p>
 <p>
@@ -20,7 +25,7 @@
                 <tr>
                     <td>Model</td>
                     <td class="font-monospace"><span class="token keyword">ILegend</span></td>
-                    <td>Interface implemented by all data model</td>
+                    <td>Interface implemented by all data models</td>
                 </tr>
                 <tr>
                     <td>Theme</td>
@@ -65,6 +70,13 @@
                                                     FlipItems="@flip_items"/>
                                 </td>
                             </tr>
+                            <tr>
+                                <td colspan="2" class="p-0">
+                                    <LegendStanding Model="@model"
+                                                   Theme="@theme"
+                                                   FlipItems="@flip_items" />
+                                </td>
+                            </tr>
                         </table>
                     </div>
                     <div class="col-6"><button type="button" class="btn btn-danger w-100 text-truncate" @onclick="OnChartClear">Clear</button></div>
@@ -76,8 +88,9 @@
                     <pre class="language-csharp m-0 h-100">
                         <code>
  &lt<span class="token tag bold">PolarAreaChart</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span>/&gt
- &lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> /&gt
- &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> /&gt
+ &lt<span class="token tag bold">LegendVertical</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">FlipItems</span><span class="token string">="</span>@flip_items<span class="token string">"</span> /&gt
+ &lt<span class="token tag bold">LegendStanding</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">FlipItems</span><span class="token string">="</span>@flip_items<span class="token string">"</span> /&gt
+ &lt<span class="token tag bold">LegendHorizontal</span> <span class="token property bold">Model</span><span class="token string">="</span>@@model<span class="token string">"</span> <span class="token property bold">FlipItems</span><span class="token string">="</span>@flip_items<span class="token string">"</span> /&gt
  
  @@{
      <span class="token keyword">private</span> <span class="token property">Circulargram</span> model = <span class="token keyword">new</span> <span class="token class-name">Piegram</span>();

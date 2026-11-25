@@ -1,6 +1,5 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
-using System.Text;
 
 namespace BlazorGraphs.Components
 {
@@ -36,37 +35,42 @@ namespace BlazorGraphs.Components
         private string Path()
         {
             int i = 0;
-            StringBuilder str_builder = new();
+            PathBuilder builder = PathBuilder.CreateBuilder();
 
-            foreach(Rating rating in Model)
+            foreach (Rating rating in Model)
             {
                 double r = rating.Value / Model.AxisR.Size * (Math.Min(width, height) - 2 * padding) / 2;
                 double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
                 double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
 
-                str_builder.Append(i == 0 ? $"M {(int)x} {(int)y} " : $"L {(int)x} {(int)y} ");
+                if (i == 0)
+                    builder.MoveTo(x, y);
+                else
+                    builder.LineTo(x, y);
+
                 i++;
             }
-            str_builder.Append("Z");
-            return str_builder.ToString();
+            return builder.Close()
+                          .Build();
         }
 
         private string Path(double radius)
         {
-            int i = 0;
-            StringBuilder str_builder = new();
+            PathBuilder builder = PathBuilder.CreateBuilder();
 
-            foreach (Rating rating in Model)
+            for (int i = 0; i < Model.Categories; i++)
             {
                 double r = radius * (Math.Min(width, height) / 2 - padding);
                 double x = width / 2 + r * Math.Sin(2 * Math.PI / Model.Categories * i);
                 double y = height / 2 - r * Math.Cos(2 * Math.PI / Model.Categories * i);
 
-                str_builder.Append(i == 0 ? $"M {(int)x} {(int)y} " : $"L {(int)x} {(int)y} ");
-                i++;
+                if (i == 0)
+                    builder.MoveTo(x, y);
+                else
+                    builder.LineTo(x, y);
             }
-            str_builder.Append("Z");
-            return str_builder.ToString();
+            return builder.Close()
+                          .Build();
         }
 
         private void OnRatingEnter(Rating rating)

@@ -29,8 +29,8 @@ namespace BlazorGraphs.Components
         protected override void OnInitialized()
         {
             LayoutTextSlice = TextLayout.MiddleLayout()
-                                         .Medium()
-                                         .WithTheme(Theme);
+                                        .Medium()
+                                        .WithTheme(Theme);
 
             LayoutTextTitle = TextLayout.MiddleLayout()
                                         .Medium()
@@ -45,11 +45,13 @@ namespace BlazorGraphs.Components
             double radius = (Math.Min(width, height) - 2 * padding) / 2;
             double theta = 2 * Math.PI * slice.Value / Model.Total;
 
-            return $"M {width / 2} {height / 2} " + 
-                   $"L {(int)(width / 2 + radius * Math.Sin(rotation))} {(int)(height / 2 - radius * Math.Cos(rotation))} " +
-                   $"A {(int)radius} {(int)radius} 0 0 1 {(int)(width / 2 + radius * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius * Math.Cos(theta / 2 + rotation))} " +
-                   $"A {(int)radius} {(int)radius} 0 0 1 {(int)(width / 2 + radius * Math.Sin(theta + rotation))} {(int)(height / 2 - radius * Math.Cos(theta + rotation))} " +
-                   "Z";
+            return PathBuilder.CreateBuilder()
+                              .MoveTo(width / 2, height / 2)
+                              .LineTo(width / 2 + radius * Math.Sin(rotation), height / 2 - radius * Math.Cos(rotation))
+                              .SmallArcClockwise(radius, width / 2 + radius * Math.Sin(theta / 2 + rotation), height / 2 - radius * Math.Cos(theta / 2 + rotation))
+                              .SmallArcClockwise(radius, width / 2 + radius * Math.Sin(theta + rotation), height / 2 - radius * Math.Cos(theta + rotation))
+                              .Close()
+                              .Build();
         }
 
         private string RoundedSlicePath(Slice slice, double rotation = 0)
@@ -60,22 +62,26 @@ namespace BlazorGraphs.Components
 
             if (radius * theta > 2 * roundness)
             {
-                return $"M {width / 2} {height / 2} " +
-                       $"L {(int)(width / 2 + (radius - roundness) * Math.Sin(rotation))} {(int)(height / 2 - (radius - roundness) * Math.Cos(rotation))} " +
-                       $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + radius * Math.Sin(rotation + roundness / radius))} {(int)(height / 2 - radius * Math.Cos(rotation + roundness / radius))} " +
-                       $"A {(int)radius} {(int)radius} 0 0 1 {(int)(width / 2 + radius * Math.Sin(theta / 2 + rotation))} {(int)(height / 2 - radius * Math.Cos(theta / 2 + rotation))} " +
-                       $"A {(int)radius} {(int)radius} 0 0 1 {(int)(width / 2 + radius * Math.Sin(theta + rotation - roundness / radius))} {(int)(height / 2 - radius * Math.Cos(theta + rotation - roundness / radius))} " +
-                       $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + (radius - roundness) * Math.Sin(theta + rotation))} {(int)(height / 2 - (radius - roundness) * Math.Cos(theta + rotation))} " +
-                       "Z";
+                return PathBuilder.CreateBuilder()
+                                  .MoveTo(width / 2, height / 2)
+                                  .LineTo(width / 2 + (radius - roundness) * Math.Sin(rotation), height / 2 - (radius - roundness) * Math.Cos(rotation))
+                                  .SmallArcClockwise(roundness, width / 2 + radius * Math.Sin(rotation + roundness / radius), height / 2 - radius * Math.Cos(rotation + roundness / radius))
+                                  .SmallArcClockwise(radius, width / 2 + radius * Math.Sin(theta / 2 + rotation), height / 2 - radius * Math.Cos(theta / 2 + rotation))
+                                  .SmallArcClockwise(radius, width / 2 + radius * Math.Sin(theta + rotation - roundness / radius), height / 2 - radius * Math.Cos(theta + rotation - roundness / radius))
+                                  .SmallArcClockwise(roundness, width / 2 + (radius - roundness) * Math.Sin(theta + rotation), height / 2 - (radius - roundness) * Math.Cos(theta + rotation))
+                                  .Close()
+                                  .Build();
             }
             else
             {
                 double roundness2 = (radius - roundness) * theta / 2;
                 double degree_rot = (rotation + theta / 2) / Math.PI * 180;
-                return $"M {width / 2} {height / 2} " +
-                       $"L {(int)(width / 2 + (radius - roundness) * Math.Sin(rotation))} {(int)(height / 2 - (radius - roundness) * Math.Cos(rotation))} " +
-                       $"A {(int)roundness2} {(int)roundness} {(int)degree_rot} 0 1 {(int)(width / 2 + (radius - roundness) * Math.Sin(theta + rotation))} {(int)(height / 2 - (radius - roundness) * Math.Cos(theta + rotation))} " +
-                       "Z";
+                return PathBuilder.CreateBuilder()
+                                  .MoveTo(width / 2, height / 2)
+                                  .LineTo(width / 2 + (radius - roundness) * Math.Sin(rotation), height / 2 - (radius - roundness) * Math.Cos(rotation))
+                                  .SmallArcClockwise(roundness2, roundness, width / 2 + (radius - roundness) * Math.Sin(theta + rotation), height / 2 - (radius - roundness) * Math.Cos(theta + rotation), degree_rot)
+                                  .Close()
+                                  .Build();
             }
         }
 

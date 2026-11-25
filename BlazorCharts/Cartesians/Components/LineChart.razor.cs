@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using BlazorGraphs.Core;
 using System.Drawing;
-using System.Text;
 
 namespace BlazorGraphs.Components
 {
@@ -62,28 +61,28 @@ namespace BlazorGraphs.Components
 
         private string LinePath(Serie<Datapoint> serie)
         {
-            StringBuilder builder = new StringBuilder();
+            PathBuilder builder = PathBuilder.CreateBuilder();
             Point? previous_point = null;
 
             foreach (Datapoint point in serie.Data)
             {
                 Point p = new Point()
                 {
-                    X = LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size),
-                    Y = LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size)
+                    X = LayoutAxisX.StartingPoint.X + (int)((point.X - Model.AxisX.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size),
+                    Y = LayoutAxisY.StartingPoint.Y + (int)((point.Y - Model.AxisY.Min) * LayoutAxisY.Amplitude / Model.AxisY.Size)
                 };
 
                 if (previous_point.HasValue)
                 {
-                    builder.Append($"L {p.X} {p.Y} ");
+                    builder.LineTo(p.X, p.Y);
                 }
                 else
                 {
-                    builder.Append($"M {p.X} {p.Y} ");
+                    builder.MoveTo(p.X, p.Y);
                 }
                 previous_point = p;
             }
-            return builder.ToString();
+            return builder.Build();
         }
 
         private void OnPointEnter(Datapoint point, Color color)

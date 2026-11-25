@@ -60,44 +60,50 @@ namespace BlazorGraphs.Components
             int endpoint_x = (int)Math.Round(width / 2 - radius * Math.Cos(end));
             int endpoint_y = (int)Math.Round(height - padding - radius * Math.Sin(end));
 
-            return $"M {startpoint_x} {startpoint_y} " +
-                   $"A {radius} {radius} 0 0 1 {middlepoint_x} {middlepoint_y} " +
-                   $"A {radius} {radius} 0 0 1 {endpoint_x} {endpoint_y}";
+            return PathBuilder.CreateBuilder()
+                              .MoveTo(startpoint_x, startpoint_y)
+                              .SmallArcClockwise(radius, middlepoint_x, middlepoint_y)
+                              .SmallArcClockwise(radius, endpoint_x, endpoint_y)
+                              .Build();
         }
 
         private string RoundedGaugePath(double start, double end)
         {
             double radius_out = radius + padding / 2;
             double radius_in = radius - padding / 2;
-            double theta = end - start;
+            double middle = (start + end) / 2;
             double roundness = 10;
 
-            return $"M {(int)(width / 2 + (radius_out - roundness) * Math.Sin(start))} {(int)(height - padding - (radius_out - roundness) * Math.Cos(start))} " +
-                    $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(start + roundness / radius_out))} {(int)(height - padding - radius_out * Math.Cos(start + roundness / radius_out))} " +
-                    $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta / 2 + start))} {(int)(height - padding - radius_out * Math.Cos(theta / 2 + start))} " +
-                    $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(end - roundness / radius_out))} {(int)(height - padding - radius_out * Math.Cos(end - roundness / radius_out))} " +
-                    $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + (radius_out - roundness) * Math.Sin(end))} {(int)(height - padding - (radius_out - roundness) * Math.Cos(end))} " +
-                    $"L {(int)(width / 2 + (radius_in + roundness) * Math.Sin(end))} {(int)(height - padding - (radius_in + roundness) * Math.Cos(end))} " +
-                    $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + radius_in * Math.Sin(end - roundness / radius_in))} {(int)(height - padding - radius_in * Math.Cos(end - roundness / radius_in))} " +
-                    $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin((start + end) / 2))} {(int)(height - padding - radius_in * Math.Cos((start + end) / 2))} " +
-                    $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin(start + roundness / radius_in))} {(int)(height - padding - radius_in * Math.Cos(start + roundness / radius_in))} " +
-                    $"A {(int)roundness} {(int)roundness} 0 0 1 {(int)(width / 2 + (radius_in + roundness) * Math.Sin(start))} {(int)(height - padding - (radius_in + roundness) * Math.Cos(start))} " +
-                    "Z";
+            return PathBuilder.CreateBuilder()
+                              .MoveTo(width / 2 + (radius_out - roundness) * Math.Sin(start), height - padding - (radius_out - roundness) * Math.Cos(start))
+                              .SmallArcClockwise(roundness, width / 2 + radius_out * Math.Sin(start + roundness / radius_out), height - padding - radius_out * Math.Cos(start + roundness / radius_out))
+                              .SmallArcClockwise(radius_out, width / 2 + radius_out * Math.Sin(middle), height - padding - radius_out * Math.Cos(middle))
+                              .SmallArcClockwise(radius_out, width / 2 + radius_out * Math.Sin(end - roundness / radius_out), height - padding - radius_out * Math.Cos(end - roundness / radius_out))
+                              .SmallArcClockwise(roundness, width / 2 + (radius_out - roundness) * Math.Sin(end), height - padding - (radius_out - roundness) * Math.Cos(end))
+                              .LineTo(width / 2 + (radius_in + roundness) * Math.Sin(end), height - padding - (radius_in + roundness) * Math.Cos(end))
+                              .SmallArcClockwise(roundness, width / 2 + radius_in * Math.Sin(end - roundness / radius_in), height - padding - radius_in * Math.Cos(end - roundness / radius_in))
+                              .SmallArcCounterclockwise(radius_in, width / 2 + radius_in * Math.Sin(middle), height - padding - radius_in * Math.Cos(middle))
+                              .SmallArcCounterclockwise(radius_in, width / 2 + radius_in * Math.Sin(start + roundness / radius_in), height - padding - radius_in * Math.Cos(start + roundness / radius_in))
+                              .SmallArcClockwise(roundness, width / 2 + (radius_in + roundness) * Math.Sin(start), height - padding - (radius_in + roundness) * Math.Cos(start))
+                              .Close()
+                              .Build();
         }
 
         private string GaugePath(double start, double end)
         {
             double radius_out = radius + padding / 2;
             double radius_in = radius - padding / 2;
-            double theta = end - start;
+            double middle = (start + end) / 2;
 
-            return $"M {(int)(width / 2 + radius_out * Math.Sin(start))} {(int)(height - padding - radius_out * Math.Cos(start))} " +
-                    $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(theta / 2 + start))} {(int)(height - padding - radius_out * Math.Cos(theta / 2 + start))} " +
-                    $"A {(int)radius_out} {(int)radius_out} 0 0 1 {(int)(width / 2 + radius_out * Math.Sin(end))} {(int)(height - padding - radius_out * Math.Cos(end))} " +
-                    $"L {(int)(width / 2 + radius_in * Math.Sin(end))} {(int)(height - padding - radius_in * Math.Cos(end))} " +
-                    $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin((start + end) / 2))} {(int)(height - padding - radius_in * Math.Cos((start + end) / 2))} " +
-                    $"A {(int)radius_in} {(int)radius_in} 0 0 0 {(int)(width / 2 + radius_in * Math.Sin(start))} {(int)(height - padding - radius_in * Math.Cos(start))} " +
-                    "Z";
+            return PathBuilder.CreateBuilder()
+                              .MoveTo(width / 2 + radius_out * Math.Sin(start), height - padding - radius_out * Math.Cos(start))
+                              .SmallArcClockwise(radius_out, width / 2 + radius_out * Math.Sin(middle), height - padding - radius_out * Math.Cos(middle))
+                              .SmallArcClockwise(radius_out, width / 2 + radius_out * Math.Sin(end), height - padding - radius_out * Math.Cos(end))
+                              .LineTo(width / 2 + radius_in * Math.Sin(end), height - padding - radius_in * Math.Cos(end))
+                              .SmallArcCounterclockwise(radius_in, width / 2 + radius_in * Math.Sin(middle), height - padding - radius_in * Math.Cos(middle))
+                              .SmallArcCounterclockwise(radius_in, width / 2 + radius_in * Math.Sin(start), height - padding - radius_in * Math.Cos(start))
+                              .Close()
+                              .Build();
         }
 
         private void OnGaugeEnter()

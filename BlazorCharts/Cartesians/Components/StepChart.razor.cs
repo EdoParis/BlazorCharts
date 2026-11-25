@@ -1,7 +1,6 @@
 ﻿using BlazorGraphs.Core;
 using Microsoft.AspNetCore.Components;
 using System.Drawing;
-using System.Text;
 
 namespace BlazorGraphs.Components
 {
@@ -62,40 +61,40 @@ namespace BlazorGraphs.Components
 
         private string LinePath(Serie<Datapoint> serie)
         {
-            StringBuilder builder = new StringBuilder();
+            PathBuilder builder = PathBuilder.CreateBuilder();
             Point? previous_point = null;
 
             foreach (Datapoint point in serie.Data)
             {
                 Point p = new Point()
                 {
-                    X = LayoutView.Padding + (int)((point.X - Model.AxisX.Min) * LayoutView.InternalWidth / Model.AxisX.Size),
-                    Y = LayoutView.Height - LayoutView.Padding - (int)((point.Y - Model.AxisY.Min) * LayoutView.InternalHeight / Model.AxisY.Size)
+                    X = LayoutAxisX.StartingPoint.X + (int)((point.X - Model.AxisX.Min) * LayoutAxisX.Amplitude / Model.AxisX.Size),
+                    Y = LayoutAxisY.StartingPoint.Y + (int)((point.Y - Model.AxisY.Min) * LayoutAxisY.Amplitude / Model.AxisY.Size)
                 };
 
                 if (previous_point.HasValue)
                 {
                     if (point.Y == previous_point.Value.Y)
-                        builder.Append($"L {p.X} {p.Y} ");
+                        builder.Horizontal(p.X);
                     else
                     {
-                        builder.Append($"L {(p.X + previous_point.Value.X) / 2} {previous_point.Value.Y} ");
-                        builder.Append($"L {(p.X + previous_point.Value.X) / 2} {p.Y} ");
-                        builder.Append($"L {p.X} {p.Y} ");
+                        builder.Horizontal((p.X + previous_point.Value.X) / 2)
+                               .Vertical(p.Y)
+                               .Horizontal(p.X);
                     }
                 }
                 else
                 {
-                    builder.Append($"M {p.X} {p.Y} ");
+                    builder.MoveTo(p.X, p.Y);
                 }
                 previous_point = p;
             }
-            return builder.ToString();
+            return builder.Build();
         }
 
         private string RoundedLinePath(Serie<Datapoint> serie)
         {
-            StringBuilder builder = new StringBuilder();
+            PathBuilder builder = PathBuilder.CreateBuilder();
             Point? previous_point = null;
 
             foreach (Datapoint point in serie.Data)
@@ -109,26 +108,37 @@ namespace BlazorGraphs.Components
                 if (previous_point.HasValue)
                 {
                     if (point.Y == previous_point.Value.Y)
-                        builder.Append($"L {p.X} {p.Y} ");
+                        builder.Horizontal(p.X);
                     else
                     {
                         int ry = Math.Sign(p.Y - previous_point.Value.Y) * Math.Min(Math.Abs(p.Y - previous_point.Value.Y) / 2, 10);
                         int rx = Math.Sign(p.X - previous_point.Value.X) * Math.Min(Math.Abs(p.X - previous_point.Value.X) / 2, 10);
 
-                        builder.Append($"H {(p.X + previous_point.Value.X) / 2 - rx} ");
-                        builder.Append($"a {Math.Abs(rx)} {Math.Abs(ry)} 0 0 {(rx * ry > 0 ? 1 : 0)} {rx} {ry} ");
-                        builder.Append($"V {p.Y - ry}");
-                        builder.Append($"a {Math.Abs(rx)} {Math.Abs(ry)} 0 0 {(rx * ry > 0 ? 0 : 1)} {rx} {ry} ");
-                        builder.Append($"L {p.X} {p.Y} ");
+                        if (rx * ry > 0)
+                        {
+                            builder.Horizontal((p.X + previous_point.Value.X) / 2 - rx)
+                                   .SmallRelativeArcClockwise(Math.Abs(rx), Math.Abs(ry), rx, ry)
+                                   .Vertical(p.Y - ry)
+                                   .SmallRelativeArcCounterclockwise(Math.Abs(rx), Math.Abs(ry), rx, ry)
+                                   .LineTo(p.X, p.Y);
+                        }
+                        else
+                        {
+                            builder.Horizontal((p.X + previous_point.Value.X) / 2 - rx)
+                                   .SmallRelativeArcCounterclockwise(Math.Abs(rx), Math.Abs(ry), rx, ry)
+                                   .Vertical(p.Y - ry)
+                                   .SmallRelativeArcClockwise(Math.Abs(rx), Math.Abs(ry), rx, ry)
+                                   .LineTo(p.X, p.Y);
+                        }
                     }
                 }
                 else
                 {
-                    builder.Append($"M {p.X} {p.Y} ");
+                    builder.MoveTo(p.X, p.Y);
                 }
                 previous_point = p;
             }
-            return builder.ToString();
+            return builder.Build();
         }
 
         private void OnPointEnter(Datapoint point, Color color)

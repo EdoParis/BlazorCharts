@@ -4,7 +4,7 @@
 	<TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>3.2.0</Version>
+    <Version>3.3.0</Version>
     <Title>BlazorGraphs</Title>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -14,13 +14,13 @@
 	  <PackageProjectUrl>https://www.BlazorGraphs.it</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/EdoParis/BlazorCharts</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
-    <Description>Lightweight library to draw .svg charts and gauges for Blazor (No Javascript)</Description>
+    <Description>Lightweight library for drawing native .svg charts and gauges for Blazor (No Javascript). Supported all rendering modes (WASM, SSR)</Description>
     <PackageReleaseNotes>
-		- Added rounded theme
-		- Added tooltip color customization
-		- Added click events to cartesian charts
-		- Added marker shape customization to datapoints and series
-		- Improved tooltip touch interaction
+		- Added .net10 support
+		- Added LegendStanding component
+		- Added FlipItems parameter to legends
+		- Refactoring svg path generation
+		- Fix text color of horizontal barchart
 	</PackageReleaseNotes>
   </PropertyGroup>
 

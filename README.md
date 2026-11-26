@@ -54,9 +54,10 @@ Each data model has two methods:
 - `Clear`: to remove all the existing data from the model
 
 #### Legends
-The legend is separated from the charts, there are two separated components:
+The legend is separated from the charts, there are three separated components:
 - `LegendHorizontal`
 - `LegendVertical`
+- `LegendStanding`
 
 The legend components accepts the same data models of charts as parameter, since this is separated from the chart, you can place everywhere you want.
 
@@ -75,8 +76,6 @@ If you pass a partially empty theme, the library doesn't break. It delegates the
 - background color defaults to Transparent
 - text and axis colors fallback to currentColor
 - font family defaults to Inherit
-
-**NB**: The theme customize also the tooltip associated with the chart or gauge;
 
 #### AspectRatio
 Barcharts and Cartesian charts accept the `AspectRatio` parameter. 

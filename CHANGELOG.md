@@ -6,6 +6,13 @@ Legend symbols:
 * 🟨 **Change**
 * 🟥 **Bug**
 
+## Version 3.3
+* 🟩 Added LegendStanding component
+* 🟩 Added FlipItems parameter to legends
+* 🟦 Added .net10 support
+* 🟪 Refactoring svg path generation
+* 🟥 Fix text color of horizontal barchart
+
 ## Version 3.2
 * 🟩 Added rounded theme
 * 🟩 Added tooltip color customization

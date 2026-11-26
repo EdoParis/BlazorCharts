@@ -1,9 +1,11 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace BlazorGraphs.Core
 {
     internal class PathBuilder
     {
+        private const string FORMAT = "{0:0.#}";
         private StringBuilder string_builder;
 
         private PathBuilder()
@@ -37,9 +39,9 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('M');
             string_builder.Append(' ');
-            string_builder.Append((int)x);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, x);
             string_builder.Append(' ');
-            string_builder.Append((int)y);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, y);
             string_builder.Append(' ');
             return this;
         }
@@ -48,9 +50,9 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('L');
             string_builder.Append(' ');
-            string_builder.Append((int)x);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, x);
             string_builder.Append(' ');
-            string_builder.Append((int)y);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, y);
             string_builder.Append(' ');
             return this;
         }
@@ -59,7 +61,7 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('H');
             string_builder.Append(' ');
-            string_builder.Append((int)h);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, h);
             string_builder.Append(' ');
             return this;
         }
@@ -68,7 +70,7 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('V');
             string_builder.Append(' ');
-            string_builder.Append((int)v);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, v);
             string_builder.Append(' ');
             return this;
         }
@@ -79,19 +81,19 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('A');
             string_builder.Append(' ');
-            string_builder.Append((int)rx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, rx);
             string_builder.Append(' ');
-            string_builder.Append((int)ry);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, ry);
             string_builder.Append(' ');
-            string_builder.Append((int)axis_rotation);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, axis_rotation);
             string_builder.Append(' ');
             string_builder.Append(0);
             string_builder.Append(' ');
             string_builder.Append(1);
             string_builder.Append(' ');
-            string_builder.Append((int)x);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, x);
             string_builder.Append(' ');
-            string_builder.Append((int)y);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, y);
             string_builder.Append(' ');
             return this;
         }
@@ -102,19 +104,19 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('A');
             string_builder.Append(' ');
-            string_builder.Append((int)rx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, rx);
             string_builder.Append(' ');
-            string_builder.Append((int)ry);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, ry);
             string_builder.Append(' ');
-            string_builder.Append((int)axis_rotation);
-            string_builder.Append(' ');
-            string_builder.Append(1);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, axis_rotation);
             string_builder.Append(' ');
             string_builder.Append(1);
             string_builder.Append(' ');
-            string_builder.Append((int)x);
+            string_builder.Append(1);
             string_builder.Append(' ');
-            string_builder.Append((int)y);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, x);
+            string_builder.Append(' ');
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, y);
             string_builder.Append(' ');
             return this;
         }
@@ -125,19 +127,19 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('A');
             string_builder.Append(' ');
-            string_builder.Append((int)rx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, rx);
             string_builder.Append(' ');
-            string_builder.Append((int)ry);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, ry);
             string_builder.Append(' ');
-            string_builder.Append((int)axis_rotation);
-            string_builder.Append(' ');
-            string_builder.Append(0);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, axis_rotation);
             string_builder.Append(' ');
             string_builder.Append(0);
             string_builder.Append(' ');
-            string_builder.Append((int)x);
+            string_builder.Append(0);
             string_builder.Append(' ');
-            string_builder.Append((int)y);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, x);
+            string_builder.Append(' ');
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, y);
             string_builder.Append(' ');
             return this;
         }
@@ -148,19 +150,19 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('A');
             string_builder.Append(' ');
-            string_builder.Append((int)rx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, rx);
             string_builder.Append(' ');
-            string_builder.Append((int)ry);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, ry);
             string_builder.Append(' ');
-            string_builder.Append((int)axis_rotation);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, axis_rotation);
             string_builder.Append(' ');
             string_builder.Append(1);
             string_builder.Append(' ');
             string_builder.Append(0);
             string_builder.Append(' ');
-            string_builder.Append((int)x);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, x);
             string_builder.Append(' ');
-            string_builder.Append((int)y);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, y);
             string_builder.Append(' ');
             return this;
         }
@@ -169,9 +171,9 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('l');
             string_builder.Append(' ');
-            string_builder.Append((int)dx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dx);
             string_builder.Append(' ');
-            string_builder.Append((int)dy);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dy);
             string_builder.Append(' ');
             return this;
         }
@@ -180,7 +182,7 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('h');
             string_builder.Append(' ');
-            string_builder.Append((int)dh);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dh);
             string_builder.Append(' ');
             return this;
         }
@@ -189,7 +191,7 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('v');
             string_builder.Append(' ');
-            string_builder.Append((int)dv);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dv);
             string_builder.Append(' ');
             return this;
         }
@@ -200,19 +202,19 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('a');
             string_builder.Append(' ');
-            string_builder.Append((int)rx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, rx);
             string_builder.Append(' ');
-            string_builder.Append((int)ry);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, ry);
             string_builder.Append(' ');
-            string_builder.Append((int)axis_rotation);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, axis_rotation);
             string_builder.Append(' ');
             string_builder.Append(0);
             string_builder.Append(' ');
             string_builder.Append(1);
             string_builder.Append(' ');
-            string_builder.Append((int)dx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dx);
             string_builder.Append(' ');
-            string_builder.Append((int)dy);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dy);
             string_builder.Append(' ');
             return this;
         }
@@ -223,19 +225,19 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('a');
             string_builder.Append(' ');
-            string_builder.Append((int)rx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, rx);
             string_builder.Append(' ');
-            string_builder.Append((int)ry);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, ry);
             string_builder.Append(' ');
-            string_builder.Append((int)axis_rotation);
-            string_builder.Append(' ');
-            string_builder.Append(1);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, axis_rotation);
             string_builder.Append(' ');
             string_builder.Append(1);
             string_builder.Append(' ');
-            string_builder.Append((int)dx);
+            string_builder.Append(1);
             string_builder.Append(' ');
-            string_builder.Append((int)dy);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dx);
+            string_builder.Append(' ');
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dy);
             string_builder.Append(' ');
             return this;
         }
@@ -246,19 +248,19 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('a');
             string_builder.Append(' ');
-            string_builder.Append((int)rx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, rx);
             string_builder.Append(' ');
-            string_builder.Append((int)ry);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, ry);
             string_builder.Append(' ');
-            string_builder.Append((int)axis_rotation);
-            string_builder.Append(' ');
-            string_builder.Append(0);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, axis_rotation);
             string_builder.Append(' ');
             string_builder.Append(0);
             string_builder.Append(' ');
-            string_builder.Append((int)dx);
+            string_builder.Append(0);
             string_builder.Append(' ');
-            string_builder.Append((int)dy);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dx);
+            string_builder.Append(' ');
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dy);
             string_builder.Append(' ');
             return this;
         }
@@ -269,19 +271,19 @@ namespace BlazorGraphs.Core
         {
             string_builder.Append('a');
             string_builder.Append(' ');
-            string_builder.Append((int)rx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, rx);
             string_builder.Append(' ');
-            string_builder.Append((int)ry);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, ry);
             string_builder.Append(' ');
-            string_builder.Append((int)axis_rotation);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, axis_rotation);
             string_builder.Append(' ');
             string_builder.Append(1);
             string_builder.Append(' ');
             string_builder.Append(0);
             string_builder.Append(' ');
-            string_builder.Append((int)dx);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dx);
             string_builder.Append(' ');
-            string_builder.Append((int)dy);
+            string_builder.AppendFormat(CultureInfo.InvariantCulture, FORMAT, dy);
             string_builder.Append(' ');
             return this;
         }

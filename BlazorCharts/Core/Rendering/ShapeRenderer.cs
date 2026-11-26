@@ -2,9 +2,9 @@
 {
     internal static class ShapeRenderer
     {
-        public static string RenderCircle(int x, int y, int size)
+        public static string RenderCircle(double x, double y, double size)
         {
-            int r = (int)(size / Math.Sqrt(Math.PI));
+            double r = size / Math.Sqrt(Math.PI);
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x, y - r)
@@ -14,7 +14,7 @@
                               .Build();
         }
 
-        public static string RenderSquare(int x, int y, int size)
+        public static string RenderSquare(double x, double y, double size)
         {
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - size / 2, y - size / 2)
@@ -25,9 +25,9 @@
                               .Build();
         }
 
-        public static string RenderDiamond(int x, int y, int size)
+        public static string RenderDiamond(double x, double y, double size)
         {
-            int s = (int)(size / Math.Sqrt(2));
+            double s = size / Math.Sqrt(2);
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x, y - s)
@@ -38,10 +38,10 @@
                               .Build();
         }
 
-        public static string RenderTriangle(int x, int y, int size)
+        public static string RenderTriangle(double x, double y, double size)
         {
-            int b = 4 * size / 3;
-            int h = (int)(b * Math.Sqrt(3) / 2);
+            double b = 4 * size / 3;
+            double h = b * Math.Sqrt(3) / 2;
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - b / 2, y + h / 2)
@@ -51,9 +51,9 @@
                               .Build();
         }
 
-        public static string RenderSlice(int x, int y, int size)
+        public static string RenderSlice(double x, double y, double size)
         {
-            int r = (int)(2 * size / Math.Sqrt(Math.PI));
+            double r = 2 * size / Math.Sqrt(Math.PI);
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - r / 2, y - r / 2)
                               .SmallRelativeArcClockwise(r, r, r, r)
@@ -62,7 +62,7 @@
                               .Build();
         }
 
-        public static string RenderSolidLine(int x, int y, int size)
+        public static string RenderSolidLine(double x, double y, double size)
         {
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - size / 2, y - size / 6)
@@ -73,7 +73,7 @@
                               .Build();
         }
 
-        public static string RenderDashedLine(int x, int y, int size)
+        public static string RenderDashedLine(double x, double y, double size)
         {
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - size / 2, y - size / 6)
@@ -89,9 +89,9 @@
                               .Build();
         }
 
-        public static string RenderPlus(int x, int y, int size)
+        public static string RenderPlus(double x, double y, double size)
         {
-            int s = (int)(size / Math.Sqrt(5));
+            double s = size / Math.Sqrt(5);
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x + s / 2, y + 3 * s / 2)
@@ -110,9 +110,9 @@
                               .Build();
         }
 
-        public static string RenderCross(int x, int y, int size)
+        public static string RenderCross(double x, double y, double size)
         {
-            int s = (int)(size / Math.Sqrt(10));
+            double s = size / Math.Sqrt(10);
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x + s, y)

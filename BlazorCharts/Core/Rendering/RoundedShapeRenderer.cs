@@ -4,10 +4,10 @@
     {
         private static int ROUNDING = 10;
 
-        public static string RenderSquare(int x, int y, int size)
+        public static string RenderSquare(double x, double y, double size)
         {
-            int s = size / 2;
-            int roundness = s > 2 * ROUNDING ? ROUNDING : s / 2;
+            double s = size / 2;
+            double roundness = s > 2 * ROUNDING ? ROUNDING : s / 2;
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - s, y - s + roundness)
@@ -22,11 +22,11 @@
                               .Build();
         }
 
-        public static string RenderDiamond(int x, int y, int size)
+        public static string RenderDiamond(double x, double y, double size)
         {
-            int s = (int)(size / Math.Sqrt(2));
-            int roundness = s > 2 * ROUNDING ? ROUNDING : s / 2;
-            int w = (int)(roundness / Math.Sqrt(2));
+            double s = size / Math.Sqrt(2);
+            double roundness = s > 2 * ROUNDING ? ROUNDING : s / 2;
+            double w = roundness / Math.Sqrt(2);
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - w, y - s + w)
@@ -41,13 +41,13 @@
                               .Build();
         }
 
-        public static string RenderTriangle(int x, int y, int size)
+        public static string RenderTriangle(double x, double y, double size)
         {
-            int b = 4 * size / 3;
-            int h = (int)(b * Math.Sqrt(3) / 2);
-            int roundness = b > 4 * ROUNDING ? ROUNDING : b / 4;
-            int r_sin_alpha = (int)(roundness * Math.Sqrt(3) / 2);
-            int r_cos_alpha = roundness / 2;
+            double b = 4 * size / 3;
+            double h = b * Math.Sqrt(3) / 2;
+            double roundness = b > 4 * ROUNDING ? ROUNDING : b / 4;
+            double r_sin_alpha = roundness * Math.Sqrt(3) / 2;
+            double r_cos_alpha = roundness / 2;
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x + b / 2 - roundness, y + h / 2)
@@ -60,10 +60,10 @@
                               .Build();
         }
 
-        public static string RenderSlice(int x, int y, int size)
+        public static string RenderSlice(double x, double y, double size)
         {
-            int s = (int)(size / Math.Sqrt(Math.PI));
-            int roundness = s > 2 * ROUNDING ? ROUNDING : s / 2;
+            double s = size / Math.Sqrt(Math.PI);
+            double roundness = s > 2 * ROUNDING ? ROUNDING : s / 2;
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - s, y - s + roundness)
@@ -75,9 +75,9 @@
                               .Build();
         }
 
-        public static string RenderSolidLine(int x, int y, int size)
+        public static string RenderSolidLine(double x, double y, double size)
         {
-            int roundness = size / 6;
+            double roundness = size / 6;
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - size / 2 + roundness, y + roundness)
@@ -88,9 +88,9 @@
                               .Build();
         }
 
-        public static string RenderDashedLine(int x, int y, int size)
+        public static string RenderDashedLine(double x, double y, double size)
         {
-            int roundness = size / 6;
+            double roundness = size / 6;
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x - size / 2 + roundness, y + roundness)
@@ -106,10 +106,10 @@
                               .Build();
         }
 
-        public static string RenderPlus(int x, int y, int size)
+        public static string RenderPlus(double x, double y, double size)
         {
-            int s = (int)(size / Math.Sqrt(5));
-            int roundness = s > 4 * ROUNDING ? ROUNDING : s / 4;
+            double s = size / Math.Sqrt(5);
+            double roundness = s > 4 * ROUNDING ? ROUNDING : s / 4;
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x + s / 2, y + s / 2 + roundness)
@@ -140,11 +140,11 @@
                               .Build();
         }
 
-        public static string RenderCross(int x, int y, int size)
+        public static string RenderCross(double x, double y, double size)
         {
-            int s = (int)(size / Math.Sqrt(10));
-            int roundness = s > 4 * ROUNDING ? ROUNDING : s / 4;
-            int w = (int)(roundness * Math.Sqrt(2));
+            double s = size / Math.Sqrt(10);
+            double roundness = s > 4 * ROUNDING ? ROUNDING : s / 4;
+            double w = roundness * Math.Sqrt(2);
 
             return PathBuilder.CreateBuilder()
                               .MoveTo(x + s + w / 2, y + w / 2)

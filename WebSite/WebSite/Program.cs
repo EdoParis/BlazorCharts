@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using WebServer.Components;
 
 namespace WebServer
@@ -9,7 +8,6 @@ namespace WebServer
 
         public static void Main(string[] args)
         {
-            Console.WriteLine($"Running framework: {RuntimeInformation.FrameworkDescription}");
             ReadParameters(args);
 
             WebApplicationBuilder builder = WebApplication.CreateBuilder();

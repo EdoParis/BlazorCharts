@@ -1,6 +1,8 @@
 ﻿Existing Blazor chart libraries often wrap Javascript libraries, requiring JSInterop and external dependencies.
 **BlazorGraphs** was built to provide a fully native Blazor experience using only **C# and SVG**.
 
+![BlazorGraphs — add slices, series and themes to native Blazor charts](https://raw.githubusercontent.com/yasirwhite/opendemo-media/main/EdoParis-BlazorCharts/blazorgraphs-demo.gif)
+
 Main features:
 - Native Blazor
 - SSR friendly
